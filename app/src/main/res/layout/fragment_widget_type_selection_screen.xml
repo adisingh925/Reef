@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/darkBackgroundColor"
+    tools:context=".fragments.WidgetTypeSelectionScreen">
+
+    <TextView
+        android:id="@+id/widget_type_selection_page_heading"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="@dimen/medium_margin"
+        android:text="Choose the widget you want to add from below."
+        android:textSize="@dimen/medium_heading_font_size"
+        android:layout_width="0dp"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/apex_widgets_button"
+        app:icon="@drawable/right_arrow"
+        app:iconGravity="end"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/widget_type_selection_page_heading"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:text="@string/apex_button_text"
+        android:textSize="@dimen/default_button_text_size"
+        app:layout_constraintBottom_toTopOf="@id/mastertronic_widgets_button"
+        app:cornerRadius="@dimen/default_button_radius"
+        android:layout_width="0dp"
+        android:layout_margin="@dimen/medium_margin"
+        android:layout_height="@dimen/default_button_height"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mastertronic_widgets_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:icon="@drawable/right_arrow"
+        app:iconGravity="end"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/apex_widgets_button"
+        android:text="@string/mastertronic_button_text"
+        android:textSize="@dimen/default_button_text_size"
+        app:cornerRadius="@dimen/default_button_radius"
+        android:layout_width="0dp"
+        app:layout_constraintBottom_toTopOf="@id/alkatronic_widgets_button"
+        android:layout_margin="@dimen/medium_margin"
+        android:layout_height="@dimen/default_button_height"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/alkatronic_widgets_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:icon="@drawable/right_arrow"
+        app:iconGravity="end"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mastertronic_widgets_button"
+        android:text="@string/alkatronic_button_text"
+        android:textSize="@dimen/default_button_text_size"
+        app:cornerRadius="@dimen/default_button_radius"
+        android:layout_width="0dp"
+        app:layout_constraintBottom_toTopOf="@id/custom_widgets_button"
+        android:layout_margin="@dimen/medium_margin"
+        android:layout_height="@dimen/default_button_height"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/custom_widgets_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:icon="@drawable/right_arrow"
+        app:iconGravity="end"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="@dimen/default_button_text_size"
+        app:layout_constraintTop_toBottomOf="@id/alkatronic_widgets_button"
+        android:text="@string/custom_button_text"
+        app:cornerRadius="@dimen/default_button_radius"
+        android:layout_width="0dp"
+        android:layout_margin="@dimen/medium_margin"
+        android:layout_height="@dimen/default_button_height"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

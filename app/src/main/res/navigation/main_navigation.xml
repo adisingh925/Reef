@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/welcomeScreen">
+
+    <fragment
+        android:id="@+id/welcomeScreen"
+        android:name="app.android.damien.reef.fragments.WelcomeScreen"
+        android:label="fragment_welcome_screen"
+        tools:layout="@layout/fragment_welcome_screen" >
+        <action
+            android:id="@+id/action_welcomeScreen_to_widgetTypeSelectionScreen"
+            app:destination="@id/widgetTypeSelectionScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/widgetTypeSelectionScreen"
+        android:name="app.android.damien.reef.fragments.WidgetTypeSelectionScreen"
+        android:label="fragment_widget_type_selection_screen"
+        tools:layout="@layout/fragment_widget_type_selection_screen" >
+        <action
+            android:id="@+id/action_widgetTypeSelectionScreen_to_loginScreen"
+            app:destination="@id/loginScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginScreen"
+        android:name="app.android.damien.reef.fragments.LoginScreen"
+        android:label="fragment_login_screen"
+        tools:layout="@layout/fragment_login_screen" />
+</navigation>
