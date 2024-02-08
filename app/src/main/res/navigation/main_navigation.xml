@@ -27,5 +27,14 @@
         android:id="@+id/loginScreen"
         android:name="app.android.damien.reef.fragments.LoginScreen"
         android:label="fragment_login_screen"
-        tools:layout="@layout/fragment_login_screen" />
+        tools:layout="@layout/fragment_login_screen" >
+        <action
+            android:id="@+id/action_loginScreen_to_addWidgetScreen"
+            app:destination="@id/addWidgetScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/addWidgetScreen"
+        android:name="app.android.damien.reef.fragments.AddWidgetScreen"
+        android:label="fragment_add_widget_screen"
+        tools:layout="@layout/fragment_add_widget_screen" />
 </navigation>

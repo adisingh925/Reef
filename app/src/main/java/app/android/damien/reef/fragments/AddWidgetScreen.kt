@@ -5,15 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import app.android.damien.reef.R
-import app.android.damien.reef.databinding.FragmentLoginScreenBinding
+import app.android.damien.reef.databinding.FragmentAddWidgetScreenBinding
 
 
-class LoginScreen : Fragment() {
+class AddWidgetScreen : Fragment() {
 
     private val binding by lazy {
-        FragmentLoginScreenBinding.inflate(layoutInflater)
+        FragmentAddWidgetScreenBinding.inflate(layoutInflater)
     }
 
     override fun onCreateView(
@@ -21,11 +20,6 @@ class LoginScreen : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-
-        binding.submit.setOnClickListener {
-            findNavController().navigate(R.id.action_loginScreen_to_addWidgetScreen)
-        }
-
         return binding.root
     }
 }
