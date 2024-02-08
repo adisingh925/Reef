@@ -7,16 +7,97 @@
     android:background="@color/darkBackgroundColor"
     tools:context=".fragments.LoginScreen">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:src="@drawable/background_image"
+        android:scaleType="centerCrop"
+        app:tint="#80000000"
+        android:layout_height="match_parent"/>
+
+    <ImageView
+        android:id="@+id/login_back_button"
+        android:layout_width="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/back_arrow"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:layout_margin="@dimen/medium_margin"
+        android:layout_height="wrap_content"/>
+
     <TextView
         android:id="@+id/login_page_heading"
         android:text="Enter the Details of your Apex Login"
         android:textSize="@dimen/medium_heading_font_size"
         android:layout_width="0dp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_back_button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_margin="@dimen/medium_margin"
         android:layout_height="wrap_content"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        app:layout_constraintTop_toBottomOf="@id/login_page_heading"
+        android:id="@+id/username_layout"
+        app:layout_constraintVertical_chainStyle="packed"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        app:boxCornerRadiusTopStart="@dimen/default_button_radius"
+        app:boxCornerRadiusBottomStart="@dimen/default_button_radius"
+        app:boxCornerRadiusBottomEnd="@dimen/default_button_radius"
+        app:boxCornerRadiusTopEnd="@dimen/default_button_radius"
+        app:layout_constraintBottom_toTopOf="@id/email_layout"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="@dimen/medium_margin"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/username_input_field"
+            android:layout_width="match_parent"
+            android:inputType="text"
+            android:layout_height="wrap_content"
+            android:hint="Username" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        app:layout_constraintTop_toBottomOf="@id/username_layout"
+        android:id="@+id/email_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        app:boxCornerRadiusTopStart="@dimen/default_button_radius"
+        app:boxCornerRadiusBottomStart="@dimen/default_button_radius"
+        app:boxCornerRadiusBottomEnd="@dimen/default_button_radius"
+        app:boxCornerRadiusTopEnd="@dimen/default_button_radius"
+        app:layout_constraintBottom_toTopOf="@id/submit"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="@dimen/medium_margin"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_input_field"
+            android:layout_width="match_parent"
+            android:inputType="textEmailAddress"
+            android:layout_height="wrap_content"
+            android:hint="Email" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/submit"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/email_layout"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:text="Submit"
+        android:textSize="@dimen/default_button_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:cornerRadius="@dimen/default_button_radius"
+        android:layout_width="0dp"
+        android:layout_margin="@dimen/medium_margin"
+        android:layout_height="@dimen/default_button_height"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
