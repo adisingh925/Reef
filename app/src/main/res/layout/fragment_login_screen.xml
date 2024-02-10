@@ -32,7 +32,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         app:layout_constraintTop_toBottomOf="@id/login_page_heading"
-        android:id="@+id/username_layout"
+        android:id="@+id/nickname_layout"
         app:layout_constraintVertical_chainStyle="packed"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
@@ -47,19 +47,20 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/username_input_field"
+            android:id="@+id/nickname_input_field"
             android:layout_width="match_parent"
             android:inputType="text"
             android:layout_height="wrap_content"
-            android:hint="Username" />
+            android:hint="Nickname" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        app:layout_constraintTop_toBottomOf="@id/username_layout"
+        app:layout_constraintTop_toBottomOf="@id/nickname_layout"
         android:id="@+id/email_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
+        app:errorEnabled="true"
         app:boxCornerRadiusTopStart="@dimen/default_button_radius"
         app:boxCornerRadiusBottomStart="@dimen/default_button_radius"
         app:boxCornerRadiusBottomEnd="@dimen/default_button_radius"
