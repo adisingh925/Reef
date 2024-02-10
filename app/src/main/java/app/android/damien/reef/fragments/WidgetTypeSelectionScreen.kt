@@ -39,7 +39,7 @@ class WidgetTypeSelectionScreen : Fragment() {
 
         binding.customWidgetsButton.setOnClickListener {
             findNavController().navigate(
-                R.id.action_widgetTypeSelectionScreen_to_loginScreen,
+                R.id.action_widgetTypeSelectionScreen_to_addWidgetScreen,
                 getBundle(Constants.CUSTOM)
             )
         }

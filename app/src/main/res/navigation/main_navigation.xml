@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_widgetTypeSelectionScreen_to_loginScreen"
             app:destination="@id/loginScreen" />
+        <action
+            android:id="@+id/action_widgetTypeSelectionScreen_to_addWidgetScreen"
+            app:destination="@id/addWidgetScreen" />
     </fragment>
     <fragment
         android:id="@+id/loginScreen"
