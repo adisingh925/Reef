@@ -7,4 +7,5 @@
     <string name="mastertronic_button_text">Add Mastertronic Widgets</string>
     <string name="alkatronic_button_text">Add Alkatronic Widgets</string>
     <string name="custom_button_text">Add Custom Widgets</string>
+    <string name="login_screen_heading">Enter the Details of your %s Login</string>
 </resources>

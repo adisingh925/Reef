@@ -20,7 +20,7 @@
 
     <TextView
         android:id="@+id/login_page_heading"
-        android:text="Enter the Details of your Apex Login"
+        android:text="@string/login_screen_heading"
         android:textSize="@dimen/medium_heading_font_size"
         android:layout_width="0dp"
         android:textStyle="bold"

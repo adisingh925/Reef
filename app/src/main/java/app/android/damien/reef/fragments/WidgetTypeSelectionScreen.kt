@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import app.android.damien.reef.R
 import app.android.damien.reef.databinding.FragmentWidgetTypeSelectionScreenBinding
+import app.android.damien.reef.utils.Constants
 
 
 class WidgetTypeSelectionScreen : Fragment() {
@@ -23,21 +24,39 @@ class WidgetTypeSelectionScreen : Fragment() {
         // Inflate the layout for this fragment
 
         binding.apexWidgetsButton.setOnClickListener {
-            findNavController().navigate(R.id.action_widgetTypeSelectionScreen_to_loginScreen)
+            findNavController().navigate(
+                R.id.action_widgetTypeSelectionScreen_to_loginScreen,
+                getBundle(Constants.APEX)
+            )
         }
 
         binding.alkatronicWidgetsButton.setOnClickListener {
-            findNavController().navigate(R.id.action_widgetTypeSelectionScreen_to_loginScreen)
+            findNavController().navigate(
+                R.id.action_widgetTypeSelectionScreen_to_loginScreen,
+                getBundle(Constants.ALKATRONIC)
+            )
         }
 
         binding.customWidgetsButton.setOnClickListener {
-            findNavController().navigate(R.id.action_widgetTypeSelectionScreen_to_loginScreen)
+            findNavController().navigate(
+                R.id.action_widgetTypeSelectionScreen_to_loginScreen,
+                getBundle(Constants.CUSTOM)
+            )
         }
 
         binding.mastertronicWidgetsButton.setOnClickListener {
-            findNavController().navigate(R.id.action_widgetTypeSelectionScreen_to_loginScreen)
+            findNavController().navigate(
+                R.id.action_widgetTypeSelectionScreen_to_loginScreen,
+                getBundle(Constants.MASTERTRONIC)
+            )
         }
 
         return binding.root
+    }
+
+    private fun getBundle(value: Int): Bundle {
+        return Bundle().apply {
+            putInt("widgetType", value)
+        }
     }
 }

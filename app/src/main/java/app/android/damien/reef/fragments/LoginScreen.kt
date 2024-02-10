@@ -1,28 +1,25 @@
 package app.android.damien.reef.fragments
 
-import android.net.http.NetworkException
 import android.os.Build
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Email
 import android.util.Log
 import android.util.Patterns
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresExtension
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import app.android.damien.reef.R
 import app.android.damien.reef.databinding.FragmentLoginScreenBinding
 import app.android.damien.reef.model.addUserRequestBody
 import app.android.damien.reef.model.addUserResponseBody
 import app.android.damien.reef.retrofit.ApiClient
+import app.android.damien.reef.utils.Constants
 import app.android.damien.reef.utils.Toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import java.util.regex.Pattern
 
 
 class LoginScreen : Fragment() {
@@ -36,6 +33,18 @@ class LoginScreen : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
+
+        when (arguments?.getInt("widgetType")) {
+            Constants.APEX -> {
+                binding.loginPageHeading.text = getString(R.string.login_screen_heading, "Apex")
+            }
+            Constants.ALKATRONIC -> {
+                binding.loginPageHeading.text = getString(R.string.login_screen_heading, "Alkatronic")
+            }
+            Constants.MASTERTRONIC -> {
+                binding.loginPageHeading.text = getString(R.string.login_screen_heading, "Mastertronic")
+            }
+        }
 
         binding.submit.setOnClickListener {
             var x = 0
@@ -76,9 +85,9 @@ class LoginScreen : Fragment() {
                         if (response.isSuccessful) {
                             val post = response.body()
                             if (post != null) {
-                                if(post.success){
+                                if (post.success) {
                                     findNavController().navigate(R.id.action_loginScreen_to_addWidgetScreen)
-                                }else{
+                                } else {
                                     Toast.showSnackbar(binding.root, "Signup Failed!")
                                 }
                             }
