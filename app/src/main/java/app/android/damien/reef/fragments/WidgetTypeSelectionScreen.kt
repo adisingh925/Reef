@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import app.android.damien.reef.MainActivity
 import app.android.damien.reef.R
 import app.android.damien.reef.databinding.FragmentWidgetTypeSelectionScreenBinding
 import app.android.damien.reef.utils.Constants
-
 
 class WidgetTypeSelectionScreen : Fragment() {
 
