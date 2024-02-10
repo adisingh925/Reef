@@ -105,7 +105,7 @@ class LoginScreen : Fragment() {
                             val post = response.body()
                             if (post != null) {
                                 if (post.success) {
-                                    findNavController().navigate(R.id.action_loginScreen_to_addWidgetScreen)
+                                    findNavController().navigate(R.id.action_loginScreen_to_addWidgetScreen, getBundle(arguments?.getInt("widgetType")!!))
                                 } else {
                                     Toast.showSnackbar(binding.root, "Signup Failed!")
                                 }
@@ -133,5 +133,11 @@ class LoginScreen : Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun getBundle(widgetType : Int): Bundle {
+        val bundle = Bundle()
+        bundle.putInt("widgetType", widgetType)
+        return bundle
     }
 }
