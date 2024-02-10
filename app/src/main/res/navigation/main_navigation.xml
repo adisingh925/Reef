@@ -39,5 +39,14 @@
         android:id="@+id/addWidgetScreen"
         android:name="app.android.damien.reef.fragments.AddWidgetScreen"
         android:label="fragment_add_widget_screen"
-        tools:layout="@layout/fragment_add_widget_screen" />
+        tools:layout="@layout/fragment_add_widget_screen" >
+        <action
+            android:id="@+id/action_addWidgetScreen_to_customWidgetAddEditScreen"
+            app:destination="@id/customWidgetAddEditScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/customWidgetAddEditScreen"
+        android:name="app.android.damien.reef.fragments.CustomWidgetAddEditScreen"
+        android:label="fragment_custom_widget_add_edit_screen"
+        tools:layout="@layout/fragment_custom_widget_add_edit_screen" />
 </navigation>

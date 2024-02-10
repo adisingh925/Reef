@@ -20,6 +20,7 @@ import app.android.damien.reef.utils.Toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.regex.Pattern
 
 
 class LoginScreen : Fragment() {
@@ -38,11 +39,15 @@ class LoginScreen : Fragment() {
             Constants.APEX -> {
                 binding.loginPageHeading.text = getString(R.string.login_screen_heading, "Apex")
             }
+
             Constants.ALKATRONIC -> {
-                binding.loginPageHeading.text = getString(R.string.login_screen_heading, "Alkatronic")
+                binding.loginPageHeading.text =
+                    getString(R.string.login_screen_heading, "Alkatronic")
             }
+
             Constants.MASTERTRONIC -> {
-                binding.loginPageHeading.text = getString(R.string.login_screen_heading, "Mastertronic")
+                binding.loginPageHeading.text =
+                    getString(R.string.login_screen_heading, "Mastertronic")
             }
         }
 
@@ -52,21 +57,35 @@ class LoginScreen : Fragment() {
             binding.emailLayout.error = null
             binding.nicknameLayout.error = null
 
-            if (binding.emailInputField.text.toString()
-                    .isEmpty() || binding.nicknameInputField.text.toString().isEmpty()
-            ) {
+            if (binding.emailInputField.text.toString().isEmpty()) {
                 x++
+                binding.emailLayout.error = "Email is required"
                 Log.d("LoginScreen", "Email or nickname is empty")
-                return@setOnClickListener
+            } else {
+                if (Patterns.EMAIL_ADDRESS.matcher(binding.emailInputField.text.toString())
+                        .matches()
+                ) {
+                    Log.d("LoginScreen", "Email is valid")
+                } else {
+                    x++
+                    Log.d("LoginScreen", "Email is invalid")
+                    binding.emailLayout.error = "Invalid email"
+                }
             }
 
-            if (Patterns.EMAIL_ADDRESS.matcher(binding.emailInputField.text.toString()).matches()) {
-                Log.d("LoginScreen", "Email is valid")
-            } else {
+            if (binding.nicknameInputField.text.toString().isEmpty()) {
                 x++
-                Log.d("LoginScreen", "Email is invalid")
-                binding.emailLayout.error = "Invalid email"
-                return@setOnClickListener
+                binding.nicknameLayout.error = "Nickname is required"
+                Log.d("LoginScreen", "Email or nickname is empty")
+            }else{
+                if(Pattern.matches("^[a-zA-Z0-9]*$", binding.nicknameInputField.text.toString())) {
+                    Log.d("LoginScreen", "Nickname is valid")
+                }
+                else{
+                    x++
+                    Log.d("LoginScreen", "Nickname is invalid")
+                    binding.nicknameLayout.error = "Nickname can only contains letters and numbers."
+                }
             }
 
             if (x == 0) {
