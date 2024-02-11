@@ -1,6 +1,7 @@
 package app.android.damien.reef.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -46,25 +47,28 @@ class AddWidgetScreen : Fragment(), WidgetAdapter.OnItemClickListener {
 
         widgetType = arguments?.getInt("widgetType") ?: Constants.CUSTOM
 
-        initRecyclerAdapter()
+        when (widgetType) {
+            Constants.APEX -> {
+                // Add Apex widget
+            }
 
-        widgetsViewModel.widgets.observe(viewLifecycleOwner) {
-            adapter?.setData(it)
-        }
+            Constants.ALKATRONIC -> {
+                // Add Alkatronic widget
+            }
 
-        binding.addWidget.setOnClickListener {
-            when (widgetType) {
-                Constants.APEX -> {
-                    // Add Apex widget
-                }
-                Constants.ALKATRONIC -> {
-                    // Add Alkatronic widget
-                }
-                Constants.MASTERTRONIC -> {
-                    // Add Mastertronic widget
-                }
-                Constants.CUSTOM -> {
+            Constants.MASTERTRONIC -> {
+                // Add Mastertronic widget
+            }
+
+            Constants.CUSTOM -> {
+                binding.addWidget.setOnClickListener {
                     findNavController().navigate(R.id.action_addWidgetScreen_to_customWidgetAddEditScreen)
+                }
+
+                initRecyclerAdapter()
+
+                widgetsViewModel.widgets.observe(viewLifecycleOwner) {
+                    adapter?.setData(it)
                 }
             }
         }
@@ -80,7 +84,14 @@ class AddWidgetScreen : Fragment(), WidgetAdapter.OnItemClickListener {
         )
     }
 
-    override fun onItemClick(data: CustomWidgetModel) {
-        TODO("Not yet implemented")
+    override fun onCustomWidgetClick(data: CustomWidgetModel) {
+        Log.d("AddWidgetScreen", "customWidgetClicked: $data")
+        findNavController().navigate(R.id.action_addWidgetScreen_to_customWidgetAddEditScreen, getCustomWidgetBundle(data))
+    }
+
+    private fun getCustomWidgetBundle(customWidgetModelObject : CustomWidgetModel): Bundle {
+        val bundle = Bundle()
+        bundle.putParcelable("customWidgetModelObject", customWidgetModelObject)
+        return bundle
     }
 }

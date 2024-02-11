@@ -15,7 +15,7 @@ class WidgetAdapter(private val context: Context, private val onItemClickListene
 
     private var widgetList: MutableList<CustomWidgetModel> = ArrayList()
     interface OnItemClickListener {
-        fun onItemClick(data: CustomWidgetModel)
+        fun onCustomWidgetClick(data: CustomWidgetModel)
     }
 
     private inner class ViewHolder1(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -30,6 +30,10 @@ class WidgetAdapter(private val context: Context, private val onItemClickListene
             value.text = widgetList[position].value.toString()
             unit.text = widgetList[position].unit
             card.setCardBackgroundColor(widgetList[position].color)
+
+            itemView.setOnClickListener {
+                onItemClickListener.onCustomWidgetClick(widgetList[position])
+            }
         }
     }
 

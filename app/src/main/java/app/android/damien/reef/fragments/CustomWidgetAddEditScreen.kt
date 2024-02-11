@@ -34,6 +34,21 @@ class CustomWidgetAddEditScreen : Fragment() {
     ): View {
         // Inflate the layout for this fragment
 
+        val customWidgetModelObject = arguments?.getParcelable<CustomWidgetModel>("customWidgetModelObject")
+
+        if(customWidgetModelObject != null){
+            binding.parameterInputField.setText(customWidgetModelObject.parameter)
+            binding.valueInputField.setText(customWidgetModelObject.value.toString())
+            binding.unitInputField.setText(customWidgetModelObject.unit)
+            mDefaultColor = customWidgetModelObject.color
+            binding.previewCard.previewCard.setCardBackgroundColor(mDefaultColor)
+            binding.previewCard.parameter.text = customWidgetModelObject.parameter
+            binding.previewCard.value.text = customWidgetModelObject.value.toString()
+            binding.previewCard.unit.text = customWidgetModelObject.unit
+        }else{
+            generateRandomDarkColor()
+        }
+
         binding.parameterInputField.doOnTextChanged { text, start, before, count ->
             binding.previewCard.parameter.text = text
         }
@@ -78,24 +93,38 @@ class CustomWidgetAddEditScreen : Fragment() {
                 val color = mDefaultColor
                 val createTime = System.currentTimeMillis()
 
-                widgetsViewModel.insert(
-                    CustomWidgetModel(
-                        0,
-                        4,
-                        createTime,
-                        createTime,
-                        parameter,
-                        value,
-                        unit,
-                        color
+                if(customWidgetModelObject != null){
+                    widgetsViewModel.update(
+                        CustomWidgetModel(
+                            customWidgetModelObject.id,
+                            4,
+                            createTime,
+                            createTime,
+                            parameter,
+                            value,
+                            unit,
+                            color
+                        )
                     )
-                )
+                }else{
+                    widgetsViewModel.insert(
+                        CustomWidgetModel(
+                            0,
+                            4,
+                            createTime,
+                            createTime,
+                            parameter,
+                            value,
+                            unit,
+                            color
+                        )
+                    )
+                }
 
                 findNavController().popBackStack()
             }
         }
 
-        generateRandomDarkColor()
         return binding.root
     }
 
