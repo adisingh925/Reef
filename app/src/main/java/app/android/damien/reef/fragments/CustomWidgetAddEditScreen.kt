@@ -63,7 +63,6 @@ class CustomWidgetAddEditScreen : Fragment() {
 
                     // now change the picked color
                     // preview box to mDefaultColor
-                    binding.previewSelectedColor.setBackgroundColor(color)
                     binding.previewCard.setCardBackgroundColor(color)
                 }
             })

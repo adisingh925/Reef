@@ -60,8 +60,8 @@
                 android:id="@+id/unit"
                 app:layout_constraintLeft_toRightOf="@id/value"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/value"
                 app:layout_constraintBottom_toBottomOf="@id/value"
+                android:layout_marginBottom="@dimen/small_margin"
                 android:layout_marginStart="@dimen/medium_margin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -155,22 +155,11 @@
         android:layout_margin="@dimen/medium_margin"
         app:layout_constraintBottom_toTopOf="@id/submit"
         android:layout_width="0dp"
-        android:text="Choose Color"
+        android:text="Choose Background Color"
+        android:textSize="@dimen/default_button_text_size"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/preview_selected_color"
-        android:layout_height="@dimen/default_button_height"/>
-
-    <View
-        android:id="@+id/preview_selected_color"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/medium_margin"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/colorPicker"
-        app:layout_constraintTop_toTopOf="@id/colorPicker"
-        app:layout_constraintBottom_toBottomOf="@id/colorPicker"
-        android:background="@android:color/darker_gray" />
+        android:layout_height="@dimen/default_button_height"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/submit"
@@ -178,7 +167,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/colorPicker"
         app:layout_constraintVertical_chainStyle="packed"
-        android:text="Submit"
+        android:text="Save Widget"
         android:textSize="@dimen/default_button_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:cornerRadius="@dimen/default_button_radius"
