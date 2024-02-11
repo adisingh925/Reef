@@ -1,5 +1,6 @@
 package app.android.damien.reef.fragments
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,8 @@ import app.android.damien.reef.databinding.FragmentCustomWidgetAddEditScreenBind
 import app.android.damien.reef.viewmodel.WidgetsViewModel
 import yuku.ambilwarna.AmbilWarnaDialog
 import yuku.ambilwarna.AmbilWarnaDialog.OnAmbilWarnaListener
+import java.util.Random
+
 
 class CustomWidgetAddEditScreen : Fragment() {
 
@@ -92,6 +95,7 @@ class CustomWidgetAddEditScreen : Fragment() {
             }
         }
 
+        generateRandomDarkColor()
         return binding.root
     }
 
@@ -108,5 +112,12 @@ class CustomWidgetAddEditScreen : Fragment() {
                 }
             })
         colorPickerDialogue.show()
+    }
+
+    private fun generateRandomDarkColor(){
+        val rnd = Random()
+        val color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
+        binding.previewCard.previewCard.setCardBackgroundColor(color)
+        mDefaultColor = color
     }
 }
