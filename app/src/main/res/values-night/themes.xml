@@ -14,6 +14,7 @@
         <!-- Customize your theme here. -->
         <item name="appBackgroundColor">@color/darkBackgroundColor</item>
         <item name="android:navigationBarColor">@color/darkBackgroundColor</item>
-        <item name="android:tint">@color/white</item>
+<!--        <item name="android:tint">@color/white</item>-->
+        <item name="resourcesTint">@color/white</item>
     </style>
 </resources>

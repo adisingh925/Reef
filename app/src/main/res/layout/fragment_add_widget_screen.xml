@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/transparent"
+    android:background="#80000000"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.AddWidgetScreen">
 
@@ -15,6 +15,7 @@
         android:src="@drawable/back_arrow"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
+        app:tint="?attr/resourcesTint"
         android:layout_marginTop="@dimen/extra_large_margin"
         android:layout_marginStart="@dimen/medium_margin"
         android:layout_marginBottom="@dimen/medium_margin"

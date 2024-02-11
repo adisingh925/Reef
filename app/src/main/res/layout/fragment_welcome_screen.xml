@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#80000000"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.WelcomeScreen">
 
@@ -20,7 +21,6 @@
             android:layout_width="wrap_content"
             app:srcCompat="@drawable/welcome_page_image"
             android:scaleType="centerCrop"
-            app:tint="#00FFFFFF"
             android:layout_height="wrap_content"/>
 
     </com.google.android.material.card.MaterialCardView>
