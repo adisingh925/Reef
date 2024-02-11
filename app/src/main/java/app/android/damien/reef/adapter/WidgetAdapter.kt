@@ -23,7 +23,7 @@ class WidgetAdapter(private val context: Context, private val onItemClickListene
         var parameter = itemView.findViewById<TextView>(R.id.parameter)
         val value = itemView.findViewById<TextView>(R.id.value)
         val unit = itemView.findViewById<TextView>(R.id.unit)
-        val card = itemView.findViewById<CardView>(R.id.preview_card)
+        val card = itemView.findViewById<CardView>(R.id.custom_widget_layout_card)
 
         fun bind(position: Int) {
             parameter.text = widgetList[position].parameter

@@ -41,7 +41,7 @@ class CustomWidgetAddEditScreen : Fragment() {
             binding.valueInputField.setText(customWidgetModelObject.value.toString())
             binding.unitInputField.setText(customWidgetModelObject.unit)
             mDefaultColor = customWidgetModelObject.color
-            binding.previewCard.previewCard.setCardBackgroundColor(mDefaultColor)
+            binding.previewCard.customWidgetLayoutCard.setCardBackgroundColor(mDefaultColor)
             binding.previewCard.parameter.text = customWidgetModelObject.parameter
             binding.previewCard.value.text = customWidgetModelObject.value.toString()
             binding.previewCard.unit.text = customWidgetModelObject.unit
@@ -137,7 +137,7 @@ class CustomWidgetAddEditScreen : Fragment() {
 
                 override fun onOk(dialog: AmbilWarnaDialog, color: Int) {
                     mDefaultColor = color
-                    binding.previewCard.previewCard.setCardBackgroundColor(color)
+                    binding.previewCard.customWidgetLayoutCard.setCardBackgroundColor(color)
                 }
             })
         colorPickerDialogue.show()
@@ -146,7 +146,7 @@ class CustomWidgetAddEditScreen : Fragment() {
     private fun generateRandomDarkColor(){
         val rnd = Random()
         val color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
-        binding.previewCard.previewCard.setCardBackgroundColor(color)
+        binding.previewCard.customWidgetLayoutCard.setCardBackgroundColor(color)
         mDefaultColor = color
     }
 }
