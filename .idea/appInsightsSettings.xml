@@ -27,10 +27,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="app.android.damien.reef" />
+                  <option name="mobileSdkAppId" value="1:32533671686:android:16a010fa7182873e7bf887" />
+                  <option name="projectId" value="reef-widgets" />
+                  <option name="projectNumber" value="32533671686" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

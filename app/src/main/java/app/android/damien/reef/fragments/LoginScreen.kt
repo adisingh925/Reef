@@ -15,12 +15,14 @@ import app.android.damien.reef.databinding.FragmentLoginScreenBinding
 import app.android.damien.reef.model.addUserRequestBody
 import app.android.damien.reef.model.addUserResponseBody
 import app.android.damien.reef.retrofit.ApiClient
+import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
 import app.android.damien.reef.utils.Toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.regex.Pattern
+import kotlin.properties.Delegates
 
 
 class LoginScreen : Fragment() {
@@ -29,11 +31,15 @@ class LoginScreen : Fragment() {
         FragmentLoginScreenBinding.inflate(layoutInflater)
     }
 
+    private var widgetType = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
+
+        widgetType = arguments?.getInt("widgetType") ?: 0
 
         when (arguments?.getInt("widgetType")) {
             Constants.APEX -> {
@@ -41,13 +47,11 @@ class LoginScreen : Fragment() {
             }
 
             Constants.ALKATRONIC -> {
-                binding.loginPageHeading.text =
-                    getString(R.string.login_screen_heading, "Alkatronic")
+                binding.loginPageHeading.text = getString(R.string.login_screen_heading, "Alkatronic")
             }
 
             Constants.MASTERTRONIC -> {
-                binding.loginPageHeading.text =
-                    getString(R.string.login_screen_heading, "Mastertronic")
+                binding.loginPageHeading.text = getString(R.string.login_screen_heading, "Mastertronic")
             }
         }
 
@@ -106,6 +110,7 @@ class LoginScreen : Fragment() {
                             if (post != null) {
                                 if (post.success) {
                                     findNavController().navigate(R.id.action_loginScreen_to_addWidgetScreen, getBundle(arguments?.getInt("widgetType")!!))
+                                    saveCredentials(binding.emailInputField.text.toString(), binding.nicknameInputField.text.toString())
                                 } else {
                                     Toast.showSnackbar(binding.root, "Signup Failed!")
                                 }
@@ -139,5 +144,10 @@ class LoginScreen : Fragment() {
         val bundle = Bundle()
         bundle.putInt("widgetType", widgetType)
         return bundle
+    }
+
+    private fun saveCredentials(email : String, password : String){
+        SharedPreferences.write(widgetType.toString() + "email", email)
+        SharedPreferences.write(widgetType.toString() + "password", password)
     }
 }

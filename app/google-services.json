@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "32533671686",
+    "project_id": "reef-widgets",
+    "storage_bucket": "reef-widgets.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32533671686:android:16a010fa7182873e7bf887",
+        "android_client_info": {
+          "package_name": "app.android.damien.reef"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8QjP-4vyrPc3tclHX7kPJI9U10ouZRvw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

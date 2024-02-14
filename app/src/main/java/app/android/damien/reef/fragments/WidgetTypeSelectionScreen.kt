@@ -1,5 +1,6 @@
 package app.android.damien.reef.fragments
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -24,17 +25,31 @@ class WidgetTypeSelectionScreen : Fragment() {
         // Inflate the layout for this fragment
 
         binding.apexWidgetsButton.setOnClickListener {
-            findNavController().navigate(
-                R.id.action_widgetTypeSelectionScreen_to_loginScreen,
-                getBundle(Constants.APEX)
-            )
+            if(isCredentialsExist(Constants.APEX)){
+                findNavController().navigate(
+                    R.id.action_widgetTypeSelectionScreen_to_addWidgetScreen,
+                    getBundle(Constants.ALKATRONIC)
+                )
+            }else{
+                findNavController().navigate(
+                    R.id.action_widgetTypeSelectionScreen_to_loginScreen,
+                    getBundle(Constants.ALKATRONIC)
+                )
+            }
         }
 
         binding.alkatronicWidgetsButton.setOnClickListener {
-            findNavController().navigate(
-                R.id.action_widgetTypeSelectionScreen_to_loginScreen,
-                getBundle(Constants.ALKATRONIC)
-            )
+            if(isCredentialsExist(Constants.ALKATRONIC)){
+                findNavController().navigate(
+                    R.id.action_widgetTypeSelectionScreen_to_addWidgetScreen,
+                    getBundle(Constants.ALKATRONIC)
+                )
+            }else{
+                findNavController().navigate(
+                    R.id.action_widgetTypeSelectionScreen_to_loginScreen,
+                    getBundle(Constants.ALKATRONIC)
+                )
+            }
         }
 
         binding.customWidgetsButton.setOnClickListener {
@@ -45,10 +60,17 @@ class WidgetTypeSelectionScreen : Fragment() {
         }
 
         binding.mastertronicWidgetsButton.setOnClickListener {
-            findNavController().navigate(
-                R.id.action_widgetTypeSelectionScreen_to_loginScreen,
-                getBundle(Constants.MASTERTRONIC)
-            )
+            if(isCredentialsExist(Constants.MASTERTRONIC)){
+                findNavController().navigate(
+                    R.id.action_widgetTypeSelectionScreen_to_addWidgetScreen,
+                    getBundle(Constants.ALKATRONIC)
+                )
+            }else{
+                findNavController().navigate(
+                    R.id.action_widgetTypeSelectionScreen_to_loginScreen,
+                    getBundle(Constants.MASTERTRONIC)
+                )
+            }
         }
 
         return binding.root
@@ -58,5 +80,10 @@ class WidgetTypeSelectionScreen : Fragment() {
         return Bundle().apply {
             putInt("widgetType", value)
         }
+    }
+
+    private fun isCredentialsExist(widgetType : Int) : Boolean{
+        return !(app.android.damien.reef.storage.SharedPreferences.read(widgetType.toString() + "email", "") == "" &&
+                app.android.damien.reef.storage.SharedPreferences.read(widgetType.toString() + "password", "") == "")
     }
 }
