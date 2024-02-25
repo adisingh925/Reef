@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/medium_margin"
+    app:cardCornerRadius="15dp"
+    app:cardBackgroundColor="#912374"
+    app:cardElevation="@dimen/default_card_elevation"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/heading"
+            android:text="Impromptu"
+            android:textSize="20sp"
+            android:layout_margin="@dimen/medium_margin"
+            android:layout_width="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/dotted_line"
+            app:layout_constraintTop_toBottomOf="@id/heading"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_margin="@dimen/medium_margin"
+            android:src="@drawable/dotted_line"
+            android:layerType="software" />
+
+        <TextView
+            android:id="@+id/value"
+            app:layout_constraintTop_toBottomOf="@id/dotted_line"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="23"
+            app:layout_constraintRight_toLeftOf="@id/unit"
+            android:textSize="@dimen/heading_font_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/unit"
+            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:text="watts"
+            app:layout_constraintTop_toTopOf="@id/value"
+            app:layout_constraintLeft_toRightOf="@id/value"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_height="wrap_content"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

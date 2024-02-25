@@ -43,10 +43,18 @@
         <action
             android:id="@+id/action_addWidgetScreen_to_customWidgetAddEditScreen"
             app:destination="@id/customWidgetAddEditScreen" />
+        <action
+            android:id="@+id/action_addWidgetScreen_to_focustronicSelectWidgetScreen"
+            app:destination="@id/focustronicSelectWidgetScreen" />
     </fragment>
     <fragment
         android:id="@+id/customWidgetAddEditScreen"
         android:name="app.android.damien.reef.fragments.CustomWidgetAddEditScreen"
         android:label="fragment_custom_widget_add_edit_screen"
         tools:layout="@layout/fragment_custom_widget_add_edit_screen" />
+    <fragment
+        android:id="@+id/focustronicSelectWidgetScreen"
+        android:name="app.android.damien.reef.fragments.FocustronicSelectWidgetScreen"
+        android:label="focustronic_select_widget_screen"
+        tools:layout="@layout/focustronic_select_widget_screen" />
 </navigation>

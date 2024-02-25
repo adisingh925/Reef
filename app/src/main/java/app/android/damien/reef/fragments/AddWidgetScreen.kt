@@ -49,11 +49,15 @@ class AddWidgetScreen : Fragment(), WidgetAdapter.OnItemClickListener {
 
         when (widgetType) {
             Constants.APEX -> {
-                // Add Apex widget
+                binding.addWidget.setOnClickListener {
+                    findNavController().navigate(R.id.action_addWidgetScreen_to_focustronicSelectWidgetScreen, getBundle(Constants.APEX))
+                }
             }
 
             Constants.FOCUSTRONIC -> {
-                // Add Focustronic widget
+                binding.addWidget.setOnClickListener {
+                    findNavController().navigate(R.id.action_addWidgetScreen_to_focustronicSelectWidgetScreen, getBundle(Constants.FOCUSTRONIC))
+                }
             }
 
             Constants.CUSTOM -> {
@@ -92,5 +96,11 @@ class AddWidgetScreen : Fragment(), WidgetAdapter.OnItemClickListener {
         val bundle = Bundle()
         bundle.putParcelable("customWidgetModelObject", customWidgetModelObject)
         return bundle
+    }
+
+    private fun getBundle(value: Int): Bundle {
+        return Bundle().apply {
+            putInt("widgetType", value)
+        }
     }
 }
