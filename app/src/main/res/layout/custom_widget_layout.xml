@@ -65,6 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="start"
+            android:layout_gravity="bottom"
             android:textColor="@color/white"
             android:layout_marginStart="@dimen/medium_margin"
             android:layout_marginBottom="@dimen/medium_margin"
