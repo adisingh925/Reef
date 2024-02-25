@@ -52,12 +52,8 @@ class AddWidgetScreen : Fragment(), WidgetAdapter.OnItemClickListener {
                 // Add Apex widget
             }
 
-            Constants.ALKATRONIC -> {
-                // Add Alkatronic widget
-            }
-
-            Constants.MASTERTRONIC -> {
-                // Add Mastertronic widget
+            Constants.FOCUSTRONIC -> {
+                // Add Focustronic widget
             }
 
             Constants.CUSTOM -> {
@@ -86,10 +82,13 @@ class AddWidgetScreen : Fragment(), WidgetAdapter.OnItemClickListener {
 
     override fun onCustomWidgetClick(data: CustomWidgetModel) {
         Log.d("AddWidgetScreen", "customWidgetClicked: $data")
-        findNavController().navigate(R.id.action_addWidgetScreen_to_customWidgetAddEditScreen, getCustomWidgetBundle(data))
+        findNavController().navigate(
+            R.id.action_addWidgetScreen_to_customWidgetAddEditScreen,
+            getCustomWidgetBundle(data)
+        )
     }
 
-    private fun getCustomWidgetBundle(customWidgetModelObject : CustomWidgetModel): Bundle {
+    private fun getCustomWidgetBundle(customWidgetModelObject: CustomWidgetModel): Bundle {
         val bundle = Bundle()
         bundle.putParcelable("customWidgetModelObject", customWidgetModelObject)
         return bundle

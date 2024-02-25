@@ -26,26 +26,12 @@ class WidgetTypeSelectionScreen : Fragment() {
             if(isCredentialsExist(Constants.APEX)){
                 findNavController().navigate(
                     R.id.action_widgetTypeSelectionScreen_to_addWidgetScreen,
-                    getBundle(Constants.ALKATRONIC)
+                    getBundle(Constants.APEX)
                 )
             }else{
                 findNavController().navigate(
                     R.id.action_widgetTypeSelectionScreen_to_loginScreen,
-                    getBundle(Constants.ALKATRONIC)
-                )
-            }
-        }
-
-        binding.alkatronicWidgetsButton.setOnClickListener {
-            if(isCredentialsExist(Constants.ALKATRONIC)){
-                findNavController().navigate(
-                    R.id.action_widgetTypeSelectionScreen_to_addWidgetScreen,
-                    getBundle(Constants.ALKATRONIC)
-                )
-            }else{
-                findNavController().navigate(
-                    R.id.action_widgetTypeSelectionScreen_to_loginScreen,
-                    getBundle(Constants.ALKATRONIC)
+                    getBundle(Constants.APEX)
                 )
             }
         }
@@ -57,16 +43,16 @@ class WidgetTypeSelectionScreen : Fragment() {
             )
         }
 
-        binding.mastertronicWidgetsButton.setOnClickListener {
-            if(isCredentialsExist(Constants.MASTERTRONIC)){
+        binding.focustronicWidgetsButton.setOnClickListener {
+            if(isCredentialsExist(Constants.FOCUSTRONIC)){
                 findNavController().navigate(
                     R.id.action_widgetTypeSelectionScreen_to_addWidgetScreen,
-                    getBundle(Constants.ALKATRONIC)
+                    getBundle(Constants.FOCUSTRONIC)
                 )
             }else{
                 findNavController().navigate(
                     R.id.action_widgetTypeSelectionScreen_to_loginScreen,
-                    getBundle(Constants.MASTERTRONIC)
+                    getBundle(Constants.FOCUSTRONIC)
                 )
             }
         }

@@ -46,12 +46,8 @@ class LoginScreen : Fragment() {
                 binding.loginPageHeading.text = getString(R.string.login_screen_heading, "Apex")
             }
 
-            Constants.ALKATRONIC -> {
-                binding.loginPageHeading.text = getString(R.string.login_screen_heading, "Alkatronic")
-            }
-
-            Constants.MASTERTRONIC -> {
-                binding.loginPageHeading.text = getString(R.string.login_screen_heading, "Mastertronic")
+            Constants.FOCUSTRONIC -> {
+                binding.loginPageHeading.text = getString(R.string.login_screen_heading, "Focustronic")
             }
         }
 

@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import app.android.damien.reef.database_model.CustomWidgetModel
 import app.android.damien.reef.databinding.FragmentCustomWidgetAddEditScreenBinding
+import app.android.damien.reef.utils.Constants
 import app.android.damien.reef.viewmodel.WidgetsViewModel
 import yuku.ambilwarna.AmbilWarnaDialog
 import yuku.ambilwarna.AmbilWarnaDialog.OnAmbilWarnaListener
@@ -49,15 +50,15 @@ class CustomWidgetAddEditScreen : Fragment() {
             generateRandomDarkColor()
         }
 
-        binding.parameterInputField.doOnTextChanged { text, start, before, count ->
+        binding.parameterInputField.doOnTextChanged { text, _, _, _ ->
             binding.previewCard.parameter.text = text
         }
 
-        binding.valueInputField.doOnTextChanged { text, start, before, count ->
+        binding.valueInputField.doOnTextChanged { text, _, _, _ ->
             binding.previewCard.value.text = text
         }
 
-        binding.unitInputField.doOnTextChanged { text, start, before, count ->
+        binding.unitInputField.doOnTextChanged { text, _, _, _ ->
             binding.previewCard.unit.text = text
         }
 
@@ -97,7 +98,7 @@ class CustomWidgetAddEditScreen : Fragment() {
                     widgetsViewModel.update(
                         CustomWidgetModel(
                             customWidgetModelObject.id,
-                            4,
+                            Constants.CUSTOM,
                             createTime,
                             createTime,
                             parameter,
@@ -110,7 +111,7 @@ class CustomWidgetAddEditScreen : Fragment() {
                     widgetsViewModel.insert(
                         CustomWidgetModel(
                             0,
-                            4,
+                            Constants.CUSTOM,
                             createTime,
                             createTime,
                             parameter,
