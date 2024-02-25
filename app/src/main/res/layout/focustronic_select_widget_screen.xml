@@ -67,10 +67,16 @@
             <include android:id="@+id/focustronic_single_value_type_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="@dimen/extra_large_margin"
                 app:layout_constraintTop_toBottomOf="@id/focustronic_single_value_type_1"
                 layout="@layout/focustronic_single_value_type_2"/>
+
+            <include android:id="@+id/focustronic_grid_widget"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="@dimen/extra_large_margin"
+                app:layout_constraintTop_toBottomOf="@id/focustronic_single_value_type_2"
+                layout="@layout/focustronic_grid_widget"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
