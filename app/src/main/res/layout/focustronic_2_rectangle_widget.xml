@@ -9,8 +9,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="Focustronic 2 rectangle widget"
+        android:text="Focustronic Two Rectangle Widgets"
         android:textSize="20sp"
+        android:textStyle="bold"
         android:layout_marginTop="@dimen/medium_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

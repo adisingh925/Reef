@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="@dimen/medium_margin"
     app:cardCornerRadius="15dp"
-    app:cardBackgroundColor="#912374"
+    app:cardBackgroundColor="#000000"
     app:cardElevation="@dimen/default_card_elevation"
     android:layout_height="match_parent">
 
@@ -16,6 +16,7 @@
             android:id="@+id/heading"
             android:text="Impromptu"
             android:textSize="20sp"
+            android:textColor="#cc7700"
             android:layout_margin="@dimen/medium_margin"
             android:layout_width="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -38,6 +39,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             android:text="23"
+            android:textColor="#cc7700"
             app:layout_constraintRight_toLeftOf="@id/unit"
             android:textSize="@dimen/heading_font_size"
             android:layout_width="wrap_content"
@@ -48,6 +50,7 @@
             android:layout_width="wrap_content"
             android:textSize="20sp"
             android:text="watts"
+            android:textColor="#cc7700"
             app:layout_constraintTop_toTopOf="@id/value"
             app:layout_constraintLeft_toRightOf="@id/value"
             app:layout_constraintRight_toRightOf="parent"

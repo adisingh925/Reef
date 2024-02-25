@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
@@ -23,13 +24,13 @@ class WidgetAdapter(private val context: Context, private val onItemClickListene
         var parameter = itemView.findViewById<TextView>(R.id.parameter)
         val value = itemView.findViewById<TextView>(R.id.value)
         val unit = itemView.findViewById<TextView>(R.id.unit)
-        val card = itemView.findViewById<CardView>(R.id.custom_widget_layout_card)
+        val card = itemView.findViewById<LinearLayout>(R.id.custom_widget_layout_card)
 
         fun bind(position: Int) {
             parameter.text = widgetList[position].parameter
             value.text = widgetList[position].value.toString()
             unit.text = widgetList[position].unit
-            card.setCardBackgroundColor(widgetList[position].color)
+            card.setBackgroundColor(widgetList[position].color)
 
             itemView.setOnClickListener {
                 onItemClickListener.onCustomWidgetClick(widgetList[position])
