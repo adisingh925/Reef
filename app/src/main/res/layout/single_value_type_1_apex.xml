@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    android:layout_margin="@dimen/medium_margin"
+    android:background="@drawable/linear_layout_corner_radius_black"
+    android:orientation="vertical"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="@dimen/default_card_elevation">
+
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/medium_margin"
+        android:text="Solubility"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/dotted_line"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_margin="@dimen/medium_margin"
+        android:layerType="software"
+        android:src="@drawable/dotted_line"
+        app:layout_constraintTop_toBottomOf="@id/heading" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="23"
+            android:textColor="@color/white"
+            android:textSize="@dimen/heading_font_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/unit"
+            app:layout_constraintTop_toBottomOf="@id/dotted_line" />
+
+        <TextView
+            android:id="@+id/unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="watts"
+            android:layout_marginLeft="@dimen/medium_margin"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toRightOf="@id/value"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/value" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#80000000"
+    tools:context=".fragments.FocustronicSelectWidgetScreen">
+
+    <ImageView
+        android:id="@+id/add_widget_back_button"
+        android:layout_width="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/back_arrow"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        app:tint="?attr/resourcesTint"
+        android:layout_marginTop="@dimen/extra_large_margin"
+        android:layout_marginStart="@dimen/medium_margin"
+        android:layout_marginBottom="@dimen/medium_margin"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@id/add_widget_back_button"
+        android:id="@+id/widget_type_selection_page_heading"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="@dimen/medium_margin"
+        android:text="Select from the widgets below."
+        android:textSize="24sp"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/widget_type_selection_page_heading"
+        android:layout_marginTop="@dimen/medium_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include android:id="@+id/apex_flask_background_widgets"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_margin="@dimen/medium_margin"
+                android:layout_height="wrap_content"
+                layout="@layout/apex_flask_background_widget"/>
+
+            <include android:id="@+id/apex_power_values_widgets"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@id/apex_flask_background_widgets"
+                android:layout_margin="@dimen/medium_margin"
+                android:layout_height="wrap_content"
+                layout="@layout/apex_power_value_widget"/>
+
+            <include android:id="@+id/apex_circle_widgets"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@id/apex_power_values_widgets"
+                android:layout_margin="@dimen/medium_margin"
+                android:layout_height="wrap_content"
+                layout="@layout/apex_circle_widgets"/>
+
+            <include android:id="@+id/apex_2_rectangle_widgets"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@id/apex_circle_widgets"
+                android:layout_margin="@dimen/medium_margin"
+                android:layout_height="wrap_content"
+                layout="@layout/apex_two_rectangle_widgets"/>
+
+            <include android:id="@+id/apex_single_value_type_1"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@id/apex_2_rectangle_widgets"
+                android:layout_margin="@dimen/medium_margin"
+                android:layout_height="wrap_content"
+                layout="@layout/apex_single_value_type_1"/>
+
+            <include android:id="@+id/apex_single_value_type_2"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@id/apex_single_value_type_1"
+                android:layout_margin="@dimen/medium_margin"
+                android:layout_height="wrap_content"
+                layout="@layout/apex_single_value_type_2"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

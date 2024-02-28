@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_addWidgetScreen_to_focustronicSelectWidgetScreen"
             app:destination="@id/focustronicSelectWidgetScreen" />
+        <action
+            android:id="@+id/action_addWidgetScreen_to_apexSelectWidgetScreen"
+            app:destination="@id/apexSelectWidgetScreen" />
     </fragment>
     <fragment
         android:id="@+id/customWidgetAddEditScreen"
@@ -57,4 +60,9 @@
         android:name="app.android.damien.reef.fragments.FocustronicSelectWidgetScreen"
         android:label="focustronic_select_widget_screen"
         tools:layout="@layout/focustronic_select_widget_screen" />
+    <fragment
+        android:id="@+id/apexSelectWidgetScreen"
+        android:name="app.android.damien.reef.fragments.ApexSelectWidgetScreen"
+        android:label="fragment_apex_select_widget_screen"
+        tools:layout="@layout/fragment_apex_select_widget_screen" />
 </navigation>

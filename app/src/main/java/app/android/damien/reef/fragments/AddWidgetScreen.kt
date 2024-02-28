@@ -50,7 +50,7 @@ class AddWidgetScreen : Fragment(), WidgetAdapter.OnItemClickListener {
         when (widgetType) {
             Constants.APEX -> {
                 binding.addWidget.setOnClickListener {
-                    findNavController().navigate(R.id.action_addWidgetScreen_to_focustronicSelectWidgetScreen, getBundle(Constants.APEX))
+                    findNavController().navigate(R.id.action_addWidgetScreen_to_apexSelectWidgetScreen, getBundle(Constants.APEX))
                 }
             }
 

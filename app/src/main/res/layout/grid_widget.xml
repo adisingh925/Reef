@@ -144,7 +144,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:background="@drawable/linear_layout_corner_radius"
+            android:background="@drawable/linear_layout_corner_radius_blue"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_margin="@dimen/small_margin"
@@ -195,7 +195,7 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:background="@drawable/linear_layout_corner_radius"
+            android:background="@drawable/linear_layout_corner_radius_red"
             android:layout_width="0dp"
             android:layout_margin="@dimen/small_margin"
             android:layout_weight="1"
@@ -239,7 +239,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:background="@drawable/linear_layout_corner_radius"
+            android:background="@drawable/linear_layout_corner_radius_brown"
             android:layout_width="0dp"
             android:layout_margin="@dimen/small_margin"
             android:layout_weight="1"
@@ -283,7 +283,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:background="@drawable/linear_layout_corner_radius"
+            android:background="@drawable/linear_layout_corner_radius_orange"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_margin="@dimen/small_margin"
@@ -327,7 +327,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:background="@drawable/linear_layout_corner_radius"
+            android:background="@drawable/linear_layout_corner_radius_light_brown"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_margin="@dimen/small_margin"
