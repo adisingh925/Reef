@@ -48,44 +48,53 @@
             <include android:id="@+id/apex_flask_background_widgets"
                 android:layout_width="match_parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_margin="@dimen/medium_margin"
+                android:layout_margin="@dimen/small_margin"
                 android:layout_height="wrap_content"
                 layout="@layout/apex_flask_background_widget"/>
 
             <include android:id="@+id/apex_power_values_widgets"
                 android:layout_width="match_parent"
                 app:layout_constraintTop_toBottomOf="@id/apex_flask_background_widgets"
-                android:layout_margin="@dimen/medium_margin"
+                android:layout_margin="@dimen/small_margin"
                 android:layout_height="wrap_content"
                 layout="@layout/apex_power_value_widget"/>
 
             <include android:id="@+id/apex_circle_widgets"
                 android:layout_width="match_parent"
                 app:layout_constraintTop_toBottomOf="@id/apex_power_values_widgets"
-                android:layout_margin="@dimen/medium_margin"
+                android:layout_margin="@dimen/small_margin"
                 android:layout_height="wrap_content"
                 layout="@layout/apex_circle_widgets"/>
 
             <include android:id="@+id/apex_2_rectangle_widgets"
                 android:layout_width="match_parent"
                 app:layout_constraintTop_toBottomOf="@id/apex_circle_widgets"
-                android:layout_margin="@dimen/medium_margin"
+                android:layout_margin="@dimen/small_margin"
                 android:layout_height="wrap_content"
                 layout="@layout/apex_two_rectangle_widgets"/>
 
             <include android:id="@+id/apex_single_value_type_1"
                 android:layout_width="match_parent"
                 app:layout_constraintTop_toBottomOf="@id/apex_2_rectangle_widgets"
-                android:layout_margin="@dimen/medium_margin"
+                android:layout_margin="@dimen/small_margin"
                 android:layout_height="wrap_content"
                 layout="@layout/apex_single_value_type_1"/>
 
             <include android:id="@+id/apex_single_value_type_2"
                 android:layout_width="match_parent"
                 app:layout_constraintTop_toBottomOf="@id/apex_single_value_type_1"
-                android:layout_margin="@dimen/medium_margin"
+                android:layout_margin="@dimen/small_margin"
                 android:layout_height="wrap_content"
                 layout="@layout/apex_single_value_type_2"/>
+
+            <include android:id="@+id/apex_water_quality_widget"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@id/apex_single_value_type_2"
+                android:layout_margin="@dimen/small_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="@dimen/extra_large_margin"
+                android:layout_height="wrap_content"
+                layout="@layout/apex_water_quality_widget"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

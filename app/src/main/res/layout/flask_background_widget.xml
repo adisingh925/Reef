@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_margin="@dimen/small_margin"
     android:background="@drawable/linear_layout_corner_radius"
-    android:layout_height="200dp">
+    android:layout_height="150dp">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
                 android:layout_centerHorizontal="true"
                 android:text="Slot1"
                 android:textColor="@color/white"
-                android:layout_marginBottom="@dimen/medium_margin"
+                android:layout_marginBottom="@dimen/small_margin"
                 android:layout_height="wrap_content"/>
 
         </RelativeLayout>
@@ -50,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:src="@drawable/conicalflask"
                 android:layout_marginTop="@dimen/medium_margin"
-                android:layout_marginBottom="@dimen/small_margin"
+                android:layout_marginBottom="@dimen/medium_margin"
                 android:layout_height="150dp"/>
 
             <TextView
@@ -66,7 +66,7 @@
                 android:layout_centerHorizontal="true"
                 android:text="Slot2"
                 android:textColor="@color/white"
-                android:layout_marginBottom="@dimen/medium_margin"
+                android:layout_marginBottom="@dimen/small_margin"
                 android:layout_height="wrap_content"/>
 
         </RelativeLayout>
@@ -97,7 +97,7 @@
                 android:layout_centerHorizontal="true"
                 android:text="Slot3"
                 android:textColor="@color/white"
-                android:layout_marginBottom="@dimen/medium_margin"
+                android:layout_marginBottom="@dimen/small_margin"
                 android:layout_height="wrap_content"/>
 
         </RelativeLayout>
