@@ -2,15 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="150dp"
     android:background="@drawable/linear_layout_corner_radius_black"
     android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/card1"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/small_margin"
+        android:layout_height="0dp"
+        android:layout_margin="4dp"
         android:background="@drawable/linear_layout_corner_radius">
 
         <TextView
@@ -30,13 +31,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/medium_margin"
-            android:layout_marginTop="@dimen/medium_margin"
-            android:layout_marginBottom="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginBottom="@dimen/small_margin"
             android:layout_toStartOf="@id/unit"
-            android:text="23"
+            android:text="17"
             android:layout_marginEnd="@dimen/medium_margin"
             android:textColor="@color/white"
-            android:textSize="@dimen/heading_font_size" />
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/unit"
@@ -54,10 +55,11 @@
     <RelativeLayout
         android:id="@+id/card2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/small_margin"
-        android:layout_marginLeft="@dimen/small_margin"
-        android:layout_marginRight="@dimen/small_margin"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
         android:background="@drawable/linear_layout_corner_radius">
 
         <TextView
@@ -77,13 +79,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/medium_margin"
-            android:layout_marginTop="@dimen/medium_margin"
-            android:layout_marginBottom="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginBottom="@dimen/small_margin"
             android:layout_toStartOf="@id/unit2"
             android:text="23"
             android:layout_marginEnd="@dimen/medium_margin"
             android:textColor="@color/white"
-            android:textSize="@dimen/heading_font_size" />
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/unit2"
