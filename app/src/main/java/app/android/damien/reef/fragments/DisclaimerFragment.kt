@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import app.android.damien.reef.R
 import app.android.damien.reef.databinding.FragmentDisclaimerBinding
+import app.android.damien.reef.utils.Toast
 
 class DisclaimerFragment : Fragment() {
 
@@ -26,6 +27,7 @@ class DisclaimerFragment : Fragment() {
             }
         } catch (e: Exception) {
             e.printStackTrace()
+            Toast.showSnackbar(binding.root, "Something went wrong!")
         }
 
         return binding.root

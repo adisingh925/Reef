@@ -28,7 +28,7 @@ class WelcomeScreen : Fragment() {
             }
         } catch (e: Exception) {
             e.printStackTrace()
-            Toast.showSnackbar(binding.root, "Something is Wrong!")
+            Toast.showSnackbar(binding.root, "Something went wrong!")
         }
 
         return binding.root
