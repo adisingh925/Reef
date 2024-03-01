@@ -38,6 +38,9 @@
         android:layout_width="match_parent"
         app:layout_constraintTop_toBottomOf="@id/widget_type_selection_page_heading"
         android:layout_marginTop="@dimen/medium_margin"
+        android:fadingEdgeLength="50dp"
+        android:requiresFadingEdge="vertical"
+        android:fadingEdge="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_height="0dp">
 
@@ -90,7 +93,6 @@
             <include android:id="@+id/apex_water_quality_widget"
                 android:layout_width="match_parent"
                 app:layout_constraintTop_toBottomOf="@id/apex_single_value_type_2"
-                android:layout_margin="@dimen/small_margin"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginBottom="@dimen/extra_large_margin"
                 android:layout_height="wrap_content"

@@ -25,7 +25,7 @@ class WidgetTypeSelectionScreen : Fragment() {
         binding.apexWidgetsButton.setOnClickListener {
             if(isCredentialsExist(Constants.APEX)){
                 findNavController().navigate(
-                    R.id.action_widgetTypeSelectionScreen_to_addWidgetScreen,
+                    R.id.action_widgetTypeSelectionScreen_to_apexSelectWidgetScreen,
                     getBundle(Constants.APEX)
                 )
             }else{
@@ -38,7 +38,7 @@ class WidgetTypeSelectionScreen : Fragment() {
 
         binding.customWidgetsButton.setOnClickListener {
             findNavController().navigate(
-                R.id.action_widgetTypeSelectionScreen_to_addWidgetScreen,
+                R.id.action_widgetTypeSelectionScreen_to_customWidgetAddEditScreen,
                 getBundle(Constants.CUSTOM)
             )
         }
@@ -46,7 +46,7 @@ class WidgetTypeSelectionScreen : Fragment() {
         binding.focustronicWidgetsButton.setOnClickListener {
             if(isCredentialsExist(Constants.FOCUSTRONIC)){
                 findNavController().navigate(
-                    R.id.action_widgetTypeSelectionScreen_to_addWidgetScreen,
+                    R.id.action_widgetTypeSelectionScreen_to_focustronicSelectWidgetScreen,
                     getBundle(Constants.FOCUSTRONIC)
                 )
             }else{

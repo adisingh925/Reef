@@ -105,7 +105,7 @@ class LoginScreen : Fragment() {
                             val post = response.body()
                             if (post != null) {
                                 if (post.success) {
-                                    findNavController().navigate(R.id.action_loginScreen_to_addWidgetScreen, getBundle(arguments?.getInt("widgetType")!!))
+                                    findNavController().navigate(R.id.action_loginScreen_to_apexSelectWidgetScreen, getBundle(arguments?.getInt("widgetType")!!))
                                     saveCredentials(binding.emailInputField.text.toString(), binding.nicknameInputField.text.toString())
                                 } else {
                                     Toast.showSnackbar(binding.root, "Signup Failed!")

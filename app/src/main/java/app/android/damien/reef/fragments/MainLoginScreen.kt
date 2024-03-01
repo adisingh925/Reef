@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import app.android.damien.reef.R
 import app.android.damien.reef.databinding.FragmentMainLoginScreenBinding
 import app.android.damien.reef.utils.Toast
 
@@ -24,6 +25,10 @@ class MainLoginScreen : Fragment() {
         try {
             binding.loginBackButton.setOnClickListener {
                 findNavController().popBackStack()
+            }
+
+            binding.submit.setOnClickListener {
+                findNavController().navigate(R.id.action_mainLoginScreen_to_myWidgetsFragment)
             }
         } catch (e: Exception) {
             e.printStackTrace()
