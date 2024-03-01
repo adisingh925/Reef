@@ -11,8 +11,8 @@
         android:label="fragment_welcome_screen"
         tools:layout="@layout/fragment_welcome_screen" >
         <action
-            android:id="@+id/action_welcomeScreen_to_widgetTypeSelectionScreen"
-            app:destination="@id/widgetTypeSelectionScreen" />
+            android:id="@+id/action_welcomeScreen_to_disclaimerFragment"
+            app:destination="@id/disclaimerFragment" />
     </fragment>
     <fragment
         android:id="@+id/widgetTypeSelectionScreen"
@@ -65,4 +65,9 @@
         android:name="app.android.damien.reef.fragments.ApexSelectWidgetScreen"
         android:label="fragment_apex_select_widget_screen"
         tools:layout="@layout/fragment_apex_select_widget_screen" />
+    <fragment
+        android:id="@+id/disclaimerFragment"
+        android:name="app.android.damien.reef.fragments.DisclaimerFragment"
+        android:label="fragment_disclaimer"
+        tools:layout="@layout/fragment_disclaimer" />
 </navigation>

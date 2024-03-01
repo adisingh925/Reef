@@ -45,7 +45,7 @@
         android:layout_width="0dp"
         android:textSize="@dimen/default_button_text_size"
         android:layout_margin="@dimen/medium_margin"
-        android:text="@string/welcome_screen_button_text"
+        android:text="@string/show_disclaimer"
         app:cornerRadius="@dimen/default_button_radius"
         android:layout_height="@dimen/default_button_height"/>
 

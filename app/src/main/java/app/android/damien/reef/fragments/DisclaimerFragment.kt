@@ -5,15 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import app.android.damien.reef.R
-import app.android.damien.reef.databinding.FragmentWelcomeScreenBinding
+import app.android.damien.reef.databinding.FragmentDisclaimerBinding
 
+class DisclaimerFragment : Fragment() {
 
-class WelcomeScreen : Fragment() {
-
-    private val binding by lazy {
-        FragmentWelcomeScreenBinding.inflate(layoutInflater)
+    private val binding by lazy{
+        FragmentDisclaimerBinding.inflate(layoutInflater)
     }
 
     override fun onCreateView(
@@ -21,12 +19,6 @@ class WelcomeScreen : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-
-        binding.welcomeScreenAddWidgetsButton.setOnClickListener {
-            findNavController().navigate(R.id.action_welcomeScreen_to_disclaimerFragment)
-        }
-
         return binding.root
     }
-
 }
