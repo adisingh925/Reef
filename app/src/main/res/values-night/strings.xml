@@ -15,4 +15,6 @@
     <!-- Login screen string resources -->
     <string name="login_screen_heading">Create your %s Account</string>
     <string name="show_disclaimer">Show Disclaimer</string>
+    <string name="get_started_button_text">Get Started</string>
+    <string name="disclaimer_for_reef_widgets">Disclaimer For Reef Widgets</string>
 </resources>

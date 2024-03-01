@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import app.android.damien.reef.R
 import app.android.damien.reef.databinding.FragmentWelcomeScreenBinding
+import app.android.damien.reef.utils.Toast
 
 
 class WelcomeScreen : Fragment() {
@@ -21,9 +22,13 @@ class WelcomeScreen : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-
-        binding.welcomeScreenAddWidgetsButton.setOnClickListener {
-            findNavController().navigate(R.id.action_welcomeScreen_to_disclaimerFragment)
+        try {
+            binding.welcomeScreenAddWidgetsButton.setOnClickListener {
+                findNavController().navigate(R.id.action_welcomeScreen_to_disclaimerFragment)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Toast.showSnackbar(binding.root, "Something is Wrong!")
         }
 
         return binding.root

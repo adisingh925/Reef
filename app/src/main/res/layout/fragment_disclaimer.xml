@@ -8,13 +8,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.DisclaimerFragment">
 
+    <TextView
+        android:id="@+id/disclaimer_fragment_heading"
+        android:layout_width="match_parent"
+        android:text="@string/disclaimer_for_reef_widgets"
+        android:layout_marginTop="@dimen/extra_large_margin"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="@dimen/medium_margin"
+        android:layout_marginRight="@dimen/medium_margin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="@dimen/medium_heading_font_size"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"/>
+
     <ScrollView
+        app:layout_constraintTop_toBottomOf="@id/disclaimer_fragment_heading"
         android:id="@+id/disclaimer_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fadingEdge="vertical"
         android:fadingEdgeLength="50dp"
-        app:layout_constraintTop_toTopOf="parent"
         android:requiresFadingEdge="vertical"
         app:layout_constraintBottom_toTopOf="@id/get_started_button"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,8 +41,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/normal_font_size"
             android:scrollbars="vertical"
-            android:textStyle="bold"
-            android:paddingTop="@dimen/extra_large_margin"
+            android:paddingTop="@dimen/large_margin"
             android:paddingLeft="@dimen/large_margin"
             android:paddingRight="@dimen/large_margin"
             android:paddingBottom="@dimen/large_margin"
@@ -38,7 +52,7 @@
         android:id="@+id/get_started_button"
         android:layout_width="0dp"
         android:layout_height="@dimen/default_button_height"
-        android:text="Get Started"
+        android:text="@string/get_started_button_text"
         android:layout_marginTop="@dimen/medium_margin"
         android:layout_marginLeft="@dimen/medium_margin"
         android:layout_marginRight="@dimen/medium_margin"
