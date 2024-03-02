@@ -54,156 +54,81 @@ class MyWidgetsFragment : Fragment() {
     private fun initRecyclerview() {
         val dummyData = ArrayList<MyWidgetsParentModel>()
 
-        if (SharedPreferences.read(Constants.APEX_TWO_RECTANGLE_WIDGET, 0) != 0) {
-            val childData = ArrayList<MyWidgetsChildModel>()
-            for (i in 0 until SharedPreferences.read(Constants.APEX_TWO_RECTANGLE_WIDGET, 0)) {
-                childData.add(MyWidgetsChildModel(Constants.APEX_TWO_RECTANGLE_WIDGET, 1))
-            }
-            dummyData.add(MyWidgetsParentModel(Constants.APEX_TWO_RECTANGLE_WIDGET, childData))
-        }
+        val apexCircleWidgets = ArrayList<MyWidgetsChildModel>()
+        apexCircleWidgets.add(MyWidgetsChildModel(Constants.APEX_CIRCLE_WIDGET, 1))
+        dummyData.add(MyWidgetsParentModel(Constants.APEX_CIRCLE_WIDGET, apexCircleWidgets))
 
-        if (SharedPreferences.read(Constants.APEX_CIRCLE_WIDGET, 0) != 0) {
-            val childData1 = ArrayList<MyWidgetsChildModel>()
-            for (i in 0 until SharedPreferences.read(Constants.APEX_CIRCLE_WIDGET, 0)) {
-                childData1.add(MyWidgetsChildModel(Constants.APEX_CIRCLE_WIDGET, 1))
-            }
-            dummyData.add(MyWidgetsParentModel(Constants.APEX_CIRCLE_WIDGET, childData1))
-        }
-
-        if (SharedPreferences.read(Constants.APEX_FLASK_BACKGROUND_WIDGET, 0) != 0) {
-            val childData2 = ArrayList<MyWidgetsChildModel>()
-            for (i in 0 until SharedPreferences.read(Constants.APEX_FLASK_BACKGROUND_WIDGET, 0)) {
-                childData2.add(MyWidgetsChildModel(Constants.APEX_FLASK_BACKGROUND_WIDGET, 1))
-            }
-            dummyData.add(MyWidgetsParentModel(Constants.APEX_FLASK_BACKGROUND_WIDGET, childData2))
-        }
-
-        if (SharedPreferences.read(Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET, 0) != 0) {
-            val childData3 = ArrayList<MyWidgetsChildModel>()
-            for (i in 0 until SharedPreferences.read(
-                Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET,
-                0
-            )) {
-                childData3.add(MyWidgetsChildModel(Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET, 1))
-            }
-            dummyData.add(
-                MyWidgetsParentModel(
-                    Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET,
-                    childData3
-                )
+        val apexWaterQualityWidgets = ArrayList<MyWidgetsChildModel>()
+        apexWaterQualityWidgets.add(MyWidgetsChildModel(Constants.APEX_WATER_QUALITY_WIDGET, 1))
+        dummyData.add(
+            MyWidgetsParentModel(
+                Constants.APEX_WATER_QUALITY_WIDGET,
+                apexWaterQualityWidgets
             )
-        }
+        )
 
-        if (SharedPreferences.read(Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET, 0) != 0) {
-            val childData4 = ArrayList<MyWidgetsChildModel>()
-            for (i in 0 until SharedPreferences.read(
-                Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET,
-                0
-            )) {
-                childData4.add(MyWidgetsChildModel(Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET, 1))
-            }
-            dummyData.add(
-                MyWidgetsParentModel(
-                    Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET,
-                    childData4
-                )
+        val apexPowerValueWidgets = ArrayList<MyWidgetsChildModel>()
+        apexPowerValueWidgets.add(MyWidgetsChildModel(Constants.APEX_POWER_VALUE_WIDGET, 1))
+        dummyData.add(
+            MyWidgetsParentModel(
+                Constants.APEX_POWER_VALUE_WIDGET,
+                apexPowerValueWidgets
             )
-        }
+        )
 
-        if (SharedPreferences.read(Constants.APEX_POWER_VALUE_WIDGET, 0) != 0) {
-            val childData5 = ArrayList<MyWidgetsChildModel>()
-            for (i in 0 until SharedPreferences.read(Constants.APEX_POWER_VALUE_WIDGET, 0)) {
-                childData5.add(MyWidgetsChildModel(Constants.APEX_POWER_VALUE_WIDGET, 1))
-            }
-            dummyData.add(MyWidgetsParentModel(Constants.APEX_POWER_VALUE_WIDGET, childData5))
-        }
-
-        if (SharedPreferences.read(Constants.APEX_WATER_QUALITY_WIDGET, 0) != 0) {
-            val childData6 = ArrayList<MyWidgetsChildModel>()
-            for (i in 0 until SharedPreferences.read(Constants.APEX_WATER_QUALITY_WIDGET, 0)) {
-                childData6.add(MyWidgetsChildModel(Constants.APEX_WATER_QUALITY_WIDGET, 1))
-            }
-            dummyData.add(MyWidgetsParentModel(Constants.APEX_WATER_QUALITY_WIDGET, childData6))
-        }
-
-        if (SharedPreferences.read(Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET, 0) != 0) {
-            val childData7 = ArrayList<MyWidgetsChildModel>()
-            for (i in 0 until SharedPreferences.read(Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET, 0)) {
-                childData7.add(MyWidgetsChildModel(Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET, 1))
-            }
-            dummyData.add(
-                MyWidgetsParentModel(
-                    Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET,
-                    childData7
-                )
+        val focustronicOneElementWidgets = ArrayList<MyWidgetsChildModel>()
+        focustronicOneElementWidgets.add(MyWidgetsChildModel(Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET, 1))
+        dummyData.add(
+            MyWidgetsParentModel(
+                Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET,
+                focustronicOneElementWidgets
             )
-        }
+        )
 
-        if (SharedPreferences.read(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET, 0) != 0) {
-            val childData8 = ArrayList<MyWidgetsChildModel>()
-            for (i in 0 until SharedPreferences.read(
-                Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET,
-                0
-            )) {
-                childData8.add(
-                    MyWidgetsChildModel(
-                        Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET,
-                        1
-                    )
-                )
-            }
-            dummyData.add(
-                MyWidgetsParentModel(
-                    Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET,
-                    childData8
-                )
-            )
-        }
-
-        if (SharedPreferences.read(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET, 0) != 0) {
-            val childData9 = ArrayList<MyWidgetsChildModel>()
-            for (i in 0 until SharedPreferences.read(
-                Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET,
-                0
-            )) {
-                childData9.add(
-                    MyWidgetsChildModel(
-                        Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET,
-                        1
-                    )
-                )
-            }
-            dummyData.add(
-                MyWidgetsParentModel(
-                    Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET,
-                    childData9
-                )
-            )
-        }
-
-        if (SharedPreferences.read(Constants.FOCUSTRONIC_TWO_RECTANGLE_WIDGET, 0) != 0) {
-            val childData10 = ArrayList<MyWidgetsChildModel>()
-            for (i in 0 until SharedPreferences.read(
+        val focustronicTwoRectangleWidgets = ArrayList<MyWidgetsChildModel>()
+        focustronicTwoRectangleWidgets.add(MyWidgetsChildModel(Constants.FOCUSTRONIC_TWO_RECTANGLE_WIDGET, 1))
+        dummyData.add(
+            MyWidgetsParentModel(
                 Constants.FOCUSTRONIC_TWO_RECTANGLE_WIDGET,
-                0
-            )) {
-                childData10.add(MyWidgetsChildModel(Constants.FOCUSTRONIC_TWO_RECTANGLE_WIDGET, 1))
-            }
-            dummyData.add(
-                MyWidgetsParentModel(
-                    Constants.FOCUSTRONIC_TWO_RECTANGLE_WIDGET,
-                    childData10
-                )
+                focustronicTwoRectangleWidgets
             )
-        }
+        )
 
-        if (SharedPreferences.read(Constants.FOCUSTRONIC_GRID_WIDGET, 0) != 0) {
-            val childData11 = ArrayList<MyWidgetsChildModel>()
-            for (i in 0 until SharedPreferences.read(Constants.FOCUSTRONIC_GRID_WIDGET, 0)) {
-                childData11.add(MyWidgetsChildModel(Constants.FOCUSTRONIC_GRID_WIDGET, 1))
-            }
-            dummyData.add(MyWidgetsParentModel(Constants.FOCUSTRONIC_GRID_WIDGET, childData11))
-        }
+        val focustronicSingleValueType1Widgets = ArrayList<MyWidgetsChildModel>()
+        focustronicSingleValueType1Widgets.add(MyWidgetsChildModel(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET, 1))
+        dummyData.add(
+            MyWidgetsParentModel(
+                Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET,
+                focustronicSingleValueType1Widgets
+            )
+        )
+
+        val focustronicGridWidgets = ArrayList<MyWidgetsChildModel>()
+        focustronicGridWidgets.add(MyWidgetsChildModel(Constants.FOCUSTRONIC_GRID_WIDGET, 1))
+        dummyData.add(
+            MyWidgetsParentModel(
+                Constants.FOCUSTRONIC_GRID_WIDGET,
+                focustronicGridWidgets
+            )
+        )
+
+//        val focustronicSingleValueType2Widgets = ArrayList<MyWidgetsChildModel>()
+//        focustronicSingleValueType2Widgets.add(MyWidgetsChildModel(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET, 1))
+//        dummyData.add(
+//            MyWidgetsParentModel(
+//                Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET,
+//                focustronicSingleValueType2Widgets
+//            )
+//        )
+
+        val apexTwoRectangleWidgets = ArrayList<MyWidgetsChildModel>()
+        apexTwoRectangleWidgets.add(MyWidgetsChildModel(Constants.APEX_TWO_RECTANGLE_WIDGET, 1))
+        dummyData.add(
+            MyWidgetsParentModel(
+                Constants.APEX_TWO_RECTANGLE_WIDGET,
+                apexTwoRectangleWidgets
+            )
+        )
 
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)

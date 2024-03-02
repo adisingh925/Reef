@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import app.android.damien.reef.R
 import app.android.damien.reef.model.MyWidgetsChildModel
@@ -136,6 +135,8 @@ class MyWidgetsChildAdapter(
             Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET -> return 11
             Constants.FOCUSTRONIC_GRID_WIDGET -> return 12
         }
+
+        Log.d("MyWidgetsChildAdapter", "getItemViewType: ${widgetList[position].widgetType}")
 
         return 1
     }
