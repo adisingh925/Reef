@@ -74,6 +74,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/apex_flask_background_layout"
                 android:orientation="vertical">
 
                 <TextView
@@ -100,6 +101,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/apex_power_value_widget_layout"
                 android:orientation="vertical">
 
                 <TextView
@@ -126,6 +128,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/apex_two_rectangle_widget_layout"
                 android:orientation="vertical">
 
                 <TextView
@@ -152,6 +155,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/apex_single_value_type_1_layout"
                 android:orientation="vertical">
 
                 <TextView
@@ -178,6 +182,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/apex_single_value_type_2_layout"
                 android:orientation="vertical">
 
                 <TextView
@@ -204,6 +209,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/apex_water_quality_widget_layout"
                 android:orientation="vertical">
 
                 <TextView
@@ -218,6 +224,141 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/apex_water_quality_widget_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:fadingEdge="horizontal"
+                    android:fadingEdgeLength="10dp"
+                    android:requiresFadingEdge="horizontal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/focustronic_1_element_widget_layout"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/focustronic_1_element_widget_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:text="Focustronic 1 Element Widgets" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/focustronic_1_element_widget_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:fadingEdge="horizontal"
+                    android:fadingEdgeLength="10dp"
+                    android:requiresFadingEdge="horizontal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/focustronic_2_rectangle_widget_layout"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/focustronic_2_rectangle_widget_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:text="Focustronic 2 Rectangle Widgets" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/focustronic_2_rectangle_widget_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:fadingEdge="horizontal"
+                    android:fadingEdgeLength="10dp"
+                    android:requiresFadingEdge="horizontal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/focustronic_single_value_type_1_widget_layout"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/focustronic_single_value_type_1_widget_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:text="Focustronic Single Value Type 1 Widgets" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/focustronic_single_value_type_1_widget_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:fadingEdge="horizontal"
+                    android:fadingEdgeLength="10dp"
+                    android:requiresFadingEdge="horizontal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/focustronic_single_value_type_2_widget_layout"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/focustronic_single_value_type_2_widget_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:text="Focustronic Single Value Type 2 Widgets" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/focustronic_single_value_type_2_widget_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:fadingEdge="horizontal"
+                    android:fadingEdgeLength="10dp"
+                    android:requiresFadingEdge="horizontal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/focustronic_grid_widget_layout"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/focustronic_grid_widget_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:text="Focustronic Grid Widgets" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/focustronic_grid_widget_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/medium_margin"

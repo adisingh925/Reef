@@ -94,6 +94,56 @@ class MyWidgetsFragment : Fragment() {
             })
     }
 
+    private val focustronicOneElementWidgetAdapter by lazy {
+        MyWidgetsChildAdapter(
+            requireContext(),
+            object : MyWidgetsChildAdapter.OnItemClickListener {
+                override fun onCustomWidgetClick(data: MyWidgetsChildModel) {
+                    Log.d("MyWidgetsFragment", "Custom widget clicked")
+                }
+            })
+    }
+
+    private val focustronicTwoRectangleWidgetAdapter by lazy {
+        MyWidgetsChildAdapter(
+            requireContext(),
+            object : MyWidgetsChildAdapter.OnItemClickListener {
+                override fun onCustomWidgetClick(data: MyWidgetsChildModel) {
+                    Log.d("MyWidgetsFragment", "Custom widget clicked")
+                }
+            })
+    }
+
+    private val focustronicSingleValueTypeOneWidgetAdapter by lazy {
+        MyWidgetsChildAdapter(
+            requireContext(),
+            object : MyWidgetsChildAdapter.OnItemClickListener {
+                override fun onCustomWidgetClick(data: MyWidgetsChildModel) {
+                    Log.d("MyWidgetsFragment", "Custom widget clicked")
+                }
+            })
+    }
+
+    private val focustronicSingleValueTypeTwoWidgetAdapter by lazy {
+        MyWidgetsChildAdapter(
+            requireContext(),
+            object : MyWidgetsChildAdapter.OnItemClickListener {
+                override fun onCustomWidgetClick(data: MyWidgetsChildModel) {
+                    Log.d("MyWidgetsFragment", "Custom widget clicked")
+                }
+            })
+    }
+
+    private val focustronicGridWidgetAdapter by lazy {
+        MyWidgetsChildAdapter(
+            requireContext(),
+            object : MyWidgetsChildAdapter.OnItemClickListener {
+                override fun onCustomWidgetClick(data: MyWidgetsChildModel) {
+                    Log.d("MyWidgetsFragment", "Custom widget clicked")
+                }
+            })
+    }
+
     private val apexCircleWidgetRecyclerView by lazy {
         binding.apexCircleWidgetRecyclerView
     }
@@ -122,6 +172,26 @@ class MyWidgetsFragment : Fragment() {
         binding.apexWaterQualityWidgetRecyclerView
     }
 
+    private val focustronicOneElementWidgetRecyclerView by lazy{
+        binding.focustronic1ElementWidgetRecyclerView
+    }
+
+    private val focustronicTwoRectangleWidgetRecyclerView by lazy{
+        binding.focustronic2RectangleWidgetRecyclerView
+    }
+
+    private val focustronicSingleValueTypeOneWidgetRecyclerView by lazy{
+        binding.focustronicSingleValueType1WidgetRecyclerView
+    }
+
+    private val focustronicSingleValueTypeTwoWidgetRecyclerView by lazy{
+        binding.focustronicSingleValueType2WidgetRecyclerView
+    }
+
+    private val focustronicGridWidgetRecyclerView by lazy{
+        binding.focustronicGridWidgetRecyclerView
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -144,9 +214,9 @@ class MyWidgetsFragment : Fragment() {
         }
 
         if(SharedPreferences.read(Constants.APEX_FLASK_BACKGROUND_WIDGET,0) == 0) {
-            binding.apexFlaskBackgroundWidgetRecyclerView.visibility = View.GONE
+            binding.apexFlaskBackgroundLayout.visibility = View.GONE
         }else{
-            binding.apexFlaskBackgroundWidgetRecyclerView.visibility = View.VISIBLE
+            binding.apexFlaskBackgroundLayout.visibility = View.VISIBLE
             val dummyData = listOf(
                 MyWidgetsChildModel(Constants.APEX_FLASK_BACKGROUND_WIDGET),
                 MyWidgetsChildModel(Constants.APEX_FLASK_BACKGROUND_WIDGET),
@@ -156,9 +226,9 @@ class MyWidgetsFragment : Fragment() {
         }
 
         if(SharedPreferences.read(Constants.APEX_POWER_VALUE_WIDGET,0) == 0) {
-            binding.apexPowerValueWidgetRecyclerView.visibility = View.GONE
+            binding.apexPowerValueWidgetLayout.visibility = View.GONE
         }else{
-            binding.apexPowerValueWidgetRecyclerView.visibility = View.VISIBLE
+            binding.apexPowerValueWidgetLayout.visibility = View.VISIBLE
             val dummyData = listOf(
                 MyWidgetsChildModel(Constants.APEX_POWER_VALUE_WIDGET),
                 MyWidgetsChildModel(Constants.APEX_POWER_VALUE_WIDGET),
@@ -168,9 +238,9 @@ class MyWidgetsFragment : Fragment() {
         }
 
         if(SharedPreferences.read(Constants.APEX_TWO_RECTANGLE_WIDGET,0) == 0) {
-            binding.apexTwoRectangleWidgetRecyclerView.visibility = View.GONE
+            binding.apexTwoRectangleWidgetLayout.visibility = View.GONE
         }else{
-            binding.apexTwoRectangleWidgetRecyclerView.visibility = View.VISIBLE
+            binding.apexTwoRectangleWidgetLayout.visibility = View.VISIBLE
             val dummyData = listOf(
                 MyWidgetsChildModel(Constants.APEX_TWO_RECTANGLE_WIDGET),
                 MyWidgetsChildModel(Constants.APEX_TWO_RECTANGLE_WIDGET),
@@ -180,9 +250,9 @@ class MyWidgetsFragment : Fragment() {
         }
 
         if(SharedPreferences.read(Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET,0) == 0) {
-            binding.apexSingleValueType1WidgetRecyclerView.visibility = View.GONE
+            binding.apexSingleValueType1Layout.visibility = View.GONE
         }else{
-            binding.apexSingleValueType1WidgetRecyclerView.visibility = View.VISIBLE
+            binding.apexSingleValueType1Layout.visibility = View.VISIBLE
             val dummyData = listOf(
                 MyWidgetsChildModel(Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET),
                 MyWidgetsChildModel(Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET),
@@ -192,9 +262,9 @@ class MyWidgetsFragment : Fragment() {
         }
 
         if(SharedPreferences.read(Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET,0) == 0) {
-            binding.apexSingleValueType2WidgetRecyclerView.visibility = View.GONE
+            binding.apexSingleValueType2Layout.visibility = View.GONE
         }else{
-            binding.apexSingleValueType2WidgetRecyclerView.visibility = View.VISIBLE
+            binding.apexSingleValueType2Layout.visibility = View.VISIBLE
             val dummyData = listOf(
                 MyWidgetsChildModel(Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET),
                 MyWidgetsChildModel(Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET),
@@ -204,15 +274,75 @@ class MyWidgetsFragment : Fragment() {
         }
 
         if(SharedPreferences.read(Constants.APEX_WATER_QUALITY_WIDGET,0) == 0) {
-            binding.apexWaterQualityWidgetRecyclerView.visibility = View.GONE
+            binding.apexWaterQualityWidgetLayout.visibility = View.GONE
         }else{
-            binding.apexWaterQualityWidgetRecyclerView.visibility = View.VISIBLE
+            binding.apexWaterQualityWidgetLayout.visibility = View.VISIBLE
             val dummyData = listOf(
                 MyWidgetsChildModel(Constants.APEX_WATER_QUALITY_WIDGET),
                 MyWidgetsChildModel(Constants.APEX_WATER_QUALITY_WIDGET),
                 MyWidgetsChildModel(Constants.APEX_WATER_QUALITY_WIDGET)
             )
             initApexWaterQualityWidgetAdapter(dummyData)
+        }
+
+        if(SharedPreferences.read(Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET,0) == 0) {
+            binding.focustronic1ElementWidgetLayout.visibility = View.GONE
+        }else{
+            binding.focustronic1ElementWidgetLayout.visibility = View.VISIBLE
+            val dummyData = listOf(
+                MyWidgetsChildModel(Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET),
+                MyWidgetsChildModel(Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET),
+                MyWidgetsChildModel(Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET)
+            )
+            initFocustronicOneElementWidgetAdapter(dummyData)
+        }
+
+        if(SharedPreferences.read(Constants.FOCUSTRONIC_TWO_RECTANGLE_WIDGET,0) == 0) {
+            binding.focustronic2RectangleWidgetLayout.visibility = View.GONE
+        }else{
+            binding.focustronic2RectangleWidgetLayout.visibility = View.VISIBLE
+            val dummyData = listOf(
+                MyWidgetsChildModel(Constants.FOCUSTRONIC_TWO_RECTANGLE_WIDGET),
+                MyWidgetsChildModel(Constants.FOCUSTRONIC_TWO_RECTANGLE_WIDGET),
+                MyWidgetsChildModel(Constants.FOCUSTRONIC_TWO_RECTANGLE_WIDGET)
+            )
+            initFocustronicTwoRectangleWidgetAdapter(dummyData)
+        }
+
+        if(SharedPreferences.read(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET,0) == 0) {
+            binding.focustronicSingleValueType1WidgetLayout.visibility = View.GONE
+        }else{
+            binding.focustronicSingleValueType1WidgetLayout.visibility = View.VISIBLE
+            val dummyData = listOf(
+                MyWidgetsChildModel(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET),
+                MyWidgetsChildModel(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET),
+                MyWidgetsChildModel(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET)
+            )
+            initFocustronicSingleValueTypeOneWidgetAdapter(dummyData)
+        }
+
+        if(SharedPreferences.read(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET,0) == 0) {
+            binding.focustronicSingleValueType2WidgetLayout.visibility = View.GONE
+        }else{
+            binding.focustronicSingleValueType2WidgetLayout.visibility = View.VISIBLE
+            val dummyData = listOf(
+                MyWidgetsChildModel(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET),
+                MyWidgetsChildModel(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET),
+                MyWidgetsChildModel(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET)
+            )
+            initFocustronicSingleValueTypeTwoWidgetAdapter(dummyData)
+        }
+
+        if(SharedPreferences.read(Constants.FOCUSTRONIC_GRID_WIDGET,0) == 0) {
+            binding.focustronicGridWidgetLayout.visibility = View.GONE
+        }else{
+            binding.focustronicGridWidgetLayout.visibility = View.VISIBLE
+            val dummyData = listOf(
+                MyWidgetsChildModel(Constants.FOCUSTRONIC_GRID_WIDGET),
+                MyWidgetsChildModel(Constants.FOCUSTRONIC_GRID_WIDGET),
+                MyWidgetsChildModel(Constants.FOCUSTRONIC_GRID_WIDGET)
+            )
+            initFocustronicGridWidgetAdapter(dummyData)
         }
 
         return binding.root
@@ -258,5 +388,35 @@ class MyWidgetsFragment : Fragment() {
         apexWaterQualityWidgetRecyclerView.adapter = apexWaterQualityWidgetAdapter
         apexWaterQualityWidgetRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         apexWaterQualityWidgetAdapter.setData(data)
+    }
+
+    private fun initFocustronicGridWidgetAdapter(data : List<MyWidgetsChildModel>) {
+        focustronicGridWidgetRecyclerView.adapter = focustronicGridWidgetAdapter
+        focustronicGridWidgetRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        focustronicGridWidgetAdapter.setData(data)
+    }
+
+    private fun initFocustronicSingleValueTypeTwoWidgetAdapter(data : List<MyWidgetsChildModel>) {
+        focustronicSingleValueTypeTwoWidgetRecyclerView.adapter = focustronicSingleValueTypeTwoWidgetAdapter
+        focustronicSingleValueTypeTwoWidgetRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        focustronicSingleValueTypeTwoWidgetAdapter.setData(data)
+    }
+
+    private fun initFocustronicSingleValueTypeOneWidgetAdapter(data : List<MyWidgetsChildModel>) {
+        focustronicSingleValueTypeOneWidgetRecyclerView.adapter = focustronicSingleValueTypeOneWidgetAdapter
+        focustronicSingleValueTypeOneWidgetRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        focustronicSingleValueTypeOneWidgetAdapter.setData(data)
+    }
+
+    private fun initFocustronicTwoRectangleWidgetAdapter(data : List<MyWidgetsChildModel>) {
+        focustronicTwoRectangleWidgetRecyclerView.adapter = focustronicTwoRectangleWidgetAdapter
+        focustronicTwoRectangleWidgetRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        focustronicTwoRectangleWidgetAdapter.setData(data)
+    }
+
+    private fun initFocustronicOneElementWidgetAdapter(data : List<MyWidgetsChildModel>) {
+        focustronicOneElementWidgetRecyclerView.adapter = focustronicOneElementWidgetAdapter
+        focustronicOneElementWidgetRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        focustronicOneElementWidgetAdapter.setData(data)
     }
 }
