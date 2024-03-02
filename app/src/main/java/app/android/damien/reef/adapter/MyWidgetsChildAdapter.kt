@@ -16,7 +16,7 @@ class MyWidgetsChildAdapter(
     private val onItemClickListener: OnItemClickListener
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var widgetList: MutableList<MyWidgetsChildModel> = ArrayList()
+    private var widgetList = emptyList<MyWidgetsChildModel>()
 
     interface OnItemClickListener {
         fun onCustomWidgetClick(data: MyWidgetsChildModel)
@@ -81,6 +81,46 @@ class MyWidgetsChildAdapter(
         }
     }
 
+    private inner class ViewHolder8(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(position: Int) {
+            itemView.setOnClickListener {
+                onItemClickListener.onCustomWidgetClick(widgetList[position])
+            }
+        }
+    }
+
+    private inner class ViewHolder9(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(position: Int) {
+            itemView.setOnClickListener {
+                onItemClickListener.onCustomWidgetClick(widgetList[position])
+            }
+        }
+    }
+
+    private inner class ViewHolder10(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(position: Int) {
+            itemView.setOnClickListener {
+                onItemClickListener.onCustomWidgetClick(widgetList[position])
+            }
+        }
+    }
+
+    private inner class ViewHolder11(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(position: Int) {
+            itemView.setOnClickListener {
+                onItemClickListener.onCustomWidgetClick(widgetList[position])
+            }
+        }
+    }
+
+    private inner class ViewHolder12(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(position: Int) {
+            itemView.setOnClickListener {
+                onItemClickListener.onCustomWidgetClick(widgetList[position])
+            }
+        }
+    }
+
     override fun getItemViewType(position: Int): Int {
         when (widgetList[position].widgetType) {
             Constants.APEX_POWER_VALUE_WIDGET -> return 1
@@ -90,6 +130,11 @@ class MyWidgetsChildAdapter(
             Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET -> return 5
             Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET -> return 6
             Constants.APEX_WATER_QUALITY_WIDGET -> return 7
+            Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET -> return 8
+            Constants.FOCUSTRONIC_TWO_RECTANGLE_WIDGET -> return 9
+            Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET -> return 10
+            Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET -> return 11
+            Constants.FOCUSTRONIC_GRID_WIDGET -> return 12
         }
 
         return 1
@@ -131,6 +176,26 @@ class MyWidgetsChildAdapter(
                 Constants.APEX_WATER_QUALITY_WIDGET -> {
                     (holder as ViewHolder7).bind(position)
                 }
+
+                Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET -> {
+                    (holder as ViewHolder8).bind(position)
+                }
+
+                Constants.FOCUSTRONIC_TWO_RECTANGLE_WIDGET -> {
+                    (holder as ViewHolder9).bind(position)
+                }
+
+                Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET -> {
+                    (holder as ViewHolder10).bind(position)
+                }
+
+                Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET -> {
+                    (holder as ViewHolder11).bind(position)
+                }
+
+                Constants.FOCUSTRONIC_GRID_WIDGET -> {
+                    (holder as ViewHolder12).bind(position)
+                }
             }
         }
     }
@@ -167,10 +232,30 @@ class MyWidgetsChildAdapter(
             7 -> return ViewHolder7(
                 LayoutInflater.from(context).inflate(R.layout.water_quality_widget, parent, false)
             )
+
+            8 -> return ViewHolder8(
+                LayoutInflater.from(context).inflate(R.layout.custom_widget_layout, parent, false)
+            )
+
+            9 -> return ViewHolder9(
+                LayoutInflater.from(context).inflate(R.layout.two_rectangle_widget, parent, false)
+            )
+
+            10 -> return ViewHolder10(
+                LayoutInflater.from(context).inflate(R.layout.single_value_type_1, parent, false)
+            )
+
+            11 -> return ViewHolder11(
+                LayoutInflater.from(context).inflate(R.layout.single_value_type_2, parent, false)
+            )
+
+            12 -> return ViewHolder12(
+                LayoutInflater.from(context).inflate(R.layout.grid_widget, parent, false)
+            )
         }
 
         return ViewHolder1(
-            LayoutInflater.from(context).inflate(R.layout.custom_widget_layout, parent, false)
+            LayoutInflater.from(context).inflate(R.layout.power_value_widget, parent, false)
         )
     }
 
@@ -203,6 +288,26 @@ class MyWidgetsChildAdapter(
             Constants.APEX_WATER_QUALITY_WIDGET -> {
                 (holder as ViewHolder7).bind(position)
             }
+
+            Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET -> {
+                (holder as ViewHolder8).bind(position)
+            }
+
+            Constants.FOCUSTRONIC_TWO_RECTANGLE_WIDGET -> {
+                (holder as ViewHolder9).bind(position)
+            }
+
+            Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET -> {
+                (holder as ViewHolder10).bind(position)
+            }
+
+            Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET -> {
+                (holder as ViewHolder11).bind(position)
+            }
+
+            Constants.FOCUSTRONIC_GRID_WIDGET -> {
+                (holder as ViewHolder12).bind(position)
+            }
         }
     }
 
@@ -211,8 +316,7 @@ class MyWidgetsChildAdapter(
     }
 
     fun setData(widgets: List<MyWidgetsChildModel>) {
-        widgetList.clear()
-        widgetList.addAll(widgets)
+        widgetList = widgets
         notifyDataSetChanged()
     }
 }
