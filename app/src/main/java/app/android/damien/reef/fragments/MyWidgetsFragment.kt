@@ -25,7 +25,7 @@ class MyWidgetsFragment : Fragment() {
     private val adapter by lazy{
         MyWidgetsParentAdapter(requireContext(), object : MyWidgetsParentAdapter.OnItemClickListener {
             override fun onItemClick(data: MyWidgetsParentModel) {
-                Log.d("MyWidgetsFragment", "onItemClick: ${data.heading}")
+                Log.d("MyWidgetsFragment", "onItemClick: ${data.widgetType}")
             }
         })
     }
@@ -54,6 +54,9 @@ class MyWidgetsFragment : Fragment() {
         val childData1 = ArrayList<MyWidgetsChildModel>()
         val childData2 = ArrayList<MyWidgetsChildModel>()
         val childData3 = ArrayList<MyWidgetsChildModel>()
+        val childData4 = ArrayList<MyWidgetsChildModel>()
+        val childData5 = ArrayList<MyWidgetsChildModel>()
+        val childData6 = ArrayList<MyWidgetsChildModel>()
 
         childData.add(MyWidgetsChildModel(Constants.APEX_TWO_RECTANGLE_WIDGET,1))
         childData.add(MyWidgetsChildModel(Constants.APEX_TWO_RECTANGLE_WIDGET,1))
@@ -67,10 +70,22 @@ class MyWidgetsFragment : Fragment() {
         childData3.add(MyWidgetsChildModel(Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET,1))
         childData3.add(MyWidgetsChildModel(Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET,1))
 
-        dummyData.add(MyWidgetsParentModel("test1",childData))
-        dummyData.add(MyWidgetsParentModel("test1",childData1))
-        dummyData.add(MyWidgetsParentModel("test1",childData2))
-        dummyData.add(MyWidgetsParentModel("test1",childData3))
+        childData4.add(MyWidgetsChildModel(Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET,1))
+        childData4.add(MyWidgetsChildModel(Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET,1))
+
+        childData5.add(MyWidgetsChildModel(Constants.APEX_POWER_VALUE_WIDGET,1))
+        childData5.add(MyWidgetsChildModel(Constants.APEX_POWER_VALUE_WIDGET,1))
+
+        childData6.add(MyWidgetsChildModel(Constants.APEX_WATER_QUALITY_WIDGET,1))
+        childData6.add(MyWidgetsChildModel(Constants.APEX_WATER_QUALITY_WIDGET,1))
+
+        dummyData.add(MyWidgetsParentModel(Constants.APEX_TWO_RECTANGLE_WIDGET,childData))
+        dummyData.add(MyWidgetsParentModel(Constants.APEX_CIRCLE_WIDGET,childData1))
+        dummyData.add(MyWidgetsParentModel(Constants.APEX_FLASK_BACKGROUND_WIDGET,childData2))
+        dummyData.add(MyWidgetsParentModel(Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET,childData3))
+        dummyData.add(MyWidgetsParentModel(Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET,childData4))
+        dummyData.add(MyWidgetsParentModel(Constants.APEX_POWER_VALUE_WIDGET,childData5))
+        dummyData.add(MyWidgetsParentModel(Constants.APEX_WATER_QUALITY_WIDGET,childData6))
 
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
