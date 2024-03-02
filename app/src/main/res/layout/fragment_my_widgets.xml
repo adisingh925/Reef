@@ -1,44 +1,235 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#80000000"
     tools:context=".fragments.MyWidgetsFragment">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
         android:id="@+id/addWidgets"
-        android:src="@drawable/add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/medium_margin"
         android:layout_marginBottom="@dimen/extra_large_margin"
-        android:layout_height="wrap_content"/>
-
-        <TextView
-            android:id="@+id/heading"
-            android:layout_width="wrap_content"
-            android:text="My Widgets"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:textSize="@dimen/heading_font_size"
-            android:textStyle="bold"
-            android:layout_marginTop="@dimen/extra_large_margin"
-            android:layout_height="wrap_content"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/parent_recycler_view"
-        android:fadingEdge="vertical"
-        android:fadingEdgeLength="50dp"
-        android:requiresFadingEdge="vertical"
-        android:layout_marginTop="@dimen/medium_margin"
-        android:paddingBottom="@dimen/extra_large_margin"
-        app:layout_constraintTop_toBottomOf="@id/heading"
-        android:layout_width="match_parent"
+        android:src="@drawable/add"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_height="0dp"/>
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/extra_large_margin"
+        android:text="My Widgets"
+        android:textSize="@dimen/heading_font_size"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:fadingEdge="vertical"
+        android:fadingEdgeLength="10dp"
+        android:requiresFadingEdge="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/heading">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/apex_circle_widget_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/apex_circle_widget_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:text="Apex Circle Widgets" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/apex_circle_widget_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:fadingEdge="horizontal"
+                    android:fadingEdgeLength="10dp"
+                    android:requiresFadingEdge="horizontal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/apex_flask_background_widget_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:text="Apex Flask Background Widgets" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/apex_flask_background_widget_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:fadingEdge="horizontal"
+                    android:fadingEdgeLength="10dp"
+                    android:requiresFadingEdge="horizontal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/apex_power_value_widget_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:text="Apex Power Value Widgets" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/apex_power_value_widget_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:fadingEdge="horizontal"
+                    android:fadingEdgeLength="10dp"
+                    android:requiresFadingEdge="horizontal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/apex_two_rectangle_widget_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:text="Apex 2 Rectangle Widget Widgets" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/apex_two_rectangle_widget_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:fadingEdge="horizontal"
+                    android:fadingEdgeLength="10dp"
+                    android:requiresFadingEdge="horizontal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/apex_single_value_type_1_widget_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:text="Apex Single Value Type 1 Widgets" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/apex_single_value_type_1_widget_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:fadingEdge="horizontal"
+                    android:fadingEdgeLength="10dp"
+                    android:requiresFadingEdge="horizontal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/apex_single_value_type_2_widget_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:text="Apex Single Value Type 2 Widgets" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/apex_single_value_type_2_widget_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:fadingEdge="horizontal"
+                    android:fadingEdgeLength="10dp"
+                    android:requiresFadingEdge="horizontal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/apex_water_quality_widget_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:text="Apex Water Quality Widgets" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/apex_water_quality_widget_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:fadingEdge="horizontal"
+                    android:fadingEdgeLength="10dp"
+                    android:requiresFadingEdge="horizontal" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
