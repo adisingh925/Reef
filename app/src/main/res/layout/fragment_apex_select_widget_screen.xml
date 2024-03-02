@@ -13,6 +13,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/back_arrow"
+        android:padding="10dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         app:tint="?attr/resourcesTint"

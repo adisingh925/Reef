@@ -22,6 +22,10 @@ class WidgetTypeSelectionScreen : Fragment() {
     ): View {
         // Inflate the layout for this fragment
 
+        binding.widgetSelectionBackButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
         binding.apexWidgetsButton.setOnClickListener {
             if(isCredentialsExist(Constants.APEX)){
                 findNavController().navigate(

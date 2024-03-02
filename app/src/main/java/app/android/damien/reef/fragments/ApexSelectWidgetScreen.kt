@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import app.android.damien.reef.R
 import app.android.damien.reef.databinding.FragmentApexSelectWidgetScreenBinding
 import app.android.damien.reef.storage.SharedPreferences
@@ -22,6 +23,10 @@ class ApexSelectWidgetScreen : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        binding.addWidgetBackButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
         binding.apexFlaskBackgroundWidgets.itemSubheading.text = SharedPreferences.read(Constants.APEX_FLASK_BACKGROUND_WIDGET, 0).toString() + "/5 widgets added"
         binding.apexCircleWidgets.itemSubheading.text = SharedPreferences.read(Constants.APEX_CIRCLE_WIDGET, 0).toString() + "/5 widgets added"
