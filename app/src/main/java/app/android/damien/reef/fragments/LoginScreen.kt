@@ -47,7 +47,8 @@ class LoginScreen : Fragment() {
             }
 
             Constants.FOCUSTRONIC -> {
-                binding.loginPageHeading.text = getString(R.string.login_screen_heading, "Focustronic")
+                binding.loginPageHeading.text =
+                    getString(R.string.login_screen_heading, "Focustronic")
             }
         }
 
@@ -77,11 +78,10 @@ class LoginScreen : Fragment() {
                 x++
                 binding.nicknameLayout.error = "Nickname is required"
                 Log.d("LoginScreen", "Email or nickname is empty")
-            }else{
-                if(Pattern.matches("^[a-zA-Z0-9]*$", binding.nicknameInputField.text.toString())) {
+            } else {
+                if (Pattern.matches("^[a-zA-Z0-9]*$", binding.nicknameInputField.text.toString())) {
                     Log.d("LoginScreen", "Nickname is valid")
-                }
-                else{
+                } else {
                     x++
                     Log.d("LoginScreen", "Nickname is invalid")
                     binding.nicknameLayout.error = "Nickname can only contains letters and numbers."
@@ -89,61 +89,24 @@ class LoginScreen : Fragment() {
             }
 
             if (x == 0) {
-                val call = ApiClient.apiService.addUser(
-                    addUserRequestBody(
-                        binding.emailInputField.text.toString(),
-                        binding.nicknameInputField.text.toString()
-                    )
+                saveCredentials(
+                    binding.emailInputField.text.toString(),
+                    binding.nicknameInputField.text.toString()
                 )
 
-                call.enqueue(object : Callback<addUserResponseBody> {
-                    override fun onResponse(
-                        call: Call<addUserResponseBody>,
-                        response: Response<addUserResponseBody>
-                    ) {
-                        if (response.isSuccessful) {
-                            val post = response.body()
-                            if (post != null) {
-                                if (post.success) {
-                                    findNavController().navigate(R.id.action_loginScreen_to_apexSelectWidgetScreen, getBundle(arguments?.getInt("widgetType")!!))
-                                    saveCredentials(binding.emailInputField.text.toString(), binding.nicknameInputField.text.toString())
-                                } else {
-                                    Toast.showSnackbar(binding.root, "Signup Failed!")
-                                }
-                            }
-                            Log.d("LoginScreen", "Response: $post")
-                        } else {
-                            Toast.showSnackbar(binding.root, "Signup Failed!")
-                            Log.d("LoginScreen", "Error: ${response.code()}")
-                        }
-                    }
-
-                    @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
-                    override fun onFailure(call: Call<addUserResponseBody>, t: Throwable) {
-                        if (t is java.net.SocketException ||
-                            t is java.net.UnknownHostException ||
-                            t is java.net.ConnectException ||
-                            t is java.io.IOException
-                        ) {
-                            Toast.showSnackbar(binding.root, "Network Error!")
-                        }
-                        Log.d("LoginScreen", "Error: ${t.message}")
-                    }
-                })
+                if (widgetType == Constants.APEX) {
+                    findNavController().navigate(R.id.action_loginScreen_to_apexSelectWidgetScreen)
+                } else if (widgetType == Constants.FOCUSTRONIC) {
+                    findNavController().navigate(R.id.action_loginScreen_to_focustronicSelectWidgetScreen)
+                }
             }
         }
 
         return binding.root
     }
 
-    private fun getBundle(widgetType : Int): Bundle {
-        val bundle = Bundle()
-        bundle.putInt("widgetType", widgetType)
-        return bundle
-    }
-
-    private fun saveCredentials(email : String, password : String){
+    private fun saveCredentials(email: String, nickname: String) {
         SharedPreferences.write(widgetType.toString() + "email", email)
-        SharedPreferences.write(widgetType.toString() + "password", password)
+        SharedPreferences.write(widgetType.toString() + "nickname", nickname)
     }
 }

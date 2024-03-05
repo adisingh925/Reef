@@ -1,6 +1,7 @@
 package app.android.damien.reef.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +9,17 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import app.android.damien.reef.R
 import app.android.damien.reef.databinding.FragmentApexSelectWidgetScreenBinding
+import app.android.damien.reef.model.ApexApiResponse
+import app.android.damien.reef.retrofit.ApiClient
 import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
 import app.android.damien.reef.utils.Toast
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class ApexSelectWidgetScreen : Fragment() {
@@ -24,17 +33,32 @@ class ApexSelectWidgetScreen : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
+        getApexApiResponse()
+
         binding.addWidgetBackButton.setOnClickListener {
             findNavController().popBackStack()
         }
 
-        binding.apexFlaskBackgroundWidgets.itemSubheading.text = SharedPreferences.read(Constants.APEX_FLASK_BACKGROUND_WIDGET, 0).toString() + "/5 widgets added"
-        binding.apexCircleWidgets.itemSubheading.text = SharedPreferences.read(Constants.APEX_CIRCLE_WIDGET, 0).toString() + "/5 widgets added"
-        binding.apex2RectangleWidgets.itemSubheading.text = SharedPreferences.read(Constants.APEX_TWO_RECTANGLE_WIDGET, 0).toString() + "/5 widgets added"
-        binding.apexSingleValueType1.itemSubheading.text = SharedPreferences.read(Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET, 0).toString() + "/5 widgets added"
-        binding.apexSingleValueType2.itemSubheading.text = SharedPreferences.read(Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET, 0).toString() + "/5 widgets added"
-        binding.apexPowerValuesWidgets.itemSubheading.text = SharedPreferences.read(Constants.APEX_POWER_VALUE_WIDGET, 0).toString() + "/5 widgets added"
-        binding.apexWaterQualityWidget.itemSubheading.text = SharedPreferences.read(Constants.APEX_WATER_QUALITY_WIDGET, 0).toString() + "/5 widgets added"
+        binding.apexFlaskBackgroundWidgets.itemSubheading.text =
+            SharedPreferences.read(Constants.APEX_FLASK_BACKGROUND_WIDGET, 0)
+                .toString() + "/5 widgets added"
+        binding.apexCircleWidgets.itemSubheading.text =
+            SharedPreferences.read(Constants.APEX_CIRCLE_WIDGET, 0).toString() + "/5 widgets added"
+        binding.apex2RectangleWidgets.itemSubheading.text =
+            SharedPreferences.read(Constants.APEX_TWO_RECTANGLE_WIDGET, 0)
+                .toString() + "/5 widgets added"
+        binding.apexSingleValueType1.itemSubheading.text =
+            SharedPreferences.read(Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET, 0)
+                .toString() + "/5 widgets added"
+        binding.apexSingleValueType2.itemSubheading.text =
+            SharedPreferences.read(Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET, 0)
+                .toString() + "/5 widgets added"
+        binding.apexPowerValuesWidgets.itemSubheading.text =
+            SharedPreferences.read(Constants.APEX_POWER_VALUE_WIDGET, 0)
+                .toString() + "/5 widgets added"
+        binding.apexWaterQualityWidget.itemSubheading.text =
+            SharedPreferences.read(Constants.APEX_WATER_QUALITY_WIDGET, 0)
+                .toString() + "/5 widgets added"
 
         binding.apexFlaskBackgroundWidgets.flaskConstraintLayout.setOnClickListener {
             val widgetCount = SharedPreferences.read(Constants.APEX_FLASK_BACKGROUND_WIDGET, 0)
@@ -44,7 +68,9 @@ class ApexSelectWidgetScreen : Fragment() {
                 Toast.showSnackbar(binding.root, "You can only add 5 widgets")
             }
 
-            binding.apexFlaskBackgroundWidgets.itemSubheading.text = SharedPreferences.read(Constants.APEX_FLASK_BACKGROUND_WIDGET, 0).toString() + "/5 widgets added"
+            binding.apexFlaskBackgroundWidgets.itemSubheading.text =
+                SharedPreferences.read(Constants.APEX_FLASK_BACKGROUND_WIDGET, 0)
+                    .toString() + "/5 widgets added"
         }
 
         binding.apexCircleWidgets.flaskConstraintLayout.setOnClickListener {
@@ -55,7 +81,9 @@ class ApexSelectWidgetScreen : Fragment() {
                 Toast.showSnackbar(binding.root, "You can only add 5 widgets")
             }
 
-            binding.apexCircleWidgets.itemSubheading.text = SharedPreferences.read(Constants.APEX_CIRCLE_WIDGET, 0).toString() + "/5 widgets added"
+            binding.apexCircleWidgets.itemSubheading.text =
+                SharedPreferences.read(Constants.APEX_CIRCLE_WIDGET, 0)
+                    .toString() + "/5 widgets added"
         }
 
         binding.apex2RectangleWidgets.flaskConstraintLayout.setOnClickListener {
@@ -66,7 +94,9 @@ class ApexSelectWidgetScreen : Fragment() {
                 Toast.showSnackbar(binding.root, "You can only add 5 widgets")
             }
 
-            binding.apex2RectangleWidgets.itemSubheading.text = SharedPreferences.read(Constants.APEX_TWO_RECTANGLE_WIDGET, 0).toString() + "/5 widgets added"
+            binding.apex2RectangleWidgets.itemSubheading.text =
+                SharedPreferences.read(Constants.APEX_TWO_RECTANGLE_WIDGET, 0)
+                    .toString() + "/5 widgets added"
         }
 
         binding.apexSingleValueType1.flaskConstraintLayout.setOnClickListener {
@@ -77,7 +107,9 @@ class ApexSelectWidgetScreen : Fragment() {
                 Toast.showSnackbar(binding.root, "You can only add 5 widgets")
             }
 
-            binding.apexSingleValueType1.itemSubheading.text = SharedPreferences.read(Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET, 0).toString() + "/5 widgets added"
+            binding.apexSingleValueType1.itemSubheading.text =
+                SharedPreferences.read(Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET, 0)
+                    .toString() + "/5 widgets added"
         }
 
         binding.apexSingleValueType2.flaskConstraintLayout.setOnClickListener {
@@ -88,7 +120,9 @@ class ApexSelectWidgetScreen : Fragment() {
                 Toast.showSnackbar(binding.root, "You can only add 5 widgets")
             }
 
-            binding.apexSingleValueType2.itemSubheading.text = SharedPreferences.read(Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET, 0).toString() + "/5 widgets added"
+            binding.apexSingleValueType2.itemSubheading.text =
+                SharedPreferences.read(Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET, 0)
+                    .toString() + "/5 widgets added"
         }
 
         binding.apexPowerValuesWidgets.flaskConstraintLayout.setOnClickListener {
@@ -99,7 +133,9 @@ class ApexSelectWidgetScreen : Fragment() {
                 Toast.showSnackbar(binding.root, "You can only add 5 widgets")
             }
 
-            binding.apexPowerValuesWidgets.itemSubheading.text = SharedPreferences.read(Constants.APEX_POWER_VALUE_WIDGET, 0).toString() + "/5 widgets added"
+            binding.apexPowerValuesWidgets.itemSubheading.text =
+                SharedPreferences.read(Constants.APEX_POWER_VALUE_WIDGET, 0)
+                    .toString() + "/5 widgets added"
         }
 
         binding.apexWaterQualityWidget.flaskConstraintLayout.setOnClickListener {
@@ -110,11 +146,40 @@ class ApexSelectWidgetScreen : Fragment() {
                 Toast.showSnackbar(binding.root, "You can only add 5 widgets")
             }
 
-            binding.apexWaterQualityWidget.itemSubheading.text = SharedPreferences.read(Constants.APEX_WATER_QUALITY_WIDGET, 0).toString() + "/5 widgets added"
+            binding.apexWaterQualityWidget.itemSubheading.text =
+                SharedPreferences.read(Constants.APEX_WATER_QUALITY_WIDGET, 0)
+                    .toString() + "/5 widgets added"
         }
 
-
-
         return binding.root
+    }
+
+    private fun getApexApiResponse() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = ApiClient.apiService.getApexData(
+                SharedPreferences.read(
+                    Constants.APEX.toString() + "nickname",
+                    ""
+                ).toString()
+            )
+
+            response.enqueue(object : Callback<ApexApiResponse> {
+                override fun onResponse(
+                    call: Call<ApexApiResponse>,
+                    response: Response<ApexApiResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        val data = response.body()
+                        if (data != null) {
+                            SharedPreferences.write("apexData", data.toString())
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<ApexApiResponse>, t: Throwable) {
+                    t.printStackTrace()
+                }
+            })
+        }
     }
 }
