@@ -41,21 +41,42 @@ interface CustomWidgetsDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertApexFlaskBackgroundWidget(data: ApexFlaskBackgroundWidgetModel)
 
+    @Query("SELECT * from apex_flask_background_widget_table order by id asc")
+    fun readApexFlaskBackgroundWidget() : LiveData<List<ApexFlaskBackgroundWidgetModel>>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertApexPowerValuesWidget(data: ApexPowerValuesWidgetModel)
+
+    @Query("SELECT * from apex_power_values_widget_table order by id asc")
+    fun readApexPowerValuesWidget() : LiveData<List<ApexPowerValuesWidgetModel>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertApexCircleWidget(data: ApexCircleWidgetModel)
 
+    @Query("SELECT * from apex_circle_widget_table order by id asc")
+    fun readApexCircleWidget() : LiveData<List<ApexCircleWidgetModel>>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertApexTwoRectangleWidget(data: ApexTwoRectangleWidgets)
+
+    @Query("SELECT * from apex_two_rectangle_widget_table order by id asc")
+    fun readApexTwoRectangleWidget() : LiveData<List<ApexTwoRectangleWidgets>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertApexSingleValueTypeOneWidget(data: ApexSingleValueTypeOneModel)
 
+    @Query("SELECT * from apex_single_value_type_1_widget_table order by id asc")
+    fun readApexSingleValueTypeOneWidget() : LiveData<List<ApexSingleValueTypeOneModel>>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertApexSingleValueTypeTwoWidget(data: ApexSingleValueTypeTwoModel)
 
+    @Query("SELECT * from apex_single_value_type_2_widget_table order by id asc")
+    fun readApexSingleValueTypeTwoWidget() : LiveData<List<ApexSingleValueTypeTwoModel>>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertApexWaterQualityWidget(data: ApexWaterQualityWidget)
+
+    @Query("SELECT * from apex_water_quality_widget_table order by id asc")
+    fun readApexWaterQualityWidget() : LiveData<List<ApexWaterQualityWidget>>
 }

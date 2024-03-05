@@ -5,123 +5,138 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import app.android.damien.reef.R
+import app.android.damien.reef.database_model.ApexCircleWidgetModel
+import app.android.damien.reef.database_model.ApexFlaskBackgroundWidgetModel
+import app.android.damien.reef.database_model.ApexPowerValuesWidgetModel
+import app.android.damien.reef.database_model.ApexSingleValueTypeOneModel
+import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
+import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
+import app.android.damien.reef.database_model.ApexWaterQualityWidget
 import app.android.damien.reef.model.MyWidgetsChildModel
 import app.android.damien.reef.utils.Constants
 
 class MyWidgetsChildAdapter(
     private val context: Context,
+    private val widgetType : String,
     private val onItemClickListener: OnItemClickListener
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var widgetList = emptyList<MyWidgetsChildModel>()
+    private var setApexFlaskBackgroundWidgetData = emptyList<ApexFlaskBackgroundWidgetModel>()
+    private var setApexPowerValuesWidgetData = emptyList<ApexPowerValuesWidgetModel>()
+    private var setApexCircleWidgetData = emptyList<ApexCircleWidgetModel>()
+    private var setApexTwoRectangleWidgetData = emptyList<ApexTwoRectangleWidgets>()
+    private var setApexSingleValueTypeOneWidgetData = emptyList<ApexSingleValueTypeOneModel>()
+    private var setApexSingleValueTypeTwoWidgetData = emptyList<ApexSingleValueTypeTwoModel>()
+    private var setApexWaterQualityWidgetData = emptyList<ApexWaterQualityWidget>()
 
     interface OnItemClickListener {
-        fun onCustomWidgetClick(data: MyWidgetsChildModel)
+        fun onApexFlaskBackgroundWidgetClick(data: ApexFlaskBackgroundWidgetModel)
+        fun onApexPowerValuesWidgetClick(data: ApexPowerValuesWidgetModel)
+        fun onApexCircleWidgetClick(data: ApexCircleWidgetModel)
+        fun onApexTwoRectangleWidgetClick(data: ApexTwoRectangleWidgets)
+        fun onApexSingleValueTypeOneWidgetClick(data: ApexSingleValueTypeOneModel)
+        fun onApexSingleValueTypeTwoWidgetClick(data: ApexSingleValueTypeTwoModel)
+        fun onApexWaterQualityWidgetClick(data: ApexWaterQualityWidget)
     }
 
     private inner class ViewHolder1(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(position: Int) {
 
-            itemView.setOnClickListener {
-                onItemClickListener.onCustomWidgetClick(widgetList[position])
-            }
+
         }
     }
 
     private inner class ViewHolder2(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(position: Int) {
 
-            itemView.setOnClickListener {
-                onItemClickListener.onCustomWidgetClick(widgetList[position])
-            }
+
         }
     }
 
     private inner class ViewHolder3(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(position: Int) {
-            itemView.setOnClickListener {
-                onItemClickListener.onCustomWidgetClick(widgetList[position])
-            }
+
         }
     }
 
     private inner class ViewHolder4(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val slot1Value = itemView.findViewById<TextView>(R.id.slot1value)
+        val slot2Value = itemView.findViewById<TextView>(R.id.slot2value)
+        val slot3Value = itemView.findViewById<TextView>(R.id.slot3value)
+        val slot1name = itemView.findViewById<TextView>(R.id.slot1text)
+        val slot2name = itemView.findViewById<TextView>(R.id.slot2text)
+        val slot3name = itemView.findViewById<TextView>(R.id.slot3text)
+
         fun bind(position: Int) {
+
+            slot1name.setText(setApexFlaskBackgroundWidgetData[position].slot1Name)
+            slot2name.setText(setApexFlaskBackgroundWidgetData[position].slot2Name)
+            slot3name.setText(setApexFlaskBackgroundWidgetData[position].slot3Name)
+            slot1Value.setText(setApexFlaskBackgroundWidgetData[position].slot1Value.toString())
+            slot2Value.setText(setApexFlaskBackgroundWidgetData[position].slot2Value.toString())
+            slot3Value.setText(setApexFlaskBackgroundWidgetData[position].slot3Value.toString())
+
             itemView.setOnClickListener {
-                onItemClickListener.onCustomWidgetClick(widgetList[position])
+                onItemClickListener.onApexFlaskBackgroundWidgetClick(setApexFlaskBackgroundWidgetData[position])
             }
         }
     }
 
     private inner class ViewHolder5(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(position: Int) {
-            itemView.setOnClickListener {
-                onItemClickListener.onCustomWidgetClick(widgetList[position])
-            }
+
         }
     }
 
     private inner class ViewHolder6(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(position: Int) {
-            itemView.setOnClickListener {
-                onItemClickListener.onCustomWidgetClick(widgetList[position])
-            }
+
         }
     }
 
     private inner class ViewHolder7(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(position: Int) {
-            itemView.setOnClickListener {
-                onItemClickListener.onCustomWidgetClick(widgetList[position])
-            }
+
         }
     }
 
     private inner class ViewHolder8(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(position: Int) {
-            itemView.setOnClickListener {
-                onItemClickListener.onCustomWidgetClick(widgetList[position])
-            }
+
         }
     }
 
     private inner class ViewHolder9(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(position: Int) {
-            itemView.setOnClickListener {
-                onItemClickListener.onCustomWidgetClick(widgetList[position])
-            }
+
         }
     }
 
     private inner class ViewHolder10(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(position: Int) {
-            itemView.setOnClickListener {
-                onItemClickListener.onCustomWidgetClick(widgetList[position])
-            }
+
         }
     }
 
     private inner class ViewHolder11(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(position: Int) {
-            itemView.setOnClickListener {
-                onItemClickListener.onCustomWidgetClick(widgetList[position])
-            }
+
         }
     }
 
     private inner class ViewHolder12(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(position: Int) {
-            itemView.setOnClickListener {
-                onItemClickListener.onCustomWidgetClick(widgetList[position])
-            }
+
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        when (widgetList[position].widgetType) {
+        when (widgetType) {
             Constants.APEX_POWER_VALUE_WIDGET -> return 1
             Constants.APEX_TWO_RECTANGLE_WIDGET -> return 2
             Constants.APEX_CIRCLE_WIDGET -> return 3
@@ -136,7 +151,7 @@ class MyWidgetsChildAdapter(
             Constants.FOCUSTRONIC_GRID_WIDGET -> return 12
         }
 
-        Log.d("MyWidgetsChildAdapter", "getItemViewType: ${widgetList[position].widgetType}")
+        Log.d("MyWidgetsChildAdapter", "getItemViewType: ${widgetType}")
 
         return 1
     }
@@ -149,7 +164,8 @@ class MyWidgetsChildAdapter(
         if (payloads.isEmpty()) {
             super.onBindViewHolder(holder, position, payloads)
         } else {
-            when (widgetList[position].widgetType) {
+            Log.d("MyWidgetsChildAdapter", "onBindViewHolder: ${widgetType}")
+            when (widgetType) {
                 Constants.APEX_POWER_VALUE_WIDGET -> {
                     (holder as ViewHolder1).bind(position)
                 }
@@ -261,7 +277,7 @@ class MyWidgetsChildAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (widgetList[position].widgetType) {
+        when (widgetType) {
             Constants.APEX_POWER_VALUE_WIDGET -> {
                 (holder as ViewHolder1).bind(position)
             }
@@ -313,11 +329,41 @@ class MyWidgetsChildAdapter(
     }
 
     override fun getItemCount(): Int {
-        return widgetList.size
+        return setApexFlaskBackgroundWidgetData.size
     }
 
-    fun setData(widgets: List<MyWidgetsChildModel>) {
-        widgetList = widgets
+    fun setApexFlaskBackgroundWidgetData(widgets: List<ApexFlaskBackgroundWidgetModel>) {
+        setApexFlaskBackgroundWidgetData = widgets
+        notifyDataSetChanged()
+    }
+
+    fun setApexPowerValuesWidgetData(widgets: List<ApexPowerValuesWidgetModel>) {
+        setApexPowerValuesWidgetData = widgets
+        notifyDataSetChanged()
+    }
+
+    fun setApexCircleWidgetData(widgets: List<ApexCircleWidgetModel>) {
+        setApexCircleWidgetData = widgets
+        notifyDataSetChanged()
+    }
+
+    fun setApexTwoRectangleWidgetData(widgets: List<ApexTwoRectangleWidgets>) {
+        setApexTwoRectangleWidgetData = widgets
+        notifyDataSetChanged()
+    }
+
+    fun setApexSingleValueTypeOneWidgetData(widgets: List<ApexSingleValueTypeOneModel>) {
+        setApexSingleValueTypeOneWidgetData = widgets
+        notifyDataSetChanged()
+    }
+
+    fun setApexSingleValueTypeTwoWidgetData(widgets: List<ApexSingleValueTypeTwoModel>) {
+        setApexSingleValueTypeTwoWidgetData = widgets
+        notifyDataSetChanged()
+    }
+
+    fun setApexWaterQualityWidgetData(widgets: List<ApexWaterQualityWidget>) {
+        setApexWaterQualityWidgetData = widgets
         notifyDataSetChanged()
     }
 }

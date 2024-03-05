@@ -20,12 +20,26 @@ import kotlinx.coroutines.launch
 class WidgetsViewModel(application: Application) : AndroidViewModel(application) {
 
     val widgets: LiveData<List<CustomWidgetModel>>
+    val apexFlaskBackgroundWidgets: LiveData<List<ApexFlaskBackgroundWidgetModel>>
+    val apexPowerValuesWidgets: LiveData<List<ApexPowerValuesWidgetModel>>
+    val apexCircleWidgets: LiveData<List<ApexCircleWidgetModel>>
+    val apexTwoRectangleWidgets: LiveData<List<ApexTwoRectangleWidgets>>
+    val apexSingleValueTypeOneWidgets: LiveData<List<ApexSingleValueTypeOneModel>>
+    val apexSingleValueTypeTwoWidgets: LiveData<List<ApexSingleValueTypeTwoModel>>
+    val apexWaterQualityWidgets: LiveData<List<ApexWaterQualityWidget>>
     val repository: Repository
 
     init {
         val userDao = Database.getDatabase(application).customWidgetsDao()
         repository = Repository(userDao)
         widgets = repository.readData
+        apexFlaskBackgroundWidgets = repository.readApexFlaskBackgroundWidgetData
+        apexPowerValuesWidgets = repository.readApexPowerValuesWidgetData
+        apexCircleWidgets = repository.readApexCircleWidgetData
+        apexTwoRectangleWidgets = repository.readApexTwoRectangleWidgetData
+        apexSingleValueTypeOneWidgets = repository.readApexSingleValueTypeOneWidgetData
+        apexSingleValueTypeTwoWidgets = repository.readApexSingleValueTypeTwoWidgetData
+        apexWaterQualityWidgets = repository.readApexWaterQualityWidgetData
     }
 
     fun insert(data: CustomWidgetModel) {

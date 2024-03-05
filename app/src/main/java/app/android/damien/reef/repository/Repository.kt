@@ -13,6 +13,13 @@ import app.android.damien.reef.database_model.CustomWidgetModel
 class Repository(private val dao: CustomWidgetsDao) {
 
     val readData = dao.read()
+    val readApexFlaskBackgroundWidgetData = dao.readApexFlaskBackgroundWidget()
+    val readApexPowerValuesWidgetData = dao.readApexPowerValuesWidget()
+    val readApexCircleWidgetData = dao.readApexCircleWidget()
+    val readApexTwoRectangleWidgetData = dao.readApexTwoRectangleWidget()
+    val readApexSingleValueTypeOneWidgetData = dao.readApexSingleValueTypeOneWidget()
+    val readApexSingleValueTypeTwoWidgetData = dao.readApexSingleValueTypeTwoWidget()
+    val readApexWaterQualityWidgetData = dao.readApexWaterQualityWidget()
 
     fun insert(data: CustomWidgetModel) {
         dao.insert(data)

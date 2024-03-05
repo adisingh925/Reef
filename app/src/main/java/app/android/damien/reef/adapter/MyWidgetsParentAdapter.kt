@@ -37,7 +37,7 @@ class MyWidgetsParentAdapter(
             parent,
             false
         )
-        createRecyclerView()
+//        createRecyclerView()
         return MyViewHolder(binding)
     }
 
@@ -49,62 +49,62 @@ class MyWidgetsParentAdapter(
         when (myWidgetsList[position].widgetType) {
             Constants.APEX_CIRCLE_WIDGET -> {
                 holder.heading.text = "Apex Circle Widgets"
-                adapter.setData(myWidgetsList[position].widgets)
+//                adapter.setData(myWidgetsList[position].widgets)
             }
 
             Constants.APEX_WATER_QUALITY_WIDGET -> {
                 holder.heading.text = "Apex Water Quality Widgets"
-                adapter.setData(myWidgetsList[position].widgets)
+//                adapter.setData(myWidgetsList[position].widgets)
             }
 
             Constants.APEX_POWER_VALUE_WIDGET -> {
                 holder.heading.text = "Apex Power Value Widget"
-                adapter.setData(myWidgetsList[position].widgets)
+//                adapter.setData(myWidgetsList[position].widgets)
             }
 
             Constants.APEX_FLASK_BACKGROUND_WIDGET -> {
                 holder.heading.text = "Apex Flask Background Widgets"
-                adapter.setData(myWidgetsList[position].widgets)
+//                adapter.setData(myWidgetsList[position].widgets)
             }
 
             Constants.APEX_TWO_RECTANGLE_WIDGET -> {
                 holder.heading.text = "Apex Two Rectangle Widgets"
-                adapter.setData(myWidgetsList[position].widgets)
+//                adapter.setData(myWidgetsList[position].widgets)
             }
 
             Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET -> {
                 holder.heading.text = "Apex Single Value Type 2 Widgets"
-                adapter.setData(myWidgetsList[position].widgets)
+//                adapter.setData(myWidgetsList[position].widgets)
             }
 
             Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET -> {
                 holder.heading.text = "Apex Single Value Type 1 Widgets"
-                adapter.setData(myWidgetsList[position].widgets)
+//                adapter.setData(myWidgetsList[position].widgets)
             }
 
             Constants.FOCUSTRONIC_GRID_WIDGET -> {
                 holder.heading.text = "Focustronic Grid Widgets"
-                adapter.setData(myWidgetsList[position].widgets)
+//                adapter.setData(myWidgetsList[position].widgets)
             }
 
             Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET -> {
                 holder.heading.text = "Focustronic One Element Widgets"
-                adapter.setData(myWidgetsList[position].widgets)
+//                adapter.setData(myWidgetsList[position].widgets)
             }
 
             Constants.FOCUSTRONIC_TWO_RECTANGLE_WIDGET -> {
                 holder.heading.text = "Focustronic Two Rectangle Widgets"
-                adapter.setData(myWidgetsList[position].widgets)
+//                adapter.setData(myWidgetsList[position].widgets)
             }
 
             Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET -> {
                 holder.heading.text = "Focustronic Single Value Type 1 Widgets"
-                adapter.setData(myWidgetsList[position].widgets)
+//                adapter.setData(myWidgetsList[position].widgets)
             }
 
             Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET -> {
                 holder.heading.text = "Focustronic Single Value Type 2 Widgets"
-                adapter.setData(myWidgetsList[position].widgets)
+//                adapter.setData(myWidgetsList[position].widgets)
             }
 
             else -> {
@@ -117,16 +117,16 @@ class MyWidgetsParentAdapter(
         }
     }
 
-    private fun createRecyclerView() {
-        adapter = MyWidgetsChildAdapter(this.context, object : MyWidgetsChildAdapter.OnItemClickListener {
-                override fun onCustomWidgetClick(data: MyWidgetsChildModel) {
-                    Log.d("MyWidgetsParentAdapter", "onCustomWidgetClick: ${data.widgetType}")
-                }
-            })
-        recyclerView = binding.childItemRecyclerview
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-    }
+//    private fun createRecyclerView() {
+//        adapter = MyWidgetsChildAdapter(this.context, object : MyWidgetsChildAdapter.OnItemClickListener {
+//                override fun onCustomWidgetClick(data: MyWidgetsChildModel) {
+//                    Log.d("MyWidgetsParentAdapter", "onCustomWidgetClick: ${data.widgetType}")
+//                }
+//            })
+//        recyclerView = binding.childItemRecyclerview
+//        recyclerView.adapter = adapter
+//        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+//    }
 
     fun setData(data: List<MyWidgetsParentModel>) {
         myWidgetsList = data
