@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import app.android.damien.reef.R
 import app.android.damien.reef.databinding.FragmentWelcomeScreenBinding
+import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Toast
 
 
@@ -23,6 +24,14 @@ class WelcomeScreen : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         try {
+            if (SharedPreferences.read("email", "") != "" && SharedPreferences.read(
+                    "nickname",
+                    ""
+                ) != ""
+            ) {
+                findNavController().navigate(R.id.myWidgetsFragment)
+            }
+
             binding.welcomeScreenAddWidgetsButton.setOnClickListener {
                 findNavController().navigate(R.id.action_welcomeScreen_to_disclaimerFragment)
             }
