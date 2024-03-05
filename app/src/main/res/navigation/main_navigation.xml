@@ -91,5 +91,13 @@
         <action
             android:id="@+id/action_myWidgetsFragment_to_widgetTypeSelectionScreen"
             app:destination="@id/widgetTypeSelectionScreen" />
+        <action
+            android:id="@+id/action_myWidgetsFragment_to_editApexFlaskBackgroundWidget"
+            app:destination="@id/editApexFlaskBackgroundWidget" />
     </fragment>
+    <fragment
+        android:id="@+id/editApexFlaskBackgroundWidget"
+        android:name="app.android.damien.reef.fragments.EditApexFlaskBackgroundWidget"
+        android:label="fragment_edit_apex_flask_background_widget"
+        tools:layout="@layout/fragment_edit_apex_flask_background_widget" />
 </navigation>

@@ -79,7 +79,7 @@ class MyWidgetsFragment : Fragment() {
             Constants.APEX_FLASK_BACKGROUND_WIDGET,
             object : MyWidgetsChildAdapter.OnItemClickListener {
                 override fun onApexFlaskBackgroundWidgetClick(data: ApexFlaskBackgroundWidgetModel) {
-                    Log.d("MyWidgetsFragment", data.toString())
+                    findNavController().navigate(R.id.action_myWidgetsFragment_to_editApexFlaskBackgroundWidget)
                 }
 
                 override fun onApexPowerValuesWidgetClick(data: ApexPowerValuesWidgetModel) {
