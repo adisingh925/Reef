@@ -5,6 +5,13 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import app.android.damien.reef.database.Database
+import app.android.damien.reef.database_model.ApexCircleWidgetModel
+import app.android.damien.reef.database_model.ApexFlaskBackgroundWidgetModel
+import app.android.damien.reef.database_model.ApexPowerValuesWidgetModel
+import app.android.damien.reef.database_model.ApexSingleValueTypeOneModel
+import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
+import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
+import app.android.damien.reef.database_model.ApexWaterQualityWidget
 import app.android.damien.reef.database_model.CustomWidgetModel
 import app.android.damien.reef.repository.Repository
 import kotlinx.coroutines.Dispatchers
@@ -36,6 +43,48 @@ class WidgetsViewModel(application: Application) : AndroidViewModel(application)
     fun delete(data: CustomWidgetModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.delete(data)
+        }
+    }
+
+    fun insertApexFlaskBackgroundWidget(data: ApexFlaskBackgroundWidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertApexFlaskBackgroundWidget(data)
+        }
+    }
+
+    fun insertApexPowerValuesWidget(data: ApexPowerValuesWidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertApexPowerValuesWidget(data)
+        }
+    }
+
+    fun insertApexCircleWidget(data: ApexCircleWidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertApexCircleWidget(data)
+        }
+    }
+
+    fun insertApexTwoRectangleWidget(data: ApexTwoRectangleWidgets) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertApexTwoRectangleWidget(data)
+        }
+    }
+
+    fun insertApexSingleValueTypeOneWidget(data: ApexSingleValueTypeOneModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertApexSingleValueTypeOneWidget(data)
+        }
+    }
+
+    fun insertApexSingleValueTypeTwoWidget(data: ApexSingleValueTypeTwoModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertApexSingleValueTypeTwoWidget(data)
+        }
+    }
+
+    fun insertApexWaterQualityWidget(data: ApexWaterQualityWidget) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertApexWaterQualityWidget(data)
         }
     }
 }

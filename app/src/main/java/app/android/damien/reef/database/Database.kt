@@ -5,9 +5,19 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import app.android.damien.reef.dao.CustomWidgetsDao
+import app.android.damien.reef.database_model.ApexCircleWidgetModel
+import app.android.damien.reef.database_model.ApexFlaskBackgroundWidgetModel
+import app.android.damien.reef.database_model.ApexPowerValuesWidgetModel
+import app.android.damien.reef.database_model.ApexSingleValueTypeOneModel
+import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
+import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
 import app.android.damien.reef.database_model.CustomWidgetModel
 
-@Database(entities = [CustomWidgetModel::class], version = 1, exportSchema = false)
+@Database(
+    entities = [CustomWidgetModel::class, ApexFlaskBackgroundWidgetModel::class, ApexPowerValuesWidgetModel::class, ApexCircleWidgetModel::class, ApexTwoRectangleWidgets::class, ApexSingleValueTypeOneModel::class, ApexSingleValueTypeTwoModel::class],
+    version = 1,
+    exportSchema = false
+)
 abstract class Database : RoomDatabase() {
 
     abstract fun customWidgetsDao(): CustomWidgetsDao

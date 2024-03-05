@@ -6,6 +6,13 @@ object Constants {
     const val CUSTOM = 3
 
     const val CUSTOM_WIDGET_TABLE = "custom_widget_table"
+    const val APEX_FLASK_BACKGROUND_WIDGET_TABLE = "apex_flask_background_widget_table"
+    const val APEX_POWER_VALUES_WIDGET_TABLE = "apex_power_values_widget_table"
+    const val APEX_CIRCLE_WIDGET_TABLE = "apex_circle_widget_table"
+    const val APEX_TWO_RECTANGLE_WIDGET_TABLE = "apex_two_rectangle_widget_table"
+    const val APEX_SINGLE_VALUE_TYPE_1_WIDGET_TABLE = "apex_single_value_type_1_widget_table"
+    const val APEX_SINGLE_VALUE_TYPE_2_WIDGET_TABLE = "apex_single_value_type_2_widget_table"
+    const val APEX_WATER_QUALITY_WIDGET_TABLE = "apex_water_quality_widget_table"
 
 
     const val APEX_FLASK_BACKGROUND_WIDGET = "AFBW"

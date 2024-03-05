@@ -1,19 +1,20 @@
 package app.android.damien.reef.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import app.android.damien.reef.R
+import app.android.damien.reef.database_model.ApexFlaskBackgroundWidgetModel
 import app.android.damien.reef.databinding.FragmentApexSelectWidgetScreenBinding
 import app.android.damien.reef.model.ApexApiResponse
 import app.android.damien.reef.retrofit.ApiClient
 import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
 import app.android.damien.reef.utils.Toast
+import app.android.damien.reef.viewmodel.WidgetsViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -26,6 +27,10 @@ class ApexSelectWidgetScreen : Fragment() {
 
     private val binding by lazy {
         FragmentApexSelectWidgetScreenBinding.inflate(layoutInflater)
+    }
+
+    private val widgetsViewModel by lazy{
+        ViewModelProvider(this)[WidgetsViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -63,6 +68,7 @@ class ApexSelectWidgetScreen : Fragment() {
         binding.apexFlaskBackgroundWidgets.flaskConstraintLayout.setOnClickListener {
             val widgetCount = SharedPreferences.read(Constants.APEX_FLASK_BACKGROUND_WIDGET, 0)
             if (widgetCount in 0..4) {
+                widgetsViewModel.insertApexFlaskBackgroundWidget(ApexFlaskBackgroundWidgetModel(0, 0f, 0f, 0f, "Slot 1", "Slot 2", "Slot 3"))
                 SharedPreferences.write(Constants.APEX_FLASK_BACKGROUND_WIDGET, widgetCount + 1)
             } else {
                 Toast.showSnackbar(binding.root, "You can only add 5 widgets")
