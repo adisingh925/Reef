@@ -9,12 +9,12 @@ import app.android.damien.reef.utils.Constants
 @Entity(tableName = Constants.APEX_FLASK_BACKGROUND_WIDGET_TABLE)
 data class ApexFlaskBackgroundWidgetModel(
     @PrimaryKey(autoGenerate = true) val id: Int,
-    val slot1Value: Float,
-    val slot2Value: Float,
-    val slot3Value: Float,
-    val slot1Name: String?,
-    val slot2Name: String?,
-    val slot3Name: String?,
+    var slot1Value: Float,
+    var slot2Value: Float,
+    var slot3Value: Float,
+    var slot1Name: String?,
+    var slot2Name: String?,
+    var slot3Name: String?,
 ) : Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readInt(),

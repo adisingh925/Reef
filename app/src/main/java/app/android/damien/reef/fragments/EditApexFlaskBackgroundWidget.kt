@@ -21,6 +21,7 @@ import app.android.damien.reef.databinding.FragmentEditApexFlaskBackgroundWidget
 import app.android.damien.reef.model.ApexApiResponse
 import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
+import app.android.damien.reef.utils.Toast
 import app.android.damien.reef.viewmodel.WidgetsViewModel
 import com.google.gson.Gson
 import org.json.JSONArray
@@ -55,28 +56,32 @@ class EditApexFlaskBackgroundWidget : Fragment() {
 
         apexFlaskBackgroundWidget = arguments?.getParcelable(Constants.APEX_FLASK_BACKGROUND_WIDGET)!!
 
-        binding.flaskBackgroundWidgetEditLayout.slot1text.text = apexFlaskBackgroundWidget.slot1Name
-        binding.flaskBackgroundWidgetEditLayout.slot2text.text = apexFlaskBackgroundWidget.slot2Name
-        binding.flaskBackgroundWidgetEditLayout.slot3text.text = apexFlaskBackgroundWidget.slot3Name
+        binding.flaskBackgroundWidgetEditLayout.slot1name.text = apexFlaskBackgroundWidget.slot1Name
+        binding.flaskBackgroundWidgetEditLayout.slot2name.text = apexFlaskBackgroundWidget.slot2Name
+        binding.flaskBackgroundWidgetEditLayout.slot3name.text = apexFlaskBackgroundWidget.slot3Name
         binding.flaskBackgroundWidgetEditLayout.slot1value.text = apexFlaskBackgroundWidget.slot1Value.toString()
         binding.flaskBackgroundWidgetEditLayout.slot2value.text = apexFlaskBackgroundWidget.slot2Value.toString()
         binding.flaskBackgroundWidgetEditLayout.slot3value.text = apexFlaskBackgroundWidget.slot3Value.toString()
 
+        binding.slot1.text = apexFlaskBackgroundWidget.slot1Name
+        binding.slot2.text = apexFlaskBackgroundWidget.slot2Name
+        binding.slot3.text = apexFlaskBackgroundWidget.slot3Name
+
         initApiData()
 
         binding.slot1.addTextChangedListener {
-            binding.flaskBackgroundWidgetEditLayout.slot1value.text = it.toString()
-            binding.flaskBackgroundWidgetEditLayout.slot1text.text = JSONObject(apexData.getJSONObject(0).toString()).get(it.toString()).toString()
+            binding.flaskBackgroundWidgetEditLayout.slot1name.text = it.toString()
+            binding.flaskBackgroundWidgetEditLayout.slot1value.text = JSONObject(apexData.getJSONObject(0).toString()).get(it.toString()).toString()
         }
 
         binding.slot2.addTextChangedListener {
-            binding.flaskBackgroundWidgetEditLayout.slot2value.text = it.toString()
-            binding.flaskBackgroundWidgetEditLayout.slot2text.text = JSONObject(apexData.getJSONObject(0).toString()).get(it.toString()).toString()
+            binding.flaskBackgroundWidgetEditLayout.slot2name.text = it.toString()
+            binding.flaskBackgroundWidgetEditLayout.slot2value.text = JSONObject(apexData.getJSONObject(0).toString()).get(it.toString()).toString()
         }
 
         binding.slot3.addTextChangedListener {
-            binding.flaskBackgroundWidgetEditLayout.slot3value.text = it.toString()
-            binding.flaskBackgroundWidgetEditLayout.slot3text.text = JSONObject(apexData.getJSONObject(0).toString()).get(it.toString()).toString()
+            binding.flaskBackgroundWidgetEditLayout.slot3name.text = it.toString()
+            binding.flaskBackgroundWidgetEditLayout.slot3value.text = JSONObject(apexData.getJSONObject(0).toString()).get(it.toString()).toString()
         }
 
         val dragListener = View.OnDragListener { view, event ->
@@ -102,12 +107,10 @@ class EditApexFlaskBackgroundWidget : Fragment() {
                 DragEvent.ACTION_DROP -> {
                     val item = event.clipData.getItemAt(0)
                     val dragData = item.text
-                    Log.d("TAG", "onCreateView: $dragData")
 
                     view?.invalidate()
 
                     val destination = view as TextView
-                    Log.d("TAG", "onCreateView: ${destination.id}")
                     destination.text = dragData
 
                     true
@@ -137,7 +140,14 @@ class EditApexFlaskBackgroundWidget : Fragment() {
         }
 
         binding.saveButton.setOnClickListener {
+            apexFlaskBackgroundWidget.slot1Name = binding.flaskBackgroundWidgetEditLayout.slot1name.text.toString()
+            apexFlaskBackgroundWidget.slot2Name = binding.flaskBackgroundWidgetEditLayout.slot2name.text.toString()
+            apexFlaskBackgroundWidget.slot3Name = binding.flaskBackgroundWidgetEditLayout.slot3name.text.toString()
+            apexFlaskBackgroundWidget.slot1Value = binding.flaskBackgroundWidgetEditLayout.slot1value.text.toString().toFloat()
+            apexFlaskBackgroundWidget.slot2Value = binding.flaskBackgroundWidgetEditLayout.slot2value.text.toString().toFloat()
+            apexFlaskBackgroundWidget.slot3Value = binding.flaskBackgroundWidgetEditLayout.slot3value.text.toString().toFloat()
             widgetsViewModel.updateApexFlaskBackgroundWidget(apexFlaskBackgroundWidget)
+            Toast.showSnackbar(binding.root, "Apex Flask Background Widget Updated")
         }
 
         return binding.root

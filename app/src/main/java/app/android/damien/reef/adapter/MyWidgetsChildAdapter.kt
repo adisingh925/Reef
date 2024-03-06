@@ -68,9 +68,9 @@ class MyWidgetsChildAdapter(
         val slot1Value = itemView.findViewById<TextView>(R.id.slot1value)
         val slot2Value = itemView.findViewById<TextView>(R.id.slot2value)
         val slot3Value = itemView.findViewById<TextView>(R.id.slot3value)
-        val slot1name = itemView.findViewById<TextView>(R.id.slot1text)
-        val slot2name = itemView.findViewById<TextView>(R.id.slot2text)
-        val slot3name = itemView.findViewById<TextView>(R.id.slot3text)
+        val slot1name = itemView.findViewById<TextView>(R.id.slot1name)
+        val slot2name = itemView.findViewById<TextView>(R.id.slot2name)
+        val slot3name = itemView.findViewById<TextView>(R.id.slot3name)
 
         fun bind(position: Int) {
 
