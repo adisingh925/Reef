@@ -13,7 +13,7 @@
         <item name="android:statusBarColor">@color/darkBackgroundColor</item>
         <!-- Customize your theme here. -->
         <item name="appBackgroundColor">@color/darkBackgroundColor</item>
-        <item name="android:navigationBarColor">@color/darkBackgroundColor</item>
+        <item name="android:navigationBarColor">#343434</item>
 <!--        <item name="android:tint">@color/white</item>-->
         <item name="resourcesTint">@color/white</item>
     </style>

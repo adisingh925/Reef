@@ -12,15 +12,21 @@ data class ApexFlaskBackgroundWidgetModel(
     var slot1Value: Float,
     var slot2Value: Float,
     var slot3Value: Float,
-    var slot1Name: String?,
-    var slot2Name: String?,
-    var slot3Name: String?,
+    var slot1ActualName: String?,
+    var slot1GivenName : String?,
+    var slot2ActualName: String?,
+    var slot2GivenName : String?,
+    var slot3ActualName: String?,
+    var slot3GivenName : String?
 ) : Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readFloat(),
         parcel.readFloat(),
         parcel.readFloat(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString()
@@ -32,9 +38,12 @@ data class ApexFlaskBackgroundWidgetModel(
         parcel.writeFloat(slot1Value)
         parcel.writeFloat(slot2Value)
         parcel.writeFloat(slot3Value)
-        parcel.writeString(slot1Name)
-        parcel.writeString(slot2Name)
-        parcel.writeString(slot3Name)
+        parcel.writeString(slot1ActualName)
+        parcel.writeString(slot1GivenName)
+        parcel.writeString(slot2ActualName)
+        parcel.writeString(slot2GivenName)
+        parcel.writeString(slot3ActualName)
+        parcel.writeString(slot3GivenName)
     }
 
     override fun describeContents(): Int {
@@ -50,4 +59,5 @@ data class ApexFlaskBackgroundWidgetModel(
             return arrayOfNulls(size)
         }
     }
+
 }

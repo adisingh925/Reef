@@ -15,6 +15,7 @@ import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
 import app.android.damien.reef.utils.Toast
 import app.android.damien.reef.viewmodel.WidgetsViewModel
+import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -29,7 +30,7 @@ class ApexSelectWidgetScreen : Fragment() {
         FragmentApexSelectWidgetScreenBinding.inflate(layoutInflater)
     }
 
-    private val widgetsViewModel by lazy{
+    private val widgetsViewModel by lazy {
         ViewModelProvider(this)[WidgetsViewModel::class.java]
     }
 
@@ -68,7 +69,20 @@ class ApexSelectWidgetScreen : Fragment() {
         binding.apexFlaskBackgroundWidgets.flaskConstraintLayout.setOnClickListener {
             val widgetCount = SharedPreferences.read(Constants.APEX_FLASK_BACKGROUND_WIDGET, 0)
             if (widgetCount in 0..4) {
-                widgetsViewModel.insertApexFlaskBackgroundWidget(ApexFlaskBackgroundWidgetModel(0, 0f, 0f, 0f, "Slot 1", "Slot 2", "Slot 3"))
+                widgetsViewModel.insertApexFlaskBackgroundWidget(
+                    ApexFlaskBackgroundWidgetModel(
+                        0,
+                        0f,
+                        0f,
+                        0f,
+                        "Slot 1",
+                        "",
+                        "Slot 2",
+                        "",
+                        "Slot 3",
+                        ""
+                    )
+                )
                 SharedPreferences.write(Constants.APEX_FLASK_BACKGROUND_WIDGET, widgetCount + 1)
             } else {
                 Toast.showSnackbar(binding.root, "You can only add 5 widgets")
@@ -177,7 +191,9 @@ class ApexSelectWidgetScreen : Fragment() {
                     if (response.isSuccessful) {
                         val data = response.body()
                         if (data != null) {
-                            SharedPreferences.write("apexData", data.toString())
+                            val gson = Gson()
+                            val jsonData = gson.toJson(data)
+                            SharedPreferences.write("apexData", jsonData)
                         }
                     }
                 }

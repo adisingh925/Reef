@@ -74,12 +74,27 @@ class MyWidgetsChildAdapter(
 
         fun bind(position: Int) {
 
-            slot1name.setText(setApexFlaskBackgroundWidgetData[position].slot1Name)
-            slot2name.setText(setApexFlaskBackgroundWidgetData[position].slot2Name)
-            slot3name.setText(setApexFlaskBackgroundWidgetData[position].slot3Name)
-            slot1Value.setText(setApexFlaskBackgroundWidgetData[position].slot1Value.toString())
-            slot2Value.setText(setApexFlaskBackgroundWidgetData[position].slot2Value.toString())
-            slot3Value.setText(setApexFlaskBackgroundWidgetData[position].slot3Value.toString())
+            if(setApexFlaskBackgroundWidgetData[position].slot1GivenName.isNullOrEmpty()){
+                slot1name.text = setApexFlaskBackgroundWidgetData[position].slot1ActualName
+            }else{
+                slot1name.text = setApexFlaskBackgroundWidgetData[position].slot1GivenName
+            }
+
+            if(setApexFlaskBackgroundWidgetData[position].slot2GivenName.isNullOrEmpty()) {
+                slot2name.text = setApexFlaskBackgroundWidgetData[position].slot2ActualName
+            }else{
+                slot2name.text = setApexFlaskBackgroundWidgetData[position].slot2GivenName
+            }
+
+            if(setApexFlaskBackgroundWidgetData[position].slot3GivenName.isNullOrEmpty()) {
+                slot3name.text = setApexFlaskBackgroundWidgetData[position].slot3ActualName
+            }else{
+                slot3name.text = setApexFlaskBackgroundWidgetData[position].slot3GivenName
+            }
+
+            slot1Value.text = setApexFlaskBackgroundWidgetData[position].slot1Value.toString()
+            slot2Value.text = setApexFlaskBackgroundWidgetData[position].slot2Value.toString()
+            slot3Value.text = setApexFlaskBackgroundWidgetData[position].slot3Value.toString()
 
             itemView.setOnClickListener {
                 onItemClickListener.onApexFlaskBackgroundWidgetClick(setApexFlaskBackgroundWidgetData[position])

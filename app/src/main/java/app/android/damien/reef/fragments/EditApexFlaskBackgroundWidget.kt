@@ -17,16 +17,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import app.android.damien.reef.R
 import app.android.damien.reef.adapter.ValuesAdapter
 import app.android.damien.reef.database_model.ApexFlaskBackgroundWidgetModel
+import app.android.damien.reef.databinding.ApexFlaskBackgroundWidgetEditDialogBinding
 import app.android.damien.reef.databinding.FragmentEditApexFlaskBackgroundWidgetBinding
 import app.android.damien.reef.model.ApexApiResponse
 import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
 import app.android.damien.reef.utils.Toast
 import app.android.damien.reef.viewmodel.WidgetsViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
 import org.json.JSONArray
 import org.json.JSONObject
-
 
 class EditApexFlaskBackgroundWidget : Fragment() {
 
@@ -38,11 +39,11 @@ class EditApexFlaskBackgroundWidget : Fragment() {
         ViewModelProvider(this)[WidgetsViewModel::class.java]
     }
 
-    private val recyclerView by lazy{
+    private val recyclerView by lazy {
         binding.valuesRecyclerView
     }
 
-    private val adapter by lazy{
+    private val adapter by lazy {
         ValuesAdapter(requireContext())
     }
 
@@ -54,34 +55,190 @@ class EditApexFlaskBackgroundWidget : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        apexFlaskBackgroundWidget = arguments?.getParcelable(Constants.APEX_FLASK_BACKGROUND_WIDGET)!!
+        apexFlaskBackgroundWidget =
+            arguments?.getParcelable(Constants.APEX_FLASK_BACKGROUND_WIDGET)!!
 
-        binding.flaskBackgroundWidgetEditLayout.slot1name.text = apexFlaskBackgroundWidget.slot1Name
-        binding.flaskBackgroundWidgetEditLayout.slot2name.text = apexFlaskBackgroundWidget.slot2Name
-        binding.flaskBackgroundWidgetEditLayout.slot3name.text = apexFlaskBackgroundWidget.slot3Name
-        binding.flaskBackgroundWidgetEditLayout.slot1value.text = apexFlaskBackgroundWidget.slot1Value.toString()
-        binding.flaskBackgroundWidgetEditLayout.slot2value.text = apexFlaskBackgroundWidget.slot2Value.toString()
-        binding.flaskBackgroundWidgetEditLayout.slot3value.text = apexFlaskBackgroundWidget.slot3Value.toString()
+        if (apexFlaskBackgroundWidget.slot1GivenName.isNullOrEmpty()) {
+            binding.flaskBackgroundWidgetEditLayout.slot1name.text =
+                apexFlaskBackgroundWidget.slot1ActualName
+            binding.slot1.text = apexFlaskBackgroundWidget.slot1ActualName
+        } else {
+            binding.flaskBackgroundWidgetEditLayout.slot1name.text =
+                apexFlaskBackgroundWidget.slot1GivenName
+            binding.slot1.text = apexFlaskBackgroundWidget.slot1GivenName
+        }
 
-        binding.slot1.text = apexFlaskBackgroundWidget.slot1Name
-        binding.slot2.text = apexFlaskBackgroundWidget.slot2Name
-        binding.slot3.text = apexFlaskBackgroundWidget.slot3Name
+        if (apexFlaskBackgroundWidget.slot2GivenName.isNullOrEmpty()) {
+            binding.flaskBackgroundWidgetEditLayout.slot2name.text =
+                apexFlaskBackgroundWidget.slot2ActualName
+            binding.slot2.text = apexFlaskBackgroundWidget.slot2ActualName
+        } else {
+            binding.flaskBackgroundWidgetEditLayout.slot2name.text =
+                apexFlaskBackgroundWidget.slot2GivenName
+            binding.slot2.text = apexFlaskBackgroundWidget.slot2GivenName
+        }
+
+        if (apexFlaskBackgroundWidget.slot3GivenName.isNullOrEmpty()) {
+            binding.flaskBackgroundWidgetEditLayout.slot3name.text =
+                apexFlaskBackgroundWidget.slot3ActualName
+            binding.slot3.text = apexFlaskBackgroundWidget.slot3ActualName
+        } else {
+            binding.flaskBackgroundWidgetEditLayout.slot3name.text =
+                apexFlaskBackgroundWidget.slot3GivenName
+            binding.slot3.text = apexFlaskBackgroundWidget.slot3GivenName
+        }
+
+        binding.flaskBackgroundWidgetEditLayout.slot1value.text =
+            apexFlaskBackgroundWidget.slot1Value.toString()
+        binding.flaskBackgroundWidgetEditLayout.slot2value.text =
+            apexFlaskBackgroundWidget.slot2Value.toString()
+        binding.flaskBackgroundWidgetEditLayout.slot3value.text =
+            apexFlaskBackgroundWidget.slot3Value.toString()
 
         initApiData()
 
         binding.slot1.addTextChangedListener {
-            binding.flaskBackgroundWidgetEditLayout.slot1name.text = it.toString()
-            binding.flaskBackgroundWidgetEditLayout.slot1value.text = JSONObject(apexData.getJSONObject(0).toString()).get(it.toString()).toString()
+            if(JSONObject(apexData.getJSONObject(0).toString()).has(it.toString())){
+                apexFlaskBackgroundWidget.slot1ActualName = it.toString()
+                apexFlaskBackgroundWidget.slot1GivenName = ""
+                binding.flaskBackgroundWidgetEditLayout.slot1name.text = it.toString()
+            } else {
+                binding.flaskBackgroundWidgetEditLayout.slot1name.text = it.toString()
+            }
+
+            binding.flaskBackgroundWidgetEditLayout.slot1value.text =
+                JSONObject(apexData.getJSONObject(0).toString()).get(apexFlaskBackgroundWidget.slot1ActualName).toString().toFloat()
+                    .toString()
+
+            apexFlaskBackgroundWidget.slot1Value = apexFlaskBackgroundWidget.slot1ActualName?.let { it1 ->
+                JSONObject(apexData.getJSONObject(0).toString()).get(
+                    it1
+                ).toString().toFloat()
+            }!!
         }
 
         binding.slot2.addTextChangedListener {
-            binding.flaskBackgroundWidgetEditLayout.slot2name.text = it.toString()
-            binding.flaskBackgroundWidgetEditLayout.slot2value.text = JSONObject(apexData.getJSONObject(0).toString()).get(it.toString()).toString()
+            if (JSONObject(apexData.getJSONObject(0).toString()).has(it.toString())) {
+                apexFlaskBackgroundWidget.slot2ActualName = it.toString()
+                apexFlaskBackgroundWidget.slot2GivenName = ""
+                binding.flaskBackgroundWidgetEditLayout.slot2name.text = it.toString()
+            } else {
+                binding.flaskBackgroundWidgetEditLayout.slot2name.text = it.toString()
+            }
+
+            binding.flaskBackgroundWidgetEditLayout.slot2value.text =
+                apexFlaskBackgroundWidget.slot2ActualName?.let { it1 ->
+                    JSONObject(apexData.getJSONObject(0).toString()).get(
+                        it1
+                    ).toString().toFloat().toString()
+                }
+
+            apexFlaskBackgroundWidget.slot2Value = apexFlaskBackgroundWidget.slot2ActualName?.let { it1 ->
+                JSONObject(apexData.getJSONObject(0).toString()).get(
+                    it1
+                ).toString().toFloat()
+            }!!
         }
 
         binding.slot3.addTextChangedListener {
-            binding.flaskBackgroundWidgetEditLayout.slot3name.text = it.toString()
-            binding.flaskBackgroundWidgetEditLayout.slot3value.text = JSONObject(apexData.getJSONObject(0).toString()).get(it.toString()).toString()
+            if (JSONObject(apexData.getJSONObject(0).toString()).has(it.toString())) {
+                apexFlaskBackgroundWidget.slot3ActualName = it.toString()
+                apexFlaskBackgroundWidget.slot3GivenName = ""
+                binding.flaskBackgroundWidgetEditLayout.slot3name.text = it.toString()
+            } else {
+                binding.flaskBackgroundWidgetEditLayout.slot3name.text = it.toString()
+            }
+
+            binding.flaskBackgroundWidgetEditLayout.slot3value.text =
+                apexFlaskBackgroundWidget.slot3ActualName?.let { it1 ->
+                    JSONObject(apexData.getJSONObject(0).toString()).get(
+                        it1
+                    ).toString().toFloat().toString()
+                }
+
+            apexFlaskBackgroundWidget.slot3Value = apexFlaskBackgroundWidget.slot3ActualName?.let { it1 ->
+                JSONObject(apexData.getJSONObject(0).toString()).get(
+                    it1
+                ).toString().toFloat()
+            }!!
+        }
+
+        binding.slot1.setOnClickListener {
+            if (!binding.slot1.text.contains("Slot")) {
+                val dialog = BottomSheetDialog(requireContext())
+                val view = ApexFlaskBackgroundWidgetEditDialogBinding.inflate(layoutInflater)
+
+                view.textInput.setText(binding.slot1.text.toString())
+
+                view.saveButton.setOnClickListener {
+                    if (view.textInput.text.toString().isEmpty()) {
+                        view.textInput.error = "Field is required"
+                        return@setOnClickListener
+                    }
+
+                    apexFlaskBackgroundWidget.slot1GivenName = view.textInput.text.toString()
+                    binding.slot1.text = view.textInput.text.toString()
+                    dialog.dismiss()
+                }
+
+                dialog.setCancelable(true)
+                dialog.setContentView(view.root)
+                dialog.show()
+            } else {
+                Toast.showSnackbar(binding.root, "Please add a value to the slot first")
+            }
+        }
+
+        binding.slot2.setOnClickListener {
+            if (!binding.slot2.text.contains("Slot")) {
+                val dialog = BottomSheetDialog(requireContext())
+                val view = ApexFlaskBackgroundWidgetEditDialogBinding.inflate(layoutInflater)
+
+                view.textInput.setText(binding.slot2.text.toString())
+
+                view.saveButton.setOnClickListener {
+                    if (view.textInput.text.toString().isEmpty()) {
+                        view.textInput.error = "Field is required"
+                        return@setOnClickListener
+                    }
+
+                    apexFlaskBackgroundWidget.slot2GivenName = view.textInput.text.toString()
+                    binding.slot2.text = view.textInput.text.toString()
+                    dialog.dismiss()
+                }
+
+                dialog.setCancelable(true)
+                dialog.setContentView(view.root)
+                dialog.show()
+            } else {
+                Toast.showSnackbar(binding.root, "Please add a value to the slot first")
+            }
+        }
+
+        binding.slot3.setOnClickListener {
+            if (!binding.slot3.text.contains("Slot")) {
+                val dialog = BottomSheetDialog(requireContext())
+                val view = ApexFlaskBackgroundWidgetEditDialogBinding.inflate(layoutInflater)
+
+                view.textInput.setText(binding.slot3.text.toString())
+
+                view.saveButton.setOnClickListener {
+                    if (view.textInput.text.toString().isEmpty()) {
+                        view.textInput.error = "Field is required"
+                        return@setOnClickListener
+                    }
+
+                    apexFlaskBackgroundWidget.slot3GivenName = view.textInput.text.toString()
+                    binding.slot3.text = view.textInput.text.toString()
+                    dialog.dismiss()
+                }
+
+                dialog.setCancelable(true)
+                dialog.setContentView(view.root)
+                dialog.show()
+            } else {
+                Toast.showSnackbar(binding.root, "Please add a value to the slot first")
+            }
         }
 
         val dragListener = View.OnDragListener { view, event ->
@@ -135,17 +292,15 @@ class EditApexFlaskBackgroundWidget : Fragment() {
         initValuesRecyclerView()
 
         binding.deleteButton.setOnClickListener {
+            SharedPreferences.write(
+                Constants.APEX_FLASK_BACKGROUND_WIDGET,
+                SharedPreferences.read(Constants.APEX_FLASK_BACKGROUND_WIDGET, 0) - 1
+            )
             widgetsViewModel.deleteApexFlaskBackgroundWidget(apexFlaskBackgroundWidget)
             findNavController().popBackStack()
         }
 
         binding.saveButton.setOnClickListener {
-            apexFlaskBackgroundWidget.slot1Name = binding.flaskBackgroundWidgetEditLayout.slot1name.text.toString()
-            apexFlaskBackgroundWidget.slot2Name = binding.flaskBackgroundWidgetEditLayout.slot2name.text.toString()
-            apexFlaskBackgroundWidget.slot3Name = binding.flaskBackgroundWidgetEditLayout.slot3name.text.toString()
-            apexFlaskBackgroundWidget.slot1Value = binding.flaskBackgroundWidgetEditLayout.slot1value.text.toString().toFloat()
-            apexFlaskBackgroundWidget.slot2Value = binding.flaskBackgroundWidgetEditLayout.slot2value.text.toString().toFloat()
-            apexFlaskBackgroundWidget.slot3Value = binding.flaskBackgroundWidgetEditLayout.slot3value.text.toString().toFloat()
             widgetsViewModel.updateApexFlaskBackgroundWidget(apexFlaskBackgroundWidget)
             Toast.showSnackbar(binding.root, "Apex Flask Background Widget Updated")
         }
@@ -153,9 +308,8 @@ class EditApexFlaskBackgroundWidget : Fragment() {
         return binding.root
     }
 
-    private fun initApiData(){
-        Log.d("TAG", "initApiData: ${SharedPreferences.read("apexData","")}")
-        apexData = JSONArray(SharedPreferences.read("apexData","").toString())
+    private fun initApiData() {
+        apexData = JSONArray(SharedPreferences.read("apexData", "").toString())
     }
 
     private fun initValuesRecyclerView() {
