@@ -44,6 +44,12 @@ interface CustomWidgetsDao {
     @Query("SELECT * from apex_flask_background_widget_table order by id asc")
     fun readApexFlaskBackgroundWidget() : LiveData<List<ApexFlaskBackgroundWidgetModel>>
 
+    @Delete
+    fun deleteApexFlaskBackgroundWidget(data: ApexFlaskBackgroundWidgetModel)
+
+    @Update
+    fun updateApexFlaskBackgroundWidget(data: ApexFlaskBackgroundWidgetModel)
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertApexPowerValuesWidget(data: ApexPowerValuesWidgetModel)
 

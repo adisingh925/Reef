@@ -37,6 +37,14 @@ class Repository(private val dao: CustomWidgetsDao) {
         dao.insertApexFlaskBackgroundWidget(data)
     }
 
+    suspend fun deleteApexFlaskBackgroundWidget(data: ApexFlaskBackgroundWidgetModel) {
+        dao.deleteApexFlaskBackgroundWidget(data)
+    }
+
+    suspend fun updateApexFlaskBackgroundWidget(data: ApexFlaskBackgroundWidgetModel) {
+        dao.updateApexFlaskBackgroundWidget(data)
+    }
+
     suspend fun insertApexPowerValuesWidget(data: ApexPowerValuesWidgetModel) {
         dao.insertApexPowerValuesWidget(data)
     }

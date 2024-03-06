@@ -66,6 +66,18 @@ class WidgetsViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
+    fun deleteApexFlaskBackgroundWidget(data: ApexFlaskBackgroundWidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteApexFlaskBackgroundWidget(data)
+        }
+    }
+
+    fun updateApexFlaskBackgroundWidget(data: ApexFlaskBackgroundWidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateApexFlaskBackgroundWidget(data)
+        }
+    }
+
     fun insertApexPowerValuesWidget(data: ApexPowerValuesWidgetModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertApexPowerValuesWidget(data)

@@ -28,13 +28,13 @@ import app.android.damien.reef.utils.Constants
 import app.android.damien.reef.viewmodel.WidgetsViewModel
 
 
-class MyWidgetsFragment : Fragment() {
+class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener {
 
     private val binding by lazy {
         FragmentMyWidgetsBinding.inflate(layoutInflater)
     }
 
-    private val widgetsViewModel by lazy{
+    private val widgetsViewModel by lazy {
         ViewModelProvider(this)[WidgetsViewModel::class.java]
     }
 
@@ -42,247 +42,56 @@ class MyWidgetsFragment : Fragment() {
         MyWidgetsChildAdapter(
             requireContext(),
             Constants.APEX_CIRCLE_WIDGET,
-            object : MyWidgetsChildAdapter.OnItemClickListener {
-                override fun onApexFlaskBackgroundWidgetClick(data: ApexFlaskBackgroundWidgetModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexPowerValuesWidgetClick(data: ApexPowerValuesWidgetModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexCircleWidgetClick(data: ApexCircleWidgetModel) {
-                    Log.d("MyWidgetsFragment", data.toString())
-                }
-
-                override fun onApexTwoRectangleWidgetClick(data: ApexTwoRectangleWidgets) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexSingleValueTypeOneWidgetClick(data: ApexSingleValueTypeOneModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexSingleValueTypeTwoWidgetClick(data: ApexSingleValueTypeTwoModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexWaterQualityWidgetClick(data: ApexWaterQualityWidget) {
-                    TODO("Not yet implemented")
-                }
-            })
+            this
+        )
     }
 
     private val apexFlaskBackgroundWidgetAdapter by lazy {
         MyWidgetsChildAdapter(
             requireContext(),
             Constants.APEX_FLASK_BACKGROUND_WIDGET,
-            object : MyWidgetsChildAdapter.OnItemClickListener {
-                override fun onApexFlaskBackgroundWidgetClick(data: ApexFlaskBackgroundWidgetModel) {
-                    findNavController().navigate(R.id.action_myWidgetsFragment_to_editApexFlaskBackgroundWidget)
-                }
-
-                override fun onApexPowerValuesWidgetClick(data: ApexPowerValuesWidgetModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexCircleWidgetClick(data: ApexCircleWidgetModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexTwoRectangleWidgetClick(data: ApexTwoRectangleWidgets) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexSingleValueTypeOneWidgetClick(data: ApexSingleValueTypeOneModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexSingleValueTypeTwoWidgetClick(data: ApexSingleValueTypeTwoModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexWaterQualityWidgetClick(data: ApexWaterQualityWidget) {
-                    TODO("Not yet implemented")
-                }
-            })
+            this
+        )
     }
 
     private val apexPowerValueWidgetAdapter by lazy {
         MyWidgetsChildAdapter(
             requireContext(),
             Constants.APEX_POWER_VALUE_WIDGET,
-            object : MyWidgetsChildAdapter.OnItemClickListener {
-                override fun onApexFlaskBackgroundWidgetClick(data: ApexFlaskBackgroundWidgetModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexPowerValuesWidgetClick(data: ApexPowerValuesWidgetModel) {
-                    Log.d("MyWidgetsFragment", data.toString())
-                }
-
-                override fun onApexCircleWidgetClick(data: ApexCircleWidgetModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexTwoRectangleWidgetClick(data: ApexTwoRectangleWidgets) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexSingleValueTypeOneWidgetClick(data: ApexSingleValueTypeOneModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexSingleValueTypeTwoWidgetClick(data: ApexSingleValueTypeTwoModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexWaterQualityWidgetClick(data: ApexWaterQualityWidget) {
-                    TODO("Not yet implemented")
-                }
-
-            })
+            this
+        )
     }
 
     private val apexTwoRectangleWidgetAdapter by lazy {
         MyWidgetsChildAdapter(
             requireContext(),
             Constants.APEX_TWO_RECTANGLE_WIDGET,
-            object : MyWidgetsChildAdapter.OnItemClickListener {
-                override fun onApexFlaskBackgroundWidgetClick(data: ApexFlaskBackgroundWidgetModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexPowerValuesWidgetClick(data: ApexPowerValuesWidgetModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexCircleWidgetClick(data: ApexCircleWidgetModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexTwoRectangleWidgetClick(data: ApexTwoRectangleWidgets) {
-                    Log.d("MyWidgetsFragment", data.toString())
-                }
-
-                override fun onApexSingleValueTypeOneWidgetClick(data: ApexSingleValueTypeOneModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexSingleValueTypeTwoWidgetClick(data: ApexSingleValueTypeTwoModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexWaterQualityWidgetClick(data: ApexWaterQualityWidget) {
-                    TODO("Not yet implemented")
-                }
-
-            })
+            this
+        )
     }
 
     private val apexSingleValueType1Adapter by lazy {
         MyWidgetsChildAdapter(
             requireContext(),
             Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET,
-            object : MyWidgetsChildAdapter.OnItemClickListener {
-                override fun onApexFlaskBackgroundWidgetClick(data: ApexFlaskBackgroundWidgetModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexPowerValuesWidgetClick(data: ApexPowerValuesWidgetModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexCircleWidgetClick(data: ApexCircleWidgetModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexTwoRectangleWidgetClick(data: ApexTwoRectangleWidgets) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexSingleValueTypeOneWidgetClick(data: ApexSingleValueTypeOneModel) {
-                    Log.d("MyWidgetsFragment", data.toString())
-                }
-
-                override fun onApexSingleValueTypeTwoWidgetClick(data: ApexSingleValueTypeTwoModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexWaterQualityWidgetClick(data: ApexWaterQualityWidget) {
-                    TODO("Not yet implemented")
-                }
-            })
+            this
+        )
     }
 
     private val apexSingleValueType2Adapter by lazy {
         MyWidgetsChildAdapter(
             requireContext(),
             Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET,
-            object : MyWidgetsChildAdapter.OnItemClickListener {
-                override fun onApexFlaskBackgroundWidgetClick(data: ApexFlaskBackgroundWidgetModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexPowerValuesWidgetClick(data: ApexPowerValuesWidgetModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexCircleWidgetClick(data: ApexCircleWidgetModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexTwoRectangleWidgetClick(data: ApexTwoRectangleWidgets) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexSingleValueTypeOneWidgetClick(data: ApexSingleValueTypeOneModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexSingleValueTypeTwoWidgetClick(data: ApexSingleValueTypeTwoModel) {
-                    Log.d("MyWidgetsFragment", data.toString())
-                }
-
-                override fun onApexWaterQualityWidgetClick(data: ApexWaterQualityWidget) {
-                    TODO("Not yet implemented")
-                }
-            })
+            this
+        )
     }
 
     private val apexWaterQualityWidgetAdapter by lazy {
         MyWidgetsChildAdapter(
             requireContext(),
             Constants.APEX_WATER_QUALITY_WIDGET,
-            object : MyWidgetsChildAdapter.OnItemClickListener {
-                override fun onApexFlaskBackgroundWidgetClick(data: ApexFlaskBackgroundWidgetModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexPowerValuesWidgetClick(data: ApexPowerValuesWidgetModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexCircleWidgetClick(data: ApexCircleWidgetModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexTwoRectangleWidgetClick(data: ApexTwoRectangleWidgets) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexSingleValueTypeOneWidgetClick(data: ApexSingleValueTypeOneModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexSingleValueTypeTwoWidgetClick(data: ApexSingleValueTypeTwoModel) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onApexWaterQualityWidgetClick(data: ApexWaterQualityWidget) {
-                    Log.d("MyWidgetsFragment", data.toString())
-                }
-            })
+            this
+        )
     }
 //
 //    private val focustronicOneElementWidgetAdapter by lazy {
@@ -343,43 +152,43 @@ class MyWidgetsFragment : Fragment() {
         binding.apexFlaskBackgroundWidgetRecyclerView
     }
 
-    private val apexPowerValueWidgetRecyclerView by lazy{
+    private val apexPowerValueWidgetRecyclerView by lazy {
         binding.apexPowerValueWidgetRecyclerView
     }
 
-    private val apexTwoRectangleWidgetRecyclerView by lazy{
+    private val apexTwoRectangleWidgetRecyclerView by lazy {
         binding.apexTwoRectangleWidgetRecyclerView
     }
 
-    private val apexSingleValueType1WidgetRecyclerView by lazy{
+    private val apexSingleValueType1WidgetRecyclerView by lazy {
         binding.apexSingleValueType1WidgetRecyclerView
     }
 
-    private val apexSingleValueType2WidgetRecyclerView by lazy{
+    private val apexSingleValueType2WidgetRecyclerView by lazy {
         binding.apexSingleValueType2WidgetRecyclerView
     }
 
-    private val apexWaterQualityWidgetRecyclerView by lazy{
+    private val apexWaterQualityWidgetRecyclerView by lazy {
         binding.apexWaterQualityWidgetRecyclerView
     }
 
-    private val focustronicOneElementWidgetRecyclerView by lazy{
+    private val focustronicOneElementWidgetRecyclerView by lazy {
         binding.focustronic1ElementWidgetRecyclerView
     }
 
-    private val focustronicTwoRectangleWidgetRecyclerView by lazy{
+    private val focustronicTwoRectangleWidgetRecyclerView by lazy {
         binding.focustronic2RectangleWidgetRecyclerView
     }
 
-    private val focustronicSingleValueTypeOneWidgetRecyclerView by lazy{
+    private val focustronicSingleValueTypeOneWidgetRecyclerView by lazy {
         binding.focustronicSingleValueType1WidgetRecyclerView
     }
 
-    private val focustronicSingleValueTypeTwoWidgetRecyclerView by lazy{
+    private val focustronicSingleValueTypeTwoWidgetRecyclerView by lazy {
         binding.focustronicSingleValueType2WidgetRecyclerView
     }
 
-    private val focustronicGridWidgetRecyclerView by lazy{
+    private val focustronicGridWidgetRecyclerView by lazy {
         binding.focustronicGridWidgetRecyclerView
     }
 
@@ -427,51 +236,51 @@ class MyWidgetsFragment : Fragment() {
             apexWaterQualityWidgetAdapter.setApexWaterQualityWidgetData(it)
         }
 
-        if(SharedPreferences.read(Constants.APEX_CIRCLE_WIDGET,0) == 0){
+        if (SharedPreferences.read(Constants.APEX_CIRCLE_WIDGET, 0) == 0) {
             binding.apexCircleWidgetLayout.visibility = View.GONE
-        }else{
+        } else {
             binding.apexCircleWidgetLayout.visibility = View.VISIBLE
             initApexCircleRecyclerview()
         }
 
-        if(SharedPreferences.read(Constants.APEX_FLASK_BACKGROUND_WIDGET,0) == 0) {
+        if (SharedPreferences.read(Constants.APEX_FLASK_BACKGROUND_WIDGET, 0) == 0) {
             binding.apexFlaskBackgroundLayout.visibility = View.GONE
-        }else{
+        } else {
             binding.apexFlaskBackgroundLayout.visibility = View.VISIBLE
             initApexFlaskBackgroundRecyclerview()
         }
 
-        if(SharedPreferences.read(Constants.APEX_POWER_VALUE_WIDGET,0) == 0) {
+        if (SharedPreferences.read(Constants.APEX_POWER_VALUE_WIDGET, 0) == 0) {
             binding.apexPowerValueWidgetLayout.visibility = View.GONE
-        }else{
+        } else {
             binding.apexPowerValueWidgetLayout.visibility = View.VISIBLE
             initApexPowerValueWidgetAdapter()
         }
 
-        if(SharedPreferences.read(Constants.APEX_TWO_RECTANGLE_WIDGET,0) == 0) {
+        if (SharedPreferences.read(Constants.APEX_TWO_RECTANGLE_WIDGET, 0) == 0) {
             binding.apexTwoRectangleWidgetLayout.visibility = View.GONE
-        }else{
+        } else {
             binding.apexTwoRectangleWidgetLayout.visibility = View.VISIBLE
             initApexTwoRectangleWidgetAdapter()
         }
 
-        if(SharedPreferences.read(Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET,0) == 0) {
+        if (SharedPreferences.read(Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET, 0) == 0) {
             binding.apexSingleValueType1Layout.visibility = View.GONE
-        }else{
+        } else {
             binding.apexSingleValueType1Layout.visibility = View.VISIBLE
             initApexSingleValueType1WidgetAdapter()
         }
 
-        if(SharedPreferences.read(Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET,0) == 0) {
+        if (SharedPreferences.read(Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET, 0) == 0) {
             binding.apexSingleValueType2Layout.visibility = View.GONE
-        }else{
+        } else {
             binding.apexSingleValueType2Layout.visibility = View.VISIBLE
             initApexSingleValueType2WidgetAdapter()
         }
 
-        if(SharedPreferences.read(Constants.APEX_WATER_QUALITY_WIDGET,0) == 0) {
+        if (SharedPreferences.read(Constants.APEX_WATER_QUALITY_WIDGET, 0) == 0) {
             binding.apexWaterQualityWidgetLayout.visibility = View.GONE
-        }else{
+        } else {
             binding.apexWaterQualityWidgetLayout.visibility = View.VISIBLE
             initApexWaterQualityWidgetAdapter()
         }
@@ -541,37 +350,73 @@ class MyWidgetsFragment : Fragment() {
 
     private fun initApexCircleRecyclerview() {
         apexCircleWidgetRecyclerView.adapter = apexCircleWidgetAdapter
-        apexCircleWidgetRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        apexCircleWidgetRecyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun initApexFlaskBackgroundRecyclerview() {
         apexFlaskBackgroundWidgetRecyclerView.adapter = apexFlaskBackgroundWidgetAdapter
-        apexFlaskBackgroundWidgetRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        apexFlaskBackgroundWidgetRecyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun initApexPowerValueWidgetAdapter() {
         apexPowerValueWidgetRecyclerView.adapter = apexPowerValueWidgetAdapter
-        apexPowerValueWidgetRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        apexPowerValueWidgetRecyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun initApexTwoRectangleWidgetAdapter() {
         apexTwoRectangleWidgetRecyclerView.adapter = apexTwoRectangleWidgetAdapter
-        apexTwoRectangleWidgetRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        apexTwoRectangleWidgetRecyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun initApexSingleValueType1WidgetAdapter() {
         apexSingleValueType1WidgetRecyclerView.adapter = apexSingleValueType1Adapter
-        apexSingleValueType1WidgetRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        apexSingleValueType1WidgetRecyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun initApexSingleValueType2WidgetAdapter() {
         apexSingleValueType2WidgetRecyclerView.adapter = apexSingleValueType2Adapter
-        apexSingleValueType2WidgetRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        apexSingleValueType2WidgetRecyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun initApexWaterQualityWidgetAdapter() {
         apexWaterQualityWidgetRecyclerView.adapter = apexWaterQualityWidgetAdapter
         apexWaterQualityWidgetRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+    }
+
+    override fun onApexFlaskBackgroundWidgetClick(data: ApexFlaskBackgroundWidgetModel) {
+        val bundle = Bundle()
+        bundle.putParcelable(Constants.APEX_FLASK_BACKGROUND_WIDGET, data)
+        findNavController().navigate(R.id.action_myWidgetsFragment_to_editApexFlaskBackgroundWidget, bundle)
+    }
+
+    override fun onApexPowerValuesWidgetClick(data: ApexPowerValuesWidgetModel) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onApexCircleWidgetClick(data: ApexCircleWidgetModel) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onApexTwoRectangleWidgetClick(data: ApexTwoRectangleWidgets) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onApexSingleValueTypeOneWidgetClick(data: ApexSingleValueTypeOneModel) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onApexSingleValueTypeTwoWidgetClick(data: ApexSingleValueTypeTwoModel) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onApexWaterQualityWidgetClick(data: ApexWaterQualityWidget) {
+        TODO("Not yet implemented")
     }
 
 //    private fun initFocustronicGridWidgetAdapter(data : List<MyWidgetsChildModel>) {

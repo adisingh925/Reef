@@ -1,0 +1,8 @@
+<!-- recycler_outline.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <stroke
+        android:width="5dp"
+        android:color="#4299d4" />
+    <corners android:radius="20dp" /> <!-- Adjust radius as needed -->
+</shape>
