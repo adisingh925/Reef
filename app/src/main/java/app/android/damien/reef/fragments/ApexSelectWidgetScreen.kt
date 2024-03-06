@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import app.android.damien.reef.database_model.ApexCircleWidgetModel
 import app.android.damien.reef.database_model.ApexFlaskBackgroundWidgetModel
 import app.android.damien.reef.databinding.FragmentApexSelectWidgetScreenBinding
 import app.android.damien.reef.model.ApexApiResponse
@@ -96,6 +97,20 @@ class ApexSelectWidgetScreen : Fragment() {
         binding.apexCircleWidgets.flaskConstraintLayout.setOnClickListener {
             val widgetCount = SharedPreferences.read(Constants.APEX_CIRCLE_WIDGET, 0)
             if (widgetCount in 0..4) {
+                widgetsViewModel.insertApexCircleWidget(
+                    ApexCircleWidgetModel(
+                        0,
+                        0f,
+                        0f,
+                        0f,
+                        "Slot 1",
+                        "",
+                        "Slot 2",
+                        "",
+                        "Slot 3",
+                        ""
+                    )
+                )
                 SharedPreferences.write(Constants.APEX_CIRCLE_WIDGET, widgetCount + 1)
             } else {
                 Toast.showSnackbar(binding.root, "You can only add 5 widgets")

@@ -24,9 +24,9 @@ class MyWidgetsChildAdapter(
     private val onItemClickListener: OnItemClickListener
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    private var setApexCircleWidgetData = emptyList<ApexCircleWidgetModel>()
     private var setApexFlaskBackgroundWidgetData = emptyList<ApexFlaskBackgroundWidgetModel>()
     private var setApexPowerValuesWidgetData = emptyList<ApexPowerValuesWidgetModel>()
-    private var setApexCircleWidgetData = emptyList<ApexCircleWidgetModel>()
     private var setApexTwoRectangleWidgetData = emptyList<ApexTwoRectangleWidgets>()
     private var setApexSingleValueTypeOneWidgetData = emptyList<ApexSingleValueTypeOneModel>()
     private var setApexSingleValueTypeTwoWidgetData = emptyList<ApexSingleValueTypeTwoModel>()
@@ -44,7 +44,9 @@ class MyWidgetsChildAdapter(
 
     private inner class ViewHolder1(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+
         fun bind(position: Int) {
+            Log.d("MyWidgetsChildAdapter", "ViewHolder1: ")
 
 
         }
@@ -53,13 +55,47 @@ class MyWidgetsChildAdapter(
     private inner class ViewHolder2(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(position: Int) {
 
+            Log.d("MyWidgetsChildAdapter", "ViewHolder2: ")
 
         }
     }
 
     private inner class ViewHolder3(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(position: Int) {
 
+        val slot1Value = itemView.findViewById<TextView>(R.id.slot1value)
+        val slot2Value = itemView.findViewById<TextView>(R.id.slot2value)
+        val slot3Value = itemView.findViewById<TextView>(R.id.slot3value)
+        val slot1name = itemView.findViewById<TextView>(R.id.slot1name)
+        val slot2name = itemView.findViewById<TextView>(R.id.slot2name)
+        val slot3name = itemView.findViewById<TextView>(R.id.slot3name)
+
+        fun bind(position: Int) {
+            Log.d("MyWidgetsChildAdapter", "ViewHolder3: ")
+            if(setApexCircleWidgetData[position].slot1GivenName.isNullOrEmpty()){
+                slot1name.text = setApexCircleWidgetData[position].slot1ActualName
+            }else{
+                slot1name.text = setApexCircleWidgetData[position].slot1GivenName
+            }
+
+            if(setApexCircleWidgetData[position].slot2GivenName.isNullOrEmpty()) {
+                slot2name.text = setApexCircleWidgetData[position].slot2ActualName
+            }else{
+                slot2name.text = setApexCircleWidgetData[position].slot2GivenName
+            }
+
+            if(setApexCircleWidgetData[position].slot3GivenName.isNullOrEmpty()) {
+                slot3name.text = setApexCircleWidgetData[position].slot3ActualName
+            }else{
+                slot3name.text = setApexCircleWidgetData[position].slot3GivenName
+            }
+
+            slot1Value.text = setApexCircleWidgetData[position].slot1Value.toString()
+            slot2Value.text = setApexCircleWidgetData[position].slot2Value.toString()
+            slot3Value.text = setApexCircleWidgetData[position].slot3Value.toString()
+
+            itemView.setOnClickListener {
+                onItemClickListener.onApexCircleWidgetClick(setApexCircleWidgetData[position])
+            }
         }
     }
 
@@ -73,6 +109,8 @@ class MyWidgetsChildAdapter(
         val slot3name = itemView.findViewById<TextView>(R.id.slot3name)
 
         fun bind(position: Int) {
+
+            Log.d("MyWidgetsChildAdapter", "ViewHolder4: ")
 
             if(setApexFlaskBackgroundWidgetData[position].slot1GivenName.isNullOrEmpty()){
                 slot1name.text = setApexFlaskBackgroundWidgetData[position].slot1ActualName
@@ -105,11 +143,15 @@ class MyWidgetsChildAdapter(
     private inner class ViewHolder5(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(position: Int) {
 
+            Log.d("MyWidgetsChildAdapter", "ViewHolder5:")
+
         }
     }
 
     private inner class ViewHolder6(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(position: Int) {
+
+            Log.d("MyWidgetsChildAdapter", "ViewHolder6: ")
 
         }
     }
@@ -117,11 +159,15 @@ class MyWidgetsChildAdapter(
     private inner class ViewHolder7(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(position: Int) {
 
+            Log.d("MyWidgetsChildAdapter", "ViewHolder7: ")
+
         }
     }
 
     private inner class ViewHolder8(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(position: Int) {
+
+            Log.d("MyWidgetsChildAdapter", "ViewHolder8: ")
 
         }
     }
@@ -129,11 +175,15 @@ class MyWidgetsChildAdapter(
     private inner class ViewHolder9(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(position: Int) {
 
+            Log.d("MyWidgetsChildAdapter", "ViewHolder9: ")
+
         }
     }
 
     private inner class ViewHolder10(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(position: Int) {
+
+            Log.d("MyWidgetsChildAdapter", "ViewHolder10: ")
 
         }
     }
@@ -141,11 +191,15 @@ class MyWidgetsChildAdapter(
     private inner class ViewHolder11(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(position: Int) {
 
+            Log.d("MyWidgetsChildAdapter", "ViewHolder11: ")
+
         }
     }
 
     private inner class ViewHolder12(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(position: Int) {
+
+            Log.d("MyWidgetsChildAdapter", "ViewHolder12:")
 
         }
     }
@@ -179,7 +233,6 @@ class MyWidgetsChildAdapter(
         if (payloads.isEmpty()) {
             super.onBindViewHolder(holder, position, payloads)
         } else {
-            Log.d("MyWidgetsChildAdapter", "onBindViewHolder: ${widgetType}")
             when (widgetType) {
                 Constants.APEX_POWER_VALUE_WIDGET -> {
                     (holder as ViewHolder1).bind(position)
@@ -344,6 +397,15 @@ class MyWidgetsChildAdapter(
     }
 
     override fun getItemCount(): Int {
+        when(widgetType){
+            Constants.APEX_POWER_VALUE_WIDGET -> return setApexPowerValuesWidgetData.size
+            Constants.APEX_TWO_RECTANGLE_WIDGET -> return setApexTwoRectangleWidgetData.size
+            Constants.APEX_CIRCLE_WIDGET -> return setApexCircleWidgetData.size
+            Constants.APEX_FLASK_BACKGROUND_WIDGET -> return setApexFlaskBackgroundWidgetData.size
+            Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET -> return setApexSingleValueTypeOneWidgetData.size
+            Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET -> return setApexSingleValueTypeTwoWidgetData.size
+            Constants.APEX_WATER_QUALITY_WIDGET -> return setApexWaterQualityWidgetData.size
+        }
         return setApexFlaskBackgroundWidgetData.size
     }
 

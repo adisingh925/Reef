@@ -62,6 +62,12 @@ interface CustomWidgetsDao {
     @Query("SELECT * from apex_circle_widget_table order by id asc")
     fun readApexCircleWidget() : LiveData<List<ApexCircleWidgetModel>>
 
+    @Delete
+    fun deleteApexCircleWidget(data: ApexCircleWidgetModel)
+
+    @Update
+    fun updateApexCircleWidget(data: ApexCircleWidgetModel)
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertApexTwoRectangleWidget(data: ApexTwoRectangleWidgets)
 

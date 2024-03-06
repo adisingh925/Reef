@@ -2,17 +2,15 @@ package app.android.damien.reef.fragments
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModel
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.android.damien.reef.R
 import app.android.damien.reef.adapter.MyWidgetsChildAdapter
-import app.android.damien.reef.adapter.MyWidgetsParentAdapter
 import app.android.damien.reef.database_model.ApexCircleWidgetModel
 import app.android.damien.reef.database_model.ApexFlaskBackgroundWidgetModel
 import app.android.damien.reef.database_model.ApexPowerValuesWidgetModel
@@ -21,8 +19,6 @@ import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
 import app.android.damien.reef.database_model.ApexWaterQualityWidget
 import app.android.damien.reef.databinding.FragmentMyWidgetsBinding
-import app.android.damien.reef.model.MyWidgetsChildModel
-import app.android.damien.reef.model.MyWidgetsParentModel
 import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
 import app.android.damien.reef.viewmodel.WidgetsViewModel
@@ -201,41 +197,6 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
             findNavController().navigate(R.id.action_myWidgetsFragment_to_widgetTypeSelectionScreen)
         }
 
-        widgetsViewModel.apexFlaskBackgroundWidgets.observe(viewLifecycleOwner) {
-            Log.d("MyWidgetsFragment", "Apex Flask Background Widgets: $it")
-            apexFlaskBackgroundWidgetAdapter.setApexFlaskBackgroundWidgetData(it)
-        }
-
-        widgetsViewModel.apexPowerValuesWidgets.observe(viewLifecycleOwner) {
-            Log.d("MyWidgetsFragment", "Apex Power Values Widgets: $it")
-            apexPowerValueWidgetAdapter.setApexPowerValuesWidgetData(it)
-        }
-
-        widgetsViewModel.apexCircleWidgets.observe(viewLifecycleOwner) {
-            Log.d("MyWidgetsFragment", "Apex Circle Widgets: $it")
-            apexCircleWidgetAdapter.setApexCircleWidgetData(it)
-        }
-
-        widgetsViewModel.apexTwoRectangleWidgets.observe(viewLifecycleOwner) {
-            Log.d("MyWidgetsFragment", "Apex Two Rectangle Widgets: $it")
-            apexTwoRectangleWidgetAdapter.setApexTwoRectangleWidgetData(it)
-        }
-
-        widgetsViewModel.apexSingleValueTypeOneWidgets.observe(viewLifecycleOwner) {
-            Log.d("MyWidgetsFragment", "Apex Single Value Type 1 Widgets: $it")
-            apexSingleValueType1Adapter.setApexSingleValueTypeOneWidgetData(it)
-        }
-
-        widgetsViewModel.apexSingleValueTypeTwoWidgets.observe(viewLifecycleOwner) {
-            Log.d("MyWidgetsFragment", "Apex Single Value Type 2 Widgets: $it")
-            apexSingleValueType2Adapter.setApexSingleValueTypeTwoWidgetData(it)
-        }
-
-        widgetsViewModel.apexWaterQualityWidgets.observe(viewLifecycleOwner) {
-            Log.d("MyWidgetsFragment", "Apex Water Quality Widgets: $it")
-            apexWaterQualityWidgetAdapter.setApexWaterQualityWidgetData(it)
-        }
-
         if (SharedPreferences.read(Constants.APEX_CIRCLE_WIDGET, 0) == 0) {
             binding.apexCircleWidgetLayout.visibility = View.GONE
         } else {
@@ -284,7 +245,42 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
             binding.apexWaterQualityWidgetLayout.visibility = View.VISIBLE
             initApexWaterQualityWidgetAdapter()
         }
-//
+
+        widgetsViewModel.apexFlaskBackgroundWidgets.observe(viewLifecycleOwner) {
+            Log.d("MyWidgetsFragment", "Apex Flask Background Widgets: $it")
+            apexFlaskBackgroundWidgetAdapter.setApexFlaskBackgroundWidgetData(it)
+        }
+
+        widgetsViewModel.apexPowerValuesWidgets.observe(viewLifecycleOwner) {
+            Log.d("MyWidgetsFragment", "Apex Power Values Widgets: $it")
+            apexPowerValueWidgetAdapter.setApexPowerValuesWidgetData(it)
+        }
+
+        widgetsViewModel.apexCircleWidgets.observe(viewLifecycleOwner) {
+            Log.d("MyWidgetsFragment", "Apex Circle Widgets: $it")
+            apexCircleWidgetAdapter.setApexCircleWidgetData(it)
+        }
+
+        widgetsViewModel.apexTwoRectangleWidgets.observe(viewLifecycleOwner) {
+            Log.d("MyWidgetsFragment", "Apex Two Rectangle Widgets: $it")
+            apexTwoRectangleWidgetAdapter.setApexTwoRectangleWidgetData(it)
+        }
+
+        widgetsViewModel.apexSingleValueTypeOneWidgets.observe(viewLifecycleOwner) {
+            Log.d("MyWidgetsFragment", "Apex Single Value Type 1 Widgets: $it")
+            apexSingleValueType1Adapter.setApexSingleValueTypeOneWidgetData(it)
+        }
+
+        widgetsViewModel.apexSingleValueTypeTwoWidgets.observe(viewLifecycleOwner) {
+            Log.d("MyWidgetsFragment", "Apex Single Value Type 2 Widgets: $it")
+            apexSingleValueType2Adapter.setApexSingleValueTypeTwoWidgetData(it)
+        }
+
+        widgetsViewModel.apexWaterQualityWidgets.observe(viewLifecycleOwner) {
+            Log.d("MyWidgetsFragment", "Apex Water Quality Widgets: $it")
+            apexWaterQualityWidgetAdapter.setApexWaterQualityWidgetData(it)
+        }
+
 //        if(SharedPreferences.read(Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET,0) == 0) {
 //            binding.focustronic1ElementWidgetLayout.visibility = View.GONE
 //        }else{
@@ -400,7 +396,9 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
     }
 
     override fun onApexCircleWidgetClick(data: ApexCircleWidgetModel) {
-        TODO("Not yet implemented")
+        val bundle = Bundle()
+        bundle.putParcelable(Constants.APEX_CIRCLE_WIDGET, data)
+        findNavController().navigate(R.id.action_myWidgetsFragment_to_editApexCircleWidget, bundle)
     }
 
     override fun onApexTwoRectangleWidgetClick(data: ApexTwoRectangleWidgets) {

@@ -90,6 +90,18 @@ class WidgetsViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
+    fun deleteApexCircleWidget(data: ApexCircleWidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteApexCircleWidget(data)
+        }
+    }
+
+    fun updateApexCircleWidget(data: ApexCircleWidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateApexCircleWidget(data)
+        }
+    }
+
     fun insertApexTwoRectangleWidget(data: ApexTwoRectangleWidgets) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertApexTwoRectangleWidget(data)

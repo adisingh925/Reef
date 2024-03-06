@@ -53,6 +53,14 @@ class Repository(private val dao: CustomWidgetsDao) {
         dao.insertApexCircleWidget(data)
     }
 
+    suspend fun deleteApexCircleWidget(data: ApexCircleWidgetModel) {
+        dao.deleteApexCircleWidget(data)
+    }
+
+    suspend fun updateApexCircleWidget(data: ApexCircleWidgetModel) {
+        dao.updateApexCircleWidget(data)
+    }
+
     suspend fun insertApexTwoRectangleWidget(data: ApexTwoRectangleWidgets) {
         dao.insertApexTwoRectangleWidget(data)
     }

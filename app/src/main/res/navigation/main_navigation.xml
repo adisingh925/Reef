@@ -94,10 +94,17 @@
         <action
             android:id="@+id/action_myWidgetsFragment_to_editApexFlaskBackgroundWidget"
             app:destination="@id/editApexFlaskBackgroundWidget" />
+        <action
+            android:id="@+id/action_myWidgetsFragment_to_editApexCircleWidget"
+            app:destination="@id/editApexCircleWidget" />
     </fragment>
     <fragment
         android:id="@+id/editApexFlaskBackgroundWidget"
         android:name="app.android.damien.reef.fragments.EditApexFlaskBackgroundWidget"
         android:label="fragment_edit_apex_flask_background_widget"
         tools:layout="@layout/fragment_edit_apex_flask_background_widget" />
+    <fragment
+        android:id="@+id/editApexCircleWidget"
+        android:name="app.android.damien.reef.fragments.EditApexCircleWidget"
+        android:label="EditApexCircleWidget" />
 </navigation>
