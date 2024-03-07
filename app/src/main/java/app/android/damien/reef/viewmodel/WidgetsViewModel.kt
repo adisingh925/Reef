@@ -60,6 +60,9 @@ class WidgetsViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
+    /**
+     * Apex Flask Background Widget
+     */
     fun insertApexFlaskBackgroundWidget(data: ApexFlaskBackgroundWidgetModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertApexFlaskBackgroundWidget(data)
@@ -84,6 +87,9 @@ class WidgetsViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
+    /**
+     * Apex Circle Widget
+     */
     fun insertApexCircleWidget(data: ApexCircleWidgetModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertApexCircleWidget(data)
@@ -102,9 +108,24 @@ class WidgetsViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
+    /**
+     * Apex Two Rectangle Widget
+     */
     fun insertApexTwoRectangleWidget(data: ApexTwoRectangleWidgets) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertApexTwoRectangleWidget(data)
+        }
+    }
+
+    fun deleteApexTwoRectangleWidget(data: ApexTwoRectangleWidgets) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteApexTwoRectangleWidget(data)
+        }
+    }
+
+    fun updateApexTwoRectangleWidget(data: ApexTwoRectangleWidgets) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateApexTwoRectangleWidget(data)
         }
     }
 

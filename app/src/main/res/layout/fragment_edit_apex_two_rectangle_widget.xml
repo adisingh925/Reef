@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#80000000"
+    tools:context=".fragments.EditApexTwoRectangleWidget">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/extra_large_margin"
+        android:layout_marginEnd="@dimen/medium_margin"
+        android:text="Save"
+        app:cornerRadius="@dimen/default_button_radius"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/delete_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/extra_large_margin"
+        android:text="Delete"
+        app:cornerRadius="@dimen/default_button_radius"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/preview_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:text="Preview"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/delete_button" />
+
+    <include
+        android:id="@+id/flask_two_rectangle_widget_edit_layout"
+        layout="@layout/two_rectangle_widget"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="@dimen/medium_margin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/preview_text" />
+
+    <TextView
+        android:id="@+id/firstRecyclerHeading"
+        android:layout_width="100dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="Top Rectangle Selection"
+        android:textStyle="bold"
+        android:layout_margin="@dimen/medium_margin"
+        app:layout_constraintBottom_toTopOf="@id/firstRectangleValues"
+        app:layout_constraintLeft_toLeftOf="@id/firstRectangleValues"
+        app:layout_constraintRight_toRightOf="@id/firstRectangleValues"
+        app:layout_constraintTop_toBottomOf="@id/flask_two_rectangle_widget_edit_layout" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/firstRectangleValues"
+        android:layout_width="130dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:background="@drawable/recycler_outline"
+        android:overScrollMode="never"
+        android:padding="10dp"
+        app:layout_constraintLeft_toLeftOf="@id/flask_two_rectangle_widget_edit_layout"
+        app:layout_constraintTop_toBottomOf="@id/firstRecyclerHeading" />
+
+    <TextView
+        android:id="@+id/secondRecyclerHeading"
+        android:layout_width="120dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/medium_margin"
+        android:text="Bottom Rectangle Selection"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/secondRectangleValues"
+        app:layout_constraintLeft_toLeftOf="@id/secondRectangleValues"
+        app:layout_constraintRight_toRightOf="@id/secondRectangleValues"
+        app:layout_constraintTop_toBottomOf="@id/flask_two_rectangle_widget_edit_layout" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/secondRectangleValues"
+        android:layout_width="130dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:background="@drawable/recycler_outline"
+        android:overScrollMode="never"
+        android:padding="10dp"
+        app:layout_constraintRight_toRightOf="@id/flask_two_rectangle_widget_edit_layout"
+        app:layout_constraintTop_toBottomOf="@id/secondRecyclerHeading" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,6 +33,9 @@ class Repository(private val dao: CustomWidgetsDao) {
         dao.delete(data)
     }
 
+    /**
+     * Apex Flask Background Widget
+     */
     suspend fun insertApexFlaskBackgroundWidget(data: ApexFlaskBackgroundWidgetModel) {
         dao.insertApexFlaskBackgroundWidget(data)
     }
@@ -45,10 +48,17 @@ class Repository(private val dao: CustomWidgetsDao) {
         dao.updateApexFlaskBackgroundWidget(data)
     }
 
+    /**
+     * Apex Power Values Widget
+     */
     suspend fun insertApexPowerValuesWidget(data: ApexPowerValuesWidgetModel) {
         dao.insertApexPowerValuesWidget(data)
     }
 
+
+    /**
+     * Apex Circle Widget
+     */
     suspend fun insertApexCircleWidget(data: ApexCircleWidgetModel) {
         dao.insertApexCircleWidget(data)
     }
@@ -61,9 +71,24 @@ class Repository(private val dao: CustomWidgetsDao) {
         dao.updateApexCircleWidget(data)
     }
 
+    /**
+     * Apex Two Rectangle Widget
+     */
     suspend fun insertApexTwoRectangleWidget(data: ApexTwoRectangleWidgets) {
         dao.insertApexTwoRectangleWidget(data)
     }
+
+    suspend fun deleteApexTwoRectangleWidget(data: ApexTwoRectangleWidgets) {
+        dao.deleteApexTwoRectangleWidget(data)
+    }
+
+    suspend fun updateApexTwoRectangleWidget(data: ApexTwoRectangleWidgets) {
+        dao.updateApexTwoRectangleWidget(data)
+    }
+
+    /**
+     * Apex Single Value Type One Widget
+     */
 
     suspend fun insertApexSingleValueTypeOneWidget(data: ApexSingleValueTypeOneModel) {
         dao.insertApexSingleValueTypeOneWidget(data)

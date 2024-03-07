@@ -1,5 +1,7 @@
 package app.android.damien.reef.fragments
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import app.android.damien.reef.database_model.ApexCircleWidgetModel
 import app.android.damien.reef.database_model.ApexFlaskBackgroundWidgetModel
+import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
 import app.android.damien.reef.databinding.FragmentApexSelectWidgetScreenBinding
 import app.android.damien.reef.model.ApexApiResponse
 import app.android.damien.reef.retrofit.ApiClient
@@ -23,6 +26,10 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 
 
 class ApexSelectWidgetScreen : Fragment() {
@@ -35,6 +42,7 @@ class ApexSelectWidgetScreen : Fragment() {
         ViewModelProvider(this)[WidgetsViewModel::class.java]
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -124,6 +132,21 @@ class ApexSelectWidgetScreen : Fragment() {
         binding.apex2RectangleWidgets.flaskConstraintLayout.setOnClickListener {
             val widgetCount = SharedPreferences.read(Constants.APEX_TWO_RECTANGLE_WIDGET, 0)
             if (widgetCount in 0..4) {
+                widgetsViewModel.insertApexTwoRectangleWidget(
+                    ApexTwoRectangleWidgets(
+                        0,
+                        "",
+                        "",
+                        SharedPreferences.read("lastUpdatedApex", ""),
+                        SharedPreferences.read("lastUpdatedApex", ""),
+                        "Unit 1",
+                        "Unit 2",
+                        0f,
+                        0f,
+                        Color.parseColor("#cc7700"),
+                        Color.parseColor("#cc7700")
+                    )
+                )
                 SharedPreferences.write(Constants.APEX_TWO_RECTANGLE_WIDGET, widgetCount + 1)
             } else {
                 Toast.showSnackbar(binding.root, "You can only add 5 widgets")
@@ -209,6 +232,7 @@ class ApexSelectWidgetScreen : Fragment() {
                             val gson = Gson()
                             val jsonData = gson.toJson(data)
                             SharedPreferences.write("apexData", jsonData)
+                            SharedPreferences.write("lastUpdatedApex", millisToDateTime(System.currentTimeMillis()))
                         }
                     }
                 }
@@ -218,5 +242,11 @@ class ApexSelectWidgetScreen : Fragment() {
                 }
             })
         }
+    }
+
+    fun millisToDateTime(millis: Long): String {
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+        val dateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(millis), ZoneId.systemDefault())
+        return dateTime.format(formatter)
     }
 }

@@ -17,6 +17,10 @@ import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
 import app.android.damien.reef.database_model.ApexWaterQualityWidget
 import app.android.damien.reef.model.MyWidgetsChildModel
 import app.android.damien.reef.utils.Constants
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 
 class MyWidgetsChildAdapter(
     private val context: Context,
@@ -53,10 +57,39 @@ class MyWidgetsChildAdapter(
     }
 
     private inner class ViewHolder2(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val topRectangleTime = itemView.findViewById<TextView>(R.id.timestamp)
+        val bottomRectangleTime = itemView.findViewById<TextView>(R.id.timestamp2)
+        val topRectangleUnit = itemView.findViewById<TextView>(R.id.unit)
+        val bottomRectangleUnit = itemView.findViewById<TextView>(R.id.unit2)
+        val topRectangleValue = itemView.findViewById<TextView>(R.id.value)
+        val bottomRectangleValue = itemView.findViewById<TextView>(R.id.value2)
+        val topCard = itemView.findViewById<View>(R.id.card1)
+        val bottomCard = itemView.findViewById<View>(R.id.card2)
         fun bind(position: Int) {
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder2: ")
 
+            topRectangleTime.text = setApexTwoRectangleWidgetData[position].topRectangleUpdateTimeStamp
+            bottomRectangleTime.text = setApexTwoRectangleWidgetData[position].bottomRectangleUpdateTimeStamp
+
+            topCard.setBackgroundColor(setApexTwoRectangleWidgetData[position].topRectangleColor)
+            bottomCard.setBackgroundColor(setApexTwoRectangleWidgetData[position].bottomRectangleColor)
+
+            topRectangleUnit.text = setApexTwoRectangleWidgetData[position].topRectangleUnit
+            bottomRectangleUnit.text = setApexTwoRectangleWidgetData[position].bottomRectangleUnit
+
+            if(setApexTwoRectangleWidgetData[position].topRectangleActualName.isNullOrEmpty()) {
+                topRectangleValue.text = "NaN"
+            }
+
+            if(setApexTwoRectangleWidgetData[position].bottomRectangleActualName.isNullOrEmpty()) {
+                bottomRectangleValue.text = "NaN"
+            }
+
+            itemView.setOnClickListener {
+                onItemClickListener.onApexTwoRectangleWidgetClick(setApexTwoRectangleWidgetData[position])
+            }
         }
     }
 

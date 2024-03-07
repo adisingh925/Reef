@@ -18,6 +18,10 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
@@ -58,6 +62,7 @@ class MainActivity : AppCompatActivity() {
                             val gson = Gson()
                             val jsonData = gson.toJson(data)
                             SharedPreferences.write("apexData", jsonData)
+                            SharedPreferences.write("lastUpdatedApex", millisToDateTime(System.currentTimeMillis()))
                         }
                     }
                 }
@@ -67,5 +72,11 @@ class MainActivity : AppCompatActivity() {
                 }
             })
         }
+    }
+
+    fun millisToDateTime(millis: Long): String {
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+        val dateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(millis), ZoneId.systemDefault())
+        return dateTime.format(formatter)
     }
 }

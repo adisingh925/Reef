@@ -364,8 +364,7 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
 
     private fun initApexTwoRectangleWidgetAdapter() {
         apexTwoRectangleWidgetRecyclerView.adapter = apexTwoRectangleWidgetAdapter
-        apexTwoRectangleWidgetRecyclerView.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        apexTwoRectangleWidgetRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun initApexSingleValueType1WidgetAdapter() {
@@ -402,7 +401,9 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
     }
 
     override fun onApexTwoRectangleWidgetClick(data: ApexTwoRectangleWidgets) {
-        TODO("Not yet implemented")
+        val bundle = Bundle()
+        bundle.putParcelable(Constants.APEX_TWO_RECTANGLE_WIDGET, data)
+        findNavController().navigate(R.id.action_myWidgetsFragment_to_editApexTwoRectangleWidget, bundle)
     }
 
     override fun onApexSingleValueTypeOneWidgetClick(data: ApexSingleValueTypeOneModel) {

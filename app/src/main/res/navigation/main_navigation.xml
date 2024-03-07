@@ -97,6 +97,9 @@
         <action
             android:id="@+id/action_myWidgetsFragment_to_editApexCircleWidget"
             app:destination="@id/editApexCircleWidget" />
+        <action
+            android:id="@+id/action_myWidgetsFragment_to_editApexTwoRectangleWidget"
+            app:destination="@id/editApexTwoRectangleWidget" />
     </fragment>
     <fragment
         android:id="@+id/editApexFlaskBackgroundWidget"
@@ -107,4 +110,9 @@
         android:id="@+id/editApexCircleWidget"
         android:name="app.android.damien.reef.fragments.EditApexCircleWidget"
         android:label="EditApexCircleWidget" />
+    <fragment
+        android:id="@+id/editApexTwoRectangleWidget"
+        android:name="app.android.damien.reef.fragments.EditApexTwoRectangleWidget"
+        android:label="fragment_edit_apex_two_rectangle_widget"
+        tools:layout="@layout/fragment_edit_apex_two_rectangle_widget" />
 </navigation>
