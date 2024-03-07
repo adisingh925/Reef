@@ -101,15 +101,33 @@ interface CustomWidgetsDao {
     @Query("SELECT * from apex_single_value_type_1_widget_table order by id asc")
     fun readApexSingleValueTypeOneWidget(): LiveData<List<ApexSingleValueTypeOneModel>>
 
+    @Update
+    fun updateApexSingleValueTypeOneWidget(data: ApexSingleValueTypeOneModel)
+
+    @Delete
+    fun deleteApexSingleValueTypeOneWidget(data: ApexSingleValueTypeOneModel)
+
+    /**
+     * Apex Single Value Type Two Widget
+     */
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertApexSingleValueTypeTwoWidget(data: ApexSingleValueTypeTwoModel)
 
     @Query("SELECT * from apex_single_value_type_2_widget_table order by id asc")
     fun readApexSingleValueTypeTwoWidget(): LiveData<List<ApexSingleValueTypeTwoModel>>
 
+    /**
+     * Apex Water Quality Widget
+     */
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertApexWaterQualityWidget(data: ApexWaterQualityWidget)
 
     @Query("SELECT * from apex_water_quality_widget_table order by id asc")
     fun readApexWaterQualityWidget(): LiveData<List<ApexWaterQualityWidget>>
+
+    @Update
+    fun updateApexWaterQualityWidget(data: ApexWaterQualityWidget)
+
+    @Delete
+    fun deleteApexWaterQualityWidget(data: ApexWaterQualityWidget)
 }

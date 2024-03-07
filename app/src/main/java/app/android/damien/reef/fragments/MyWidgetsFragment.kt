@@ -407,7 +407,9 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
     }
 
     override fun onApexSingleValueTypeOneWidgetClick(data: ApexSingleValueTypeOneModel) {
-        TODO("Not yet implemented")
+        val bundle = Bundle()
+        bundle.putParcelable(Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET, data)
+        findNavController().navigate(R.id.action_myWidgetsFragment_to_editApexSingleValueType1Widget, bundle)
     }
 
     override fun onApexSingleValueTypeTwoWidgetClick(data: ApexSingleValueTypeTwoModel) {
@@ -415,7 +417,9 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
     }
 
     override fun onApexWaterQualityWidgetClick(data: ApexWaterQualityWidget) {
-        TODO("Not yet implemented")
+        val bundle = Bundle()
+        bundle.putParcelable(Constants.APEX_WATER_QUALITY_WIDGET, data)
+        findNavController().navigate(R.id.action_myWidgetsFragment_to_editApexWaterQualityWidget, bundle)
     }
 
 //    private fun initFocustronicGridWidgetAdapter(data : List<MyWidgetsChildModel>) {

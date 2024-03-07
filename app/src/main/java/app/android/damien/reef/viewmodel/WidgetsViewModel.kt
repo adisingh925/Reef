@@ -129,11 +129,31 @@ class WidgetsViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
+
+    /**
+     * Apex Single Value Type One Widget
+     */
     fun insertApexSingleValueTypeOneWidget(data: ApexSingleValueTypeOneModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertApexSingleValueTypeOneWidget(data)
         }
     }
+
+    fun deleteApexSingleValueTypeOneWidget(data: ApexSingleValueTypeOneModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteApexSingleValueTypeOneWidget(data)
+        }
+    }
+
+    fun updateApexSingleValueTypeOneWidget(data: ApexSingleValueTypeOneModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateApexSingleValueTypeOneWidget(data)
+        }
+    }
+
+    /**
+     * Apex Single Value Type Two Widget
+     */
 
     fun insertApexSingleValueTypeTwoWidget(data: ApexSingleValueTypeTwoModel) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -141,9 +161,25 @@ class WidgetsViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
+    /**
+     * Apex Water Quality Widget
+
+     */
     fun insertApexWaterQualityWidget(data: ApexWaterQualityWidget) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertApexWaterQualityWidget(data)
+        }
+    }
+
+    fun deleteApexWaterQualityWidget(data: ApexWaterQualityWidget) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteApexWaterQualityWidget(data)
+        }
+    }
+
+    fun updateApexWaterQualityWidget(data: ApexWaterQualityWidget) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateApexWaterQualityWidget(data)
         }
     }
 }

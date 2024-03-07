@@ -11,7 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import app.android.damien.reef.database_model.ApexCircleWidgetModel
 import app.android.damien.reef.database_model.ApexFlaskBackgroundWidgetModel
+import app.android.damien.reef.database_model.ApexSingleValueTypeOneModel
 import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
+import app.android.damien.reef.database_model.ApexWaterQualityWidget
 import app.android.damien.reef.databinding.FragmentApexSelectWidgetScreenBinding
 import app.android.damien.reef.model.ApexApiResponse
 import app.android.damien.reef.retrofit.ApiClient
@@ -160,6 +162,16 @@ class ApexSelectWidgetScreen : Fragment() {
         binding.apexSingleValueType1.flaskConstraintLayout.setOnClickListener {
             val widgetCount = SharedPreferences.read(Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET, 0)
             if (widgetCount in 0..4) {
+                widgetsViewModel.insertApexSingleValueTypeOneWidget(
+                    ApexSingleValueTypeOneModel(
+                        0,
+                        "NaN",
+                        "",
+                        0f,
+                        "Unit",
+                        Color.parseColor("#ffffff")
+                    )
+                )
                 SharedPreferences.write(Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET, widgetCount + 1)
             } else {
                 Toast.showSnackbar(binding.root, "You can only add 5 widgets")
@@ -199,6 +211,31 @@ class ApexSelectWidgetScreen : Fragment() {
         binding.apexWaterQualityWidget.flaskConstraintLayout.setOnClickListener {
             val widgetCount = SharedPreferences.read(Constants.APEX_WATER_QUALITY_WIDGET, 0)
             if (widgetCount in 0..4) {
+                widgetsViewModel.insertApexWaterQualityWidget(
+                    ApexWaterQualityWidget(
+                        0,
+                        0f,
+                        0f,
+                        0f,
+                        0f,
+                        0f,
+                        "Slot 1",
+                        "",
+                        "Slot 2",
+                        "",
+                        "Slot 3",
+                        "",
+                        "Slot 4",
+                        "",
+                        "Slot 5",
+                        "",
+                        "Unit 1",
+                        "Unit 2",
+                        "Unit 3",
+                        "Unit 4",
+                        "Unit 5"
+                    )
+                )
                 SharedPreferences.write(Constants.APEX_WATER_QUALITY_WIDGET, widgetCount + 1)
             } else {
                 Toast.showSnackbar(binding.root, "You can only add 5 widgets")

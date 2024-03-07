@@ -19,6 +19,7 @@ import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
 import app.android.damien.reef.database_model.ApexWaterQualityWidget
 import app.android.damien.reef.model.MyWidgetsChildModel
+import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
 import java.time.Instant
 import java.time.LocalDateTime
@@ -190,10 +191,26 @@ class MyWidgetsChildAdapter(
     }
 
     private inner class ViewHolder5(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val value = itemView.findViewById<TextView>(R.id.value)
+        val heading = itemView.findViewById<TextView>(R.id.heading)
+        val unit = itemView.findViewById<TextView>(R.id.unit)
+
         fun bind(position: Int) {
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder5:")
 
+            value.text = setApexSingleValueTypeOneWidgetData[position].value.toString()
+            heading.text = setApexSingleValueTypeOneWidgetData[position].actualName
+            unit.text = setApexSingleValueTypeOneWidgetData[position].unit
+
+            value.setTextColor(setApexSingleValueTypeOneWidgetData[position].textColor)
+            heading.setTextColor(setApexSingleValueTypeOneWidgetData[position].textColor)
+            unit.setTextColor(setApexSingleValueTypeOneWidgetData[position].textColor)
+
+            itemView.setOnClickListener {
+                onItemClickListener.onApexSingleValueTypeOneWidgetClick(setApexSingleValueTypeOneWidgetData[position])
+            }
         }
     }
 
@@ -206,10 +223,78 @@ class MyWidgetsChildAdapter(
     }
 
     private inner class ViewHolder7(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val slot1Value = itemView.findViewById<TextView>(R.id.slot1value)
+        val slot2Value = itemView.findViewById<TextView>(R.id.slot2value)
+        val slot3Value = itemView.findViewById<TextView>(R.id.slot3value)
+        val slot4Value = itemView.findViewById<TextView>(R.id.slot4value)
+        val slot5Value = itemView.findViewById<TextView>(R.id.slot5value)
+
+        val slot1name = itemView.findViewById<TextView>(R.id.slot1name)
+        val slot2name = itemView.findViewById<TextView>(R.id.slot2name)
+        val slot3name = itemView.findViewById<TextView>(R.id.slot3name)
+        val slot4name = itemView.findViewById<TextView>(R.id.slot4name)
+        val slot5name = itemView.findViewById<TextView>(R.id.slot5name)
+
+        val slot1unit = itemView.findViewById<TextView>(R.id.slot1unit)
+        val slot2unit = itemView.findViewById<TextView>(R.id.slot2unit)
+        val slot3unit = itemView.findViewById<TextView>(R.id.slot3unit)
+        val slot4unit = itemView.findViewById<TextView>(R.id.slot4unit)
+        val slot5unit = itemView.findViewById<TextView>(R.id.slot5unit)
+
+        val timestamp = itemView.findViewById<TextView>(R.id.timestamp)
+
         fun bind(position: Int) {
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder7: ")
 
+            timestamp.text = "as of - ${SharedPreferences.read("lastUpdatedApex","")}"
+
+            if(setApexWaterQualityWidgetData[position].slot1GivenName.isNullOrEmpty()) {
+                slot1name.text = setApexWaterQualityWidgetData[position].slot1ActualName
+            }else{
+                slot1name.text = setApexWaterQualityWidgetData[position].slot1GivenName
+            }
+
+            if(setApexWaterQualityWidgetData[position].slot2GivenName.isNullOrEmpty()) {
+                slot2name.text = setApexWaterQualityWidgetData[position].slot2ActualName
+            }else{
+                slot2name.text = setApexWaterQualityWidgetData[position].slot2GivenName
+            }
+
+            if(setApexWaterQualityWidgetData[position].slot3GivenName.isNullOrEmpty()) {
+                slot3name.text = setApexWaterQualityWidgetData[position].slot3ActualName
+            }else{
+                slot3name.text = setApexWaterQualityWidgetData[position].slot3GivenName
+            }
+
+            if(setApexWaterQualityWidgetData[position].slot4GivenName.isNullOrEmpty()) {
+                slot4name.text = setApexWaterQualityWidgetData[position].slot4ActualName
+            }else{
+                slot4name.text = setApexWaterQualityWidgetData[position].slot4GivenName
+            }
+
+            if(setApexWaterQualityWidgetData[position].slot5GivenName.isNullOrEmpty()) {
+                slot5name.text = setApexWaterQualityWidgetData[position].slot5ActualName
+            }else{
+                slot5name.text = setApexWaterQualityWidgetData[position].slot5GivenName
+            }
+
+            slot1Value.text = setApexWaterQualityWidgetData[position].slot1Value.toString()
+            slot2Value.text = setApexWaterQualityWidgetData[position].slot2Value.toString()
+            slot3Value.text = setApexWaterQualityWidgetData[position].slot3Value.toString()
+            slot4Value.text = setApexWaterQualityWidgetData[position].slot4Value.toString()
+            slot5Value.text = setApexWaterQualityWidgetData[position].slot5Value.toString()
+
+            slot1unit.text = setApexWaterQualityWidgetData[position].slot1Unit
+            slot2unit.text = setApexWaterQualityWidgetData[position].slot2Unit
+            slot3unit.text = setApexWaterQualityWidgetData[position].slot3Unit
+            slot4unit.text = setApexWaterQualityWidgetData[position].slot4Unit
+            slot5unit.text = setApexWaterQualityWidgetData[position].slot5Unit
+
+            itemView.setOnClickListener {
+                onItemClickListener.onApexWaterQualityWidgetClick(setApexWaterQualityWidgetData[position])
+            }
         }
     }
 

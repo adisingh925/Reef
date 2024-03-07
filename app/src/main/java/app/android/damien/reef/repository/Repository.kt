@@ -94,11 +94,35 @@ class Repository(private val dao: CustomWidgetsDao) {
         dao.insertApexSingleValueTypeOneWidget(data)
     }
 
+    suspend fun deleteApexSingleValueTypeOneWidget(data: ApexSingleValueTypeOneModel) {
+        dao.deleteApexSingleValueTypeOneWidget(data)
+    }
+
+    suspend fun updateApexSingleValueTypeOneWidget(data: ApexSingleValueTypeOneModel) {
+        dao.updateApexSingleValueTypeOneWidget(data)
+    }
+
+    /**
+     * Apex Single Value Type Two Widget
+     */
+
     suspend fun insertApexSingleValueTypeTwoWidget(data: ApexSingleValueTypeTwoModel) {
         dao.insertApexSingleValueTypeTwoWidget(data)
     }
 
+    /**
+     * Apex Water Quality Widget
+
+     */
     suspend fun insertApexWaterQualityWidget(data: ApexWaterQualityWidget) {
         dao.insertApexWaterQualityWidget(data)
+    }
+
+    suspend fun deleteApexWaterQualityWidget(data: ApexWaterQualityWidget) {
+        dao.deleteApexWaterQualityWidget(data)
+    }
+
+    suspend fun updateApexWaterQualityWidget(data: ApexWaterQualityWidget) {
+        dao.updateApexWaterQualityWidget(data)
     }
 }

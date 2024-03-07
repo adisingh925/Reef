@@ -100,6 +100,12 @@
         <action
             android:id="@+id/action_myWidgetsFragment_to_editApexTwoRectangleWidget"
             app:destination="@id/editApexTwoRectangleWidget" />
+        <action
+            android:id="@+id/action_myWidgetsFragment_to_editApexWaterQualityWidget"
+            app:destination="@id/editApexWaterQualityWidget" />
+        <action
+            android:id="@+id/action_myWidgetsFragment_to_editApexSingleValueType1Widget"
+            app:destination="@id/editApexSingleValueType1Widget" />
     </fragment>
     <fragment
         android:id="@+id/editApexFlaskBackgroundWidget"
@@ -115,4 +121,14 @@
         android:name="app.android.damien.reef.fragments.EditApexTwoRectangleWidget"
         android:label="fragment_edit_apex_two_rectangle_widget"
         tools:layout="@layout/fragment_edit_apex_two_rectangle_widget" />
+    <fragment
+        android:id="@+id/editApexWaterQualityWidget"
+        android:name="app.android.damien.reef.fragments.EditApexWaterQualityWidget"
+        android:label="fragment_edit_apex_water_quality_widget"
+        tools:layout="@layout/fragment_edit_apex_water_quality_widget" />
+    <fragment
+        android:id="@+id/editApexSingleValueType1Widget"
+        android:name="app.android.damien.reef.fragments.EditApexSingleValueType1Widget"
+        android:label="fragment_edit_apex_single_value_type1_widget"
+        tools:layout="@layout/fragment_edit_apex_single_value_type1_widget" />
 </navigation>
