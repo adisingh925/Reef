@@ -111,17 +111,21 @@ class EditApexTwoRectangleWidget : Fragment() {
         if (apexTwoRectangleWidget.topRectangleColor == 0) {
             binding.flaskTwoRectangleWidgetEditLayout.card1.setBackgroundColor(Color.parseColor("#cc7700"))
         } else {
-            binding.flaskTwoRectangleWidgetEditLayout.card1.setBackgroundColor(
-                apexTwoRectangleWidget.topRectangleColor
-            )
+            val topRectangleDrawable = context?.resources?.getDrawable(R.drawable.linear_layout_corner_radius)
+            val topRectangleMutatedDrawable = topRectangleDrawable?.mutate()
+            topRectangleMutatedDrawable?.setTint(firstRectangleColor)
+
+            binding.flaskTwoRectangleWidgetEditLayout.card1.background = topRectangleMutatedDrawable
         }
 
         if (apexTwoRectangleWidget.bottomRectangleColor == 0) {
             binding.flaskTwoRectangleWidgetEditLayout.card2.setBackgroundColor(Color.parseColor("#cc7700"))
         } else {
-            binding.flaskTwoRectangleWidgetEditLayout.card2.setBackgroundColor(
-                apexTwoRectangleWidget.bottomRectangleColor
-            )
+            val topRectangleDrawable = context?.resources?.getDrawable(R.drawable.linear_layout_corner_radius)
+            val topRectangleMutatedDrawable = topRectangleDrawable?.mutate()
+            topRectangleMutatedDrawable?.setTint(secondRectangleColor)
+
+            binding.flaskTwoRectangleWidgetEditLayout.card2.background = topRectangleMutatedDrawable
         }
 
         if (apexTwoRectangleWidget.topRectangleUnit.isNullOrBlank()) {
@@ -185,9 +189,11 @@ class EditApexTwoRectangleWidget : Fragment() {
                         return@setOnClickListener
                     }
 
-                    binding.flaskTwoRectangleWidgetEditLayout.card1.setBackgroundColor(
-                        firstRectangleColor
-                    )
+                    val topRectangleDrawable = context?.resources?.getDrawable(R.drawable.linear_layout_corner_radius)
+                    val topRectangleMutatedDrawable = topRectangleDrawable?.mutate()
+                    topRectangleMutatedDrawable?.setTint(firstRectangleColor)
+
+                    binding.flaskTwoRectangleWidgetEditLayout.card1.background = topRectangleMutatedDrawable
 
                     binding.flaskTwoRectangleWidgetEditLayout.unit.text = view.textInput.text.toString()
 
@@ -229,9 +235,11 @@ class EditApexTwoRectangleWidget : Fragment() {
                         return@setOnClickListener
                     }
 
-                    binding.flaskTwoRectangleWidgetEditLayout.card2.setBackgroundColor(
-                        secondRectangleColor
-                    )
+                    val topRectangleDrawable = context?.resources?.getDrawable(R.drawable.linear_layout_corner_radius)
+                    val topRectangleMutatedDrawable = topRectangleDrawable?.mutate()
+                    topRectangleMutatedDrawable?.setTint(secondRectangleColor)
+
+                    binding.flaskTwoRectangleWidgetEditLayout.card2.background = topRectangleMutatedDrawable
 
                     binding.flaskTwoRectangleWidgetEditLayout.unit2.text = view.textInput.text.toString()
 

@@ -1,11 +1,14 @@
 package app.android.damien.reef.adapter
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import app.android.damien.reef.R
 import app.android.damien.reef.database_model.ApexCircleWidgetModel
@@ -73,8 +76,17 @@ class MyWidgetsChildAdapter(
             topRectangleTime.text = setApexTwoRectangleWidgetData[position].topRectangleUpdateTimeStamp
             bottomRectangleTime.text = setApexTwoRectangleWidgetData[position].bottomRectangleUpdateTimeStamp
 
-            topCard.setBackgroundColor(setApexTwoRectangleWidgetData[position].topRectangleColor)
-            bottomCard.setBackgroundColor(setApexTwoRectangleWidgetData[position].bottomRectangleColor)
+            val topRectangleDrawable = context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
+            val topRectangleMutatedDrawable = topRectangleDrawable.mutate()
+            topRectangleMutatedDrawable.setTint(setApexTwoRectangleWidgetData[position].topRectangleColor)
+
+            topCard.background = topRectangleMutatedDrawable
+
+            val bottomRectangleDrawable = context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
+            val bottomRectangleMutatedDrawable = bottomRectangleDrawable.mutate()
+            bottomRectangleMutatedDrawable.setTint(setApexTwoRectangleWidgetData[position].bottomRectangleColor)
+
+            bottomCard.background = bottomRectangleMutatedDrawable
 
             topRectangleUnit.text = setApexTwoRectangleWidgetData[position].topRectangleUnit
             bottomRectangleUnit.text = setApexTwoRectangleWidgetData[position].bottomRectangleUnit
