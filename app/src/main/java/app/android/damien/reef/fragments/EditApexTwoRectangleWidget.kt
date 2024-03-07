@@ -103,6 +103,10 @@ class EditApexTwoRectangleWidget : Fragment() {
 
         firstRectangleColor = apexTwoRectangleWidget.topRectangleColor
         secondRectangleColor = apexTwoRectangleWidget.bottomRectangleColor
+        bottomRectangleValue = apexTwoRectangleWidget.bottomRectangleValue
+        topRectangleValue = apexTwoRectangleWidget.topRectangleValue
+        bottomRectangleActualName = apexTwoRectangleWidget.bottomRectangleActualName.toString()
+        topRectangleActualName = apexTwoRectangleWidget.topRectangleActualName.toString()
 
         if (apexTwoRectangleWidget.topRectangleColor == 0) {
             binding.flaskTwoRectangleWidgetEditLayout.card1.setBackgroundColor(Color.parseColor("#cc7700"))
@@ -266,6 +270,16 @@ class EditApexTwoRectangleWidget : Fragment() {
         }
 
         binding.saveButton.setOnClickListener {
+            apexTwoRectangleWidget.topRectangleUnit = binding.flaskTwoRectangleWidgetEditLayout.unit.text.toString()
+            apexTwoRectangleWidget.bottomRectangleUnit = binding.flaskTwoRectangleWidgetEditLayout.unit2.text.toString()
+            apexTwoRectangleWidget.topRectangleColor = firstRectangleColor
+            apexTwoRectangleWidget.bottomRectangleColor = secondRectangleColor
+            apexTwoRectangleWidget.topRectangleActualName = topRectangleActualName
+            apexTwoRectangleWidget.bottomRectangleActualName = bottomRectangleActualName
+            apexTwoRectangleWidget.topRectangleValue = topRectangleValue
+            apexTwoRectangleWidget.bottomRectangleValue = bottomRectangleValue
+            apexTwoRectangleWidget.topRectangleUpdateTimeStamp = SharedPreferences.read("lastUpdatedApex", "")
+            apexTwoRectangleWidget.bottomRectangleUpdateTimeStamp = SharedPreferences.read("lastUpdatedApex", "")
             widgetsViewModel.updateApexTwoRectangleWidget(apexTwoRectangleWidget)
             Toast.showSnackbar(binding.root, "Apex Two Rectangle Background Widget Updated")
         }

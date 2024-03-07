@@ -81,10 +81,14 @@ class MyWidgetsChildAdapter(
 
             if(setApexTwoRectangleWidgetData[position].topRectangleActualName.isNullOrEmpty()) {
                 topRectangleValue.text = "NaN"
+            }else{
+                topRectangleValue.text = setApexTwoRectangleWidgetData[position].topRectangleValue.toString()
             }
 
             if(setApexTwoRectangleWidgetData[position].bottomRectangleActualName.isNullOrEmpty()) {
                 bottomRectangleValue.text = "NaN"
+            }else{
+                bottomRectangleValue.text = setApexTwoRectangleWidgetData[position].bottomRectangleValue.toString()
             }
 
             itemView.setOnClickListener {

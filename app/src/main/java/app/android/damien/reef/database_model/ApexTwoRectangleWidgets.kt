@@ -11,14 +11,14 @@ data class ApexTwoRectangleWidgets(
     @PrimaryKey(autoGenerate = true) val id: Int,
     var topRectangleActualName: String?,
     var bottomRectangleActualName: String?,
-    val topRectangleUpdateTimeStamp: String?,
-    val bottomRectangleUpdateTimeStamp: String?,
-    val topRectangleUnit: String?,
-    val bottomRectangleUnit: String?,
+    var topRectangleUpdateTimeStamp: String?,
+    var bottomRectangleUpdateTimeStamp: String?,
+    var topRectangleUnit: String?,
+    var bottomRectangleUnit: String?,
     var topRectangleValue : Float,
     var bottomRectangleValue : Float,
-    val topRectangleColor: Int,
-    val bottomRectangleColor: Int
+    var topRectangleColor: Int,
+    var bottomRectangleColor: Int
 ) : Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
