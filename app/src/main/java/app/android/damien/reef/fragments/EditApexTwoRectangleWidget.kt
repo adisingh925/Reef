@@ -183,6 +183,9 @@ class EditApexTwoRectangleWidget : Fragment() {
 
                 view.textInput.setText(binding.flaskTwoRectangleWidgetEditLayout.unit.text.toString())
 
+                view.colorPickerButton.iconTint = ColorStateList.valueOf(firstRectangleColor)
+
+
                 view.saveButton.setOnClickListener {
                     if (view.textInput.text.toString().isEmpty()) {
                         view.textInput.error = "Field is required"
@@ -209,6 +212,7 @@ class EditApexTwoRectangleWidget : Fragment() {
 
                             override fun onOk(dialog: AmbilWarnaDialog, color: Int) {
                                 firstRectangleColor = color
+                                view.colorPickerButton.iconTint = ColorStateList.valueOf(firstRectangleColor)
                             }
                         })
                     colorPickerDialogue.show()
@@ -228,6 +232,8 @@ class EditApexTwoRectangleWidget : Fragment() {
                 val view = ApexTwoRectangleWidgetBottomSheetBinding.inflate(layoutInflater)
 
                 view.textInput.setText(binding.flaskTwoRectangleWidgetEditLayout.unit2.text.toString())
+
+                view.colorPickerButton.iconTint = ColorStateList.valueOf(secondRectangleColor)
 
                 view.saveButton.setOnClickListener {
                     if (view.textInput.text.toString().isEmpty()) {
@@ -255,6 +261,7 @@ class EditApexTwoRectangleWidget : Fragment() {
 
                             override fun onOk(dialog: AmbilWarnaDialog, color: Int) {
                                 secondRectangleColor = color
+                                view.colorPickerButton.iconTint = ColorStateList.valueOf(secondRectangleColor)
                             }
                         })
                     colorPickerDialogue.show()
