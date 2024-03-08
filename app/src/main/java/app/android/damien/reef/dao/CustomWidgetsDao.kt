@@ -15,7 +15,7 @@ import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
 import app.android.damien.reef.database_model.ApexWaterQualityWidget
 import app.android.damien.reef.database_model.CustomWidgetModel
-import app.android.damien.reef.database_model.Focustronic1ElementWidgetModel
+import app.android.damien.reef.database_model.FocustronicOneElementWidgetModel
 import app.android.damien.reef.database_model.FocustronicGridWidgetModel
 import app.android.damien.reef.database_model.FocustronicSingleValueType1WidgetModel
 import app.android.damien.reef.database_model.FocustronicSingleValueType2WidgetModel
@@ -217,16 +217,16 @@ interface CustomWidgetsDao {
      */
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertFocustronicOneElementWidget(data: Focustronic1ElementWidgetModel)
+    fun insertFocustronicOneElementWidget(data: FocustronicOneElementWidgetModel)
 
     @Query("SELECT * from focustronic_one_element_widget_table order by id asc")
-    fun readFocustronicOneElementWidget(): LiveData<List<Focustronic1ElementWidgetModel>>
+    fun readFocustronicOneElementWidget(): LiveData<List<FocustronicOneElementWidgetModel>>
 
     @Update
-    fun updateFocustronicOneElementWidget(data: Focustronic1ElementWidgetModel)
+    fun updateFocustronicOneElementWidget(data: FocustronicOneElementWidgetModel)
 
     @Delete
-    fun deleteFocustronicOneElementWidget(data: Focustronic1ElementWidgetModel)
+    fun deleteFocustronicOneElementWidget(data: FocustronicOneElementWidgetModel)
 
 
 }

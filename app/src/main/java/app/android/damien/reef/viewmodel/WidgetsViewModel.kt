@@ -13,7 +13,7 @@ import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
 import app.android.damien.reef.database_model.ApexWaterQualityWidget
 import app.android.damien.reef.database_model.CustomWidgetModel
-import app.android.damien.reef.database_model.Focustronic1ElementWidgetModel
+import app.android.damien.reef.database_model.FocustronicOneElementWidgetModel
 import app.android.damien.reef.database_model.FocustronicGridWidgetModel
 import app.android.damien.reef.database_model.FocustronicSingleValueType1WidgetModel
 import app.android.damien.reef.database_model.FocustronicSingleValueType2WidgetModel
@@ -33,7 +33,7 @@ class WidgetsViewModel(application: Application) : AndroidViewModel(application)
     val apexSingleValueTypeTwoWidgets: LiveData<List<ApexSingleValueTypeTwoModel>>
     val apexWaterQualityWidgets: LiveData<List<ApexWaterQualityWidget>>
 
-    val focustronicOneElementWidgets: LiveData<List<Focustronic1ElementWidgetModel>>
+    val focustronicOneElementWidgets: LiveData<List<FocustronicOneElementWidgetModel>>
     val focustronicGridWidgets: LiveData<List<FocustronicGridWidgetModel>>
     val focustronicSingleValueTypeOneWidgets: LiveData<List<FocustronicSingleValueType1WidgetModel>>
     val focustronicSingleValueTypeTwoWidgets: LiveData<List<FocustronicSingleValueType2WidgetModel>>
@@ -322,19 +322,19 @@ class WidgetsViewModel(application: Application) : AndroidViewModel(application)
      * Focustronic One Element Widget
      */
 
-    fun insertFocustronicOneElementWidget(data: Focustronic1ElementWidgetModel) {
+    fun insertFocustronicOneElementWidget(data: FocustronicOneElementWidgetModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertFocustronicOneElementWidget(data)
         }
     }
 
-    fun deleteFocustronicOneElementWidget(data: Focustronic1ElementWidgetModel) {
+    fun deleteFocustronicOneElementWidget(data: FocustronicOneElementWidgetModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteFocustronicOneElementWidget(data)
         }
     }
 
-    fun updateFocustronicOneElementWidget(data: Focustronic1ElementWidgetModel) {
+    fun updateFocustronicOneElementWidget(data: FocustronicOneElementWidgetModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.updateFocustronicOneElementWidget(data)
         }

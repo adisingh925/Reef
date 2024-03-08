@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import app.android.damien.reef.database_model.Focustronic1ElementWidgetModel
+import app.android.damien.reef.database_model.FocustronicOneElementWidgetModel
 import app.android.damien.reef.database_model.FocustronicGridWidgetModel
 import app.android.damien.reef.database_model.FocustronicSingleValueType1WidgetModel
 import app.android.damien.reef.database_model.FocustronicSingleValueType2WidgetModel
@@ -18,7 +18,6 @@ import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
 import app.android.damien.reef.utils.Toast
 import app.android.damien.reef.viewmodel.WidgetsViewModel
-import kotlin.properties.Delegates
 
 
 class FocustronicSelectWidgetScreen : Fragment() {
@@ -88,7 +87,7 @@ class FocustronicSelectWidgetScreen : Fragment() {
             val widgetCount = SharedPreferences.read(Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET, 0)
             if (widgetCount in 0..4) {
                 widgetsViewModel.insertFocustronicOneElementWidget(
-                    Focustronic1ElementWidgetModel(
+                    FocustronicOneElementWidgetModel(
                         0,
                         "",
                         "",

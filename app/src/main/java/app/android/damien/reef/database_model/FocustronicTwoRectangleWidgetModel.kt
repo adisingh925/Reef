@@ -6,7 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import app.android.damien.reef.utils.Constants
 
-@Entity(tableName = Constants.FOCUSTRONIC_TWO_RECTNAGLE_WIDGETS_TABLE)
+@Entity(tableName = Constants.FOCUSTRONIC_TWO_RECTANGLE_WIDGETS_TABLE)
 data class FocustronicTwoRectangleWidgetModel(
     @PrimaryKey(autoGenerate = true) val id: Int,
     var topRectangleActualName: String?,

@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 import app.android.damien.reef.utils.Constants
 
 @Entity(tableName = Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET_TABLE)
-data class Focustronic1ElementWidgetModel(
+data class FocustronicOneElementWidgetModel(
     @PrimaryKey(autoGenerate = true) val id: Int,
     var actualName: String?,
     var givenName: String?,
@@ -38,12 +38,12 @@ data class Focustronic1ElementWidgetModel(
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<Focustronic1ElementWidgetModel> {
-        override fun createFromParcel(parcel: Parcel): Focustronic1ElementWidgetModel {
-            return Focustronic1ElementWidgetModel(parcel)
+    companion object CREATOR : Parcelable.Creator<FocustronicOneElementWidgetModel> {
+        override fun createFromParcel(parcel: Parcel): FocustronicOneElementWidgetModel {
+            return FocustronicOneElementWidgetModel(parcel)
         }
 
-        override fun newArray(size: Int): Array<Focustronic1ElementWidgetModel?> {
+        override fun newArray(size: Int): Array<FocustronicOneElementWidgetModel?> {
             return arrayOfNulls(size)
         }
     }

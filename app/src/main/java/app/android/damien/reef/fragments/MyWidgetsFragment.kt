@@ -18,7 +18,7 @@ import app.android.damien.reef.database_model.ApexSingleValueTypeOneModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
 import app.android.damien.reef.database_model.ApexWaterQualityWidget
-import app.android.damien.reef.database_model.Focustronic1ElementWidgetModel
+import app.android.damien.reef.database_model.FocustronicOneElementWidgetModel
 import app.android.damien.reef.database_model.FocustronicGridWidgetModel
 import app.android.damien.reef.database_model.FocustronicSingleValueType1WidgetModel
 import app.android.damien.reef.database_model.FocustronicSingleValueType2WidgetModel
@@ -420,7 +420,7 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
         findNavController().navigate(R.id.action_myWidgetsFragment_to_editApexWaterQualityWidget, bundle)
     }
 
-    override fun onFocustronic1ElementWidgetClick(data: Focustronic1ElementWidgetModel) {
+    override fun onFocustronic1ElementWidgetClick(data: FocustronicOneElementWidgetModel) {
         val bundle = Bundle()
         bundle.putParcelable(Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET, data)
         findNavController().navigate(R.id.action_myWidgetsFragment_to_editFocustronicSingleElementWidget, bundle)

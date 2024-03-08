@@ -1,7 +1,6 @@
 package app.android.damien.reef.adapter
 
 import android.content.Context
-import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import app.android.damien.reef.R
 import app.android.damien.reef.database_model.ApexCircleWidgetModel
@@ -19,18 +17,13 @@ import app.android.damien.reef.database_model.ApexSingleValueTypeOneModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
 import app.android.damien.reef.database_model.ApexWaterQualityWidget
-import app.android.damien.reef.database_model.Focustronic1ElementWidgetModel
+import app.android.damien.reef.database_model.FocustronicOneElementWidgetModel
 import app.android.damien.reef.database_model.FocustronicGridWidgetModel
 import app.android.damien.reef.database_model.FocustronicSingleValueType1WidgetModel
 import app.android.damien.reef.database_model.FocustronicSingleValueType2WidgetModel
 import app.android.damien.reef.database_model.FocustronicTwoRectangleWidgetModel
-import app.android.damien.reef.model.MyWidgetsChildModel
 import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
-import java.time.Instant
-import java.time.LocalDateTime
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
 
 class MyWidgetsChildAdapter(
     private val context: Context,
@@ -46,7 +39,7 @@ class MyWidgetsChildAdapter(
     private var setApexSingleValueTypeTwoWidgetData = emptyList<ApexSingleValueTypeTwoModel>()
     private var setApexWaterQualityWidgetData = emptyList<ApexWaterQualityWidget>()
 
-    private var setFocustronic1ElementWidgetData = emptyList<Focustronic1ElementWidgetModel>()
+    private var setFocustronic1ElementWidgetData = emptyList<FocustronicOneElementWidgetModel>()
     private var setFocustronicGridWidgetData = emptyList<FocustronicGridWidgetModel>()
     private var setFocustronicSingleValueType1WidgetData = emptyList<FocustronicSingleValueType1WidgetModel>()
     private var setFocustronicSingleValueType2WidgetData = emptyList<FocustronicSingleValueType2WidgetModel>()
@@ -62,7 +55,7 @@ class MyWidgetsChildAdapter(
         fun onApexWaterQualityWidgetClick(data: ApexWaterQualityWidget)
 
 
-        fun onFocustronic1ElementWidgetClick(data: Focustronic1ElementWidgetModel)
+        fun onFocustronic1ElementWidgetClick(data: FocustronicOneElementWidgetModel)
         fun onFocustronicGridWidgetClick(data: FocustronicGridWidgetModel)
         fun onFocustronicSingleValueType1WidgetClick(data: FocustronicSingleValueType1WidgetModel)
         fun onFocustronicSingleValueType2WidgetClick(data: FocustronicSingleValueType2WidgetModel)
@@ -598,6 +591,11 @@ class MyWidgetsChildAdapter(
             Constants.APEX_SINGLE_VALUE_TYPE_1_WIDGET -> return setApexSingleValueTypeOneWidgetData.size
             Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET -> return setApexSingleValueTypeTwoWidgetData.size
             Constants.APEX_WATER_QUALITY_WIDGET -> return setApexWaterQualityWidgetData.size
+            Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET -> return setFocustronic1ElementWidgetData.size
+            Constants.FOCUSTRONIC_TWO_RECTANGLE_WIDGET -> return setFocustronicTwoRectangleWidgetData.size
+            Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET -> return setFocustronicSingleValueType1WidgetData.size
+            Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET -> return setFocustronicSingleValueType2WidgetData.size
+            Constants.FOCUSTRONIC_GRID_WIDGET -> return setFocustronicGridWidgetData.size
         }
         return setApexFlaskBackgroundWidgetData.size
     }
@@ -637,7 +635,7 @@ class MyWidgetsChildAdapter(
         notifyDataSetChanged()
     }
 
-    fun setFocustronic1ElementWidgetData(widgets: List<Focustronic1ElementWidgetModel>) {
+    fun setFocustronic1ElementWidgetData(widgets: List<FocustronicOneElementWidgetModel>) {
         setFocustronic1ElementWidgetData = widgets
         notifyDataSetChanged()
     }

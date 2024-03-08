@@ -13,9 +13,14 @@ import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
 import app.android.damien.reef.database_model.ApexWaterQualityWidget
 import app.android.damien.reef.database_model.CustomWidgetModel
+import app.android.damien.reef.database_model.FocustronicOneElementWidgetModel
+import app.android.damien.reef.database_model.FocustronicGridWidgetModel
+import app.android.damien.reef.database_model.FocustronicSingleValueType1WidgetModel
+import app.android.damien.reef.database_model.FocustronicSingleValueType2WidgetModel
+import app.android.damien.reef.database_model.FocustronicTwoRectangleWidgetModel
 
 @Database(
-    entities = [CustomWidgetModel::class, ApexFlaskBackgroundWidgetModel::class, ApexPowerValuesWidgetModel::class, ApexCircleWidgetModel::class, ApexTwoRectangleWidgets::class, ApexSingleValueTypeOneModel::class, ApexSingleValueTypeTwoModel::class, ApexWaterQualityWidget::class],
+    entities = [CustomWidgetModel::class, ApexFlaskBackgroundWidgetModel::class, ApexPowerValuesWidgetModel::class, ApexCircleWidgetModel::class, ApexTwoRectangleWidgets::class, ApexSingleValueTypeOneModel::class, ApexSingleValueTypeTwoModel::class, ApexWaterQualityWidget::class, FocustronicTwoRectangleWidgetModel::class, FocustronicGridWidgetModel::class, FocustronicOneElementWidgetModel::class, FocustronicSingleValueType1WidgetModel::class, FocustronicSingleValueType2WidgetModel::class],
     version = 1,
     exportSchema = false
 )

@@ -9,7 +9,7 @@ import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
 import app.android.damien.reef.database_model.ApexWaterQualityWidget
 import app.android.damien.reef.database_model.CustomWidgetModel
-import app.android.damien.reef.database_model.Focustronic1ElementWidgetModel
+import app.android.damien.reef.database_model.FocustronicOneElementWidgetModel
 import app.android.damien.reef.database_model.FocustronicGridWidgetModel
 import app.android.damien.reef.database_model.FocustronicSingleValueType1WidgetModel
 import app.android.damien.reef.database_model.FocustronicSingleValueType2WidgetModel
@@ -158,15 +158,15 @@ class Repository(private val dao: CustomWidgetsDao) {
      * Focustronic One Element Widget
      */
 
-    suspend fun insertFocustronicOneElementWidget(data: Focustronic1ElementWidgetModel) {
+    suspend fun insertFocustronicOneElementWidget(data: FocustronicOneElementWidgetModel) {
         dao.insertFocustronicOneElementWidget(data)
     }
 
-    suspend fun deleteFocustronicOneElementWidget(data: Focustronic1ElementWidgetModel) {
+    suspend fun deleteFocustronicOneElementWidget(data: FocustronicOneElementWidgetModel) {
         dao.deleteFocustronicOneElementWidget(data)
     }
 
-    suspend fun updateFocustronicOneElementWidget(data: Focustronic1ElementWidgetModel) {
+    suspend fun updateFocustronicOneElementWidget(data: FocustronicOneElementWidgetModel) {
         dao.updateFocustronicOneElementWidget(data)
     }
 
