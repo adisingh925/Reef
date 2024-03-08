@@ -54,13 +54,37 @@
         android:layout_marginTop="@dimen/medium_margin"
         layout="@layout/circle_widgets"/>
 
+    <TextView
+        android:id="@+id/all_values"
+        app:layout_constraintTop_toBottomOf="@id/flask_background_widget_edit_layout"
+        app:layout_constraintLeft_toLeftOf="@id/valuesRecyclerView"
+        app:layout_constraintRight_toRightOf="@id/valuesRecyclerView"
+        android:layout_margin="@dimen/medium_margin"
+        android:layout_width="wrap_content"
+        android:text="All Values"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/selected_values"
+        app:layout_constraintTop_toBottomOf="@id/flask_background_widget_edit_layout"
+        app:layout_constraintLeft_toLeftOf="@id/linearLayout"
+        app:layout_constraintRight_toRightOf="@id/linearLayout"
+        android:layout_margin="@dimen/medium_margin"
+        android:layout_width="wrap_content"
+        android:text="Selected Values"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/valuesRecyclerView"
         android:background="@drawable/recycler_outline"
         android:padding="10dp"
         app:layout_constraintLeft_toLeftOf="@id/flask_background_widget_edit_layout"
-        app:layout_constraintTop_toBottomOf="@id/flask_background_widget_edit_layout"
-        android:layout_marginTop="@dimen/extra_large_margin"
+        app:layout_constraintTop_toBottomOf="@id/selected_values"
+        android:layout_marginTop="@dimen/medium_margin"
         android:layout_width="130dp"
         android:overScrollMode="never"
         android:layout_height="300dp"/>
