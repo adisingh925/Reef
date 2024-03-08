@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -28,7 +29,7 @@ import java.time.format.DateTimeFormatter
 
 class MyWidgetsChildAdapter(
     private val context: Context,
-    private val widgetType : String,
+    private val widgetType: String,
     private val onItemClickListener: OnItemClickListener
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -74,16 +75,20 @@ class MyWidgetsChildAdapter(
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder2: ")
 
-            topRectangleTime.text = setApexTwoRectangleWidgetData[position].topRectangleUpdateTimeStamp
-            bottomRectangleTime.text = setApexTwoRectangleWidgetData[position].bottomRectangleUpdateTimeStamp
+            topRectangleTime.text =
+                setApexTwoRectangleWidgetData[position].topRectangleUpdateTimeStamp
+            bottomRectangleTime.text =
+                setApexTwoRectangleWidgetData[position].bottomRectangleUpdateTimeStamp
 
-            val topRectangleDrawable = context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
+            val topRectangleDrawable =
+                context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
             val topRectangleMutatedDrawable = topRectangleDrawable.mutate()
             topRectangleMutatedDrawable.setTint(setApexTwoRectangleWidgetData[position].topRectangleColor)
 
             topCard.background = topRectangleMutatedDrawable
 
-            val bottomRectangleDrawable = context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
+            val bottomRectangleDrawable =
+                context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
             val bottomRectangleMutatedDrawable = bottomRectangleDrawable.mutate()
             bottomRectangleMutatedDrawable.setTint(setApexTwoRectangleWidgetData[position].bottomRectangleColor)
 
@@ -92,16 +97,18 @@ class MyWidgetsChildAdapter(
             topRectangleUnit.text = setApexTwoRectangleWidgetData[position].topRectangleUnit
             bottomRectangleUnit.text = setApexTwoRectangleWidgetData[position].bottomRectangleUnit
 
-            if(setApexTwoRectangleWidgetData[position].topRectangleActualName.isNullOrEmpty()) {
+            if (setApexTwoRectangleWidgetData[position].topRectangleActualName.isNullOrEmpty()) {
                 topRectangleValue.text = "NaN"
-            }else{
-                topRectangleValue.text = setApexTwoRectangleWidgetData[position].topRectangleValue.toString()
+            } else {
+                topRectangleValue.text =
+                    setApexTwoRectangleWidgetData[position].topRectangleValue.toString()
             }
 
-            if(setApexTwoRectangleWidgetData[position].bottomRectangleActualName.isNullOrEmpty()) {
+            if (setApexTwoRectangleWidgetData[position].bottomRectangleActualName.isNullOrEmpty()) {
                 bottomRectangleValue.text = "NaN"
-            }else{
-                bottomRectangleValue.text = setApexTwoRectangleWidgetData[position].bottomRectangleValue.toString()
+            } else {
+                bottomRectangleValue.text =
+                    setApexTwoRectangleWidgetData[position].bottomRectangleValue.toString()
             }
 
             itemView.setOnClickListener {
@@ -121,21 +128,21 @@ class MyWidgetsChildAdapter(
 
         fun bind(position: Int) {
             Log.d("MyWidgetsChildAdapter", "ViewHolder3: ")
-            if(setApexCircleWidgetData[position].slot1GivenName.isNullOrEmpty()){
+            if (setApexCircleWidgetData[position].slot1GivenName.isNullOrEmpty()) {
                 slot1name.text = setApexCircleWidgetData[position].slot1ActualName
-            }else{
+            } else {
                 slot1name.text = setApexCircleWidgetData[position].slot1GivenName
             }
 
-            if(setApexCircleWidgetData[position].slot2GivenName.isNullOrEmpty()) {
+            if (setApexCircleWidgetData[position].slot2GivenName.isNullOrEmpty()) {
                 slot2name.text = setApexCircleWidgetData[position].slot2ActualName
-            }else{
+            } else {
                 slot2name.text = setApexCircleWidgetData[position].slot2GivenName
             }
 
-            if(setApexCircleWidgetData[position].slot3GivenName.isNullOrEmpty()) {
+            if (setApexCircleWidgetData[position].slot3GivenName.isNullOrEmpty()) {
                 slot3name.text = setApexCircleWidgetData[position].slot3ActualName
-            }else{
+            } else {
                 slot3name.text = setApexCircleWidgetData[position].slot3GivenName
             }
 
@@ -162,21 +169,21 @@ class MyWidgetsChildAdapter(
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder4: ")
 
-            if(setApexFlaskBackgroundWidgetData[position].slot1GivenName.isNullOrEmpty()){
+            if (setApexFlaskBackgroundWidgetData[position].slot1GivenName.isNullOrEmpty()) {
                 slot1name.text = setApexFlaskBackgroundWidgetData[position].slot1ActualName
-            }else{
+            } else {
                 slot1name.text = setApexFlaskBackgroundWidgetData[position].slot1GivenName
             }
 
-            if(setApexFlaskBackgroundWidgetData[position].slot2GivenName.isNullOrEmpty()) {
+            if (setApexFlaskBackgroundWidgetData[position].slot2GivenName.isNullOrEmpty()) {
                 slot2name.text = setApexFlaskBackgroundWidgetData[position].slot2ActualName
-            }else{
+            } else {
                 slot2name.text = setApexFlaskBackgroundWidgetData[position].slot2GivenName
             }
 
-            if(setApexFlaskBackgroundWidgetData[position].slot3GivenName.isNullOrEmpty()) {
+            if (setApexFlaskBackgroundWidgetData[position].slot3GivenName.isNullOrEmpty()) {
                 slot3name.text = setApexFlaskBackgroundWidgetData[position].slot3ActualName
-            }else{
+            } else {
                 slot3name.text = setApexFlaskBackgroundWidgetData[position].slot3GivenName
             }
 
@@ -185,7 +192,9 @@ class MyWidgetsChildAdapter(
             slot3Value.text = setApexFlaskBackgroundWidgetData[position].slot3Value.toString()
 
             itemView.setOnClickListener {
-                onItemClickListener.onApexFlaskBackgroundWidgetClick(setApexFlaskBackgroundWidgetData[position])
+                onItemClickListener.onApexFlaskBackgroundWidgetClick(
+                    setApexFlaskBackgroundWidgetData[position]
+                )
             }
         }
     }
@@ -209,16 +218,47 @@ class MyWidgetsChildAdapter(
             unit.setTextColor(setApexSingleValueTypeOneWidgetData[position].textColor)
 
             itemView.setOnClickListener {
-                onItemClickListener.onApexSingleValueTypeOneWidgetClick(setApexSingleValueTypeOneWidgetData[position])
+                onItemClickListener.onApexSingleValueTypeOneWidgetClick(
+                    setApexSingleValueTypeOneWidgetData[position]
+                )
             }
         }
     }
 
     private inner class ViewHolder6(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val value = itemView.findViewById<TextView>(R.id.value)
+        val heading = itemView.findViewById<TextView>(R.id.heading)
+        val unit = itemView.findViewById<TextView>(R.id.unit)
+        val innerLayout = itemView.findViewById<LinearLayout>(R.id.innerLayout)
+        val timestamp = itemView.findViewById<TextView>(R.id.timestamp)
         fun bind(position: Int) {
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder6: ")
 
+            value.text = setApexSingleValueTypeTwoWidgetData[position].value.toString()
+            heading.text = setApexSingleValueTypeTwoWidgetData[position].actualName
+            unit.text = setApexSingleValueTypeTwoWidgetData[position].unit
+
+            value.setTextColor(setApexSingleValueTypeTwoWidgetData[position].textColor)
+            heading.setTextColor(setApexSingleValueTypeTwoWidgetData[position].textColor)
+            unit.setTextColor(setApexSingleValueTypeTwoWidgetData[position].textColor)
+            timestamp.text = "${SharedPreferences.read("lastUpdatedApex", "")}"
+            timestamp.setTextColor(setApexSingleValueTypeTwoWidgetData[position].textColor)
+
+            val innerLayoutDrawable = context?.resources?.getDrawable(R.drawable.linear_layout_corner_radius_black_circular)
+            val innerLayoutMutatedDrawable = innerLayoutDrawable?.mutate()
+            if (innerLayoutMutatedDrawable is GradientDrawable) {
+                innerLayoutMutatedDrawable.setStroke(3, setApexSingleValueTypeTwoWidgetData[position].ringColor) // Assuming 3dp width for the stroke
+            }
+
+            innerLayout.background = innerLayoutMutatedDrawable
+
+            itemView.setOnClickListener {
+                onItemClickListener.onApexSingleValueTypeTwoWidgetClick(
+                    setApexSingleValueTypeTwoWidgetData[position]
+                )
+            }
         }
     }
 
@@ -248,35 +288,35 @@ class MyWidgetsChildAdapter(
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder7: ")
 
-            timestamp.text = "as of - ${SharedPreferences.read("lastUpdatedApex","")}"
+            timestamp.text = "as of - ${SharedPreferences.read("lastUpdatedApex", "")}"
 
-            if(setApexWaterQualityWidgetData[position].slot1GivenName.isNullOrEmpty()) {
+            if (setApexWaterQualityWidgetData[position].slot1GivenName.isNullOrEmpty()) {
                 slot1name.text = setApexWaterQualityWidgetData[position].slot1ActualName
-            }else{
+            } else {
                 slot1name.text = setApexWaterQualityWidgetData[position].slot1GivenName
             }
 
-            if(setApexWaterQualityWidgetData[position].slot2GivenName.isNullOrEmpty()) {
+            if (setApexWaterQualityWidgetData[position].slot2GivenName.isNullOrEmpty()) {
                 slot2name.text = setApexWaterQualityWidgetData[position].slot2ActualName
-            }else{
+            } else {
                 slot2name.text = setApexWaterQualityWidgetData[position].slot2GivenName
             }
 
-            if(setApexWaterQualityWidgetData[position].slot3GivenName.isNullOrEmpty()) {
+            if (setApexWaterQualityWidgetData[position].slot3GivenName.isNullOrEmpty()) {
                 slot3name.text = setApexWaterQualityWidgetData[position].slot3ActualName
-            }else{
+            } else {
                 slot3name.text = setApexWaterQualityWidgetData[position].slot3GivenName
             }
 
-            if(setApexWaterQualityWidgetData[position].slot4GivenName.isNullOrEmpty()) {
+            if (setApexWaterQualityWidgetData[position].slot4GivenName.isNullOrEmpty()) {
                 slot4name.text = setApexWaterQualityWidgetData[position].slot4ActualName
-            }else{
+            } else {
                 slot4name.text = setApexWaterQualityWidgetData[position].slot4GivenName
             }
 
-            if(setApexWaterQualityWidgetData[position].slot5GivenName.isNullOrEmpty()) {
+            if (setApexWaterQualityWidgetData[position].slot5GivenName.isNullOrEmpty()) {
                 slot5name.text = setApexWaterQualityWidgetData[position].slot5ActualName
-            }else{
+            } else {
                 slot5name.text = setApexWaterQualityWidgetData[position].slot5GivenName
             }
 
@@ -437,15 +477,18 @@ class MyWidgetsChildAdapter(
             )
 
             4 -> return ViewHolder4(
-                LayoutInflater.from(context).inflate(R.layout.flask_background_widget, parent, false)
+                LayoutInflater.from(context)
+                    .inflate(R.layout.flask_background_widget, parent, false)
             )
 
             5 -> return ViewHolder5(
-                LayoutInflater.from(context).inflate(R.layout.single_value_type_1_apex, parent, false)
+                LayoutInflater.from(context)
+                    .inflate(R.layout.single_value_type_1_apex, parent, false)
             )
 
             6 -> return ViewHolder6(
-                LayoutInflater.from(context).inflate(R.layout.single_value_type_2_apex, parent, false)
+                LayoutInflater.from(context)
+                    .inflate(R.layout.single_value_type_2_apex, parent, false)
             )
 
             7 -> return ViewHolder7(
@@ -531,7 +574,7 @@ class MyWidgetsChildAdapter(
     }
 
     override fun getItemCount(): Int {
-        when(widgetType){
+        when (widgetType) {
             Constants.APEX_POWER_VALUE_WIDGET -> return setApexPowerValuesWidgetData.size
             Constants.APEX_TWO_RECTANGLE_WIDGET -> return setApexTwoRectangleWidgetData.size
             Constants.APEX_CIRCLE_WIDGET -> return setApexCircleWidgetData.size

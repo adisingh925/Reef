@@ -161,6 +161,18 @@ class WidgetsViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
+    fun deleteApexSingleValueTypeTwoWidget(data: ApexSingleValueTypeTwoModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteApexSingleValueTypeTwoWidget(data)
+        }
+    }
+
+    fun updateApexSingleValueTypeTwoWidget(data: ApexSingleValueTypeTwoModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateApexSingleValueTypeTwoWidget(data)
+        }
+    }
+
     /**
      * Apex Water Quality Widget
 

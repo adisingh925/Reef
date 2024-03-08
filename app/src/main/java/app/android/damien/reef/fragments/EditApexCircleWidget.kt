@@ -28,7 +28,7 @@ import org.json.JSONObject
 
 class EditApexCircleWidget : Fragment() {
 
-    private val binding by lazy{
+    private val binding by lazy {
         FragmentEditApexCircleWidgetBinding.inflate(layoutInflater)
     }
 
@@ -47,14 +47,35 @@ class EditApexCircleWidget : Fragment() {
     private lateinit var apexCircleWidget: ApexCircleWidgetModel
     private lateinit var apexData: JSONArray
 
+    private var value1 = 0.0f
+    private var value2 = 0.0f
+    private var value3 = 0.0f
+
+    private var actualName1 = ""
+    private var actualName2 = ""
+    private var actualName3 = ""
+
+    private var givenName1 = ""
+    private var givenName2 = ""
+    private var givenName3 = ""
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         apexCircleWidget = arguments?.getParcelable(Constants.APEX_CIRCLE_WIDGET)!!
 
+        value1 = apexCircleWidget.slot1Value
+        value2 = apexCircleWidget.slot2Value
+        value3 = apexCircleWidget.slot3Value
+
+        actualName1 = apexCircleWidget.slot1ActualName.toString()
+        actualName2 = apexCircleWidget.slot2ActualName.toString()
+        actualName3 = apexCircleWidget.slot3ActualName.toString()
+
         if (apexCircleWidget.slot1GivenName.isNullOrEmpty()) {
-            binding.flaskBackgroundWidgetEditLayout.slot1name.text = apexCircleWidget.slot1ActualName
+            binding.flaskBackgroundWidgetEditLayout.slot1name.text =
+                apexCircleWidget.slot1ActualName
             binding.slot1.text = apexCircleWidget.slot1ActualName
         } else {
             binding.flaskBackgroundWidgetEditLayout.slot1name.text = apexCircleWidget.slot1GivenName
@@ -62,7 +83,8 @@ class EditApexCircleWidget : Fragment() {
         }
 
         if (apexCircleWidget.slot2GivenName.isNullOrEmpty()) {
-            binding.flaskBackgroundWidgetEditLayout.slot2name.text = apexCircleWidget.slot2ActualName
+            binding.flaskBackgroundWidgetEditLayout.slot2name.text =
+                apexCircleWidget.slot2ActualName
             binding.slot2.text = apexCircleWidget.slot2ActualName
         } else {
             binding.flaskBackgroundWidgetEditLayout.slot2name.text = apexCircleWidget.slot2GivenName
@@ -70,56 +92,61 @@ class EditApexCircleWidget : Fragment() {
         }
 
         if (apexCircleWidget.slot3GivenName.isNullOrEmpty()) {
-            binding.flaskBackgroundWidgetEditLayout.slot3name.text = apexCircleWidget.slot3ActualName
+            binding.flaskBackgroundWidgetEditLayout.slot3name.text =
+                apexCircleWidget.slot3ActualName
             binding.slot3.text = apexCircleWidget.slot3ActualName
         } else {
             binding.flaskBackgroundWidgetEditLayout.slot3name.text = apexCircleWidget.slot3GivenName
             binding.slot3.text = apexCircleWidget.slot3GivenName
         }
 
-        binding.flaskBackgroundWidgetEditLayout.slot1value.text = apexCircleWidget.slot1Value.toString()
-        binding.flaskBackgroundWidgetEditLayout.slot2value.text = apexCircleWidget.slot2Value.toString()
-        binding.flaskBackgroundWidgetEditLayout.slot3value.text = apexCircleWidget.slot3Value.toString()
+        binding.flaskBackgroundWidgetEditLayout.slot1value.text =
+            apexCircleWidget.slot1Value.toString()
+        binding.flaskBackgroundWidgetEditLayout.slot2value.text =
+            apexCircleWidget.slot2Value.toString()
+        binding.flaskBackgroundWidgetEditLayout.slot3value.text =
+            apexCircleWidget.slot3Value.toString()
 
         initApiData()
 
         binding.slot1.addTextChangedListener {
-            if(JSONObject(apexData.getJSONObject(0).toString()).has(it.toString())){
-                apexCircleWidget.slot1ActualName = it.toString()
-                apexCircleWidget.slot1GivenName = ""
+            if (JSONObject(apexData.getJSONObject(0).toString()).has(it.toString())) {
+                actualName1 = it.toString()
+                givenName1 = ""
                 binding.flaskBackgroundWidgetEditLayout.slot1name.text = it.toString()
             } else {
                 binding.flaskBackgroundWidgetEditLayout.slot1name.text = it.toString()
             }
 
             binding.flaskBackgroundWidgetEditLayout.slot1value.text =
-                JSONObject(apexData.getJSONObject(0).toString()).get(apexCircleWidget.slot1ActualName).toString().toFloat()
+                JSONObject(apexData.getJSONObject(0).toString()).get(actualName1).toString()
+                    .toFloat()
                     .toString()
 
-            apexCircleWidget.slot1Value = apexCircleWidget.slot1ActualName?.let { it1 ->
+            value1 = actualName1.let { it1 ->
                 JSONObject(apexData.getJSONObject(0).toString()).get(
                     it1
                 ).toString().toFloat()
-            }!!
+            }
         }
 
         binding.slot2.addTextChangedListener {
             if (JSONObject(apexData.getJSONObject(0).toString()).has(it.toString())) {
-                apexCircleWidget.slot2ActualName = it.toString()
-                apexCircleWidget.slot2GivenName = ""
+                actualName2 = it.toString()
+                givenName2 = ""
                 binding.flaskBackgroundWidgetEditLayout.slot2name.text = it.toString()
             } else {
                 binding.flaskBackgroundWidgetEditLayout.slot2name.text = it.toString()
             }
 
             binding.flaskBackgroundWidgetEditLayout.slot2value.text =
-                apexCircleWidget.slot2ActualName?.let { it1 ->
+                actualName2?.let { it1 ->
                     JSONObject(apexData.getJSONObject(0).toString()).get(
                         it1
                     ).toString().toFloat().toString()
                 }
 
-            apexCircleWidget.slot2Value = apexCircleWidget.slot2ActualName?.let { it1 ->
+            value2 = actualName2?.let { it1 ->
                 JSONObject(apexData.getJSONObject(0).toString()).get(
                     it1
                 ).toString().toFloat()
@@ -128,25 +155,25 @@ class EditApexCircleWidget : Fragment() {
 
         binding.slot3.addTextChangedListener {
             if (JSONObject(apexData.getJSONObject(0).toString()).has(it.toString())) {
-                apexCircleWidget.slot3ActualName = it.toString()
-                apexCircleWidget.slot3GivenName = ""
+                actualName3 = it.toString()
+                givenName3 = ""
                 binding.flaskBackgroundWidgetEditLayout.slot3name.text = it.toString()
             } else {
                 binding.flaskBackgroundWidgetEditLayout.slot3name.text = it.toString()
             }
 
             binding.flaskBackgroundWidgetEditLayout.slot3value.text =
-                apexCircleWidget.slot3ActualName?.let { it1 ->
+                actualName3.let { it1 ->
                     JSONObject(apexData.getJSONObject(0).toString()).get(
                         it1
                     ).toString().toFloat().toString()
                 }
 
-            apexCircleWidget.slot3Value = apexCircleWidget.slot3ActualName?.let { it1 ->
+            value3 = actualName3.let { it1 ->
                 JSONObject(apexData.getJSONObject(0).toString()).get(
                     it1
                 ).toString().toFloat()
-            }!!
+            }
         }
 
         binding.slot1.setOnClickListener {
@@ -162,7 +189,7 @@ class EditApexCircleWidget : Fragment() {
                         return@setOnClickListener
                     }
 
-                    apexCircleWidget.slot1GivenName = view.textInput.text.toString()
+                    givenName1 = view.textInput.text.toString()
                     binding.slot1.text = view.textInput.text.toString()
                     dialog.dismiss()
                 }
@@ -188,7 +215,7 @@ class EditApexCircleWidget : Fragment() {
                         return@setOnClickListener
                     }
 
-                    apexCircleWidget.slot2GivenName = view.textInput.text.toString()
+                    givenName2 = view.textInput.text.toString()
                     binding.slot2.text = view.textInput.text.toString()
                     dialog.dismiss()
                 }
@@ -214,7 +241,7 @@ class EditApexCircleWidget : Fragment() {
                         return@setOnClickListener
                     }
 
-                    apexCircleWidget.slot3GivenName = view.textInput.text.toString()
+                    givenName3 = view.textInput.text.toString()
                     binding.slot3.text = view.textInput.text.toString()
                     dialog.dismiss()
                 }
@@ -287,6 +314,15 @@ class EditApexCircleWidget : Fragment() {
         }
 
         binding.saveButton.setOnClickListener {
+            apexCircleWidget.slot1ActualName = actualName1
+            apexCircleWidget.slot1GivenName = givenName1
+            apexCircleWidget.slot1Value = value1
+            apexCircleWidget.slot2ActualName = actualName2
+            apexCircleWidget.slot2GivenName = givenName2
+            apexCircleWidget.slot2Value = value2
+            apexCircleWidget.slot3ActualName = actualName3
+            apexCircleWidget.slot3GivenName = givenName3
+            apexCircleWidget.slot3Value = value3
             widgetsViewModel.updateApexCircleWidget(apexCircleWidget)
             Toast.showSnackbar(binding.root, "Apex Flask Background Widget Updated")
         }

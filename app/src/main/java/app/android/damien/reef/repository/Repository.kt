@@ -110,6 +110,14 @@ class Repository(private val dao: CustomWidgetsDao) {
         dao.insertApexSingleValueTypeTwoWidget(data)
     }
 
+    suspend fun deleteApexSingleValueTypeTwoWidget(data: ApexSingleValueTypeTwoModel) {
+        dao.deleteApexSingleValueTypeTwoWidget(data)
+    }
+
+    suspend fun updateApexSingleValueTypeTwoWidget(data: ApexSingleValueTypeTwoModel) {
+        dao.updateApexSingleValueTypeTwoWidget(data)
+    }
+
     /**
      * Apex Water Quality Widget
 

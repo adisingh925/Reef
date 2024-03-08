@@ -413,7 +413,9 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
     }
 
     override fun onApexSingleValueTypeTwoWidgetClick(data: ApexSingleValueTypeTwoModel) {
-        TODO("Not yet implemented")
+        val bundle = Bundle()
+        bundle.putParcelable(Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET, data)
+        findNavController().navigate(R.id.action_myWidgetsFragment_to_editApexSingleValueType2, bundle)
     }
 
     override fun onApexWaterQualityWidgetClick(data: ApexWaterQualityWidget) {

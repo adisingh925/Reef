@@ -106,6 +106,9 @@
         <action
             android:id="@+id/action_myWidgetsFragment_to_editApexSingleValueType1Widget"
             app:destination="@id/editApexSingleValueType1Widget" />
+        <action
+            android:id="@+id/action_myWidgetsFragment_to_editApexSingleValueType2"
+            app:destination="@id/editApexSingleValueType2" />
     </fragment>
     <fragment
         android:id="@+id/editApexFlaskBackgroundWidget"
@@ -131,4 +134,9 @@
         android:name="app.android.damien.reef.fragments.EditApexSingleValueType1Widget"
         android:label="fragment_edit_apex_single_value_type1_widget"
         tools:layout="@layout/fragment_edit_apex_single_value_type1_widget" />
+    <fragment
+        android:id="@+id/editApexSingleValueType2"
+        android:name="app.android.damien.reef.fragments.EditApexSingleValueType2"
+        android:label="fragment_edit_apex_single_value_type2"
+        tools:layout="@layout/fragment_edit_apex_single_value_type2" />
 </navigation>

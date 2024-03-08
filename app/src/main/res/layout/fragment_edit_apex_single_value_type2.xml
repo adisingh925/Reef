@@ -3,16 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#80000000"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.EditApexFlaskBackgroundWidget">
+    tools:context=".fragments.EditApexSingleValueType2">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/save_button"
         android:layout_width="wrap_content"
         app:cornerRadius="@dimen/default_button_radius"
-        android:backgroundTint="@color/green"
-        android:textColor="@color/black"
         app:layout_constraintRight_toRightOf="parent"
         android:text="Save"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,7 +22,6 @@
         android:layout_width="wrap_content"
         app:cornerRadius="@dimen/default_button_radius"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:backgroundTint="@color/red"
         android:text="Delete"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="@dimen/medium_margin"
@@ -50,9 +46,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_height="150dp"
-        android:layout_width="300dp"
+        android:layout_width="150dp"
         android:layout_marginTop="@dimen/medium_margin"
-        layout="@layout/circle_widgets"/>
+        layout="@layout/single_value_type_2_apex"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/valuesRecyclerView"
@@ -61,53 +57,9 @@
         app:layout_constraintLeft_toLeftOf="@id/flask_background_widget_edit_layout"
         app:layout_constraintTop_toBottomOf="@id/flask_background_widget_edit_layout"
         android:layout_marginTop="@dimen/extra_large_margin"
+        app:layout_constraintRight_toRightOf="@id/flask_background_widget_edit_layout"
         android:layout_width="130dp"
         android:overScrollMode="never"
         android:layout_height="300dp"/>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:orientation="vertical"
-        android:layout_width="130dp"
-        android:padding="10dp"
-        android:background="@drawable/recycler_outline"
-        app:layout_constraintRight_toRightOf="@id/flask_background_widget_edit_layout"
-        app:layout_constraintTop_toTopOf="@id/valuesRecyclerView"
-        android:layout_height="300dp">
-
-        <TextView
-            android:id="@+id/slot1"
-            android:layout_width="match_parent"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:text="Slot 1"
-            android:gravity="center"
-            android:layout_margin="@dimen/small_margin"
-            android:background="@drawable/linear_layout_corner_radius_blue"
-            android:layout_height="40dp"/>
-
-        <TextView
-            android:id="@+id/slot2"
-            android:layout_width="match_parent"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:gravity="center"
-            android:text="Slot 2"
-            android:layout_margin="@dimen/small_margin"
-            android:background="@drawable/linear_layout_corner_radius_blue"
-            android:layout_height="40dp"/>
-
-        <TextView
-            android:id="@+id/slot3"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:gravity="center"
-            android:text="Slot 3"
-            android:layout_width="match_parent"
-            android:layout_margin="@dimen/small_margin"
-            android:background="@drawable/linear_layout_corner_radius_blue"
-            android:layout_height="40dp"/>
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import app.android.damien.reef.database_model.ApexCircleWidgetModel
 import app.android.damien.reef.database_model.ApexFlaskBackgroundWidgetModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeOneModel
+import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
 import app.android.damien.reef.database_model.ApexWaterQualityWidget
 import app.android.damien.reef.databinding.FragmentApexSelectWidgetScreenBinding
@@ -185,6 +186,16 @@ class ApexSelectWidgetScreen : Fragment() {
         binding.apexSingleValueType2.flaskConstraintLayout.setOnClickListener {
             val widgetCount = SharedPreferences.read(Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET, 0)
             if (widgetCount in 0..4) {
+                widgetsViewModel.insertApexSingleValueTypeTwoWidget(
+                    ApexSingleValueTypeTwoModel(
+                        0,
+                        "NaN",
+                        "",
+                        0f,
+                        "Unit",
+                        Color.parseColor("#ffffff"),
+                        Color.parseColor("#ffffff")
+                    ))
                 SharedPreferences.write(Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET, widgetCount + 1)
             } else {
                 Toast.showSnackbar(binding.root, "You can only add 5 widgets")

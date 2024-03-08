@@ -116,6 +116,12 @@ interface CustomWidgetsDao {
     @Query("SELECT * from apex_single_value_type_2_widget_table order by id asc")
     fun readApexSingleValueTypeTwoWidget(): LiveData<List<ApexSingleValueTypeTwoModel>>
 
+    @Update
+    fun updateApexSingleValueTypeTwoWidget(data: ApexSingleValueTypeTwoModel)
+
+    @Delete
+    fun deleteApexSingleValueTypeTwoWidget(data: ApexSingleValueTypeTwoModel)
+
     /**
      * Apex Water Quality Widget
      */

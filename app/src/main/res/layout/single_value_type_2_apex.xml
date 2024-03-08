@@ -4,6 +4,7 @@
     android:layout_width="150dp"
     android:layout_height="150dp"
     android:layout_margin="@dimen/medium_margin"
+    android:id="@+id/layout"
     android:orientation="vertical"
     android:background="@drawable/linear_layout_corner_radius_black"
     app:cardCornerRadius="100dp">
@@ -12,6 +13,7 @@
         android:layout_width="match_parent"
         android:background="@drawable/linear_layout_corner_radius_black_circular"
         android:orientation="vertical"
+        android:id="@+id/innerLayout"
         android:layout_margin="5dp"
         android:layout_height="match_parent">
 
@@ -49,11 +51,11 @@
 
         <TextView
             android:id="@+id/timestamp"
-            android:layout_width="wrap_content"
+            android:layout_width="70dp"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="2024-02-22 \n10:20:30"
+            android:text="2024-02-22 10:20:30"
             android:textColor="@color/white"
             android:textSize="12sp"
             android:layout_gravity="center" />
