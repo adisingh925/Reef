@@ -107,6 +107,7 @@ class EditFocustronicSingleValueType2Widget : Fragment() {
             focustronicType2Widget.value = value
             focustronicType2Widget.unit = unit
             focustronicType2Widget.textColor = textColor
+            focustronicType2Widget.ringColor = ringColor
             widgetsViewModel.updateFocustronicSingleValueTypeTwoWidget(focustronicType2Widget)
 
             Toast.showSnackbar(requireView(), "Apex Single Value Type 2 Widget Updated")

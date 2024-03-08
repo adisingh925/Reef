@@ -101,13 +101,13 @@ class EditApexSingleValueType2 : Fragment() {
 
         binding.flaskBackgroundWidgetEditLayout.innerLayout.background = innerLayoutMutatedDrawable
 
-
         binding.saveButton.setOnClickListener {
             apexSingleValueType2Widget.actualName = actualName
             apexSingleValueType2Widget.givenName = givenName
             apexSingleValueType2Widget.value = value
             apexSingleValueType2Widget.unit = unit
             apexSingleValueType2Widget.textColor = textColor
+            apexSingleValueType2Widget.ringColor = ringColor
             widgetsViewModel.updateApexSingleValueTypeTwoWidget(apexSingleValueType2Widget)
 
             Toast.showSnackbar(requireView(), "Apex Single Value Type 2 Widget Updated")

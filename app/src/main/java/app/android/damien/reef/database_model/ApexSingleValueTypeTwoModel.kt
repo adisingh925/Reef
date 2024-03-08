@@ -14,7 +14,7 @@ data class ApexSingleValueTypeTwoModel(
     var value: Float,
     var unit: String?,
     var textColor: Int,
-    val ringColor: Int
+    var ringColor: Int
 ) : Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readInt(),

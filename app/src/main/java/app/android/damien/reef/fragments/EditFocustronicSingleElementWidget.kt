@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.android.damien.reef.R
 import app.android.damien.reef.adapter.SimpleListAdapter
@@ -99,6 +100,15 @@ class EditFocustronicSingleElementWidget : Fragment() {
             focustronicSingleValueWidget.backgroundColor = backgroundColor
             widgetsViewModel.updateFocustronicOneElementWidget(focustronicSingleValueWidget)
             Toast.showSnackbar(binding.root, "Focustronic Single Element Widget updated")
+        }
+
+        binding.deleteButton.setOnClickListener {
+            SharedPreferences.write(
+                Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET,
+                SharedPreferences.read(Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET, 0) - 1
+            )
+            widgetsViewModel.deleteFocustronicOneElementWidget(focustronicSingleValueWidget)
+            findNavController().popBackStack()
         }
 
         binding.flaskBackgroundWidgetEditLayout.customWidgetLayoutCard.setOnClickListener {
