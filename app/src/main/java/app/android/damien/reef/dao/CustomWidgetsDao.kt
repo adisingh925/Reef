@@ -15,6 +15,11 @@ import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
 import app.android.damien.reef.database_model.ApexWaterQualityWidget
 import app.android.damien.reef.database_model.CustomWidgetModel
+import app.android.damien.reef.database_model.Focustronic1ElementWidgetModel
+import app.android.damien.reef.database_model.FocustronicGridWidgetModel
+import app.android.damien.reef.database_model.FocustronicSingleValueType1WidgetModel
+import app.android.damien.reef.database_model.FocustronicSingleValueType2WidgetModel
+import app.android.damien.reef.database_model.FocustronicTwoRectangleWidgetModel
 
 @Dao
 interface CustomWidgetsDao {
@@ -136,4 +141,86 @@ interface CustomWidgetsDao {
 
     @Delete
     fun deleteApexWaterQualityWidget(data: ApexWaterQualityWidget)
+
+    /**
+     * Focustronic Double Rectangle Widget
+     */
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertFocustronicDoubleRectangleWidget(data: FocustronicTwoRectangleWidgetModel)
+
+    @Query("SELECT * from focustronic_two_rectangle_widgets_table order by id asc")
+    fun readFocustronicDoubleRectangleWidget(): LiveData<List<FocustronicTwoRectangleWidgetModel>>
+
+    @Update
+    fun updateFocustronicDoubleRectangleWidget(data: FocustronicTwoRectangleWidgetModel)
+
+    @Delete
+    fun deleteFocustronicDoubleRectangleWidget(data: FocustronicTwoRectangleWidgetModel)
+
+    /**
+     * Focustronic Single Value Type One Widget
+     */
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertFocustronicSingleValueTypeOneWidget(data: FocustronicSingleValueType1WidgetModel)
+
+    @Query("SELECT * from focustronic_single_value_type_1_widget_table order by id asc")
+    fun readFocustronicSingleValueTypeOneWidget(): LiveData<List<FocustronicSingleValueType1WidgetModel>>
+
+    @Update
+    fun updateFocustronicSingleValueTypeOneWidget(data: FocustronicSingleValueType1WidgetModel)
+
+    @Delete
+    fun deleteFocustronicSingleValueTypeOneWidget(data: FocustronicSingleValueType1WidgetModel)
+
+    /**
+     * Focustronic Single Value Type Two Widget
+     */
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertFocustronicSingleValueTypeTwoWidget(data: FocustronicSingleValueType2WidgetModel)
+
+    @Query("SELECT * from focustronic_single_value_type_2_widget_table order by id asc")
+    fun readFocustronicSingleValueTypeTwoWidget(): LiveData<List<FocustronicSingleValueType2WidgetModel>>
+
+    @Update
+    fun updateFocustronicSingleValueTypeTwoWidget(data: FocustronicSingleValueType2WidgetModel)
+
+    @Delete
+    fun deleteFocustronicSingleValueTypeTwoWidget(data: FocustronicSingleValueType2WidgetModel)
+
+    /**
+     * Focustronic Grid Widget
+     */
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertFocustronicGridWidget(data: FocustronicGridWidgetModel)
+
+    @Query("SELECT * from focustronic_grid_widget_table order by id asc")
+    fun readFocustronicGridWidget(): LiveData<List<FocustronicGridWidgetModel>>
+
+    @Update
+    fun updateFocustronicGridWidget(data: FocustronicGridWidgetModel)
+
+    @Delete
+    fun deleteFocustronicGridWidget(data: FocustronicGridWidgetModel)
+
+    /**
+     * Focustronic One Element Widget
+     */
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertFocustronicOneElementWidget(data: Focustronic1ElementWidgetModel)
+
+    @Query("SELECT * from focustronic_one_element_widget_table order by id asc")
+    fun readFocustronicOneElementWidget(): LiveData<List<Focustronic1ElementWidgetModel>>
+
+    @Update
+    fun updateFocustronicOneElementWidget(data: Focustronic1ElementWidgetModel)
+
+    @Delete
+    fun deleteFocustronicOneElementWidget(data: Focustronic1ElementWidgetModel)
+
+
 }

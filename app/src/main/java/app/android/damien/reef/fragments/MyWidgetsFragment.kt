@@ -346,8 +346,7 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
 
     private fun initApexCircleRecyclerview() {
         apexCircleWidgetRecyclerView.adapter = apexCircleWidgetAdapter
-        apexCircleWidgetRecyclerView.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        apexCircleWidgetRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun initApexFlaskBackgroundRecyclerview() {

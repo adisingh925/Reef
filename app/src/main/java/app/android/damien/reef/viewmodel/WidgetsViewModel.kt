@@ -13,6 +13,11 @@ import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
 import app.android.damien.reef.database_model.ApexWaterQualityWidget
 import app.android.damien.reef.database_model.CustomWidgetModel
+import app.android.damien.reef.database_model.Focustronic1ElementWidgetModel
+import app.android.damien.reef.database_model.FocustronicGridWidgetModel
+import app.android.damien.reef.database_model.FocustronicSingleValueType1WidgetModel
+import app.android.damien.reef.database_model.FocustronicSingleValueType2WidgetModel
+import app.android.damien.reef.database_model.FocustronicTwoRectangleWidgetModel
 import app.android.damien.reef.repository.Repository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -192,6 +197,116 @@ class WidgetsViewModel(application: Application) : AndroidViewModel(application)
     fun updateApexWaterQualityWidget(data: ApexWaterQualityWidget) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.updateApexWaterQualityWidget(data)
+        }
+    }
+
+    /**
+     * Focustronic Double Rectangle Widget
+     */
+
+    fun insertFocustronicDoubleRectangleWidget(data: FocustronicTwoRectangleWidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertFocustronicTwoRectangleWidget(data)
+        }
+    }
+
+    fun deleteFocustronicDoubleRectangleWidget(data: FocustronicTwoRectangleWidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteFocustronicTwoRectangleWidget(data)
+        }
+    }
+
+    fun updateFocustronicDoubleRectangleWidget(data: FocustronicTwoRectangleWidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateFocustronicTwoRectangleWidget(data)
+        }
+    }
+
+    /**
+     * Focustronic Single Value Type One Widget
+     */
+
+    fun insertFocustronicSingleValueTypeOneWidget(data: FocustronicSingleValueType1WidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertFocustronicSingleValueTypeOneWidget(data)
+        }
+    }
+
+    fun deleteFocustronicSingleValueTypeOneWidget(data: FocustronicSingleValueType1WidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteFocustronicSingleValueTypeOneWidget(data)
+        }
+    }
+
+    fun updateFocustronicSingleValueTypeOneWidget(data: FocustronicSingleValueType1WidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateFocustronicSingleValueTypeOneWidget(data)
+        }
+    }
+
+    /**
+     * Focustronic Single Value Type Two Widget
+     */
+
+    fun insertFocustronicSingleValueTypeTwoWidget(data: FocustronicSingleValueType2WidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertFocustronicSingleValueTypeTwoWidget(data)
+        }
+    }
+
+    fun deleteFocustronicSingleValueTypeTwoWidget(data: FocustronicSingleValueType2WidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteFocustronicSingleValueTypeTwoWidget(data)
+        }
+    }
+
+    fun updateFocustronicSingleValueTypeTwoWidget(data: FocustronicSingleValueType2WidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateFocustronicSingleValueTypeTwoWidget(data)
+        }
+    }
+
+    /**
+     * Focustronic Grid Widget
+     */
+
+    fun insertFocustronicGridWidget(data: FocustronicGridWidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertFocustronicGridWidget(data)
+        }
+    }
+
+    fun deleteFocustronicGridWidget(data: FocustronicGridWidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteFocustronicGridWidget(data)
+        }
+    }
+
+    fun updateFocustronicGridWidget(data: FocustronicGridWidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateFocustronicGridWidget(data)
+        }
+    }
+
+    /**
+     * Focustronic One Element Widget
+     */
+
+    fun insertFocustronicOneElementWidget(data: Focustronic1ElementWidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertFocustronicOneElementWidget(data)
+        }
+    }
+
+    fun deleteFocustronicOneElementWidget(data: Focustronic1ElementWidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteFocustronicOneElementWidget(data)
+        }
+    }
+
+    fun updateFocustronicOneElementWidget(data: Focustronic1ElementWidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateFocustronicOneElementWidget(data)
         }
     }
 }

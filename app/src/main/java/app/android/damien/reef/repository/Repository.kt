@@ -9,6 +9,11 @@ import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
 import app.android.damien.reef.database_model.ApexWaterQualityWidget
 import app.android.damien.reef.database_model.CustomWidgetModel
+import app.android.damien.reef.database_model.Focustronic1ElementWidgetModel
+import app.android.damien.reef.database_model.FocustronicGridWidgetModel
+import app.android.damien.reef.database_model.FocustronicSingleValueType1WidgetModel
+import app.android.damien.reef.database_model.FocustronicSingleValueType2WidgetModel
+import app.android.damien.reef.database_model.FocustronicTwoRectangleWidgetModel
 
 class Repository(private val dao: CustomWidgetsDao) {
 
@@ -20,6 +25,13 @@ class Repository(private val dao: CustomWidgetsDao) {
     val readApexSingleValueTypeOneWidgetData = dao.readApexSingleValueTypeOneWidget()
     val readApexSingleValueTypeTwoWidgetData = dao.readApexSingleValueTypeTwoWidget()
     val readApexWaterQualityWidgetData = dao.readApexWaterQualityWidget()
+
+    val focustronicOneElementData = dao.readFocustronicOneElementWidget()
+    val focustronicGridData = dao.readFocustronicGridWidget()
+    val focustronicSingleValueType1Data = dao.readFocustronicSingleValueTypeOneWidget()
+    val focustronicSingleValueType2Data = dao.readFocustronicSingleValueTypeTwoWidget()
+    val focustronicTwoRectangleData = dao.readFocustronicDoubleRectangleWidget()
+
 
     fun insert(data: CustomWidgetModel) {
         dao.insert(data)
@@ -132,5 +144,85 @@ class Repository(private val dao: CustomWidgetsDao) {
 
     suspend fun updateApexWaterQualityWidget(data: ApexWaterQualityWidget) {
         dao.updateApexWaterQualityWidget(data)
+    }
+
+    /**
+     * Focustronic One Element Widget
+     */
+
+    suspend fun insertFocustronicOneElementWidget(data: Focustronic1ElementWidgetModel) {
+        dao.insertFocustronicOneElementWidget(data)
+    }
+
+    suspend fun deleteFocustronicOneElementWidget(data: Focustronic1ElementWidgetModel) {
+        dao.deleteFocustronicOneElementWidget(data)
+    }
+
+    suspend fun updateFocustronicOneElementWidget(data: Focustronic1ElementWidgetModel) {
+        dao.updateFocustronicOneElementWidget(data)
+    }
+
+    /**
+     * Focustronic Grid Widget
+     */
+
+    suspend fun insertFocustronicGridWidget(data: FocustronicGridWidgetModel) {
+        dao.insertFocustronicGridWidget(data)
+    }
+
+    suspend fun deleteFocustronicGridWidget(data: FocustronicGridWidgetModel) {
+        dao.deleteFocustronicGridWidget(data)
+    }
+
+    suspend fun updateFocustronicGridWidget(data: FocustronicGridWidgetModel) {
+        dao.updateFocustronicGridWidget(data)
+    }
+
+    /**
+     * Focustronic Single Value Type One Widget
+     */
+
+    suspend fun insertFocustronicSingleValueTypeOneWidget(data: FocustronicSingleValueType1WidgetModel) {
+        dao.insertFocustronicSingleValueTypeOneWidget(data)
+    }
+
+    suspend fun deleteFocustronicSingleValueTypeOneWidget(data: FocustronicSingleValueType1WidgetModel) {
+        dao.deleteFocustronicSingleValueTypeOneWidget(data)
+    }
+
+    suspend fun updateFocustronicSingleValueTypeOneWidget(data: FocustronicSingleValueType1WidgetModel) {
+        dao.updateFocustronicSingleValueTypeOneWidget(data)
+    }
+
+    /**
+     * Focustronic Single Value Type Two Widget
+     */
+
+    suspend fun insertFocustronicSingleValueTypeTwoWidget(data: FocustronicSingleValueType2WidgetModel) {
+        dao.insertFocustronicSingleValueTypeTwoWidget(data)
+    }
+
+    suspend fun deleteFocustronicSingleValueTypeTwoWidget(data: FocustronicSingleValueType2WidgetModel) {
+        dao.deleteFocustronicSingleValueTypeTwoWidget(data)
+    }
+
+    suspend fun updateFocustronicSingleValueTypeTwoWidget(data: FocustronicSingleValueType2WidgetModel) {
+        dao.updateFocustronicSingleValueTypeTwoWidget(data)
+    }
+
+    /**
+     * Focustronic Two Rectangle Widget
+     */
+
+    suspend fun insertFocustronicTwoRectangleWidget(data: FocustronicTwoRectangleWidgetModel) {
+        dao.insertFocustronicDoubleRectangleWidget(data)
+    }
+
+    suspend fun deleteFocustronicTwoRectangleWidget(data: FocustronicTwoRectangleWidgetModel) {
+        dao.deleteFocustronicDoubleRectangleWidget(data)
+    }
+
+    suspend fun updateFocustronicTwoRectangleWidget(data: FocustronicTwoRectangleWidgetModel) {
+        dao.updateFocustronicDoubleRectangleWidget(data)
     }
 }
