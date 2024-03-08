@@ -1,64 +1,222 @@
 package app.android.damien.reef.fragments
 
+import android.content.res.ColorStateList
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import app.android.damien.reef.R
+import app.android.damien.reef.adapter.SimpleListAdapter
+import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
+import app.android.damien.reef.database_model.FocustronicSingleValueType2WidgetModel
+import app.android.damien.reef.databinding.ApexSingleValueType2BottomSheetBinding
+import app.android.damien.reef.databinding.FragmentEditFocustronicSingleValueType2WidgetBinding
+import app.android.damien.reef.storage.SharedPreferences
+import app.android.damien.reef.utils.Constants
+import app.android.damien.reef.utils.Toast
+import app.android.damien.reef.viewmodel.WidgetsViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import org.json.JSONArray
+import org.json.JSONObject
+import yuku.ambilwarna.AmbilWarnaDialog
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [EditFocustronicSingleValueType2Widget.newInstance] factory method to
- * create an instance of this fragment.
- */
 class EditFocustronicSingleValueType2Widget : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    
+    private val binding by lazy{
+        FragmentEditFocustronicSingleValueType2WidgetBinding.inflate(layoutInflater)
     }
+
+    private val widgetsViewModel by lazy {
+        ViewModelProvider(this)[WidgetsViewModel::class.java]
+    }
+
+    private val recyclerView by lazy {
+        binding.valuesRecyclerView
+    }
+
+    private val adapter by lazy {
+        SimpleListAdapter(requireContext(), object : SimpleListAdapter.OnItemClickListener {
+            override fun onItemClick(data: String) {
+                actualName = data
+                binding.flaskBackgroundWidgetEditLayout.heading.text = data
+                value = JSONObject(apexData.getJSONObject(0).toString()).get(actualName).toString()
+                    .toFloat()
+                binding.flaskBackgroundWidgetEditLayout.value.text = value.toString()
+            }
+        })
+    }
+
+    private lateinit var focustronicType2Widget: FocustronicSingleValueType2WidgetModel
+    private lateinit var apexData: JSONArray
+
+    var unit = ""
+    var actualName = ""
+    var givenName = ""
+    var value = 0.0f
+    var textColor = 0
+    var ringColor = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(
-            R.layout.fragment_edit_focustronic_single_value_type2_widget,
-            container,
-            false
-        )
+    ): View {
+        focustronicType2Widget = arguments?.getParcelable(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET)!!
+
+        initApiData()
+        initValuesRecyclerView()
+
+        actualName = focustronicType2Widget.actualName.toString()
+        givenName = focustronicType2Widget.givenName.toString()
+        value = focustronicType2Widget.value
+        unit = focustronicType2Widget.unit.toString()
+        textColor = focustronicType2Widget.textColor
+        ringColor = focustronicType2Widget.ringColor
+
+        binding.flaskBackgroundWidgetEditLayout.unit.text = unit
+        binding.flaskBackgroundWidgetEditLayout.value.text = value.toString()
+
+        if (givenName != "") {
+            binding.flaskBackgroundWidgetEditLayout.heading.text = givenName
+        } else {
+            binding.flaskBackgroundWidgetEditLayout.heading.text = actualName
+        }
+
+        binding.flaskBackgroundWidgetEditLayout.value.setTextColor(textColor)
+        binding.flaskBackgroundWidgetEditLayout.heading.setTextColor(textColor)
+        binding.flaskBackgroundWidgetEditLayout.unit.setTextColor(textColor)
+        binding.flaskBackgroundWidgetEditLayout.timestamp.setTextColor(textColor)
+
+        val innerLayoutDrawable = context?.resources?.getDrawable(R.drawable.linear_layout_corner_radius_black_circular)
+        val innerLayoutMutatedDrawable = innerLayoutDrawable?.mutate()
+        if (innerLayoutMutatedDrawable is GradientDrawable) {
+            innerLayoutMutatedDrawable.setStroke(3, ringColor) // Assuming 3dp width for the stroke
+        }
+
+        binding.flaskBackgroundWidgetEditLayout.innerLayout.background = innerLayoutMutatedDrawable
+
+
+        binding.saveButton.setOnClickListener {
+            focustronicType2Widget.actualName = actualName
+            focustronicType2Widget.givenName = givenName
+            focustronicType2Widget.value = value
+            focustronicType2Widget.unit = unit
+            focustronicType2Widget.textColor = textColor
+            widgetsViewModel.updateFocustronicSingleValueTypeTwoWidget(focustronicType2Widget)
+
+            Toast.showSnackbar(requireView(), "Apex Single Value Type 2 Widget Updated")
+        }
+
+        binding.deleteButton.setOnClickListener {
+            SharedPreferences.write(
+                Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET,
+                SharedPreferences.read(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET, 0) - 1
+            )
+            widgetsViewModel.deleteFocustronicSingleValueTypeTwoWidget(focustronicType2Widget)
+            findNavController().popBackStack()
+        }
+
+        binding.flaskBackgroundWidgetEditLayout.layout.setOnClickListener {
+
+            val dialog = BottomSheetDialog(requireContext())
+            val view = ApexSingleValueType2BottomSheetBinding.inflate(layoutInflater)
+
+            view.nameInput.setText(binding.flaskBackgroundWidgetEditLayout.heading.text.toString())
+            view.unitInput.setText(binding.flaskBackgroundWidgetEditLayout.unit.text.toString())
+            view.textColorPicker.iconTint = ColorStateList.valueOf(textColor)
+            view.ringColorPicker.iconTint = ColorStateList.valueOf(ringColor)
+
+            view.saveButton.setOnClickListener {
+                givenName = view.nameInput.text.toString()
+                binding.flaskBackgroundWidgetEditLayout.heading.text = view.nameInput.text.toString()
+                unit = view.unitInput.text.toString()
+                binding.flaskBackgroundWidgetEditLayout.unit.text = view.unitInput.text.toString()
+                binding.flaskBackgroundWidgetEditLayout.heading.setTextColor(textColor)
+                binding.flaskBackgroundWidgetEditLayout.unit.setTextColor(textColor)
+                binding.flaskBackgroundWidgetEditLayout.value.setTextColor(textColor)
+                binding.flaskBackgroundWidgetEditLayout.timestamp.setTextColor(textColor)
+
+                val innerLayoutDrawable = context?.resources?.getDrawable(R.drawable.linear_layout_corner_radius_black_circular)
+                val innerLayoutMutatedDrawable = innerLayoutDrawable?.mutate()
+                if (innerLayoutMutatedDrawable is GradientDrawable) {
+                    innerLayoutMutatedDrawable.setStroke(3, ringColor) // Assuming 3dp width for the stroke
+                }
+
+                binding.flaskBackgroundWidgetEditLayout.innerLayout.background = innerLayoutMutatedDrawable
+
+                dialog.dismiss()
+            }
+
+            view.textColorPicker.setOnClickListener {
+                val colorPickerDialogue = AmbilWarnaDialog(context, textColor,
+                    object : AmbilWarnaDialog.OnAmbilWarnaListener {
+                        override fun onCancel(dialog: AmbilWarnaDialog) {
+
+                        }
+
+                        override fun onOk(dialog: AmbilWarnaDialog, color: Int) {
+                            textColor = color
+                            view.textColorPicker.iconTint = ColorStateList.valueOf(textColor)
+                        }
+                    })
+                colorPickerDialogue.show()
+            }
+
+            view.ringColorPicker.setOnClickListener {
+                val colorPickerDialogue = AmbilWarnaDialog(context, ringColor,
+                    object : AmbilWarnaDialog.OnAmbilWarnaListener {
+                        override fun onCancel(dialog: AmbilWarnaDialog) {
+
+                        }
+
+                        override fun onOk(dialog: AmbilWarnaDialog, color: Int) {
+                            ringColor = color
+                            view.ringColorPicker.iconTint = ColorStateList.valueOf(ringColor)
+                        }
+                    })
+                colorPickerDialogue.show()
+            }
+
+            dialog.setCancelable(true)
+            dialog.setContentView(view.root)
+            dialog.show()
+        }
+        
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment EditFocustronicSingleValueType2Widget.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            EditFocustronicSingleValueType2Widget().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun initApiData() {
+        apexData = JSONObject(SharedPreferences.read("focustronicAlkatronicData", "").toString()).getJSONArray("data")
+        apexData.getJSONObject(0).remove("record_time")
+        val tempData = JSONObject(SharedPreferences.read("focustronicMastertronicData", "").toString()).getJSONArray("data")
+        tempData.getJSONObject(0).remove("record_time")
+        val keys = tempData.getJSONObject(0).keys()
+        while (keys.hasNext()) {
+            val key = keys.next() as String
+            val value = tempData.getJSONObject(0).getString(key)
+            apexData.getJSONObject(0).put(key, value)
+        }
+    }
+
+    private fun initValuesRecyclerView() {
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        adapter.setData(getJsonKeys(apexData.getJSONObject(0)))
+    }
+
+    private fun getJsonKeys(jsonObject: JSONObject): List<String> {
+        val keys = jsonObject.keys()
+        val keyList = mutableListOf<String>()
+
+        while (keys.hasNext()) {
+            keyList.add(keys.next())
+        }
+
+        return keyList
     }
 }

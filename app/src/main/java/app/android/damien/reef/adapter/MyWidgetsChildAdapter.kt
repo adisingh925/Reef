@@ -469,14 +469,48 @@ class MyWidgetsChildAdapter(
     }
 
     private inner class ViewHolder11(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val value = itemView.findViewById<TextView>(R.id.value)
+        val heading = itemView.findViewById<TextView>(R.id.heading)
+        val unit = itemView.findViewById<TextView>(R.id.unit)
+        val innerLayout = itemView.findViewById<LinearLayout>(R.id.innerLayout)
+        val timestamp = itemView.findViewById<TextView>(R.id.timestamp)
+
         fun bind(position: Int) {
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder11: ")
 
+            unit.text = setFocustronicSingleValueType2WidgetData[position].unit
+            timestamp.text = SharedPreferences.read("lastUpdatedFocustronicAlkatronic", "")
+
+            if(!setFocustronicSingleValueType2WidgetData[position].actualName.isNullOrEmpty()) {
+                if(setFocustronicSingleValueType2WidgetData[position].givenName.isNullOrEmpty()) {
+                    heading.text = setFocustronicSingleValueType2WidgetData[position].actualName
+                } else {
+                    heading.text = setFocustronicSingleValueType2WidgetData[position].givenName
+                }
+                value.text = setFocustronicSingleValueType2WidgetData[position].value.toString()
+            } else {
+                value.text = "NaN"
+                heading.text = "NaN"
+            }
+
+            value.setTextColor(setFocustronicSingleValueType2WidgetData[position].textColor)
+            heading.setTextColor(setFocustronicSingleValueType2WidgetData[position].textColor)
+            unit.setTextColor(setFocustronicSingleValueType2WidgetData[position].textColor)
+            timestamp.setTextColor(setFocustronicSingleValueType2WidgetData[position].textColor)
+
+            val innerLayoutDrawable = context?.resources?.getDrawable(R.drawable.linear_layout_corner_radius_black_circular)
+            val innerLayoutMutatedDrawable = innerLayoutDrawable?.mutate()
+            if (innerLayoutMutatedDrawable is GradientDrawable) {
+                innerLayoutMutatedDrawable.setStroke(3, setFocustronicSingleValueType2WidgetData[position].ringColor) // Assuming 3dp width for the stroke
+            }
+
+            innerLayout.background = innerLayoutMutatedDrawable
+
             itemView.setOnClickListener {
                 onItemClickListener.onFocustronicSingleValueType2WidgetClick(setFocustronicSingleValueType2WidgetData[position])
             }
-
         }
     }
 
