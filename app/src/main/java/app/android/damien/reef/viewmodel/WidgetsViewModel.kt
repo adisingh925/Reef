@@ -32,6 +32,14 @@ class WidgetsViewModel(application: Application) : AndroidViewModel(application)
     val apexSingleValueTypeOneWidgets: LiveData<List<ApexSingleValueTypeOneModel>>
     val apexSingleValueTypeTwoWidgets: LiveData<List<ApexSingleValueTypeTwoModel>>
     val apexWaterQualityWidgets: LiveData<List<ApexWaterQualityWidget>>
+
+    val focustronicOneElementWidgets: LiveData<List<Focustronic1ElementWidgetModel>>
+    val focustronicGridWidgets: LiveData<List<FocustronicGridWidgetModel>>
+    val focustronicSingleValueTypeOneWidgets: LiveData<List<FocustronicSingleValueType1WidgetModel>>
+    val focustronicSingleValueTypeTwoWidgets: LiveData<List<FocustronicSingleValueType2WidgetModel>>
+    val focustronicTwoRectangleWidgets: LiveData<List<FocustronicTwoRectangleWidgetModel>>
+
+
     val repository: Repository
 
     init {
@@ -45,6 +53,12 @@ class WidgetsViewModel(application: Application) : AndroidViewModel(application)
         apexSingleValueTypeOneWidgets = repository.readApexSingleValueTypeOneWidgetData
         apexSingleValueTypeTwoWidgets = repository.readApexSingleValueTypeTwoWidgetData
         apexWaterQualityWidgets = repository.readApexWaterQualityWidgetData
+
+        focustronicOneElementWidgets = repository.focustronicOneElementData
+        focustronicGridWidgets = repository.focustronicGridData
+        focustronicSingleValueTypeOneWidgets = repository.focustronicSingleValueType1Data
+        focustronicSingleValueTypeTwoWidgets = repository.focustronicSingleValueType2Data
+        focustronicTwoRectangleWidgets = repository.focustronicTwoRectangleData
     }
 
     fun insert(data: CustomWidgetModel) {

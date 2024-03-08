@@ -109,6 +109,24 @@
         <action
             android:id="@+id/action_myWidgetsFragment_to_editApexSingleValueType2"
             app:destination="@id/editApexSingleValueType2" />
+        <action
+            android:id="@+id/action_myWidgetsFragment_to_editApexPowerWidget"
+            app:destination="@id/editApexPowerWidget" />
+        <action
+            android:id="@+id/action_myWidgetsFragment_to_editFocustronicSingleValueType2Widget"
+            app:destination="@id/editFocustronicSingleValueType2Widget" />
+        <action
+            android:id="@+id/action_myWidgetsFragment_to_editFocustronicDoubleRectangleWidget"
+            app:destination="@id/editFocustronicDoubleRectangleWidget" />
+        <action
+            android:id="@+id/action_myWidgetsFragment_to_editFocustronicGridWidget"
+            app:destination="@id/editFocustronicGridWidget" />
+        <action
+            android:id="@+id/action_myWidgetsFragment_to_editFocustronicSingleElementWidget"
+            app:destination="@id/editFocustronicSingleElementWidget" />
+        <action
+            android:id="@+id/action_myWidgetsFragment_to_editFocustronicSingleValuetype1Widget"
+            app:destination="@id/editFocustronicSingleValuetype1Widget" />
     </fragment>
     <fragment
         android:id="@+id/editApexFlaskBackgroundWidget"
@@ -139,4 +157,34 @@
         android:name="app.android.damien.reef.fragments.EditApexSingleValueType2"
         android:label="fragment_edit_apex_single_value_type2"
         tools:layout="@layout/fragment_edit_apex_single_value_type2" />
+    <fragment
+        android:id="@+id/editApexPowerWidget"
+        android:name="app.android.damien.reef.fragments.EditApexPowerWidget"
+        android:label="fragment_edit_apex_power_widget"
+        tools:layout="@layout/fragment_edit_apex_power_widget" />
+    <fragment
+        android:id="@+id/editFocustronicSingleValueType2Widget"
+        android:name="app.android.damien.reef.fragments.EditFocustronicSingleValueType2Widget"
+        android:label="fragment_edit_focustronic_single_value_type2_widget"
+        tools:layout="@layout/fragment_edit_focustronic_single_value_type2_widget" />
+    <fragment
+        android:id="@+id/editFocustronicDoubleRectangleWidget"
+        android:name="app.android.damien.reef.fragments.EditFocustronicDoubleRectangleWidget"
+        android:label="fragment_edit_focustronic_double_rectangle_widget"
+        tools:layout="@layout/fragment_edit_focustronic_double_rectangle_widget" />
+    <fragment
+        android:id="@+id/editFocustronicGridWidget"
+        android:name="app.android.damien.reef.fragments.EditFocustronicGridWidget"
+        android:label="fragment_edit_focustronic_grid_widget"
+        tools:layout="@layout/fragment_edit_focustronic_grid_widget" />
+    <fragment
+        android:id="@+id/editFocustronicSingleElementWidget"
+        android:name="app.android.damien.reef.fragments.EditFocustronicSingleElementWidget"
+        android:label="fragment_edit_focustronic_single_element_widget"
+        tools:layout="@layout/fragment_edit_focustronic_single_element_widget" />
+    <fragment
+        android:id="@+id/editFocustronicSingleValuetype1Widget"
+        android:name="app.android.damien.reef.fragments.EditFocustronicSingleValuetype1Widget"
+        android:label="fragment_edit_focustronic_single_valuetype1_widget"
+        tools:layout="@layout/fragment_edit_focustronic_single_valuetype1_widget" />
 </navigation>

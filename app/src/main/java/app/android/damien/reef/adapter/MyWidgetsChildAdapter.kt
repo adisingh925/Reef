@@ -19,6 +19,11 @@ import app.android.damien.reef.database_model.ApexSingleValueTypeOneModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
 import app.android.damien.reef.database_model.ApexWaterQualityWidget
+import app.android.damien.reef.database_model.Focustronic1ElementWidgetModel
+import app.android.damien.reef.database_model.FocustronicGridWidgetModel
+import app.android.damien.reef.database_model.FocustronicSingleValueType1WidgetModel
+import app.android.damien.reef.database_model.FocustronicSingleValueType2WidgetModel
+import app.android.damien.reef.database_model.FocustronicTwoRectangleWidgetModel
 import app.android.damien.reef.model.MyWidgetsChildModel
 import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
@@ -41,6 +46,12 @@ class MyWidgetsChildAdapter(
     private var setApexSingleValueTypeTwoWidgetData = emptyList<ApexSingleValueTypeTwoModel>()
     private var setApexWaterQualityWidgetData = emptyList<ApexWaterQualityWidget>()
 
+    private var setFocustronic1ElementWidgetData = emptyList<Focustronic1ElementWidgetModel>()
+    private var setFocustronicGridWidgetData = emptyList<FocustronicGridWidgetModel>()
+    private var setFocustronicSingleValueType1WidgetData = emptyList<FocustronicSingleValueType1WidgetModel>()
+    private var setFocustronicSingleValueType2WidgetData = emptyList<FocustronicSingleValueType2WidgetModel>()
+    private var setFocustronicTwoRectangleWidgetData = emptyList<FocustronicTwoRectangleWidgetModel>()
+
     interface OnItemClickListener {
         fun onApexFlaskBackgroundWidgetClick(data: ApexFlaskBackgroundWidgetModel)
         fun onApexPowerValuesWidgetClick(data: ApexPowerValuesWidgetModel)
@@ -49,14 +60,19 @@ class MyWidgetsChildAdapter(
         fun onApexSingleValueTypeOneWidgetClick(data: ApexSingleValueTypeOneModel)
         fun onApexSingleValueTypeTwoWidgetClick(data: ApexSingleValueTypeTwoModel)
         fun onApexWaterQualityWidgetClick(data: ApexWaterQualityWidget)
+
+
+        fun onFocustronic1ElementWidgetClick(data: Focustronic1ElementWidgetModel)
+        fun onFocustronicGridWidgetClick(data: FocustronicGridWidgetModel)
+        fun onFocustronicSingleValueType1WidgetClick(data: FocustronicSingleValueType1WidgetModel)
+        fun onFocustronicSingleValueType2WidgetClick(data: FocustronicSingleValueType2WidgetModel)
+        fun onFocustronicTwoRectangleWidgetClick(data: FocustronicTwoRectangleWidgetModel)
     }
 
     private inner class ViewHolder1(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-
         fun bind(position: Int) {
             Log.d("MyWidgetsChildAdapter", "ViewHolder1: ")
-
 
         }
     }
@@ -618,6 +634,31 @@ class MyWidgetsChildAdapter(
 
     fun setApexWaterQualityWidgetData(widgets: List<ApexWaterQualityWidget>) {
         setApexWaterQualityWidgetData = widgets
+        notifyDataSetChanged()
+    }
+
+    fun setFocustronic1ElementWidgetData(widgets: List<Focustronic1ElementWidgetModel>) {
+        setFocustronic1ElementWidgetData = widgets
+        notifyDataSetChanged()
+    }
+
+    fun setFocustronicGridWidgetData(widgets: List<FocustronicGridWidgetModel>) {
+        setFocustronicGridWidgetData = widgets
+        notifyDataSetChanged()
+    }
+
+    fun setFocustronicSingleValueType1WidgetData(widgets: List<FocustronicSingleValueType1WidgetModel>) {
+        setFocustronicSingleValueType1WidgetData = widgets
+        notifyDataSetChanged()
+    }
+
+    fun setFocustronicSingleValueType2WidgetData(widgets: List<FocustronicSingleValueType2WidgetModel>) {
+        setFocustronicSingleValueType2WidgetData = widgets
+        notifyDataSetChanged()
+    }
+
+    fun setFocustronicTwoRectangleWidgetData(widgets: List<FocustronicTwoRectangleWidgetModel>) {
+        setFocustronicTwoRectangleWidgetData = widgets
         notifyDataSetChanged()
     }
 }
