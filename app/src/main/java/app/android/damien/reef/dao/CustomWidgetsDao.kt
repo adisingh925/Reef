@@ -65,6 +65,12 @@ interface CustomWidgetsDao {
     @Query("SELECT * from apex_power_values_widget_table order by id asc")
     fun readApexPowerValuesWidget(): LiveData<List<ApexPowerValuesWidgetModel>>
 
+    @Delete
+    fun deleteApexPowerValuesWidget(data: ApexPowerValuesWidgetModel)
+
+    @Update
+    fun updateApexPowerValuesWidget(data: ApexPowerValuesWidgetModel)
+
 
     /**
      * Apex Circle Widget

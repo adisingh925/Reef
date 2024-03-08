@@ -67,6 +67,14 @@ class Repository(private val dao: CustomWidgetsDao) {
         dao.insertApexPowerValuesWidget(data)
     }
 
+    suspend fun deleteApexPowerValuesWidget(data: ApexPowerValuesWidgetModel) {
+        dao.deleteApexPowerValuesWidget(data)
+    }
+
+    suspend fun updateApexPowerValuesWidget(data: ApexPowerValuesWidgetModel) {
+        dao.updateApexPowerValuesWidget(data)
+    }
+
 
     /**
      * Apex Circle Widget

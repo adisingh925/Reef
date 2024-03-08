@@ -86,9 +86,25 @@ class WidgetsViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
+    /**
+     * Apex Power Values Widget
+     */
+
     fun insertApexPowerValuesWidget(data: ApexPowerValuesWidgetModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertApexPowerValuesWidget(data)
+        }
+    }
+
+    fun deleteApexPowerValuesWidget(data: ApexPowerValuesWidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteApexPowerValuesWidget(data)
+        }
+    }
+
+    fun updateApexPowerValuesWidget(data: ApexPowerValuesWidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateApexPowerValuesWidget(data)
         }
     }
 
