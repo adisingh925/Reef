@@ -42,18 +42,18 @@ class CustomWidgetAddEditScreen : Fragment() {
             binding.unitInputField.setText(customWidgetModelObject.unit)
             mDefaultColor = customWidgetModelObject.color
             binding.previewCard.customWidgetLayoutCard.setBackgroundColor(mDefaultColor)
-            binding.previewCard.parameter.text = customWidgetModelObject.parameter
+            binding.previewCard.heading.text = customWidgetModelObject.parameter
             binding.previewCard.value.text = customWidgetModelObject.value.toString()
             binding.previewCard.unit.text = customWidgetModelObject.unit
         }else{
-            binding.previewCard.parameter.text = ""
+            binding.previewCard.heading.text = ""
             binding.previewCard.value.text = ""
             binding.previewCard.unit.text = ""
             generateRandomDarkColor()
         }
 
         binding.parameterInputField.doOnTextChanged { text, _, _, _ ->
-            binding.previewCard.parameter.text = text
+            binding.previewCard.heading.text = text
         }
 
         binding.valueInputField.doOnTextChanged { text, _, _, _ ->

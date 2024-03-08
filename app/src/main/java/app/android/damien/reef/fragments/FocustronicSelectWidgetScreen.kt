@@ -90,10 +90,9 @@ class FocustronicSelectWidgetScreen : Fragment() {
                     FocustronicOneElementWidgetModel(
                         0,
                         "",
-                        "",
                         0.0f,
                         "Unit",
-                        0
+                        Color.parseColor("#cc7700")
                     )
                 )
                 SharedPreferences.write(Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET, widgetCount + 1)

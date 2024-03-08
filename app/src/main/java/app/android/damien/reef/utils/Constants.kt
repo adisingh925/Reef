@@ -5,6 +5,9 @@ object Constants {
     const val FOCUSTRONIC = 2
     const val CUSTOM = 3
 
+    const val FOCUSTRONIC_ALKATRONIC = 4
+    const val FOCUSTRONIC_MASTERTRONIC = 5
+
     const val CUSTOM_WIDGET_TABLE = "custom_widget_table"
     const val APEX_FLASK_BACKGROUND_WIDGET_TABLE = "apex_flask_background_widget_table"
     const val APEX_POWER_VALUES_WIDGET_TABLE = "apex_power_values_widget_table"

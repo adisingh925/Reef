@@ -8,6 +8,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import app.android.damien.reef.databinding.ActivityMainBinding
 import app.android.damien.reef.model.ApexApiResponse
+import app.android.damien.reef.model.FocustronicAlkatronicResponse
+import app.android.damien.reef.model.FocustronicMastertronicResponse
 import app.android.damien.reef.retrofit.ApiClient
 import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
@@ -40,6 +42,82 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
 
         getApexApiResponse()
+        getFocustronicMastertronicApiResponse()
+        getFocustronicAlkatronicApiResponse()
+    }
+
+    private fun getFocustronicAlkatronicApiResponse() {
+        CoroutineScope(Dispatchers.IO).launch {
+//            val response = ApiClient.apiService.getFocustronicAlkatronicData(
+//                SharedPreferences.read(
+//                    Constants.FOCUSTRONIC_ALKATRONIC.toString() + "nickname",
+//                    ""
+//                ).toString()
+//            )
+
+            val response = ApiClient.apiService.getFocustronicAlkatronicData(
+               "697"
+            )
+
+            response.enqueue(object : Callback<FocustronicAlkatronicResponse> {
+                override fun onResponse(
+                    call: Call<FocustronicAlkatronicResponse>,
+                    response: Response<FocustronicAlkatronicResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        val data = response.body()
+                        if (data != null) {
+                            Log.d("TAG", "onResponse: " + data.toString())
+                            val gson = Gson()
+                            val jsonData = gson.toJson(data)
+                            SharedPreferences.write("focustronicAlkatronicData", jsonData)
+                            SharedPreferences.write("lastUpdatedFocustronicAlkatronic", millisToDateTime(System.currentTimeMillis()))
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<FocustronicAlkatronicResponse>, t: Throwable) {
+                    t.printStackTrace()
+                }
+            })
+        }
+    }
+
+    private fun getFocustronicMastertronicApiResponse() {
+        CoroutineScope(Dispatchers.IO).launch {
+//            val response = ApiClient.apiService.getFocustronicMastertronicData(
+//                SharedPreferences.read(
+//                    Constants.FOCUSTRONIC_MASTERTRONIC.toString() + "nickname",
+//                    ""
+//                ).toString()
+//            )
+
+            val response = ApiClient.apiService.getFocustronicMastertronicData(
+                "106"
+            )
+
+            response.enqueue(object : Callback<FocustronicMastertronicResponse> {
+                override fun onResponse(
+                    call: Call<FocustronicMastertronicResponse>,
+                    response: Response<FocustronicMastertronicResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        val data = response.body()
+                        if (data != null) {
+                            Log.d("TAG", "onResponse: " + data.toString())
+                            val gson = Gson()
+                            val jsonData = gson.toJson(data)
+                            SharedPreferences.write("focustronicMastertronicData", jsonData)
+                            SharedPreferences.write("lastUpdatedFocustronicMastertronic", millisToDateTime(System.currentTimeMillis()))
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<FocustronicMastertronicResponse>, t: Throwable) {
+                    t.printStackTrace()
+                }
+            })
+        }
     }
 
     private fun getApexApiResponse() {

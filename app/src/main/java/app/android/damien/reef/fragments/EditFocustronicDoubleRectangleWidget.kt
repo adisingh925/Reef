@@ -94,7 +94,7 @@ class EditFocustronicDoubleRectangleWidget : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        focustronicTwoRectangleWidget = arguments?.getParcelable(Constants.APEX_TWO_RECTANGLE_WIDGET)!!
+        focustronicTwoRectangleWidget = arguments?.getParcelable(Constants.FOCUSTRONIC_TWO_RECTANGLE_WIDGET)!!
 
         initApiData()
 
@@ -274,8 +274,8 @@ class EditFocustronicDoubleRectangleWidget : Fragment() {
 
         binding.deleteButton.setOnClickListener {
             SharedPreferences.write(
-                Constants.APEX_TWO_RECTANGLE_WIDGET,
-                SharedPreferences.read(Constants.APEX_TWO_RECTANGLE_WIDGET, 0) - 1
+                Constants.FOCUSTRONIC_TWO_RECTANGLE_WIDGET,
+                SharedPreferences.read(Constants.FOCUSTRONIC_TWO_RECTANGLE_WIDGET, 0) - 1
             )
             widgetsViewModel.deleteFocustronicDoubleRectangleWidget(focustronicTwoRectangleWidget)
             findNavController().popBackStack()
@@ -302,7 +302,16 @@ class EditFocustronicDoubleRectangleWidget : Fragment() {
     }
 
     private fun initApiData() {
-        apexData = JSONArray(SharedPreferences.read("apexData", "").toString())
+        apexData = JSONObject(SharedPreferences.read("focustronicAlkatronicData", "").toString()).getJSONArray("data")
+        apexData.getJSONObject(0).remove("record_time")
+        val tempData = JSONObject(SharedPreferences.read("focustronicMastertronicData", "").toString()).getJSONArray("data")
+        tempData.getJSONObject(0).remove("record_time")
+        val keys = tempData.getJSONObject(0).keys()
+        while (keys.hasNext()) {
+            val key = keys.next() as String
+            val value = tempData.getJSONObject(0).getString(key)
+            apexData.getJSONObject(0).put(key, value)
+        }
     }
 
     private fun initValuesRecyclerView() {

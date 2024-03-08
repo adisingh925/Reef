@@ -10,14 +10,12 @@ import app.android.damien.reef.utils.Constants
 data class FocustronicOneElementWidgetModel(
     @PrimaryKey(autoGenerate = true) val id: Int,
     var actualName: String?,
-    var givenName: String?,
     var value: Float,
     var unit: String?,
-    var textColor: Int
+    var backgroundColor: Int
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
-        parcel.readString(),
         parcel.readString(),
         parcel.readFloat(),
         parcel.readString(),
@@ -28,10 +26,9 @@ data class FocustronicOneElementWidgetModel(
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(id)
         parcel.writeString(actualName)
-        parcel.writeString(givenName)
         parcel.writeFloat(value)
         parcel.writeString(unit)
-        parcel.writeInt(textColor)
+        parcel.writeInt(backgroundColor)
     }
 
     override fun describeContents(): Int {

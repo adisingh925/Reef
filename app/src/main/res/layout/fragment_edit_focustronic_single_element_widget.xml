@@ -1,14 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#80000000"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.EditFocustronicSingleElementWidget">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/save_button"
+        android:layout_width="wrap_content"
+        app:cornerRadius="@dimen/default_button_radius"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/green"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Save"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/extra_large_margin"
+        android:layout_height="wrap_content"/>
 
-</FrameLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/delete_button"
+        android:layout_width="wrap_content"
+        app:cornerRadius="@dimen/default_button_radius"
+        android:backgroundTint="@color/red"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Delete"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/extra_large_margin"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/preview_text"
+        android:layout_width="wrap_content"
+        android:text="Preview"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/delete_button"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_height="wrap_content"/>
+
+    <include
+        android:id="@+id/flask_background_widget_edit_layout"
+        app:layout_constraintTop_toBottomOf="@id/preview_text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_height="150dp"
+        android:layout_width="150dp"
+        android:layout_marginTop="@dimen/medium_margin"
+        layout="@layout/custom_widget_layout"/>
+
+    <TextView
+        android:id="@+id/help_text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/flask_background_widget_edit_layout"
+        android:layout_margin="@dimen/medium_margin"
+        android:text="Select which value you want for your widget for example Temp"
+        android:layout_width="0dp"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/valuesRecyclerView"
+        android:background="@drawable/recycler_outline"
+        android:padding="10dp"
+        app:layout_constraintLeft_toLeftOf="@id/flask_background_widget_edit_layout"
+        app:layout_constraintTop_toBottomOf="@id/help_text"
+        android:layout_marginTop="@dimen/medium_margin"
+        app:layout_constraintRight_toRightOf="@id/flask_background_widget_edit_layout"
+        android:layout_width="130dp"
+        android:overScrollMode="never"
+        android:layout_height="300dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -348,18 +348,81 @@ class MyWidgetsChildAdapter(
     }
 
     private inner class ViewHolder8(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val value = itemView.findViewById<TextView>(R.id.value)
+        val unit = itemView.findViewById<TextView>(R.id.unit)
+        val heading = itemView.findViewById<TextView>(R.id.heading)
+        val card = itemView.findViewById<View>(R.id.custom_widget_layout_card)
+
         fun bind(position: Int) {
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder8: ")
+
+            value.text = setFocustronic1ElementWidgetData[position].value.toString()
+            unit.text = setFocustronic1ElementWidgetData[position].unit
+            heading.text = setFocustronic1ElementWidgetData[position].actualName
+
+            val topRectangleDrawable = context?.resources?.getDrawable(R.drawable.linear_layout_corner_radius)
+            val topRectangleMutatedDrawable = topRectangleDrawable?.mutate()
+            topRectangleMutatedDrawable?.setTint(setFocustronic1ElementWidgetData[position].backgroundColor)
+
+            card.background = topRectangleMutatedDrawable
+
+            itemView.setOnClickListener {
+                onItemClickListener.onFocustronic1ElementWidgetClick(setFocustronic1ElementWidgetData[position])
+            }
 
         }
     }
 
     private inner class ViewHolder9(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val topRectangleTime = itemView.findViewById<TextView>(R.id.timestamp)
+        val bottomRectangleTime = itemView.findViewById<TextView>(R.id.timestamp2)
+        val topRectangleUnit = itemView.findViewById<TextView>(R.id.unit)
+        val bottomRectangleUnit = itemView.findViewById<TextView>(R.id.unit2)
+        val topRectangleValue = itemView.findViewById<TextView>(R.id.value)
+        val bottomRectangleValue = itemView.findViewById<TextView>(R.id.value2)
+        val topCard = itemView.findViewById<View>(R.id.card1)
+        val bottomCard = itemView.findViewById<View>(R.id.card2)
+
         fun bind(position: Int) {
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder9: ")
 
+            topRectangleTime.text = SharedPreferences.read("lastUpdatedFocustronicAlkatronic", "")
+            bottomRectangleTime.text = SharedPreferences.read("lastUpdatedFocustronicAlkatronic", "")
+
+            val topRectangleDrawable = context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
+            val topRectangleMutatedDrawable = topRectangleDrawable.mutate()
+            topRectangleMutatedDrawable.setTint(setFocustronicTwoRectangleWidgetData[position].topRectangleColor)
+
+            topCard.background = topRectangleMutatedDrawable
+
+            val bottomRectangleDrawable = context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
+            val bottomRectangleMutatedDrawable = bottomRectangleDrawable.mutate()
+            bottomRectangleMutatedDrawable.setTint(setFocustronicTwoRectangleWidgetData[position].bottomRectangleColor)
+
+            bottomCard.background = bottomRectangleMutatedDrawable
+
+            topRectangleUnit.text = setFocustronicTwoRectangleWidgetData[position].topRectangleUnit
+            bottomRectangleUnit.text = setFocustronicTwoRectangleWidgetData[position].bottomRectangleUnit
+
+            if (setFocustronicTwoRectangleWidgetData[position].topRectangleActualName.isNullOrEmpty()) {
+                topRectangleValue.text = "NaN"
+            } else {
+                topRectangleValue.text = setFocustronicTwoRectangleWidgetData[position].topRectangleValue.toString()
+            }
+
+            if (setFocustronicTwoRectangleWidgetData[position].bottomRectangleActualName.isNullOrEmpty()) {
+                bottomRectangleValue.text = "NaN"
+            } else {
+                bottomRectangleValue.text = setFocustronicTwoRectangleWidgetData[position].bottomRectangleValue.toString()
+            }
+
+            itemView.setOnClickListener {
+                onItemClickListener.onFocustronicTwoRectangleWidgetClick(setFocustronicTwoRectangleWidgetData[position])
+            }
         }
     }
 
@@ -367,6 +430,10 @@ class MyWidgetsChildAdapter(
         fun bind(position: Int) {
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder10: ")
+
+            itemView.setOnClickListener {
+                onItemClickListener.onFocustronicSingleValueType1WidgetClick(setFocustronicSingleValueType1WidgetData[position])
+            }
 
         }
     }
@@ -376,6 +443,10 @@ class MyWidgetsChildAdapter(
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder11: ")
 
+            itemView.setOnClickListener {
+                onItemClickListener.onFocustronicSingleValueType2WidgetClick(setFocustronicSingleValueType2WidgetData[position])
+            }
+
         }
     }
 
@@ -383,6 +454,10 @@ class MyWidgetsChildAdapter(
         fun bind(position: Int) {
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder12:")
+
+            itemView.setOnClickListener {
+                onItemClickListener.onFocustronicGridWidgetClick(setFocustronicGridWidgetData[position])
+            }
 
         }
     }

@@ -21,13 +21,13 @@ class WidgetAdapter(private val context: Context, private val onItemClickListene
 
     private inner class ViewHolder1(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var parameter = itemView.findViewById<TextView>(R.id.parameter)
+        var heading = itemView.findViewById<TextView>(R.id.heading)
         val value = itemView.findViewById<TextView>(R.id.value)
         val unit = itemView.findViewById<TextView>(R.id.unit)
         val card = itemView.findViewById<LinearLayout>(R.id.custom_widget_layout_card)
 
         fun bind(position: Int) {
-            parameter.text = widgetList[position].parameter
+            heading.text = widgetList[position].parameter
             value.text = widgetList[position].value.toString()
             unit.text = widgetList[position].unit
             card.setBackgroundColor(widgetList[position].color)
