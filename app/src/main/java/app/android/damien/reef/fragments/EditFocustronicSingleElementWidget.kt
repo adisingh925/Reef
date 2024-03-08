@@ -78,17 +78,14 @@ class EditFocustronicSingleElementWidget : Fragment() {
 
         binding.flaskBackgroundWidgetEditLayout.customWidgetLayoutCard.background = topRectangleMutatedDrawable
 
-        binding.flaskBackgroundWidgetEditLayout.value.text = value.toString()
         binding.flaskBackgroundWidgetEditLayout.unit.text = unit
 
-        if(actualName.isBlank()){
+        if(focustronicSingleValueWidget.actualName.isNullOrEmpty()) {
             binding.flaskBackgroundWidgetEditLayout.heading.text = "NaN"
+            binding.flaskBackgroundWidgetEditLayout.value.text = "NaN"
         } else {
-            if(givenName.isBlank()){
-                binding.flaskBackgroundWidgetEditLayout.heading.text = actualName
-            }else{
-                binding.flaskBackgroundWidgetEditLayout.heading.text = givenName
-            }
+            binding.flaskBackgroundWidgetEditLayout.heading.text = focustronicSingleValueWidget.actualName
+            binding.flaskBackgroundWidgetEditLayout.value.text = focustronicSingleValueWidget.value.toString()
         }
 
         initApiData()

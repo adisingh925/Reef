@@ -358,9 +358,16 @@ class MyWidgetsChildAdapter(
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder8: ")
 
-            value.text = setFocustronic1ElementWidgetData[position].value.toString()
             unit.text = setFocustronic1ElementWidgetData[position].unit
             heading.text = setFocustronic1ElementWidgetData[position].actualName
+
+            if(setFocustronic1ElementWidgetData[position].actualName.isNullOrEmpty()) {
+                heading.text = "NaN"
+                value.text = "NaN"
+            } else {
+                heading.text = setFocustronic1ElementWidgetData[position].actualName
+                value.text = setFocustronic1ElementWidgetData[position].value.toString()
+            }
 
             val topRectangleDrawable = context?.resources?.getDrawable(R.drawable.linear_layout_corner_radius)
             val topRectangleMutatedDrawable = topRectangleDrawable?.mutate()
