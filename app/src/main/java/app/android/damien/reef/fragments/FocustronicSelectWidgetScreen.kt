@@ -90,6 +90,7 @@ class FocustronicSelectWidgetScreen : Fragment() {
                     FocustronicOneElementWidgetModel(
                         0,
                         "",
+                        "",
                         0.0f,
                         "Unit",
                         Color.parseColor("#cc7700")
@@ -105,8 +106,7 @@ class FocustronicSelectWidgetScreen : Fragment() {
         }
 
         binding.focustronicSingleValueType1.layout.setOnClickListener {
-            val widgetCount =
-                SharedPreferences.read(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET, 0)
+            val widgetCount = SharedPreferences.read(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET, 0)
             if (widgetCount in 0..4) {
                 widgetsViewModel.insertFocustronicSingleValueTypeOneWidget(
                     FocustronicSingleValueType1WidgetModel(
@@ -115,7 +115,7 @@ class FocustronicSelectWidgetScreen : Fragment() {
                         "",
                         0.0f,
                         "Unit",
-                        0
+                        Color.parseColor("#cc7700")
                     )
                 )
                 SharedPreferences.write(

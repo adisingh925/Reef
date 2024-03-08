@@ -241,6 +241,41 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
             initApexWaterQualityWidgetAdapter()
         }
 
+        if(SharedPreferences.read(Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET,0) == 0) {
+            binding.focustronic1ElementWidgetLayout.visibility = View.GONE
+        }else{
+            binding.focustronic1ElementWidgetLayout.visibility = View.VISIBLE
+            initFocustronicOneElementWidgetAdapter()
+        }
+
+        if(SharedPreferences.read(Constants.FOCUSTRONIC_TWO_RECTANGLE_WIDGET,0) == 0) {
+            binding.focustronic2RectangleWidgetLayout.visibility = View.GONE
+        }else{
+            binding.focustronic2RectangleWidgetLayout.visibility = View.VISIBLE
+            initFocustronicTwoRectangleWidgetAdapter()
+        }
+
+        if(SharedPreferences.read(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET,0) == 0) {
+            binding.focustronicSingleValueType1WidgetLayout.visibility = View.GONE
+        }else{
+            binding.focustronicSingleValueType1WidgetLayout.visibility = View.VISIBLE
+            initFocustronicSingleValueTypeOneWidgetAdapter()
+        }
+
+        if(SharedPreferences.read(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET,0) == 0) {
+            binding.focustronicSingleValueType2WidgetLayout.visibility = View.GONE
+        }else{
+            binding.focustronicSingleValueType2WidgetLayout.visibility = View.VISIBLE
+            initFocustronicSingleValueTypeTwoWidgetAdapter()
+        }
+
+        if(SharedPreferences.read(Constants.FOCUSTRONIC_GRID_WIDGET,0) == 0) {
+            binding.focustronicGridWidgetLayout.visibility = View.GONE
+        }else{
+            binding.focustronicGridWidgetLayout.visibility = View.VISIBLE
+            initFocustronicGridWidgetAdapter()
+        }
+
         widgetsViewModel.apexFlaskBackgroundWidgets.observe(viewLifecycleOwner) {
             Log.d("MyWidgetsFragment", "Apex Flask Background Widgets: $it")
             apexFlaskBackgroundWidgetAdapter.setApexFlaskBackgroundWidgetData(it)
@@ -299,41 +334,6 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
         widgetsViewModel.focustronicGridWidgets.observe(viewLifecycleOwner) {
             Log.d("MyWidgetsFragment", "Focustronic Grid Widgets: $it")
             focustronicGridWidgetAdapter.setFocustronicGridWidgetData(it)
-        }
-
-        if(SharedPreferences.read(Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET,0) == 0) {
-            binding.focustronic1ElementWidgetLayout.visibility = View.GONE
-        }else{
-            binding.focustronic1ElementWidgetLayout.visibility = View.VISIBLE
-            initFocustronicOneElementWidgetAdapter()
-        }
-
-        if(SharedPreferences.read(Constants.FOCUSTRONIC_TWO_RECTANGLE_WIDGET,0) == 0) {
-            binding.focustronic2RectangleWidgetLayout.visibility = View.GONE
-        }else{
-            binding.focustronic2RectangleWidgetLayout.visibility = View.VISIBLE
-            initFocustronicTwoRectangleWidgetAdapter()
-        }
-
-        if(SharedPreferences.read(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET,0) == 0) {
-            binding.focustronicSingleValueType1WidgetLayout.visibility = View.GONE
-        }else{
-            binding.focustronicSingleValueType1WidgetLayout.visibility = View.VISIBLE
-            initFocustronicSingleValueTypeOneWidgetAdapter()
-        }
-
-        if(SharedPreferences.read(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET,0) == 0) {
-            binding.focustronicSingleValueType2WidgetLayout.visibility = View.GONE
-        }else{
-            binding.focustronicSingleValueType2WidgetLayout.visibility = View.VISIBLE
-            initFocustronicSingleValueTypeTwoWidgetAdapter()
-        }
-
-        if(SharedPreferences.read(Constants.FOCUSTRONIC_GRID_WIDGET,0) == 0) {
-            binding.focustronicGridWidgetLayout.visibility = View.GONE
-        }else{
-            binding.focustronicGridWidgetLayout.visibility = View.VISIBLE
-            initFocustronicGridWidgetAdapter()
         }
 
         return binding.root

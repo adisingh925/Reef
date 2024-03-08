@@ -427,9 +427,32 @@ class MyWidgetsChildAdapter(
     }
 
     private inner class ViewHolder10(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val value = itemView.findViewById<TextView>(R.id.value)
+        val heading = itemView.findViewById<TextView>(R.id.heading)
+        val unit = itemView.findViewById<TextView>(R.id.unit)
+
         fun bind(position: Int) {
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder10: ")
+
+            if(!setFocustronicSingleValueType1WidgetData[position].actualName.isNullOrEmpty()) {
+                if(setFocustronicSingleValueType1WidgetData[position].givenName.isNullOrEmpty()) {
+                    heading.text = setFocustronicSingleValueType1WidgetData[position].actualName
+                } else {
+                    heading.text = setFocustronicSingleValueType1WidgetData[position].givenName
+                }
+                value.text = setFocustronicSingleValueType1WidgetData[position].value.toString()
+            } else {
+                value.text = "NaN"
+                heading.text = "NaN"
+            }
+
+            unit.text = setFocustronicSingleValueType1WidgetData[position].unit
+
+            value.setTextColor(setFocustronicSingleValueType1WidgetData[position].textColor)
+            heading.setTextColor(setFocustronicSingleValueType1WidgetData[position].textColor)
+            unit.setTextColor(setFocustronicSingleValueType1WidgetData[position].textColor)
 
             itemView.setOnClickListener {
                 onItemClickListener.onFocustronicSingleValueType1WidgetClick(setFocustronicSingleValueType1WidgetData[position])
