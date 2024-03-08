@@ -11,6 +11,8 @@
         android:id="@+id/save_button"
         android:layout_width="wrap_content"
         app:cornerRadius="@dimen/default_button_radius"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/green"
         app:layout_constraintRight_toRightOf="parent"
         android:text="Save"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,6 +24,7 @@
         android:id="@+id/delete_button"
         android:layout_width="wrap_content"
         app:cornerRadius="@dimen/default_button_radius"
+        android:backgroundTint="@color/red"
         app:layout_constraintLeft_toLeftOf="parent"
         android:text="Delete"
         app:layout_constraintTop_toTopOf="parent"
@@ -51,13 +54,50 @@
         android:layout_marginTop="@dimen/medium_margin"
         layout="@layout/water_quality_widget"/>
 
+    <TextView
+        android:id="@+id/help_text"
+        app:layout_constraintLeft_toLeftOf="@id/flask_background_widget_edit_layout"
+        app:layout_constraintRight_toRightOf="@id/flask_background_widget_edit_layout"
+        app:layout_constraintTop_toBottomOf="@id/flask_background_widget_edit_layout"
+        android:layout_margin="@dimen/medium_margin"
+        android:text="Drag your values from the all values into the slots that you would like"
+        android:layout_width="0dp"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/all_values"
+        app:layout_constraintTop_toBottomOf="@id/help_text"
+        app:layout_constraintLeft_toLeftOf="@id/valuesRecyclerView"
+        app:layout_constraintRight_toRightOf="@id/valuesRecyclerView"
+        android:layout_margin="@dimen/medium_margin"
+        android:layout_width="wrap_content"
+        android:text="All Values"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/selected_values"
+        app:layout_constraintTop_toBottomOf="@id/help_text"
+        app:layout_constraintLeft_toLeftOf="@id/linearLayout"
+        app:layout_constraintRight_toRightOf="@id/linearLayout"
+        android:layout_margin="@dimen/medium_margin"
+        android:layout_width="wrap_content"
+        android:text="Selected Values"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/valuesRecyclerView"
         android:background="@drawable/recycler_outline"
         android:padding="10dp"
         app:layout_constraintLeft_toLeftOf="@id/flask_background_widget_edit_layout"
-        app:layout_constraintTop_toBottomOf="@id/flask_background_widget_edit_layout"
-        android:layout_marginTop="@dimen/extra_large_margin"
+        app:layout_constraintTop_toBottomOf="@id/all_values"
+        android:layout_marginTop="@dimen/medium_margin"
         android:layout_width="130dp"
         android:overScrollMode="never"
         android:layout_height="300dp"/>
@@ -80,7 +120,7 @@
             android:text="Slot 1"
             android:gravity="center"
             android:layout_margin="@dimen/small_margin"
-            android:background="@drawable/linear_layout_corner_radius"
+            android:background="@drawable/linear_layout_corner_radius_blue"
             android:layout_height="40dp"/>
 
         <TextView
@@ -91,7 +131,7 @@
             android:gravity="center"
             android:text="Slot 2"
             android:layout_margin="@dimen/small_margin"
-            android:background="@drawable/linear_layout_corner_radius"
+            android:background="@drawable/linear_layout_corner_radius_blue"
             android:layout_height="40dp"/>
 
         <TextView
@@ -102,7 +142,7 @@
             android:text="Slot 3"
             android:layout_width="match_parent"
             android:layout_margin="@dimen/small_margin"
-            android:background="@drawable/linear_layout_corner_radius"
+            android:background="@drawable/linear_layout_corner_radius_blue"
             android:layout_height="40dp"/>
 
         <TextView
@@ -113,7 +153,7 @@
             android:text="Slot 4"
             android:layout_width="match_parent"
             android:layout_margin="@dimen/small_margin"
-            android:background="@drawable/linear_layout_corner_radius"
+            android:background="@drawable/linear_layout_corner_radius_blue"
             android:layout_height="40dp"/>
 
         <TextView
@@ -124,7 +164,7 @@
             android:text="Slot 5"
             android:layout_width="match_parent"
             android:layout_margin="@dimen/small_margin"
-            android:background="@drawable/linear_layout_corner_radius"
+            android:background="@drawable/linear_layout_corner_radius_blue"
             android:layout_height="40dp"/>
 
     </LinearLayout>
