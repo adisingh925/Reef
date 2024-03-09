@@ -306,8 +306,8 @@ class EditApexCircleWidget : Fragment() {
 
         binding.deleteButton.setOnClickListener {
             SharedPreferences.write(
-                Constants.APEX_FLASK_BACKGROUND_WIDGET,
-                SharedPreferences.read(Constants.APEX_FLASK_BACKGROUND_WIDGET, 0) - 1
+                Constants.APEX_CIRCLE_WIDGET,
+                SharedPreferences.read(Constants.APEX_CIRCLE_WIDGET, 0) - 1
             )
             widgetsViewModel.deleteApexCircleWidget(apexCircleWidget)
             findNavController().popBackStack()

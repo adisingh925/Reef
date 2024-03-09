@@ -67,11 +67,38 @@ class FocustronicSelectWidgetScreen : Fragment() {
                 widgetsViewModel.insertFocustronicGridWidget(
                     FocustronicGridWidgetModel(
                         0,
-                        "",
-                        "",
                         0.0f,
-                        "Unit",
-                        0
+                        0.0f,
+                        0.0f,
+                        0.0f,
+                        0.0f,
+                        0.0f,
+                        0.0f,
+                        0.0f,
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "Unit 1",
+                        "Unit 2",
+                        "Unit 3",
+                        "Unit 4",
+                        "Unit 5",
+                        "Unit 6",
+                        "Unit 7",
+                        "Unit 8"
                     )
                 )
                 SharedPreferences.write(Constants.FOCUSTRONIC_GRID_WIDGET, widgetCount + 1)
@@ -106,7 +133,8 @@ class FocustronicSelectWidgetScreen : Fragment() {
         }
 
         binding.focustronicSingleValueType1.layout.setOnClickListener {
-            val widgetCount = SharedPreferences.read(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET, 0)
+            val widgetCount =
+                SharedPreferences.read(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET, 0)
             if (widgetCount in 0..4) {
                 widgetsViewModel.insertFocustronicSingleValueTypeOneWidget(
                     FocustronicSingleValueType1WidgetModel(
@@ -131,7 +159,8 @@ class FocustronicSelectWidgetScreen : Fragment() {
         }
 
         binding.focustronicSingleValueType2.layout.setOnClickListener {
-            val widgetCount = SharedPreferences.read(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET, 0)
+            val widgetCount =
+                SharedPreferences.read(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET, 0)
             if (widgetCount in 0..4) {
                 widgetsViewModel.insertFocustronicSingleValueTypeTwoWidget(
                     FocustronicSingleValueType2WidgetModel(

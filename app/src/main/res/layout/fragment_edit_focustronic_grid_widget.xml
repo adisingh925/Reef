@@ -1,14 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#80000000"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.EditFocustronicGridWidget">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/save_button"
+        android:layout_width="wrap_content"
+        app:cornerRadius="@dimen/default_button_radius"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/green"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Save"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/extra_large_margin"
+        android:layout_height="wrap_content"/>
 
-</FrameLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/delete_button"
+        android:layout_width="wrap_content"
+        app:cornerRadius="@dimen/default_button_radius"
+        android:backgroundTint="@color/red"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Delete"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/extra_large_margin"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/preview_text"
+        android:layout_width="wrap_content"
+        android:text="Preview"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/delete_button"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_height="wrap_content"/>
+
+    <include
+        android:id="@+id/flask_background_widget_edit_layout"
+        app:layout_constraintTop_toBottomOf="@id/preview_text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_marginTop="@dimen/medium_margin"
+        layout="@layout/grid_widget"/>
+
+    <TextView
+        android:id="@+id/all_values"
+        app:layout_constraintTop_toBottomOf="@id/flask_background_widget_edit_layout"
+        app:layout_constraintLeft_toLeftOf="@id/valuesRecyclerView"
+        app:layout_constraintRight_toRightOf="@id/valuesRecyclerView"
+        android:layout_margin="@dimen/medium_margin"
+        android:layout_width="wrap_content"
+        android:text="All Values"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/selected_values"
+        app:layout_constraintTop_toBottomOf="@id/flask_background_widget_edit_layout"
+        app:layout_constraintLeft_toLeftOf="@id/linearLayout"
+        app:layout_constraintRight_toRightOf="@id/linearLayout"
+        android:layout_margin="@dimen/medium_margin"
+        android:layout_width="wrap_content"
+        android:text="Selected Values"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/valuesRecyclerView"
+        android:background="@drawable/recycler_outline"
+        android:padding="10dp"
+        app:layout_constraintLeft_toLeftOf="@id/flask_background_widget_edit_layout"
+        app:layout_constraintTop_toBottomOf="@id/all_values"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_width="130dp"
+        android:overScrollMode="never"
+        android:layout_height="300dp"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:orientation="vertical"
+        android:layout_width="130dp"
+        android:padding="10dp"
+        android:background="@drawable/recycler_outline"
+        app:layout_constraintRight_toRightOf="@id/flask_background_widget_edit_layout"
+        app:layout_constraintTop_toTopOf="@id/valuesRecyclerView"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/slot1"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:text="Slot 1"
+            android:gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/linear_layout_corner_radius_blue"
+            android:layout_height="40dp"/>
+
+        <TextView
+            android:id="@+id/slot2"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="Slot 2"
+            android:layout_margin="4dp"
+            android:background="@drawable/linear_layout_corner_radius_blue"
+            android:layout_height="40dp"/>
+
+        <TextView
+            android:id="@+id/slot3"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="Slot 3"
+            android:layout_width="match_parent"
+            android:layout_margin="4dp"
+            android:background="@drawable/linear_layout_corner_radius_blue"
+            android:layout_height="40dp"/>
+
+        <TextView
+            android:id="@+id/slot4"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="Slot 4"
+            android:layout_width="match_parent"
+            android:layout_margin="4dp"
+            android:background="@drawable/linear_layout_corner_radius_blue"
+            android:layout_height="40dp"/>
+
+        <TextView
+            android:id="@+id/slot5"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="Slot 5"
+            android:layout_width="match_parent"
+            android:layout_margin="4dp"
+            android:background="@drawable/linear_layout_corner_radius_blue"
+            android:layout_height="40dp"/>
+
+        <TextView
+            android:id="@+id/slot6"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="Slot 6"
+            android:layout_width="match_parent"
+            android:layout_margin="4dp"
+            android:background="@drawable/linear_layout_corner_radius_blue"
+            android:layout_height="40dp"/>
+
+        <TextView
+            android:id="@+id/slot7"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="Slot 7"
+            android:layout_width="match_parent"
+            android:layout_margin="4dp"
+            android:background="@drawable/linear_layout_corner_radius_blue"
+            android:layout_height="40dp"/>
+
+        <TextView
+            android:id="@+id/slot8"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="Slot 8"
+            android:layout_width="match_parent"
+            android:layout_margin="4dp"
+            android:background="@drawable/linear_layout_corner_radius_blue"
+            android:layout_height="40dp"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
