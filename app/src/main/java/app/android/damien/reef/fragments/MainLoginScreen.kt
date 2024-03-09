@@ -34,105 +34,99 @@ class MainLoginScreen : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        try {
-            binding.loginBackButton.setOnClickListener {
-                findNavController().popBackStack()
-            }
 
-            binding.submit.setOnClickListener {
-                binding.submit.setOnClickListener {
-                    var x = 0
+        binding.loginBackButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
-                    binding.emailLayout.error = null
-                    binding.nicknameLayout.error = null
+        binding.submit.setOnClickListener {
+            var x = 0
 
-                    if (binding.emailInputField.text.toString().isEmpty()) {
-                        x++
-                        binding.emailLayout.error = "Email is required"
-                        Log.d("LoginScreen", "Email or nickname is empty")
-                    } else {
-                        if (Patterns.EMAIL_ADDRESS.matcher(binding.emailInputField.text.toString())
-                                .matches()
-                        ) {
-                            Log.d("LoginScreen", "Email is valid")
-                        } else {
-                            x++
-                            Log.d("LoginScreen", "Email is invalid")
-                            binding.emailLayout.error = "Invalid email"
-                        }
-                    }
+            binding.emailLayout.error = null
+            binding.nicknameLayout.error = null
 
-                    if (binding.nicknameInputField.text.toString().isEmpty()) {
-                        x++
-                        binding.nicknameLayout.error = "Nickname is required"
-                        Log.d("LoginScreen", "Email or nickname is empty")
-                    } else {
-                        if (Pattern.matches(
-                                "^[a-zA-Z0-9]*$",
-                                binding.nicknameInputField.text.toString()
-                            )
-                        ) {
-                            Log.d("LoginScreen", "Nickname is valid")
-                        } else {
-                            x++
-                            Log.d("LoginScreen", "Nickname is invalid")
-                            binding.nicknameLayout.error =
-                                "Nickname can only contains letters and numbers."
-                        }
-                    }
-
-                    if (x == 0) {
-                        val call = ApiClient.apiService.addUser(
-                            addUserRequestBody(
-                                binding.emailInputField.text.toString(),
-                                binding.nicknameInputField.text.toString()
-                            )
-                        )
-
-                        call.enqueue(object : Callback<addUserResponseBody> {
-                            override fun onResponse(
-                                call: Call<addUserResponseBody>,
-                                response: Response<addUserResponseBody>
-                            ) {
-                                if (response.isSuccessful) {
-                                    val post = response.body()
-                                    if (post != null) {
-                                        if (post.success) {
-                                            findNavController().navigate(
-                                                R.id.action_mainLoginScreen_to_myWidgetsFragment,
-                                            )
-                                            saveCredentials(
-                                                binding.emailInputField.text.toString(),
-                                                binding.nicknameInputField.text.toString()
-                                            )
-                                        } else {
-                                            Toast.showSnackbar(binding.root, "Signup Failed!")
-                                        }
-                                    }
-                                    Log.d("LoginScreen", "Response: $post")
-                                } else {
-                                    Toast.showSnackbar(binding.root, "Signup Failed!")
-                                    Log.d("LoginScreen", "Error: ${response.code()}")
-                                }
-                            }
-
-                            @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
-                            override fun onFailure(call: Call<addUserResponseBody>, t: Throwable) {
-                                if (t is java.net.SocketException ||
-                                    t is java.net.UnknownHostException ||
-                                    t is java.io.IOException
-                                ) {
-                                    Toast.showSnackbar(binding.root, "Network Error!")
-                                }
-                                Log.d("LoginScreen", "Error: ${t.message}")
-                            }
-                        })
-                    }
+            if (binding.emailInputField.text.toString().isEmpty()) {
+                x++
+                binding.emailLayout.error = "Email is required"
+                Log.d("LoginScreen", "Email or nickname is empty")
+            } else {
+                if (Patterns.EMAIL_ADDRESS.matcher(binding.emailInputField.text.toString())
+                        .matches()
+                ) {
+                    Log.d("LoginScreen", "Email is valid")
+                } else {
+                    x++
+                    Log.d("LoginScreen", "Email is invalid")
+                    binding.emailLayout.error = "Invalid email"
                 }
             }
-        } catch (e: Exception) {
-            e.printStackTrace()
-            Toast.showSnackbar(binding.root, "Something went wrong!")
+
+            if (binding.nicknameInputField.text.toString().isEmpty()) {
+                x++
+                binding.nicknameLayout.error = "Nickname is required"
+                Log.d("LoginScreen", "Email or nickname is empty")
+            } else {
+                if (Pattern.matches(
+                        "^[a-zA-Z0-9]*$",
+                        binding.nicknameInputField.text.toString()
+                    )
+                ) {
+                    Log.d("LoginScreen", "Nickname is valid")
+                } else {
+                    x++
+                    Log.d("LoginScreen", "Nickname is invalid")
+                    binding.nicknameLayout.error =
+                        "Nickname can only contains letters and numbers."
+                }
+            }
+
+            if (x == 0) {
+                val call = ApiClient.apiService.addUser(
+                    addUserRequestBody(
+                        binding.emailInputField.text.toString(),
+                        binding.nicknameInputField.text.toString()
+                    )
+                )
+
+                call.enqueue(object : Callback<addUserResponseBody> {
+                    override fun onResponse(
+                        call: Call<addUserResponseBody>,
+                        response: Response<addUserResponseBody>
+                    ) {
+                        if (response.isSuccessful) {
+                            val post = response.body()
+                            if (post != null) {
+                                if (post.success) {
+                                    findNavController().navigate(
+                                        R.id.action_mainLoginScreen_to_myWidgetsFragment,
+                                    )
+                                    saveCredentials(
+                                        binding.emailInputField.text.toString(),
+                                        binding.nicknameInputField.text.toString()
+                                    )
+                                } else {
+                                    Toast.showSnackbar(binding.root, "Signup Failed!")
+                                }
+                            }
+                            Log.d("LoginScreen", "Response: $post")
+                        } else {
+                            Toast.showSnackbar(binding.root, "Signup Failed!")
+                            Log.d("LoginScreen", "Error: ${response.code()}")
+                        }
+                    }
+
+                    @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
+                    override fun onFailure(call: Call<addUserResponseBody>, t: Throwable) {
+                        if (t is java.net.SocketException ||
+                            t is java.net.UnknownHostException ||
+                            t is java.io.IOException
+                        ) {
+                            Toast.showSnackbar(binding.root, "Network Error!")
+                        }
+                        Log.d("LoginScreen", "Error: ${t.message}")
+                    }
+                })
+            }
         }
 
         return binding.root
