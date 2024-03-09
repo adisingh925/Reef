@@ -32,6 +32,7 @@
                 android:layout_marginTop="@dimen/extra_large_margin"
                 android:textColor="@color/white"
                 android:text="34"
+                android:id="@+id/value1"
                 android:layout_height="wrap_content"/>
 
             <TextView
@@ -66,6 +67,7 @@
                 android:layout_marginTop="@dimen/extra_large_margin"
                 android:textColor="@color/white"
                 android:text="10"
+                android:id="@+id/value2"
                 android:layout_height="wrap_content"/>
 
             <TextView
@@ -101,6 +103,7 @@
                 android:layout_marginTop="@dimen/extra_large_margin"
                 android:textColor="@color/white"
                 android:text="10"
+                android:id="@+id/value3"
                 android:layout_height="wrap_content"/>
 
             <TextView

@@ -10,16 +10,18 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.android.damien.reef.R
 import app.android.damien.reef.adapter.SimpleListAdapter
+import app.android.damien.reef.adapter.SimpleListAdapter2
+import app.android.damien.reef.database_model.ApexPowerValuesWidgetModel
 import app.android.damien.reef.database_model.FocustronicSingleValueType1WidgetModel
 import app.android.damien.reef.databinding.FragmentEditApexPowerWidgetBinding
 import app.android.damien.reef.storage.SharedPreferences
+import app.android.damien.reef.utils.Constants
 import app.android.damien.reef.viewmodel.WidgetsViewModel
 import com.google.android.material.tabs.TabLayout
 import org.json.JSONArray
 import org.json.JSONObject
 
-
-class EditApexPowerWidget : Fragment() {
+class EditApexPowerWidget : Fragment(), SimpleListAdapter2.OnItemClickListener {
 
     private val binding by lazy {
         FragmentEditApexPowerWidgetBinding.inflate(layoutInflater)
@@ -37,25 +39,23 @@ class EditApexPowerWidget : Fragment() {
     var voltsValue = 0.0f
     var wattsValue = 0.0f
 
-    var ampsActualNamesList = mutableListOf<String>()
-    var voltsActualNamesList = mutableListOf<String>()
-    var wattsActualNamesList = mutableListOf<String>()
+    var ampsActualNamesList = mutableListOf<Pair<String, Int>>()
+    var voltsActualNamesList = mutableListOf<Pair<String, Int>>()
+    var wattsActualNamesList = mutableListOf<Pair<String, Int>>()
 
     private val adapter by lazy {
-        SimpleListAdapter(requireContext(), object : SimpleListAdapter.OnItemClickListener {
-            override fun onItemClick(data: String) {
-
-            }
-        })
+        SimpleListAdapter2(requireContext(), this)
     }
 
-    private lateinit var focustronicSingleValueType1Widget: FocustronicSingleValueType1WidgetModel
+    private lateinit var apexPowerValueWidget: ApexPowerValuesWidgetModel
     private lateinit var apexData: JSONArray
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        apexPowerValueWidget = arguments?.getParcelable(Constants.APEX_POWER_VALUE_WIDGET)!!
 
         initApiData()
 
@@ -66,15 +66,18 @@ class EditApexPowerWidget : Fragment() {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab?.position) {
                     0 -> {
-                        adapter.setData(ampsActualNamesList)
+                        adapter.setData(wattsActualNamesList)
+                        adapter.notifyDataSetChanged()
                     }
 
                     1 -> {
-                        adapter.setData(voltsActualNamesList)
+                        adapter.setData(ampsActualNamesList)
+                        adapter.notifyDataSetChanged()
                     }
 
                     2 -> {
-                        adapter.setData(wattsActualNamesList)
+                        adapter.setData(voltsActualNamesList)
+                        adapter.notifyDataSetChanged()
                     }
                 }
             }
@@ -98,11 +101,23 @@ class EditApexPowerWidget : Fragment() {
         while (keys1.hasNext()) {
             val key = keys1.next() as String
             if (key.endsWith("a")) {
-                ampsActualNamesList.add(key)
+                if (apexPowerValueWidget.slot1SelectedValues?.contains(key) == true) {
+                    ampsActualNamesList.add(Pair(key, 1))
+                } else {
+                    ampsActualNamesList.add(Pair(key, 0))
+                }
             } else if (key.endsWith("v")) {
-                voltsActualNamesList.add(key)
+                if (apexPowerValueWidget.slot1SelectedValues?.contains(key) == true) {
+                    voltsActualNamesList.add(Pair(key, 1))
+                } else {
+                    voltsActualNamesList.add(Pair(key, 0))
+                }
             } else if (key.endsWith("w")) {
-                wattsActualNamesList.add(key)
+                if (apexPowerValueWidget.slot1SelectedValues?.contains(key) == true) {
+                    wattsActualNamesList.add(Pair(key, 1))
+                } else {
+                    wattsActualNamesList.add(Pair(key, 0))
+                }
             }
         }
     }
@@ -111,16 +126,59 @@ class EditApexPowerWidget : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         adapter.setData(wattsActualNamesList)
+        adapter.notifyDataSetChanged()
     }
 
-    private fun getJsonKeys(jsonObject: JSONObject): List<String> {
-        val keys = jsonObject.keys()
-        val keyList = mutableListOf<String>()
-
-        while (keys.hasNext()) {
-            keyList.add(keys.next())
+    override fun onItemClick(data: Pair<String, Int>, position: Int) {
+        Log.d("TAG", "onItemClick: $data $position")
+        if (data.second == 0) {
+            // If the second value is 0, toggle it to 1
+            when {
+                data.first.endsWith("w") -> {
+                    wattsActualNamesList[position] = Pair(data.first, 1)
+                    wattsValue += JSONObject(apexData.getJSONObject(0).toString()).get(data.first).toString().toFloat()
+                    adapter.setData(wattsActualNamesList)
+                    adapter.notifyItemRangeChanged(position, 1)
+                }
+                data.first.endsWith("v") -> {
+                    voltsActualNamesList[position] = Pair(data.first, 1)
+                    voltsValue += JSONObject(apexData.getJSONObject(0).toString()).get(data.first).toString().toFloat()
+                    adapter.setData(voltsActualNamesList)
+                    adapter.notifyItemRangeChanged(position, 1)
+                }
+                data.first.endsWith("a") -> {
+                    ampsActualNamesList[position] = Pair(data.first, 1)
+                    ampsValue += JSONObject(apexData.getJSONObject(0).toString()).get(data.first).toString().toFloat()
+                    adapter.setData(ampsActualNamesList)
+                    adapter.notifyItemRangeChanged(position, 1)
+                }
+            }
+        } else {
+            // If the second value is 1, toggle it to 0
+            when {
+                data.first.endsWith("w") -> {
+                    wattsActualNamesList[position] = Pair(data.first, 0)
+                    wattsValue -= JSONObject(apexData.getJSONObject(0).toString()).get(data.first).toString().toFloat()
+                    adapter.setData(wattsActualNamesList)
+                    adapter.notifyItemRangeChanged(position, 1)
+                }
+                data.first.endsWith("v") -> {
+                    voltsActualNamesList[position] = Pair(data.first, 0)
+                    voltsValue -= JSONObject(apexData.getJSONObject(0).toString()).get(data.first).toString().toFloat()
+                    adapter.setData(voltsActualNamesList)
+                    adapter.notifyItemRangeChanged(position, 1)
+                }
+                data.first.endsWith("a") -> {
+                    ampsActualNamesList[position] = Pair(data.first, 0)
+                    ampsValue -= JSONObject(apexData.getJSONObject(0).toString()).get(data.first).toString().toFloat()
+                    adapter.setData(ampsActualNamesList)
+                    adapter.notifyItemRangeChanged(position, 1)
+                }
+            }
         }
 
-        return keyList
+        binding.flaskBackgroundWidgetEditLayout.value1.text = wattsValue.toString()
+        binding.flaskBackgroundWidgetEditLayout.value2.text = ampsValue.toString()
+        binding.flaskBackgroundWidgetEditLayout.value3.text = voltsValue.toString()
     }
 }
