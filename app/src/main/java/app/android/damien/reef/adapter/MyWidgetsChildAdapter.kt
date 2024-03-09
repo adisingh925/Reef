@@ -67,6 +67,9 @@ class MyWidgetsChildAdapter(
         fun bind(position: Int) {
             Log.d("MyWidgetsChildAdapter", "ViewHolder1: ")
 
+            itemView.setOnClickListener {
+                onItemClickListener.onApexPowerValuesWidgetClick(setApexPowerValuesWidgetData[position])
+            }
         }
     }
 

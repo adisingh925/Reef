@@ -8,16 +8,22 @@ import app.android.damien.reef.utils.Constants.APEX_POWER_VALUES_WIDGET_TABLE
 
 @Entity(tableName = APEX_POWER_VALUES_WIDGET_TABLE)
 data class ApexPowerValuesWidgetModel(
-    @PrimaryKey(autoGenerate = true) val id : Int,
-    val slot1 : Float,
-    val slot2 : Float,
-    val slot3 : Float,
+    @PrimaryKey(autoGenerate = true) val id: Int,
+    val slot1: Float,
+    val slot2: Float,
+    val slot3: Float,
+    val slot1SelectedValues: String?,
+    val slot2SelectedValues: String?,
+    val slot3SelectedValues: String?
 ) : Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readFloat(),
         parcel.readFloat(),
-        parcel.readFloat()
+        parcel.readFloat(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString()
     ) {
     }
 
@@ -26,6 +32,9 @@ data class ApexPowerValuesWidgetModel(
         parcel.writeFloat(slot1)
         parcel.writeFloat(slot2)
         parcel.writeFloat(slot3)
+        parcel.writeString(slot1SelectedValues)
+        parcel.writeString(slot2SelectedValues)
+        parcel.writeString(slot3SelectedValues)
     }
 
     override fun describeContents(): Int {
