@@ -1,14 +1,17 @@
 package app.android.damien.reef.fragments
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import app.android.damien.reef.R
 import app.android.damien.reef.database_model.ApexCircleWidgetModel
 import app.android.damien.reef.database_model.ApexFlaskBackgroundWidgetModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeOneModel
@@ -195,7 +198,8 @@ class ApexSelectWidgetScreen : Fragment() {
                         "Unit",
                         Color.parseColor("#ffffff"),
                         Color.parseColor("#ffffff")
-                    ))
+                    )
+                )
                 SharedPreferences.write(Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET, widgetCount + 1)
             } else {
                 Toast.showSnackbar(binding.root, "You can only add 5 widgets")
@@ -280,7 +284,10 @@ class ApexSelectWidgetScreen : Fragment() {
                             val gson = Gson()
                             val jsonData = gson.toJson(data)
                             SharedPreferences.write("apexData", jsonData)
-                            SharedPreferences.write("lastUpdatedApex", millisToDateTime(System.currentTimeMillis()))
+                            SharedPreferences.write(
+                                "lastUpdatedApex",
+                                millisToDateTime(System.currentTimeMillis())
+                            )
                         }
                     }
                 }
@@ -296,5 +303,19 @@ class ApexSelectWidgetScreen : Fragment() {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
         val dateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(millis), ZoneId.systemDefault())
         return dateTime.format(formatter)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().popBackStack(R.id.widgetTypeSelectionScreen, false)
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            callback
+        )
     }
 }
