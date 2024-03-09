@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.android.damien.reef.R
 import app.android.damien.reef.adapter.SimpleListAdapter
@@ -57,6 +58,14 @@ class EditApexPowerWidget : Fragment(), SimpleListAdapter2.OnItemClickListener {
 
         apexPowerValueWidget = arguments?.getParcelable(Constants.APEX_POWER_VALUE_WIDGET)!!
 
+        wattsValue = apexPowerValueWidget.slot1
+        ampsValue = apexPowerValueWidget.slot2
+        voltsValue = apexPowerValueWidget.slot3
+
+        binding.flaskBackgroundWidgetEditLayout.value1.text = wattsValue.toString()
+        binding.flaskBackgroundWidgetEditLayout.value2.text = ampsValue.toString()
+        binding.flaskBackgroundWidgetEditLayout.value3.text = voltsValue.toString()
+
         initApiData()
 
         initValuesRecyclerView()
@@ -68,16 +77,19 @@ class EditApexPowerWidget : Fragment(), SimpleListAdapter2.OnItemClickListener {
                     0 -> {
                         adapter.setData(wattsActualNamesList)
                         adapter.notifyDataSetChanged()
+                        binding.total.text = "Total : ${wattsValue.toString()}"
                     }
 
                     1 -> {
                         adapter.setData(ampsActualNamesList)
                         adapter.notifyDataSetChanged()
+                        binding.total.text = "Total : ${ampsValue.toString()}"
                     }
 
                     2 -> {
                         adapter.setData(voltsActualNamesList)
                         adapter.notifyDataSetChanged()
+                        binding.total.text = "Total : ${voltsValue.toString()}"
                     }
                 }
             }
@@ -91,6 +103,26 @@ class EditApexPowerWidget : Fragment(), SimpleListAdapter2.OnItemClickListener {
             }
         })
 
+        binding.saveButton.setOnClickListener {
+            apexPowerValueWidget.slot1 = wattsValue
+            apexPowerValueWidget.slot2 = ampsValue
+            apexPowerValueWidget.slot3 = voltsValue
+            apexPowerValueWidget.slot1SelectedValues = wattsActualNamesList.filter { it.second == 1 }.joinToString(", ") { it.first }
+            apexPowerValueWidget.slot2SelectedValues = ampsActualNamesList.filter { it.second == 1 }.joinToString(", ") { it.first }
+            apexPowerValueWidget.slot3SelectedValues = voltsActualNamesList.filter { it.second == 1 }.joinToString(", ") { it.first }
+
+            widgetsViewModel.updateApexPowerValuesWidget(apexPowerValueWidget)
+        }
+
+        binding.deleteButton.setOnClickListener {
+            SharedPreferences.write(
+                Constants.APEX_POWER_VALUE_WIDGET,
+                SharedPreferences.read(Constants.APEX_POWER_VALUE_WIDGET, 0) - 1
+            )
+            widgetsViewModel.deleteApexPowerValuesWidget(apexPowerValueWidget)
+            findNavController().popBackStack()
+        }
+
         return binding.root
     }
 
@@ -101,13 +133,13 @@ class EditApexPowerWidget : Fragment(), SimpleListAdapter2.OnItemClickListener {
         while (keys1.hasNext()) {
             val key = keys1.next() as String
             if (key.endsWith("a")) {
-                if (apexPowerValueWidget.slot1SelectedValues?.contains(key) == true) {
+                if (apexPowerValueWidget.slot2SelectedValues?.contains(key) == true) {
                     ampsActualNamesList.add(Pair(key, 1))
                 } else {
                     ampsActualNamesList.add(Pair(key, 0))
                 }
             } else if (key.endsWith("v")) {
-                if (apexPowerValueWidget.slot1SelectedValues?.contains(key) == true) {
+                if (apexPowerValueWidget.slot3SelectedValues?.contains(key) == true) {
                     voltsActualNamesList.add(Pair(key, 1))
                 } else {
                     voltsActualNamesList.add(Pair(key, 0))
@@ -136,21 +168,23 @@ class EditApexPowerWidget : Fragment(), SimpleListAdapter2.OnItemClickListener {
             when {
                 data.first.endsWith("w") -> {
                     wattsActualNamesList[position] = Pair(data.first, 1)
-                    wattsValue += JSONObject(apexData.getJSONObject(0).toString()).get(data.first).toString().toFloat()
-                    adapter.setData(wattsActualNamesList)
-                    adapter.notifyItemRangeChanged(position, 1)
+                    wattsValue += JSONObject(apexData.getJSONObject(0).toString()).get(data.first)
+                        .toString().toFloat()
+                    binding.total.text = "Total : ${wattsValue.toString()}"
                 }
+
                 data.first.endsWith("v") -> {
                     voltsActualNamesList[position] = Pair(data.first, 1)
-                    voltsValue += JSONObject(apexData.getJSONObject(0).toString()).get(data.first).toString().toFloat()
-                    adapter.setData(voltsActualNamesList)
-                    adapter.notifyItemRangeChanged(position, 1)
+                    voltsValue += JSONObject(apexData.getJSONObject(0).toString()).get(data.first)
+                        .toString().toFloat()
+                    binding.total.text = "Total : ${voltsValue.toString()}"
                 }
+
                 data.first.endsWith("a") -> {
                     ampsActualNamesList[position] = Pair(data.first, 1)
-                    ampsValue += JSONObject(apexData.getJSONObject(0).toString()).get(data.first).toString().toFloat()
-                    adapter.setData(ampsActualNamesList)
-                    adapter.notifyItemRangeChanged(position, 1)
+                    ampsValue += JSONObject(apexData.getJSONObject(0).toString()).get(data.first)
+                        .toString().toFloat()
+                    binding.total.text = "Total : ${ampsValue.toString()}"
                 }
             }
         } else {
@@ -158,21 +192,23 @@ class EditApexPowerWidget : Fragment(), SimpleListAdapter2.OnItemClickListener {
             when {
                 data.first.endsWith("w") -> {
                     wattsActualNamesList[position] = Pair(data.first, 0)
-                    wattsValue -= JSONObject(apexData.getJSONObject(0).toString()).get(data.first).toString().toFloat()
-                    adapter.setData(wattsActualNamesList)
-                    adapter.notifyItemRangeChanged(position, 1)
+                    wattsValue -= JSONObject(apexData.getJSONObject(0).toString()).get(data.first)
+                        .toString().toFloat()
+                    binding.total.text = "Total : ${wattsValue.toString()}"
                 }
+
                 data.first.endsWith("v") -> {
                     voltsActualNamesList[position] = Pair(data.first, 0)
-                    voltsValue -= JSONObject(apexData.getJSONObject(0).toString()).get(data.first).toString().toFloat()
-                    adapter.setData(voltsActualNamesList)
-                    adapter.notifyItemRangeChanged(position, 1)
+                    voltsValue -= JSONObject(apexData.getJSONObject(0).toString()).get(data.first)
+                        .toString().toFloat()
+                    binding.total.text = "Total : ${voltsValue.toString()}"
                 }
+
                 data.first.endsWith("a") -> {
                     ampsActualNamesList[position] = Pair(data.first, 0)
-                    ampsValue -= JSONObject(apexData.getJSONObject(0).toString()).get(data.first).toString().toFloat()
-                    adapter.setData(ampsActualNamesList)
-                    adapter.notifyItemRangeChanged(position, 1)
+                    ampsValue -= JSONObject(apexData.getJSONObject(0).toString()).get(data.first)
+                        .toString().toFloat()
+                    binding.total.text = "Total : ${ampsValue.toString()}"
                 }
             }
         }

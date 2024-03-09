@@ -82,22 +82,26 @@
         android:id="@+id/valuesRecyclerView"
         android:background="@drawable/recycler_outline"
         android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@id/flask_background_widget_edit_layout"
         app:layout_constraintTop_toBottomOf="@id/all_values"
         android:layout_marginTop="@dimen/medium_margin"
         android:layout_width="130dp"
+        android:layout_marginBottom="@dimen/extra_large_margin"
         android:overScrollMode="never"
-        android:layout_height="300dp"/>
+        android:layout_height="0dp"/>
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:orientation="vertical"
         android:layout_width="130dp"
         android:padding="10dp"
+        android:layout_marginBottom="@dimen/extra_large_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:background="@drawable/recycler_outline"
         app:layout_constraintRight_toRightOf="@id/flask_background_widget_edit_layout"
         app:layout_constraintTop_toTopOf="@id/valuesRecyclerView"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp">
 
         <TextView
             android:id="@+id/slot1"

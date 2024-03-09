@@ -58,7 +58,10 @@
         android:id="@+id/tab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginBottom="@dimen/medium_margin"
+        android:layout_marginLeft="@dimen/large_margin"
+        android:layout_marginRight="@dimen/large_margin"
         android:background="@drawable/linear_layout_corner_radius_white"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -92,5 +95,16 @@
         app:layout_constraintLeft_toLeftOf="@id/flask_background_widget_edit_layout"
         app:layout_constraintRight_toRightOf="@id/flask_background_widget_edit_layout"
         app:layout_constraintTop_toBottomOf="@id/tab" />
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/valuesRecyclerView"
+        app:layout_constraintLeft_toLeftOf="@id/valuesRecyclerView"
+        app:layout_constraintRight_toRightOf="@id/valuesRecyclerView"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

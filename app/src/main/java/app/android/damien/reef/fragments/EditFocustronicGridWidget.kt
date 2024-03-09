@@ -29,7 +29,7 @@ import org.json.JSONObject
 
 class EditFocustronicGridWidget : Fragment() {
 
-    private val binding by lazy{
+    private val binding by lazy {
         FragmentEditFocustronicGridWidgetBinding.inflate(layoutInflater)
     }
 
@@ -126,9 +126,11 @@ class EditFocustronicGridWidget : Fragment() {
 
 
         if (focustronicGridWidgetModel.slot1GivenName.isNullOrEmpty()) {
-            binding.flaskBackgroundWidgetEditLayout.name1.text =
-                focustronicGridWidgetModel.slot1ActualName
-            binding.slot1.text = focustronicGridWidgetModel.slot1ActualName
+            if(!focustronicGridWidgetModel.slot1ActualName.isNullOrEmpty()) {
+                binding.flaskBackgroundWidgetEditLayout.name1.text =
+                    focustronicGridWidgetModel.slot1ActualName
+                binding.slot1.text = focustronicGridWidgetModel.slot1ActualName
+            }
         } else {
             binding.flaskBackgroundWidgetEditLayout.name1.text =
                 focustronicGridWidgetModel.slot1GivenName
@@ -136,9 +138,11 @@ class EditFocustronicGridWidget : Fragment() {
         }
 
         if (focustronicGridWidgetModel.slot2GivenName.isNullOrEmpty()) {
-            binding.flaskBackgroundWidgetEditLayout.name2.text =
-                focustronicGridWidgetModel.slot2ActualName
-            binding.slot2.text = focustronicGridWidgetModel.slot2ActualName
+            if(!focustronicGridWidgetModel.slot2ActualName.isNullOrEmpty()) {
+                binding.flaskBackgroundWidgetEditLayout.name2.text =
+                    focustronicGridWidgetModel.slot2ActualName
+                binding.slot2.text = focustronicGridWidgetModel.slot2ActualName
+            }
         } else {
             binding.flaskBackgroundWidgetEditLayout.name2.text =
                 focustronicGridWidgetModel.slot2GivenName
@@ -146,9 +150,11 @@ class EditFocustronicGridWidget : Fragment() {
         }
 
         if (focustronicGridWidgetModel.slot3GivenName.isNullOrEmpty()) {
-            binding.flaskBackgroundWidgetEditLayout.name3.text =
-                focustronicGridWidgetModel.slot3ActualName
-            binding.slot3.text = focustronicGridWidgetModel.slot3ActualName
+            if(!focustronicGridWidgetModel.slot3ActualName.isNullOrEmpty()) {
+                binding.flaskBackgroundWidgetEditLayout.name3.text =
+                    focustronicGridWidgetModel.slot3ActualName
+                binding.slot3.text = focustronicGridWidgetModel.slot3ActualName
+            }
         } else {
             binding.flaskBackgroundWidgetEditLayout.name3.text =
                 focustronicGridWidgetModel.slot3GivenName
@@ -156,9 +162,11 @@ class EditFocustronicGridWidget : Fragment() {
         }
 
         if (focustronicGridWidgetModel.slot4GivenName.isNullOrEmpty()) {
-            binding.flaskBackgroundWidgetEditLayout.name4.text =
-                focustronicGridWidgetModel.slot4ActualName
-            binding.slot4.text = focustronicGridWidgetModel.slot4ActualName
+            if(!focustronicGridWidgetModel.slot4ActualName.isNullOrEmpty()) {
+                binding.flaskBackgroundWidgetEditLayout.name4.text =
+                    focustronicGridWidgetModel.slot4ActualName
+                binding.slot4.text = focustronicGridWidgetModel.slot4ActualName
+            }
         } else {
             binding.flaskBackgroundWidgetEditLayout.name4.text =
                 focustronicGridWidgetModel.slot4GivenName
@@ -166,9 +174,11 @@ class EditFocustronicGridWidget : Fragment() {
         }
 
         if (focustronicGridWidgetModel.slot5GivenName.isNullOrEmpty()) {
-            binding.flaskBackgroundWidgetEditLayout.name5.text =
-                focustronicGridWidgetModel.slot5ActualName
-            binding.slot5.text = focustronicGridWidgetModel.slot5ActualName
+            if(!focustronicGridWidgetModel.slot5ActualName.isNullOrEmpty()) {
+                binding.flaskBackgroundWidgetEditLayout.name5.text =
+                    focustronicGridWidgetModel.slot5ActualName
+                binding.slot5.text = focustronicGridWidgetModel.slot5ActualName
+            }
         } else {
             binding.flaskBackgroundWidgetEditLayout.name5.text =
                 focustronicGridWidgetModel.slot5GivenName
@@ -176,9 +186,11 @@ class EditFocustronicGridWidget : Fragment() {
         }
 
         if (focustronicGridWidgetModel.slot6GivenName.isNullOrEmpty()) {
-            binding.flaskBackgroundWidgetEditLayout.name6.text =
-                focustronicGridWidgetModel.slot6ActualName
-            binding.slot6.text = focustronicGridWidgetModel.slot6ActualName
+            if(!focustronicGridWidgetModel.slot6ActualName.isNullOrEmpty()) {
+                binding.flaskBackgroundWidgetEditLayout.name6.text =
+                    focustronicGridWidgetModel.slot6ActualName
+                binding.slot6.text = focustronicGridWidgetModel.slot6ActualName
+            }
         } else {
             binding.flaskBackgroundWidgetEditLayout.name6.text =
                 focustronicGridWidgetModel.slot6GivenName
@@ -186,9 +198,11 @@ class EditFocustronicGridWidget : Fragment() {
         }
 
         if (focustronicGridWidgetModel.slot7GivenName.isNullOrEmpty()) {
-            binding.flaskBackgroundWidgetEditLayout.name7.text =
-                focustronicGridWidgetModel.slot7ActualName
-            binding.slot7.text = focustronicGridWidgetModel.slot7ActualName
+            if (!focustronicGridWidgetModel.slot7ActualName.isNullOrEmpty()) {
+                binding.flaskBackgroundWidgetEditLayout.name7.text =
+                    focustronicGridWidgetModel.slot7ActualName
+                binding.slot7.text = focustronicGridWidgetModel.slot7ActualName
+            }
         } else {
             binding.flaskBackgroundWidgetEditLayout.name7.text =
                 focustronicGridWidgetModel.slot7GivenName
@@ -196,9 +210,11 @@ class EditFocustronicGridWidget : Fragment() {
         }
 
         if (focustronicGridWidgetModel.slot8GivenName.isNullOrEmpty()) {
-            binding.flaskBackgroundWidgetEditLayout.name8.text =
-                focustronicGridWidgetModel.slot8ActualName
-            binding.slot8.text = focustronicGridWidgetModel.slot8ActualName
+            if(!focustronicGridWidgetModel.slot8ActualName.isNullOrEmpty()) {
+                binding.flaskBackgroundWidgetEditLayout.name8.text =
+                    focustronicGridWidgetModel.slot8ActualName
+                binding.slot8.text = focustronicGridWidgetModel.slot8ActualName
+            }
         } else {
             binding.flaskBackgroundWidgetEditLayout.name8.text =
                 focustronicGridWidgetModel.slot8GivenName
@@ -722,14 +738,18 @@ class EditFocustronicGridWidget : Fragment() {
             widgetsViewModel.updateFocustronicGridWidget(focustronicGridWidgetModel)
             Toast.showSnackbar(binding.root, "Apex Water Quality Widget Updated")
         }
-        
+
         return binding.root
     }
 
     private fun initApiData() {
-        apexData = JSONObject(SharedPreferences.read("focustronicAlkatronicData", "").toString()).getJSONArray("data")
+        apexData = JSONObject(
+            SharedPreferences.read("focustronicAlkatronicData", "").toString()
+        ).getJSONArray("data")
         apexData.getJSONObject(0).remove("record_time")
-        val tempData = JSONObject(SharedPreferences.read("focustronicMastertronicData", "").toString()).getJSONArray("data")
+        val tempData = JSONObject(
+            SharedPreferences.read("focustronicMastertronicData", "").toString()
+        ).getJSONArray("data")
         tempData.getJSONObject(0).remove("record_time")
         val keys = tempData.getJSONObject(0).keys()
         while (keys.hasNext()) {

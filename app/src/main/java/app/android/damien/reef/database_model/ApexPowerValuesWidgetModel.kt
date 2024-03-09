@@ -9,12 +9,12 @@ import app.android.damien.reef.utils.Constants.APEX_POWER_VALUES_WIDGET_TABLE
 @Entity(tableName = APEX_POWER_VALUES_WIDGET_TABLE)
 data class ApexPowerValuesWidgetModel(
     @PrimaryKey(autoGenerate = true) val id: Int,
-    val slot1: Float,
-    val slot2: Float,
-    val slot3: Float,
-    val slot1SelectedValues: String?,
-    val slot2SelectedValues: String?,
-    val slot3SelectedValues: String?
+    var slot1: Float,
+    var slot2: Float,
+    var slot3: Float,
+    var slot1SelectedValues: String?,
+    var slot2SelectedValues: String?,
+    var slot3SelectedValues: String?
 ) : Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
