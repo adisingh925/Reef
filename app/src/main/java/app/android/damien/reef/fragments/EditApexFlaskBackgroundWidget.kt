@@ -82,24 +82,36 @@ class EditApexFlaskBackgroundWidget : Fragment() {
         slot3Value = apexFlaskBackgroundWidget.slot3Value
 
         if (apexFlaskBackgroundWidget.slot1GivenName.isNullOrEmpty()) {
-            binding.flaskBackgroundWidgetEditLayout.slot1name.text = apexFlaskBackgroundWidget.slot1ActualName
-            binding.slot1.text = apexFlaskBackgroundWidget.slot1ActualName
+            if(apexFlaskBackgroundWidget.slot1ActualName.equals("NaN")){
+                binding.slot1.text = "Slot 1"
+            } else {
+                binding.flaskBackgroundWidgetEditLayout.slot1name.text = apexFlaskBackgroundWidget.slot1ActualName
+                binding.slot1.text = apexFlaskBackgroundWidget.slot1ActualName
+            }
         } else {
             binding.flaskBackgroundWidgetEditLayout.slot1name.text = apexFlaskBackgroundWidget.slot1GivenName
             binding.slot1.text = apexFlaskBackgroundWidget.slot1GivenName
         }
 
         if (apexFlaskBackgroundWidget.slot2GivenName.isNullOrEmpty()) {
-            binding.flaskBackgroundWidgetEditLayout.slot2name.text = apexFlaskBackgroundWidget.slot2ActualName
-            binding.slot2.text = apexFlaskBackgroundWidget.slot2ActualName
+            if(apexFlaskBackgroundWidget.slot2ActualName.equals("NaN")){
+                binding.slot2.text = "Slot 2"
+            } else {
+                binding.flaskBackgroundWidgetEditLayout.slot2name.text = apexFlaskBackgroundWidget.slot2ActualName
+                binding.slot2.text = apexFlaskBackgroundWidget.slot2ActualName
+            }
         } else {
             binding.flaskBackgroundWidgetEditLayout.slot2name.text = apexFlaskBackgroundWidget.slot2GivenName
             binding.slot2.text = apexFlaskBackgroundWidget.slot2GivenName
         }
 
         if (apexFlaskBackgroundWidget.slot3GivenName.isNullOrEmpty()) {
-            binding.flaskBackgroundWidgetEditLayout.slot3name.text = apexFlaskBackgroundWidget.slot3ActualName
-            binding.slot3.text = apexFlaskBackgroundWidget.slot3ActualName
+            if(apexFlaskBackgroundWidget.slot3ActualName.equals("NaN")){
+                binding.slot3.text = "Slot 3"
+            } else {
+                binding.flaskBackgroundWidgetEditLayout.slot3name.text = apexFlaskBackgroundWidget.slot3ActualName
+                binding.slot3.text = apexFlaskBackgroundWidget.slot3ActualName
+            }
         } else {
             binding.flaskBackgroundWidgetEditLayout.slot3name.text = apexFlaskBackgroundWidget.slot3GivenName
             binding.slot3.text = apexFlaskBackgroundWidget.slot3GivenName

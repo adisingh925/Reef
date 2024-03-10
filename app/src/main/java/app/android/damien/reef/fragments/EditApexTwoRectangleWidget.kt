@@ -131,60 +131,42 @@ class EditApexTwoRectangleWidget : Fragment() {
         if (apexTwoRectangleWidget.topRectangleUnit.isNullOrBlank()) {
             binding.flaskTwoRectangleWidgetEditLayout.unit.text = "Unit 1"
         } else {
-            binding.flaskTwoRectangleWidgetEditLayout.unit.text =
-                apexTwoRectangleWidget.topRectangleUnit
+            binding.flaskTwoRectangleWidgetEditLayout.unit.text = apexTwoRectangleWidget.topRectangleUnit
         }
 
         if (apexTwoRectangleWidget.bottomRectangleUnit.isNullOrBlank()) {
             binding.flaskTwoRectangleWidgetEditLayout.unit2.text = "Unit 2"
         } else {
-            binding.flaskTwoRectangleWidgetEditLayout.unit2.text =
-                apexTwoRectangleWidget.bottomRectangleUnit
+            binding.flaskTwoRectangleWidgetEditLayout.unit2.text = apexTwoRectangleWidget.bottomRectangleUnit
         }
 
-        if (apexTwoRectangleWidget.topRectangleActualName.isNullOrBlank()) {
-            binding.flaskTwoRectangleWidgetEditLayout.value.text = "NaN"
+        if (apexTwoRectangleWidget.topRectangleActualName.equals("NaN")) {
+            binding.flaskTwoRectangleWidgetEditLayout.value.text = "0.0"
         } else {
-            binding.flaskTwoRectangleWidgetEditLayout.value.text = JSONObject(
-                apexData.getJSONObject(0).toString()
+            binding.flaskTwoRectangleWidgetEditLayout.value.text = JSONObject(apexData.getJSONObject(0).toString()
             ).get(apexTwoRectangleWidget.topRectangleActualName).toString().toFloat()
                 .toString()
         }
 
-        if (apexTwoRectangleWidget.bottomRectangleActualName.isNullOrBlank()) {
-            binding.flaskTwoRectangleWidgetEditLayout.value2.text = "NaN"
+        if (apexTwoRectangleWidget.bottomRectangleActualName.equals("NaN")) {
+            binding.flaskTwoRectangleWidgetEditLayout.value2.text = "0.0"
         } else {
             binding.flaskTwoRectangleWidgetEditLayout.value2.text = JSONObject(
-                apexData.getJSONObject(0).toString()
-            ).get(apexTwoRectangleWidget.bottomRectangleActualName).toString().toFloat()
+                apexData.getJSONObject(0).toString()).get(apexTwoRectangleWidget.bottomRectangleActualName).toString().toFloat()
                 .toString()
         }
 
-        if (apexTwoRectangleWidget.topRectangleUpdateTimeStamp.isNullOrBlank()) {
-            binding.flaskTwoRectangleWidgetEditLayout.timestamp.text =
-                millisToDateTime(System.currentTimeMillis())
-        } else {
-            binding.flaskTwoRectangleWidgetEditLayout.timestamp.text =
-                apexTwoRectangleWidget.topRectangleUpdateTimeStamp
-        }
-
-        if (apexTwoRectangleWidget.bottomRectangleUpdateTimeStamp.isNullOrBlank()) {
-            binding.flaskTwoRectangleWidgetEditLayout.timestamp2.text =
-                millisToDateTime(System.currentTimeMillis())
-        } else {
-            binding.flaskTwoRectangleWidgetEditLayout.timestamp2.text =
-                apexTwoRectangleWidget.bottomRectangleUpdateTimeStamp
-        }
+        binding.flaskTwoRectangleWidgetEditLayout.timestamp.text = apexTwoRectangleWidget.topRectangleUpdateTimeStamp
+        binding.flaskTwoRectangleWidgetEditLayout.timestamp2.text = apexTwoRectangleWidget.bottomRectangleUpdateTimeStamp
 
         binding.flaskTwoRectangleWidgetEditLayout.card1.setOnClickListener {
-            if (!binding.flaskTwoRectangleWidgetEditLayout.value.text.contains("NaN")) {
+            if (!topRectangleActualName.contains("NaN")) {
                 val dialog = BottomSheetDialog(requireContext())
                 val view = ApexTwoRectangleWidgetBottomSheetBinding.inflate(layoutInflater)
 
                 view.textInput.setText(binding.flaskTwoRectangleWidgetEditLayout.unit.text.toString())
 
                 view.colorPickerButton.iconTint = ColorStateList.valueOf(firstRectangleColor)
-
 
                 view.saveButton.setOnClickListener {
                     if (view.textInput.text.toString().isEmpty()) {
@@ -227,7 +209,7 @@ class EditApexTwoRectangleWidget : Fragment() {
         }
 
         binding.flaskTwoRectangleWidgetEditLayout.card2.setOnClickListener {
-            if (!binding.flaskTwoRectangleWidgetEditLayout.value2.text.contains("NaN")) {
+            if (!bottomRectangleActualName.contains("NaN")) {
                 val dialog = BottomSheetDialog(requireContext())
                 val view = ApexTwoRectangleWidgetBottomSheetBinding.inflate(layoutInflater)
 

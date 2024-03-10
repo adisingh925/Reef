@@ -97,74 +97,80 @@ class EditApexWaterQualityWidget : Fragment() {
         slot5ActualName = apexWaterQualityWidget.slot5ActualName.toString()
         slot5GivenName = apexWaterQualityWidget.slot5GivenName.toString()
 
-
         slot1Value = apexWaterQualityWidget.slot1Value
         slot2Value = apexWaterQualityWidget.slot2Value
         slot3Value = apexWaterQualityWidget.slot3Value
         slot4Value = apexWaterQualityWidget.slot4Value
         slot5Value = apexWaterQualityWidget.slot5Value
 
+        binding.flaskBackgroundWidgetEditLayout.timestamp.text = "as of - ${SharedPreferences.read("lastUpdatedApex", "")}"
+
 
         if (apexWaterQualityWidget.slot1GivenName.isNullOrEmpty()) {
-            binding.flaskBackgroundWidgetEditLayout.slot1name.text =
-                apexWaterQualityWidget.slot1ActualName
-            binding.slot1.text = apexWaterQualityWidget.slot1ActualName
+            if(apexWaterQualityWidget.slot1ActualName.equals("NaN")) {
+                binding.slot1.text = "Slot 1"
+            } else {
+                binding.flaskBackgroundWidgetEditLayout.slot1name.text = apexWaterQualityWidget.slot1ActualName
+                binding.slot1.text = apexWaterQualityWidget.slot1ActualName
+            }
         } else {
-            binding.flaskBackgroundWidgetEditLayout.slot1name.text =
-                apexWaterQualityWidget.slot1GivenName
+            binding.flaskBackgroundWidgetEditLayout.slot1name.text = apexWaterQualityWidget.slot1GivenName
             binding.slot1.text = apexWaterQualityWidget.slot1GivenName
         }
 
         if (apexWaterQualityWidget.slot2GivenName.isNullOrEmpty()) {
-            binding.flaskBackgroundWidgetEditLayout.slot2name.text =
-                apexWaterQualityWidget.slot2ActualName
-            binding.slot2.text = apexWaterQualityWidget.slot2ActualName
+            if(apexWaterQualityWidget.slot2ActualName.equals("NaN")) {
+                binding.slot2.text = "Slot 2"
+            } else {
+                binding.flaskBackgroundWidgetEditLayout.slot2name.text = apexWaterQualityWidget.slot2ActualName
+                binding.slot2.text = apexWaterQualityWidget.slot2ActualName
+            }
         } else {
-            binding.flaskBackgroundWidgetEditLayout.slot2name.text =
-                apexWaterQualityWidget.slot2GivenName
+            binding.flaskBackgroundWidgetEditLayout.slot2name.text = apexWaterQualityWidget.slot2GivenName
             binding.slot2.text = apexWaterQualityWidget.slot2GivenName
         }
 
         if (apexWaterQualityWidget.slot3GivenName.isNullOrEmpty()) {
-            binding.flaskBackgroundWidgetEditLayout.slot3name.text =
-                apexWaterQualityWidget.slot3ActualName
-            binding.slot3.text = apexWaterQualityWidget.slot3ActualName
+            if(apexWaterQualityWidget.slot3ActualName.equals("NaN")) {
+                binding.slot3.text = "Slot 3"
+            } else {
+                binding.flaskBackgroundWidgetEditLayout.slot3name.text = apexWaterQualityWidget.slot3ActualName
+                binding.slot3.text = apexWaterQualityWidget.slot3ActualName
+            }
         } else {
-            binding.flaskBackgroundWidgetEditLayout.slot3name.text =
-                apexWaterQualityWidget.slot3GivenName
+            binding.flaskBackgroundWidgetEditLayout.slot3name.text = apexWaterQualityWidget.slot3GivenName
             binding.slot3.text = apexWaterQualityWidget.slot3GivenName
         }
 
         if (apexWaterQualityWidget.slot4GivenName.isNullOrEmpty()) {
-            binding.flaskBackgroundWidgetEditLayout.slot4name.text =
-                apexWaterQualityWidget.slot4ActualName
-            binding.slot4.text = apexWaterQualityWidget.slot4ActualName
+            if(apexWaterQualityWidget.slot4ActualName.equals("NaN")) {
+                binding.slot4.text = "Slot 4"
+            } else {
+                binding.flaskBackgroundWidgetEditLayout.slot4name.text = apexWaterQualityWidget.slot4ActualName
+                binding.slot4.text = apexWaterQualityWidget.slot4ActualName
+            }
         } else {
-            binding.flaskBackgroundWidgetEditLayout.slot4name.text =
-                apexWaterQualityWidget.slot4GivenName
+            binding.flaskBackgroundWidgetEditLayout.slot4name.text = apexWaterQualityWidget.slot4GivenName
             binding.slot4.text = apexWaterQualityWidget.slot4GivenName
         }
 
         if (apexWaterQualityWidget.slot5GivenName.isNullOrEmpty()) {
-            binding.flaskBackgroundWidgetEditLayout.slot5name.text =
-                apexWaterQualityWidget.slot5ActualName
-            binding.slot5.text = apexWaterQualityWidget.slot5ActualName
+            if(apexWaterQualityWidget.slot5ActualName.equals("NaN")) {
+                binding.slot5.text = "Slot 5"
+            } else {
+                binding.flaskBackgroundWidgetEditLayout.slot5name.text = apexWaterQualityWidget.slot5ActualName
+                binding.slot5.text = apexWaterQualityWidget.slot5ActualName
+            }
         } else {
-            binding.flaskBackgroundWidgetEditLayout.slot5name.text =
-                apexWaterQualityWidget.slot5GivenName
+            binding.flaskBackgroundWidgetEditLayout.slot5name.text = apexWaterQualityWidget.slot5GivenName
             binding.slot5.text = apexWaterQualityWidget.slot5GivenName
         }
 
-        binding.flaskBackgroundWidgetEditLayout.slot1value.text =
-            apexWaterQualityWidget.slot1Value.toString()
-        binding.flaskBackgroundWidgetEditLayout.slot2value.text =
-            apexWaterQualityWidget.slot2Value.toString()
-        binding.flaskBackgroundWidgetEditLayout.slot3value.text =
-            apexWaterQualityWidget.slot3Value.toString()
-        binding.flaskBackgroundWidgetEditLayout.slot4value.text =
-            apexWaterQualityWidget.slot4Value.toString()
-        binding.flaskBackgroundWidgetEditLayout.slot5value.text =
-            apexWaterQualityWidget.slot5Value.toString()
+        binding.flaskBackgroundWidgetEditLayout.slot1value.text = apexWaterQualityWidget.slot1Value.toString()
+        binding.flaskBackgroundWidgetEditLayout.slot2value.text = apexWaterQualityWidget.slot2Value.toString()
+        binding.flaskBackgroundWidgetEditLayout.slot3value.text = apexWaterQualityWidget.slot3Value.toString()
+        binding.flaskBackgroundWidgetEditLayout.slot4value.text = apexWaterQualityWidget.slot4Value.toString()
+        binding.flaskBackgroundWidgetEditLayout.slot5value.text = apexWaterQualityWidget.slot5Value.toString()
 
         binding.flaskBackgroundWidgetEditLayout.slot1unit.text = apexWaterQualityWidget.slot1Unit
         binding.flaskBackgroundWidgetEditLayout.slot2unit.text = apexWaterQualityWidget.slot2Unit

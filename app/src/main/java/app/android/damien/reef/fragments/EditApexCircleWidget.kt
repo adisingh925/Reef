@@ -74,38 +74,44 @@ class EditApexCircleWidget : Fragment() {
         actualName3 = apexCircleWidget.slot3ActualName.toString()
 
         if (apexCircleWidget.slot1GivenName.isNullOrEmpty()) {
-            binding.flaskBackgroundWidgetEditLayout.slot1name.text =
-                apexCircleWidget.slot1ActualName
-            binding.slot1.text = apexCircleWidget.slot1ActualName
+            if(apexCircleWidget.slot1ActualName.equals("NaN")){
+                binding.slot1.text = "Slot 1"
+            }else{
+                binding.flaskBackgroundWidgetEditLayout.slot1name.text = apexCircleWidget.slot1ActualName
+                binding.slot1.text = apexCircleWidget.slot1ActualName
+            }
         } else {
             binding.flaskBackgroundWidgetEditLayout.slot1name.text = apexCircleWidget.slot1GivenName
             binding.slot1.text = apexCircleWidget.slot1GivenName
         }
 
         if (apexCircleWidget.slot2GivenName.isNullOrEmpty()) {
-            binding.flaskBackgroundWidgetEditLayout.slot2name.text =
-                apexCircleWidget.slot2ActualName
-            binding.slot2.text = apexCircleWidget.slot2ActualName
+            if(apexCircleWidget.slot2ActualName.equals("NaN")) {
+                binding.slot2.text = "Slot 2"
+            }else{
+                binding.flaskBackgroundWidgetEditLayout.slot2name.text = apexCircleWidget.slot2ActualName
+                binding.slot2.text = apexCircleWidget.slot2ActualName
+            }
         } else {
             binding.flaskBackgroundWidgetEditLayout.slot2name.text = apexCircleWidget.slot2GivenName
             binding.slot2.text = apexCircleWidget.slot2GivenName
         }
 
         if (apexCircleWidget.slot3GivenName.isNullOrEmpty()) {
-            binding.flaskBackgroundWidgetEditLayout.slot3name.text =
-                apexCircleWidget.slot3ActualName
-            binding.slot3.text = apexCircleWidget.slot3ActualName
+            if(apexCircleWidget.slot3ActualName.equals("NaN")) {
+                binding.slot3.text = "Slot 3"
+            }else{
+                binding.flaskBackgroundWidgetEditLayout.slot3name.text = apexCircleWidget.slot3ActualName
+                binding.slot3.text = apexCircleWidget.slot3ActualName
+            }
         } else {
             binding.flaskBackgroundWidgetEditLayout.slot3name.text = apexCircleWidget.slot3GivenName
             binding.slot3.text = apexCircleWidget.slot3GivenName
         }
 
-        binding.flaskBackgroundWidgetEditLayout.slot1value.text =
-            apexCircleWidget.slot1Value.toString()
-        binding.flaskBackgroundWidgetEditLayout.slot2value.text =
-            apexCircleWidget.slot2Value.toString()
-        binding.flaskBackgroundWidgetEditLayout.slot3value.text =
-            apexCircleWidget.slot3Value.toString()
+        binding.flaskBackgroundWidgetEditLayout.slot1value.text = apexCircleWidget.slot1Value.toString()
+        binding.flaskBackgroundWidgetEditLayout.slot2value.text = apexCircleWidget.slot2Value.toString()
+        binding.flaskBackgroundWidgetEditLayout.slot3value.text = apexCircleWidget.slot3Value.toString()
 
         initApiData()
 
