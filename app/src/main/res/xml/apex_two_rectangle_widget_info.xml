@@ -2,7 +2,6 @@
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="1800000"
-    android:initialLayout="@layout/water_quality_widget"
     android:minWidth="300dp"
     android:minHeight="150dp"
     android:targetCellWidth="1"
@@ -10,4 +9,5 @@
     android:maxResizeWidth="250dp"
     android:maxResizeHeight="120dp"
     android:previewLayout="@layout/two_rectangle_widget"
+    android:initialLayout="@layout/two_rectangle_widget"
     android:widgetCategory="home_screen" />

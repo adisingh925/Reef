@@ -3,6 +3,7 @@ package app.android.damien.reef.widgetprovider
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.widget.RemoteViews
 import app.android.damien.reef.R

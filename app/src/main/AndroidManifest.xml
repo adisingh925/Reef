@@ -85,17 +85,31 @@
 <!--                android:resource="@xml/focustronic_grid_widget_info" />-->
 <!--        </receiver>-->
 
-<!--        <receiver-->
-<!--            android:name=".widgetprovider.ApexWaterQualityWidgetProvider"-->
-<!--            android:exported="true">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
-<!--            </intent-filter>-->
+        <receiver
+            android:name=".widgetprovider.ApexTwoRectangleWidgetProvider"
+            android:label="Apex Two Rectangle Widget"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
 
-<!--            <meta-data-->
-<!--                android:name="android.appwidget.provider"-->
-<!--                android:resource="@xml/apex_water_quality_widget_info" />-->
-<!--        </receiver>-->
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_two_rectangle_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.ApexWaterQualityWidgetProvider"
+            android:label="Apex Water Quality Widget"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_water_quality_widget_info" />
+        </receiver>
 
         <receiver
             android:name=".widgetprovider.ApexCircleWidgetProvider"

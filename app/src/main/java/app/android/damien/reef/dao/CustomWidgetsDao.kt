@@ -106,6 +106,9 @@ interface CustomWidgetsDao {
     @Query("SELECT * from apex_two_rectangle_widget_table order by id asc")
     fun readApexTwoRectangleWidget(): LiveData<List<ApexTwoRectangleWidgets>>
 
+    @Query("SELECT * from apex_two_rectangle_widget_table order by id asc")
+    fun readApexTwoRectangleWidgetBackground(): List<ApexTwoRectangleWidgets>
+
     @Update
     fun updateApexTwoRectangleWidget(data: ApexTwoRectangleWidgets)
 
@@ -156,6 +159,9 @@ interface CustomWidgetsDao {
 
     @Query("SELECT * from apex_water_quality_widget_table order by id asc")
     fun readApexWaterQualityWidget(): LiveData<List<ApexWaterQualityWidget>>
+
+    @Query("SELECT * from apex_water_quality_widget_table order by id asc")
+    fun readApexWaterQualityWidgetBackground(): List<ApexWaterQualityWidget>
 
     @Update
     fun updateApexWaterQualityWidget(data: ApexWaterQualityWidget)
