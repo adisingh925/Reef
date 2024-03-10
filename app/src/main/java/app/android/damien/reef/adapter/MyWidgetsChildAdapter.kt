@@ -64,8 +64,16 @@ class MyWidgetsChildAdapter(
 
     private inner class ViewHolder1(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        val value1 = itemView.findViewById<TextView>(R.id.value1)
+        val value2 = itemView.findViewById<TextView>(R.id.value2)
+        val value3 = itemView.findViewById<TextView>(R.id.value3)
+
         fun bind(position: Int) {
             Log.d("MyWidgetsChildAdapter", "ViewHolder1: ")
+
+            value1.text = setApexPowerValuesWidgetData[position].slot1.toString()
+            value2.text = setApexPowerValuesWidgetData[position].slot2.toString()
+            value3.text = setApexPowerValuesWidgetData[position].slot3.toString()
 
             itemView.setOnClickListener {
                 onItemClickListener.onApexPowerValuesWidgetClick(setApexPowerValuesWidgetData[position])
@@ -87,20 +95,16 @@ class MyWidgetsChildAdapter(
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder2: ")
 
-            topRectangleTime.text =
-                setApexTwoRectangleWidgetData[position].topRectangleUpdateTimeStamp
-            bottomRectangleTime.text =
-                setApexTwoRectangleWidgetData[position].bottomRectangleUpdateTimeStamp
+            topRectangleTime.text = setApexTwoRectangleWidgetData[position].topRectangleUpdateTimeStamp
+            bottomRectangleTime.text = setApexTwoRectangleWidgetData[position].bottomRectangleUpdateTimeStamp
 
-            val topRectangleDrawable =
-                context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
+            val topRectangleDrawable = context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
             val topRectangleMutatedDrawable = topRectangleDrawable.mutate()
             topRectangleMutatedDrawable.setTint(setApexTwoRectangleWidgetData[position].topRectangleColor)
 
             topCard.background = topRectangleMutatedDrawable
 
-            val bottomRectangleDrawable =
-                context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
+            val bottomRectangleDrawable = context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
             val bottomRectangleMutatedDrawable = bottomRectangleDrawable.mutate()
             bottomRectangleMutatedDrawable.setTint(setApexTwoRectangleWidgetData[position].bottomRectangleColor)
 
@@ -108,20 +112,8 @@ class MyWidgetsChildAdapter(
 
             topRectangleUnit.text = setApexTwoRectangleWidgetData[position].topRectangleUnit
             bottomRectangleUnit.text = setApexTwoRectangleWidgetData[position].bottomRectangleUnit
-
-            if (setApexTwoRectangleWidgetData[position].topRectangleActualName.isNullOrEmpty()) {
-                topRectangleValue.text = "NaN"
-            } else {
-                topRectangleValue.text =
-                    setApexTwoRectangleWidgetData[position].topRectangleValue.toString()
-            }
-
-            if (setApexTwoRectangleWidgetData[position].bottomRectangleActualName.isNullOrEmpty()) {
-                bottomRectangleValue.text = "NaN"
-            } else {
-                bottomRectangleValue.text =
-                    setApexTwoRectangleWidgetData[position].bottomRectangleValue.toString()
-            }
+            topRectangleValue.text = setApexTwoRectangleWidgetData[position].topRectangleValue.toString()
+            bottomRectangleValue.text = setApexTwoRectangleWidgetData[position].bottomRectangleValue.toString()
 
             itemView.setOnClickListener {
                 onItemClickListener.onApexTwoRectangleWidgetClick(setApexTwoRectangleWidgetData[position])
@@ -222,7 +214,11 @@ class MyWidgetsChildAdapter(
             Log.d("MyWidgetsChildAdapter", "ViewHolder5:")
 
             value.text = setApexSingleValueTypeOneWidgetData[position].value.toString()
-            heading.text = setApexSingleValueTypeOneWidgetData[position].actualName
+            if(setApexSingleValueTypeOneWidgetData[position].givenName.isNullOrEmpty()) {
+                heading.text = setApexSingleValueTypeOneWidgetData[position].actualName
+            } else {
+                heading.text = setApexSingleValueTypeOneWidgetData[position].givenName
+            }
             unit.text = setApexSingleValueTypeOneWidgetData[position].unit
 
             value.setTextColor(setApexSingleValueTypeOneWidgetData[position].textColor)
@@ -249,7 +245,11 @@ class MyWidgetsChildAdapter(
             Log.d("MyWidgetsChildAdapter", "ViewHolder6: ")
 
             value.text = setApexSingleValueTypeTwoWidgetData[position].value.toString()
-            heading.text = setApexSingleValueTypeTwoWidgetData[position].actualName
+            if(setApexSingleValueTypeTwoWidgetData[position].givenName.isNullOrEmpty()) {
+                heading.text = setApexSingleValueTypeTwoWidgetData[position].actualName
+            } else {
+                heading.text = setApexSingleValueTypeTwoWidgetData[position].givenName
+            }
             unit.text = setApexSingleValueTypeTwoWidgetData[position].unit
 
             value.setTextColor(setApexSingleValueTypeTwoWidgetData[position].textColor)
@@ -518,6 +518,7 @@ class MyWidgetsChildAdapter(
     }
 
     private inner class ViewHolder12(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         fun bind(position: Int) {
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder12:")

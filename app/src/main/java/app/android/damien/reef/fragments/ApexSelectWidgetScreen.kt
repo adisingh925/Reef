@@ -75,14 +75,14 @@ class ApexSelectWidgetScreen : Fragment() {
                 widgetsViewModel.insertApexFlaskBackgroundWidget(
                     ApexFlaskBackgroundWidgetModel(
                         0,
-                        0f,
-                        0f,
-                        0f,
-                        "Slot 1",
+                        0.0f,
+                        0.0f,
+                        0.0f,
+                        "NaN",
                         "",
-                        "Slot 2",
+                        "NaN",
                         "",
-                        "Slot 3",
+                        "NaN",
                         ""
                     )
                 )
@@ -102,14 +102,14 @@ class ApexSelectWidgetScreen : Fragment() {
                 widgetsViewModel.insertApexCircleWidget(
                     ApexCircleWidgetModel(
                         0,
-                        0f,
-                        0f,
-                        0f,
-                        "Slot 1",
+                        0.0f,
+                        0.0f,
+                        0.0f,
+                        "NaN",
                         "",
-                        "Slot 2",
+                        "NaN",
                         "",
-                        "Slot 3",
+                        "NaN",
                         ""
                     )
                 )
@@ -129,14 +129,14 @@ class ApexSelectWidgetScreen : Fragment() {
                 widgetsViewModel.insertApexTwoRectangleWidget(
                     ApexTwoRectangleWidgets(
                         0,
-                        "",
-                        "",
+                        "NaN",
+                        "NaN",
                         SharedPreferences.read("lastUpdatedApex", ""),
                         SharedPreferences.read("lastUpdatedApex", ""),
                         "Unit 1",
                         "Unit 2",
-                        0f,
-                        0f,
+                        0.0f,
+                        0.0f,
                         Color.parseColor("#cc7700"),
                         Color.parseColor("#cc7700")
                     )
@@ -159,7 +159,7 @@ class ApexSelectWidgetScreen : Fragment() {
                         0,
                         "NaN",
                         "",
-                        0f,
+                        0.0f,
                         "Unit",
                         Color.parseColor("#ffffff")
                     )
@@ -182,7 +182,7 @@ class ApexSelectWidgetScreen : Fragment() {
                         0,
                         "NaN",
                         "",
-                        0f,
+                        0.0f,
                         "Unit",
                         Color.parseColor("#ffffff"),
                         Color.parseColor("#ffffff")
@@ -203,9 +203,9 @@ class ApexSelectWidgetScreen : Fragment() {
             if (widgetCount in 0..4) {
                 widgetsViewModel.insertApexPowerValuesWidget(ApexPowerValuesWidgetModel(
                     0,
-                    0f,
-                    0f,
-                    0f,
+                    0.0f,
+                    0.0f,
+                    0.0f,
                     "",
                     "",
                     ""
@@ -226,20 +226,20 @@ class ApexSelectWidgetScreen : Fragment() {
                 widgetsViewModel.insertApexWaterQualityWidget(
                     ApexWaterQualityWidget(
                         0,
-                        0f,
-                        0f,
-                        0f,
-                        0f,
-                        0f,
-                        "Slot 1",
+                        0.0f,
+                        0.0f,
+                        0.0f,
+                        0.0f,
+                        0.0f,
+                        "NaN",
                         "",
-                        "Slot 2",
+                        "NaN",
                         "",
-                        "Slot 3",
+                        "NaN",
                         "",
-                        "Slot 4",
+                        "NaN",
                         "",
-                        "Slot 5",
+                        "NaN",
                         "",
                         "Unit 1",
                         "Unit 2",
