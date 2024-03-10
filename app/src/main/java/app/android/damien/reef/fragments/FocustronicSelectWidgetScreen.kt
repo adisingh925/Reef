@@ -102,9 +102,7 @@ class FocustronicSelectWidgetScreen : Fragment() {
             } else {
                 Toast.showSnackbar(binding.root, "You can only add 5 widgets")
             }
-            binding.focustronicGridWidget.itemSubheading.text =
-                SharedPreferences.read(Constants.FOCUSTRONIC_GRID_WIDGET, 0)
-                    .toString() + "/5 widgets added"
+            binding.focustronicGridWidget.itemSubheading.text = SharedPreferences.read(Constants.FOCUSTRONIC_GRID_WIDGET, 0).toString() + "/5 widgets added"
         }
 
         binding.focustronic1ElementWidget.layout.setOnClickListener {

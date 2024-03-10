@@ -139,8 +139,8 @@ class EditFocustronicDoubleRectangleWidget : Fragment() {
                 focustronicTwoRectangleWidget.bottomRectangleUnit
         }
 
-        if (focustronicTwoRectangleWidget.topRectangleActualName.isNullOrBlank()) {
-            binding.flaskTwoRectangleWidgetEditLayout.value.text = "NaN"
+        if (focustronicTwoRectangleWidget.topRectangleActualName.equals("NaN")) {
+            binding.flaskTwoRectangleWidgetEditLayout.value.text = "0.0"
         } else {
             binding.flaskTwoRectangleWidgetEditLayout.value.text = JSONObject(
                 apexData.getJSONObject(0).toString()
@@ -148,8 +148,8 @@ class EditFocustronicDoubleRectangleWidget : Fragment() {
                 .toString()
         }
 
-        if (focustronicTwoRectangleWidget.bottomRectangleActualName.isNullOrBlank()) {
-            binding.flaskTwoRectangleWidgetEditLayout.value2.text = "NaN"
+        if (focustronicTwoRectangleWidget.bottomRectangleActualName.equals("NaN")) {
+            binding.flaskTwoRectangleWidgetEditLayout.value2.text = "0.0"
         } else {
             binding.flaskTwoRectangleWidgetEditLayout.value2.text = JSONObject(
                 apexData.getJSONObject(0).toString()
@@ -174,7 +174,7 @@ class EditFocustronicDoubleRectangleWidget : Fragment() {
         }
 
         binding.flaskTwoRectangleWidgetEditLayout.card1.setOnClickListener {
-            if (!binding.flaskTwoRectangleWidgetEditLayout.value.text.contains("NaN")) {
+            if (!topRectangleActualName.contains("NaN")) {
                 val dialog = BottomSheetDialog(requireContext())
                 val view = ApexTwoRectangleWidgetBottomSheetBinding.inflate(layoutInflater)
 
@@ -224,7 +224,7 @@ class EditFocustronicDoubleRectangleWidget : Fragment() {
         }
 
         binding.flaskTwoRectangleWidgetEditLayout.card2.setOnClickListener {
-            if (!binding.flaskTwoRectangleWidgetEditLayout.value2.text.contains("NaN")) {
+            if (!bottomRectangleActualName.contains("NaN")) {
                 val dialog = BottomSheetDialog(requireContext())
                 val view = ApexTwoRectangleWidgetBottomSheetBinding.inflate(layoutInflater)
 
