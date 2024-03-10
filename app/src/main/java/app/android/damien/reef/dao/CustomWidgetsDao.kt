@@ -121,6 +121,9 @@ interface CustomWidgetsDao {
     @Query("SELECT * from apex_single_value_type_1_widget_table order by id asc")
     fun readApexSingleValueTypeOneWidget(): LiveData<List<ApexSingleValueTypeOneModel>>
 
+    @Query("SELECT * from apex_single_value_type_1_widget_table order by id asc")
+    fun readApexSingleValueTypeOneWidgetBackground(): List<ApexSingleValueTypeOneModel>
+
     @Update
     fun updateApexSingleValueTypeOneWidget(data: ApexSingleValueTypeOneModel)
 
@@ -135,6 +138,9 @@ interface CustomWidgetsDao {
 
     @Query("SELECT * from apex_single_value_type_2_widget_table order by id asc")
     fun readApexSingleValueTypeTwoWidget(): LiveData<List<ApexSingleValueTypeTwoModel>>
+
+    @Query("SELECT * from apex_single_value_type_2_widget_table order by id asc")
+    fun readApexSingleValueTypeTwoWidgetBackground(): List<ApexSingleValueTypeTwoModel>
 
     @Update
     fun updateApexSingleValueTypeTwoWidget(data: ApexSingleValueTypeTwoModel)
