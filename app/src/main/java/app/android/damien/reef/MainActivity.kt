@@ -1,8 +1,10 @@
 package app.android.damien.reef
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -12,6 +14,7 @@ import app.android.damien.reef.model.FocustronicAlkatronicResponse
 import app.android.damien.reef.model.FocustronicMastertronicResponse
 import app.android.damien.reef.retrofit.ApiClient
 import app.android.damien.reef.storage.SharedPreferences
+import app.android.damien.reef.utils.AlarmHelper
 import app.android.damien.reef.utils.Constants
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
@@ -32,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -44,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         getApexApiResponse()
         getFocustronicMastertronicApiResponse()
         getFocustronicAlkatronicApiResponse()
+        AlarmHelper(this).setExactAndAllowWhileIdleAlarm()
     }
 
     private fun getFocustronicAlkatronicApiResponse() {

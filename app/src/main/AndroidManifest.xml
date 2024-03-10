@@ -25,77 +25,77 @@
             </intent-filter>
         </activity>
 
-        <receiver
-            android:name=".widgetprovider.CustomWidgetProvider"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
+<!--        <receiver-->
+<!--            android:name=".widgetprovider.CustomWidgetProvider"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+<!--            </intent-filter>-->
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/custom_widget_info" />
-        </receiver>
+<!--            <meta-data-->
+<!--                android:name="android.appwidget.provider"-->
+<!--                android:resource="@xml/custom_widget_info" />-->
+<!--        </receiver>-->
 
-        <receiver
-            android:name=".widgetprovider.Focustronic2RectangleWidget"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
+<!--        <receiver-->
+<!--            android:name=".widgetprovider.Focustronic2RectangleWidget"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+<!--            </intent-filter>-->
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/focustronic_2_rectangle_widget_info" />
-        </receiver>
+<!--            <meta-data-->
+<!--                android:name="android.appwidget.provider"-->
+<!--                android:resource="@xml/focustronic_2_rectangle_widget_info" />-->
+<!--        </receiver>-->
 
-        <receiver
-            android:name=".widgetprovider.FocustronicSingleValueType1"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
+<!--        <receiver-->
+<!--            android:name=".widgetprovider.FocustronicSingleValueType1"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+<!--            </intent-filter>-->
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/focustronic_single_value_type_1_widget_info" />
-        </receiver>
+<!--            <meta-data-->
+<!--                android:name="android.appwidget.provider"-->
+<!--                android:resource="@xml/focustronic_single_value_type_1_widget_info" />-->
+<!--        </receiver>-->
 
-        <receiver
-            android:name=".widgetprovider.FocustronicSingleValueType2"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
+<!--        <receiver-->
+<!--            android:name=".widgetprovider.FocustronicSingleValueType2"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+<!--            </intent-filter>-->
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/focustronic_single_value_type_2_widget_info" />
-        </receiver>
+<!--            <meta-data-->
+<!--                android:name="android.appwidget.provider"-->
+<!--                android:resource="@xml/focustronic_single_value_type_2_widget_info" />-->
+<!--        </receiver>-->
 
-        <receiver
-            android:name=".widgetprovider.FocustronicGridWidget"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
+<!--        <receiver-->
+<!--            android:name=".widgetprovider.FocustronicGridWidget"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+<!--            </intent-filter>-->
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/focustronic_grid_widget_info" />
-        </receiver>
+<!--            <meta-data-->
+<!--                android:name="android.appwidget.provider"-->
+<!--                android:resource="@xml/focustronic_grid_widget_info" />-->
+<!--        </receiver>-->
 
-        <receiver
-            android:name=".widgetprovider.ApexWaterQualityWidgetProvider"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
+<!--        <receiver-->
+<!--            android:name=".widgetprovider.ApexWaterQualityWidgetProvider"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+<!--            </intent-filter>-->
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/apex_water_quality_widget_info" />
-        </receiver>
+<!--            <meta-data-->
+<!--                android:name="android.appwidget.provider"-->
+<!--                android:resource="@xml/apex_water_quality_widget_info" />-->
+<!--        </receiver>-->
 
         <receiver
             android:name=".widgetprovider.ApexCircleWidgetProvider"
@@ -109,53 +109,58 @@
                 android:resource="@xml/apex_circle_widget_info" />
         </receiver>
 
+<!--        <receiver-->
+<!--            android:name=".widgetprovider.ApexFlaskBackgroundWidgetProvider"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+<!--            </intent-filter>-->
+
+<!--            <meta-data-->
+<!--                android:name="android.appwidget.provider"-->
+<!--                android:resource="@xml/apex_flask_background_widget_info" />-->
+<!--        </receiver>-->
+
+<!--        <receiver-->
+<!--            android:name=".widgetprovider.ApexPowerValueWidgetProvider"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+<!--            </intent-filter>-->
+
+<!--            <meta-data-->
+<!--                android:name="android.appwidget.provider"-->
+<!--                android:resource="@xml/apex_power_value_widget_info" />-->
+<!--        </receiver>-->
+
+<!--        <receiver-->
+<!--            android:name=".widgetprovider.ApexSingleValueType1Provider"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+<!--            </intent-filter>-->
+
+<!--            <meta-data-->
+<!--                android:name="android.appwidget.provider"-->
+<!--                android:resource="@xml/apex_single_value_type1_widget_info" />-->
+<!--        </receiver>-->
+
+<!--        <receiver-->
+<!--            android:name=".widgetprovider.ApexSingleValueType2Provider"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+<!--            </intent-filter>-->
+
+<!--            <meta-data-->
+<!--                android:name="android.appwidget.provider"-->
+<!--                android:resource="@xml/apex_single_value_type2_widget_info" />-->
+<!--        </receiver>-->
+
         <receiver
-            android:name=".widgetprovider.ApexFlaskBackgroundWidgetProvider"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/apex_flask_background_widget_info" />
-        </receiver>
-
-        <receiver
-            android:name=".widgetprovider.ApexPowerValueWidgetProvider"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/apex_power_value_widget_info" />
-        </receiver>
-
-        <receiver
-            android:name=".widgetprovider.ApexSingleValueType1Provider"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/apex_single_value_type1_widget_info" />
-        </receiver>
-
-        <receiver
-            android:name=".widgetprovider.ApexSingleValueType2Provider"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/apex_single_value_type2_widget_info" />
-        </receiver>
+            android:name=".utils.AlarmReceiver"
+            android:enabled="true"
+            android:exported="false" />
 
     </application>
 

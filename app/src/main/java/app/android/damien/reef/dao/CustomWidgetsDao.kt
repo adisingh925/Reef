@@ -82,6 +82,9 @@ interface CustomWidgetsDao {
     @Query("SELECT * from apex_circle_widget_table order by id asc")
     fun readApexCircleWidget(): LiveData<List<ApexCircleWidgetModel>>
 
+    @Query("SELECT * from apex_circle_widget_table order by id asc")
+    fun readApexCircleWidgetBackground(): List<ApexCircleWidgetModel>
+
     @Delete
     fun deleteApexCircleWidget(data: ApexCircleWidgetModel)
 
