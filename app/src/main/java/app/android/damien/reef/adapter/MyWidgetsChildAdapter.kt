@@ -517,9 +517,102 @@ class MyWidgetsChildAdapter(
 
     private inner class ViewHolder12(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        val unit1 = itemView.findViewById<TextView>(R.id.unit1)
+        val unit2 = itemView.findViewById<TextView>(R.id.unit2)
+        val unit3 = itemView.findViewById<TextView>(R.id.unit3)
+        val unit4 = itemView.findViewById<TextView>(R.id.unit4)
+        val unit5 = itemView.findViewById<TextView>(R.id.unit5)
+        val unit6 = itemView.findViewById<TextView>(R.id.unit6)
+        val unit7 = itemView.findViewById<TextView>(R.id.unit7)
+        val unit8 = itemView.findViewById<TextView>(R.id.unit8)
+
+        var value1 = itemView.findViewById<TextView>(R.id.value1)
+        var value2 = itemView.findViewById<TextView>(R.id.value2)
+        val value3 = itemView.findViewById<TextView>(R.id.value3)
+        val value4 = itemView.findViewById<TextView>(R.id.value4)
+        val value5 = itemView.findViewById<TextView>(R.id.value5)
+        val value6 = itemView.findViewById<TextView>(R.id.value6)
+        val value7 = itemView.findViewById<TextView>(R.id.value7)
+        val value8 = itemView.findViewById<TextView>(R.id.value8)
+
+        val name1 = itemView.findViewById<TextView>(R.id.name1)
+        val name2 = itemView.findViewById<TextView>(R.id.name2)
+        val name3 = itemView.findViewById<TextView>(R.id.name3)
+        val name4 = itemView.findViewById<TextView>(R.id.name4)
+        val name5 = itemView.findViewById<TextView>(R.id.name5)
+        val name6 = itemView.findViewById<TextView>(R.id.name6)
+        val name7 = itemView.findViewById<TextView>(R.id.name7)
+        val name8 = itemView.findViewById<TextView>(R.id.name8)
+
         fun bind(position: Int) {
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder12:")
+
+            value1.text = setFocustronicGridWidgetData[position].slot1Value.toString()
+            value2.text = setFocustronicGridWidgetData[position].slot2Value.toString()
+            value3.text = setFocustronicGridWidgetData[position].slot3Value.toString()
+            value4.text = setFocustronicGridWidgetData[position].slot4Value.toString()
+            value5.text = setFocustronicGridWidgetData[position].slot5Value.toString()
+            value6.text = setFocustronicGridWidgetData[position].slot6Value.toString()
+            value7.text = setFocustronicGridWidgetData[position].slot7Value.toString()
+            value8.text = setFocustronicGridWidgetData[position].slot8Value.toString()
+
+            unit1.text = setFocustronicGridWidgetData[position].slot1Unit
+            unit2.text = setFocustronicGridWidgetData[position].slot2Unit
+            unit3.text = setFocustronicGridWidgetData[position].slot3Unit
+            unit4.text = setFocustronicGridWidgetData[position].slot4Unit
+            unit5.text = setFocustronicGridWidgetData[position].slot5Unit
+            unit6.text = setFocustronicGridWidgetData[position].slot6Unit
+            unit7.text = setFocustronicGridWidgetData[position].slot7Unit
+            unit8.text = setFocustronicGridWidgetData[position].slot8Unit
+
+            if(setFocustronicGridWidgetData[position].slot1GivenName.isNullOrEmpty()) {
+                name1.text = setFocustronicGridWidgetData[position].slot1ActualName
+            } else {
+                name1.text = setFocustronicGridWidgetData[position].slot1GivenName
+            }
+
+            if(setFocustronicGridWidgetData[position].slot2GivenName.isNullOrEmpty()) {
+                name2.text = setFocustronicGridWidgetData[position].slot2ActualName
+            } else {
+                name2.text = setFocustronicGridWidgetData[position].slot2GivenName
+            }
+
+            if(setFocustronicGridWidgetData[position].slot3GivenName.isNullOrEmpty()) {
+                name3.text = setFocustronicGridWidgetData[position].slot3ActualName
+            } else {
+                name3.text = setFocustronicGridWidgetData[position].slot3GivenName
+            }
+
+            if(setFocustronicGridWidgetData[position].slot4GivenName.isNullOrEmpty()) {
+                name4.text = setFocustronicGridWidgetData[position].slot4ActualName
+            } else {
+                name4.text = setFocustronicGridWidgetData[position].slot4GivenName
+            }
+
+            if(setFocustronicGridWidgetData[position].slot5GivenName.isNullOrEmpty()) {
+                name5.text = setFocustronicGridWidgetData[position].slot5ActualName
+            } else {
+                name5.text = setFocustronicGridWidgetData[position].slot5GivenName
+            }
+
+            if(setFocustronicGridWidgetData[position].slot6GivenName.isNullOrEmpty()) {
+                name6.text = setFocustronicGridWidgetData[position].slot6ActualName
+            } else {
+                name6.text = setFocustronicGridWidgetData[position].slot6GivenName
+            }
+
+            if(setFocustronicGridWidgetData[position].slot7GivenName.isNullOrEmpty()) {
+                name7.text = setFocustronicGridWidgetData[position].slot7ActualName
+            } else {
+                name7.text = setFocustronicGridWidgetData[position].slot7GivenName
+            }
+
+            if(setFocustronicGridWidgetData[position].slot8GivenName.isNullOrEmpty()) {
+                name8.text = setFocustronicGridWidgetData[position].slot8ActualName
+            } else {
+                name8.text = setFocustronicGridWidgetData[position].slot8GivenName
+            }
 
             itemView.setOnClickListener {
                 onItemClickListener.onFocustronicGridWidgetClick(setFocustronicGridWidgetData[position])

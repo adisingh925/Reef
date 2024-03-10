@@ -72,7 +72,7 @@ class FocustronicSelectWidgetScreen : Fragment() {
                         0.0f,
                         0.0f,
                         0.0f,
-                        "",
+                        "NaN",
                         "",
                         "NaN",
                         "",

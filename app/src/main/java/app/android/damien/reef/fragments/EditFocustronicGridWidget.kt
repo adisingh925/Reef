@@ -126,117 +126,101 @@ class EditFocustronicGridWidget : Fragment() {
 
 
         if (focustronicGridWidgetModel.slot1GivenName.isNullOrEmpty()) {
-            if(!focustronicGridWidgetModel.slot1ActualName.isNullOrEmpty()) {
-                binding.flaskBackgroundWidgetEditLayout.name1.text =
-                    focustronicGridWidgetModel.slot1ActualName
+            if(focustronicGridWidgetModel.slot1ActualName.equals("NaN")) {
+                binding.slot1.text = "Slot 1"
+            }else{
                 binding.slot1.text = focustronicGridWidgetModel.slot1ActualName
             }
         } else {
-            binding.flaskBackgroundWidgetEditLayout.name1.text =
-                focustronicGridWidgetModel.slot1GivenName
+            binding.flaskBackgroundWidgetEditLayout.name1.text = focustronicGridWidgetModel.slot1GivenName
             binding.slot1.text = focustronicGridWidgetModel.slot1GivenName
         }
 
         if (focustronicGridWidgetModel.slot2GivenName.isNullOrEmpty()) {
-            if(!focustronicGridWidgetModel.slot2ActualName.isNullOrEmpty()) {
-                binding.flaskBackgroundWidgetEditLayout.name2.text =
-                    focustronicGridWidgetModel.slot2ActualName
+            if(focustronicGridWidgetModel.slot2ActualName.equals("NaN")) {
+                binding.slot2.text = "Slot 2"
+            }else{
                 binding.slot2.text = focustronicGridWidgetModel.slot2ActualName
             }
         } else {
-            binding.flaskBackgroundWidgetEditLayout.name2.text =
-                focustronicGridWidgetModel.slot2GivenName
+            binding.flaskBackgroundWidgetEditLayout.name2.text = focustronicGridWidgetModel.slot2GivenName
             binding.slot2.text = focustronicGridWidgetModel.slot2GivenName
         }
 
         if (focustronicGridWidgetModel.slot3GivenName.isNullOrEmpty()) {
-            if(!focustronicGridWidgetModel.slot3ActualName.isNullOrEmpty()) {
-                binding.flaskBackgroundWidgetEditLayout.name3.text =
-                    focustronicGridWidgetModel.slot3ActualName
+            if(focustronicGridWidgetModel.slot3ActualName.equals("NaN")) {
+                binding.slot3.text = "Slot 3"
+            }else{
                 binding.slot3.text = focustronicGridWidgetModel.slot3ActualName
             }
         } else {
-            binding.flaskBackgroundWidgetEditLayout.name3.text =
-                focustronicGridWidgetModel.slot3GivenName
+            binding.flaskBackgroundWidgetEditLayout.name3.text = focustronicGridWidgetModel.slot3GivenName
             binding.slot3.text = focustronicGridWidgetModel.slot3GivenName
         }
 
         if (focustronicGridWidgetModel.slot4GivenName.isNullOrEmpty()) {
-            if(!focustronicGridWidgetModel.slot4ActualName.isNullOrEmpty()) {
-                binding.flaskBackgroundWidgetEditLayout.name4.text =
-                    focustronicGridWidgetModel.slot4ActualName
+            if(focustronicGridWidgetModel.slot4ActualName.equals("NaN")) {
+                binding.slot4.text = "Slot 4"
+            }else{
                 binding.slot4.text = focustronicGridWidgetModel.slot4ActualName
             }
         } else {
-            binding.flaskBackgroundWidgetEditLayout.name4.text =
-                focustronicGridWidgetModel.slot4GivenName
+            binding.flaskBackgroundWidgetEditLayout.name4.text = focustronicGridWidgetModel.slot4GivenName
             binding.slot4.text = focustronicGridWidgetModel.slot4GivenName
         }
 
         if (focustronicGridWidgetModel.slot5GivenName.isNullOrEmpty()) {
-            if(!focustronicGridWidgetModel.slot5ActualName.isNullOrEmpty()) {
-                binding.flaskBackgroundWidgetEditLayout.name5.text =
-                    focustronicGridWidgetModel.slot5ActualName
+            if(focustronicGridWidgetModel.slot5ActualName.equals("NaN")) {
+                binding.slot5.text = "Slot 5"
+            }else{
                 binding.slot5.text = focustronicGridWidgetModel.slot5ActualName
             }
         } else {
-            binding.flaskBackgroundWidgetEditLayout.name5.text =
-                focustronicGridWidgetModel.slot5GivenName
+            binding.flaskBackgroundWidgetEditLayout.name5.text = focustronicGridWidgetModel.slot5GivenName
             binding.slot5.text = focustronicGridWidgetModel.slot5GivenName
         }
 
         if (focustronicGridWidgetModel.slot6GivenName.isNullOrEmpty()) {
-            if(!focustronicGridWidgetModel.slot6ActualName.isNullOrEmpty()) {
-                binding.flaskBackgroundWidgetEditLayout.name6.text =
-                    focustronicGridWidgetModel.slot6ActualName
+            if(focustronicGridWidgetModel.slot6ActualName.equals("NaN")) {
+                binding.slot6.text = "Slot 6"
+            }else{
                 binding.slot6.text = focustronicGridWidgetModel.slot6ActualName
             }
         } else {
-            binding.flaskBackgroundWidgetEditLayout.name6.text =
-                focustronicGridWidgetModel.slot6GivenName
+            binding.flaskBackgroundWidgetEditLayout.name6.text = focustronicGridWidgetModel.slot6GivenName
             binding.slot6.text = focustronicGridWidgetModel.slot6GivenName
         }
 
         if (focustronicGridWidgetModel.slot7GivenName.isNullOrEmpty()) {
-            if (!focustronicGridWidgetModel.slot7ActualName.isNullOrEmpty()) {
-                binding.flaskBackgroundWidgetEditLayout.name7.text =
-                    focustronicGridWidgetModel.slot7ActualName
+            if(focustronicGridWidgetModel.slot7ActualName.equals("NaN")) {
+                binding.slot7.text = "Slot 7"
+            }else{
                 binding.slot7.text = focustronicGridWidgetModel.slot7ActualName
             }
         } else {
-            binding.flaskBackgroundWidgetEditLayout.name7.text =
-                focustronicGridWidgetModel.slot7GivenName
+            binding.flaskBackgroundWidgetEditLayout.name7.text = focustronicGridWidgetModel.slot7GivenName
             binding.slot7.text = focustronicGridWidgetModel.slot7GivenName
         }
 
         if (focustronicGridWidgetModel.slot8GivenName.isNullOrEmpty()) {
-            if(!focustronicGridWidgetModel.slot8ActualName.isNullOrEmpty()) {
-                binding.flaskBackgroundWidgetEditLayout.name8.text =
-                    focustronicGridWidgetModel.slot8ActualName
+            if(focustronicGridWidgetModel.slot8ActualName.equals("NaN")) {
+                binding.slot8.text = "Slot 8"
+            }else{
                 binding.slot8.text = focustronicGridWidgetModel.slot8ActualName
             }
         } else {
-            binding.flaskBackgroundWidgetEditLayout.name8.text =
-                focustronicGridWidgetModel.slot8GivenName
+            binding.flaskBackgroundWidgetEditLayout.name8.text = focustronicGridWidgetModel.slot8GivenName
             binding.slot8.text = focustronicGridWidgetModel.slot8GivenName
         }
 
-        binding.flaskBackgroundWidgetEditLayout.value1.text =
-            focustronicGridWidgetModel.slot1Value.toString()
-        binding.flaskBackgroundWidgetEditLayout.value2.text =
-            focustronicGridWidgetModel.slot2Value.toString()
-        binding.flaskBackgroundWidgetEditLayout.value3.text =
-            focustronicGridWidgetModel.slot3Value.toString()
-        binding.flaskBackgroundWidgetEditLayout.value4.text =
-            focustronicGridWidgetModel.slot4Value.toString()
-        binding.flaskBackgroundWidgetEditLayout.value5.text =
-            focustronicGridWidgetModel.slot5Value.toString()
-        binding.flaskBackgroundWidgetEditLayout.value6.text =
-            focustronicGridWidgetModel.slot6Value.toString()
-        binding.flaskBackgroundWidgetEditLayout.value7.text =
-            focustronicGridWidgetModel.slot7Value.toString()
-        binding.flaskBackgroundWidgetEditLayout.value8.text =
-            focustronicGridWidgetModel.slot8Value.toString()
+        binding.flaskBackgroundWidgetEditLayout.value1.text = focustronicGridWidgetModel.slot1Value.toString()
+        binding.flaskBackgroundWidgetEditLayout.value2.text = focustronicGridWidgetModel.slot2Value.toString()
+        binding.flaskBackgroundWidgetEditLayout.value3.text = focustronicGridWidgetModel.slot3Value.toString()
+        binding.flaskBackgroundWidgetEditLayout.value4.text = focustronicGridWidgetModel.slot4Value.toString()
+        binding.flaskBackgroundWidgetEditLayout.value5.text = focustronicGridWidgetModel.slot5Value.toString()
+        binding.flaskBackgroundWidgetEditLayout.value6.text = focustronicGridWidgetModel.slot6Value.toString()
+        binding.flaskBackgroundWidgetEditLayout.value7.text = focustronicGridWidgetModel.slot7Value.toString()
+        binding.flaskBackgroundWidgetEditLayout.value8.text = focustronicGridWidgetModel.slot8Value.toString()
 
         binding.flaskBackgroundWidgetEditLayout.unit1.text = focustronicGridWidgetModel.slot1Unit
         binding.flaskBackgroundWidgetEditLayout.unit2.text = focustronicGridWidgetModel.slot2Unit
