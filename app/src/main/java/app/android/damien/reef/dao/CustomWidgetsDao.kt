@@ -49,6 +49,9 @@ interface CustomWidgetsDao {
     @Query("SELECT * from apex_flask_background_widget_table order by id asc")
     fun readApexFlaskBackgroundWidget(): LiveData<List<ApexFlaskBackgroundWidgetModel>>
 
+    @Query("SELECT * from apex_flask_background_widget_table order by id asc")
+    fun readApexFlaskBackgroundWidgetBackground(): List<ApexFlaskBackgroundWidgetModel>
+
     @Delete
     fun deleteApexFlaskBackgroundWidget(data: ApexFlaskBackgroundWidgetModel)
 
@@ -64,6 +67,9 @@ interface CustomWidgetsDao {
 
     @Query("SELECT * from apex_power_values_widget_table order by id asc")
     fun readApexPowerValuesWidget(): LiveData<List<ApexPowerValuesWidgetModel>>
+
+    @Query("SELECT * from apex_power_values_widget_table order by id asc")
+    fun readApexPowerValuesWidgetBackground(): List<ApexPowerValuesWidgetModel>
 
     @Delete
     fun deleteApexPowerValuesWidget(data: ApexPowerValuesWidgetModel)

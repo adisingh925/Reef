@@ -99,6 +99,7 @@
 
         <receiver
             android:name=".widgetprovider.ApexCircleWidgetProvider"
+            android:label="Apex Circle Widget"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -109,29 +110,31 @@
                 android:resource="@xml/apex_circle_widget_info" />
         </receiver>
 
-<!--        <receiver-->
-<!--            android:name=".widgetprovider.ApexFlaskBackgroundWidgetProvider"-->
-<!--            android:exported="true">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
-<!--            </intent-filter>-->
+        <receiver
+            android:name=".widgetprovider.ApexFlaskBackgroundWidgetProvider"
+            android:label="Apex flask Background Widget"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
 
-<!--            <meta-data-->
-<!--                android:name="android.appwidget.provider"-->
-<!--                android:resource="@xml/apex_flask_background_widget_info" />-->
-<!--        </receiver>-->
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_flask_background_widget_info" />
+        </receiver>
 
-<!--        <receiver-->
-<!--            android:name=".widgetprovider.ApexPowerValueWidgetProvider"-->
-<!--            android:exported="true">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
-<!--            </intent-filter>-->
+        <receiver
+            android:name=".widgetprovider.ApexPowerValueWidgetProvider"
+            android:label="Apex Power Value Widget"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
 
-<!--            <meta-data-->
-<!--                android:name="android.appwidget.provider"-->
-<!--                android:resource="@xml/apex_power_value_widget_info" />-->
-<!--        </receiver>-->
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_power_value_widget_info" />
+        </receiver>
 
 <!--        <receiver-->
 <!--            android:name=".widgetprovider.ApexSingleValueType1Provider"-->

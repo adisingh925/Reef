@@ -2,5 +2,12 @@
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="1800000"
+    android:minWidth="300dp"
+    android:minHeight="150dp"
+    android:targetCellWidth="1"
+    android:targetCellHeight="1"
+    android:maxResizeWidth="250dp"
+    android:maxResizeHeight="120dp"
+    android:previewLayout="@layout/flask_background_widget"
     android:initialLayout="@layout/flask_background_widget"
     android:widgetCategory="home_screen" />
