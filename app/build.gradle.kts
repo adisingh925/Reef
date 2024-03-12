@@ -65,4 +65,5 @@ dependencies {
     implementation("com.google.firebase:firebase-crashlytics")
     implementation("com.google.code.gson:gson:2.10.1")
     implementation(kotlin("reflect"))
+    implementation("com.diogobernardino:williamchart:3.10.1")
 }

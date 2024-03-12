@@ -21,112 +21,42 @@
         android:layout_marginBottom="@dimen/medium_margin"
         android:layout_height="wrap_content"/>
 
-    <include android:id="@+id/preview_card"
+    <include
+        android:id="@+id/singleValueType2"
+        android:layout_height="80dp"
+        android:layout_width="80dp"
+        android:layout_marginTop="@dimen/medium_margin"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/parameter_layout"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        android:layout_height="200dp"
+        app:layout_constraintRight_toLeftOf="@id/twoRectangle"
         app:layout_constraintTop_toBottomOf="@id/widget_selection_back_button"
-        layout="@layout/custom_widget_layout"
-        android:layout_width="200dp" />
+        layout="@layout/single_value_type_2_apex_mini"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-        app:layout_constraintTop_toBottomOf="@id/preview_card"
-        android:id="@+id/parameter_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <include
+        android:id="@+id/twoRectangle"
+        app:layout_constraintTop_toTopOf="@id/singleValueType2"
+        app:layout_constraintLeft_toRightOf="@id/singleValueType2"
+        android:layout_height="80dp"
+        app:layout_constraintRight_toLeftOf="@id/singleValueType1"
+        android:layout_width="150dp"
+        layout="@layout/two_rectangle_widget_mini"/>
+
+    <include
+        android:id="@+id/singleValueType1"
+        android:layout_height="80dp"
+        android:layout_width="80dp"
+        app:layout_constraintLeft_toRightOf="@id/twoRectangle"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/singleValueType2"
+        layout="@layout/single_value_type_1_apex_mini"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="0dp"
-        app:boxCornerRadiusTopStart="@dimen/default_button_radius"
-        app:boxCornerRadiusBottomStart="@dimen/default_button_radius"
-        app:boxCornerRadiusBottomEnd="@dimen/default_button_radius"
-        app:boxCornerRadiusTopEnd="@dimen/default_button_radius"
-        app:layout_constraintBottom_toTopOf="@id/value_layout"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_margin="@dimen/medium_margin"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/parameter_input_field"
-            android:layout_width="match_parent"
-            android:inputType="text"
-            android:layout_height="wrap_content"
-            android:hint="Parameter" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        app:layout_constraintTop_toBottomOf="@id/parameter_layout"
-        android:id="@+id/value_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        app:boxCornerRadiusTopStart="@dimen/default_button_radius"
-        app:boxCornerRadiusBottomStart="@dimen/default_button_radius"
-        app:boxCornerRadiusBottomEnd="@dimen/default_button_radius"
-        app:boxCornerRadiusTopEnd="@dimen/default_button_radius"
-        app:layout_constraintBottom_toTopOf="@id/unit_layout"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_margin="@dimen/medium_margin"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/value_input_field"
-            android:layout_width="match_parent"
-            android:inputType="numberDecimal"
-            android:layout_height="wrap_content"
-            android:hint="Value" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        app:layout_constraintTop_toBottomOf="@id/value_layout"
-        android:id="@+id/unit_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        app:boxCornerRadiusTopStart="@dimen/default_button_radius"
-        app:boxCornerRadiusBottomStart="@dimen/default_button_radius"
-        app:boxCornerRadiusBottomEnd="@dimen/default_button_radius"
-        app:boxCornerRadiusTopEnd="@dimen/default_button_radius"
-        app:layout_constraintBottom_toTopOf="@id/colorPicker"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_margin="@dimen/medium_margin"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/unit_input_field"
-            android:layout_width="match_parent"
-            android:inputType="text"
-            android:layout_height="wrap_content"
-            android:hint="Unit" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/colorPicker"
-        app:cornerRadius="@dimen/default_button_radius"
-        app:layout_constraintTop_toBottomOf="@id/unit_layout"
-        android:layout_margin="@dimen/medium_margin"
-        app:layout_constraintBottom_toTopOf="@id/submit"
-        android:layout_width="0dp"
-        android:text="Choose Background Color"
-        android:textSize="@dimen/default_button_text_size"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_height="@dimen/default_button_height"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/submit"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/colorPicker"
-        android:text="Save Widget"
-        android:textSize="@dimen/default_button_text_size"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/small_margin"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:cornerRadius="@dimen/default_button_radius"
-        android:layout_width="0dp"
-        android:layout_margin="@dimen/medium_margin"
-        android:layout_height="@dimen/default_button_height"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/twoRectangle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
