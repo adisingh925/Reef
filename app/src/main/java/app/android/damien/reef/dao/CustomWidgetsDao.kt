@@ -15,6 +15,9 @@ import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
 import app.android.damien.reef.database_model.ApexWaterQualityWidget
 import app.android.damien.reef.database_model.CustomWidgetModel
+import app.android.damien.reef.database_model.CustomWidgetSingleValueType1Model
+import app.android.damien.reef.database_model.CustomWidgetSingleValueType2Model
+import app.android.damien.reef.database_model.CustomWidgetTwoRectangleModel
 import app.android.damien.reef.database_model.FocustronicOneElementWidgetModel
 import app.android.damien.reef.database_model.FocustronicGridWidgetModel
 import app.android.damien.reef.database_model.FocustronicSingleValueType1WidgetModel
@@ -249,5 +252,51 @@ interface CustomWidgetsDao {
     @Delete
     fun deleteFocustronicOneElementWidget(data: FocustronicOneElementWidgetModel)
 
+    /**
+     * Custom Single Value Type One Widget
+     */
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertCustomSingleValueTypeOneWidget(data: CustomWidgetSingleValueType1Model)
+
+    @Query("SELECT * from custom_widget_single_value_type_1_table order by id asc")
+    fun readCustomSingleValueTypeOneWidget(): LiveData<List<CustomWidgetSingleValueType1Model>>
+
+    @Update
+    fun updateCustomSingleValueTypeOneWidget(data: CustomWidgetSingleValueType1Model)
+
+    @Delete
+    fun deleteCustomSingleValueTypeOneWidget(data: CustomWidgetSingleValueType1Model)
+
+    /**
+     * Custom Single Value Type Two Widget
+     */
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertCustomSingleValueTypeTwoWidget(data: CustomWidgetSingleValueType2Model)
+
+    @Query("SELECT * from custom_widget_single_value_type_2_table order by id asc")
+    fun readCustomSingleValueTypeTwoWidget(): LiveData<List<CustomWidgetSingleValueType2Model>>
+
+    @Update
+    fun updateCustomSingleValueTypeTwoWidget(data: CustomWidgetSingleValueType2Model)
+
+    @Delete
+    fun deleteCustomSingleValueTypeTwoWidget(data: CustomWidgetSingleValueType2Model)
+
+    /**
+     * Custom Two Rectangle Widget
+     */
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertCustomTwoRectangleWidget(data: CustomWidgetTwoRectangleModel)
+
+    @Query("SELECT * from custom_widget_two_rectangle_table order by id asc")
+    fun readCustomTwoRectangleWidget(): LiveData<List<CustomWidgetTwoRectangleModel>>
+
+    @Update
+    fun updateCustomTwoRectangleWidget(data: CustomWidgetTwoRectangleModel)
+
+    @Delete
+    fun deleteCustomTwoRectangleWidget(data: CustomWidgetTwoRectangleModel)
 }

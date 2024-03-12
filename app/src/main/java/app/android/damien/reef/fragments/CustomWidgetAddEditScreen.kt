@@ -11,7 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.PagerAdapter
 import app.android.damien.reef.adapter.PageAdapter
+import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.database_model.CustomWidgetModel
+import app.android.damien.reef.database_model.CustomWidgetSingleValueType2Model
 import app.android.damien.reef.databinding.FragmentCustomWidgetAddEditScreenBinding
 import app.android.damien.reef.utils.Constants
 import app.android.damien.reef.viewmodel.WidgetsViewModel
@@ -25,13 +27,10 @@ class CustomWidgetAddEditScreen : Fragment() {
         FragmentCustomWidgetAddEditScreenBinding.inflate(layoutInflater)
     }
 
-    private val widgetsViewModel by lazy {
-        ViewModelProvider(this)[WidgetsViewModel::class.java]
-    }
-
     private val viewPagerAdapter by lazy{
         PageAdapter(this.childFragmentManager)
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

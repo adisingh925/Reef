@@ -9,6 +9,9 @@ import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
 import app.android.damien.reef.database_model.ApexWaterQualityWidget
 import app.android.damien.reef.database_model.CustomWidgetModel
+import app.android.damien.reef.database_model.CustomWidgetSingleValueType1Model
+import app.android.damien.reef.database_model.CustomWidgetSingleValueType2Model
+import app.android.damien.reef.database_model.CustomWidgetTwoRectangleModel
 import app.android.damien.reef.database_model.FocustronicOneElementWidgetModel
 import app.android.damien.reef.database_model.FocustronicGridWidgetModel
 import app.android.damien.reef.database_model.FocustronicSingleValueType1WidgetModel
@@ -31,6 +34,10 @@ class Repository(private val dao: CustomWidgetsDao) {
     val focustronicSingleValueType1Data = dao.readFocustronicSingleValueTypeOneWidget()
     val focustronicSingleValueType2Data = dao.readFocustronicSingleValueTypeTwoWidget()
     val focustronicTwoRectangleData = dao.readFocustronicDoubleRectangleWidget()
+
+    val customWidgetSingleValueType1Data = dao.readCustomSingleValueTypeOneWidget()
+    val customWidgetSingleValueType2Data = dao.readCustomSingleValueTypeTwoWidget()
+    val customWidgetTwoRectangleData = dao.readCustomTwoRectangleWidget()
 
 
     fun insert(data: CustomWidgetModel) {
@@ -232,5 +239,53 @@ class Repository(private val dao: CustomWidgetsDao) {
 
     suspend fun updateFocustronicTwoRectangleWidget(data: FocustronicTwoRectangleWidgetModel) {
         dao.updateFocustronicDoubleRectangleWidget(data)
+    }
+
+    /**
+     * Custom Single Value Type One Widget
+     */
+
+    suspend fun insertCustomSingleValueTypeOneWidget(data: CustomWidgetSingleValueType1Model) {
+        dao.insertCustomSingleValueTypeOneWidget(data)
+    }
+
+    suspend fun deleteCustomSingleValueTypeOneWidget(data: CustomWidgetSingleValueType1Model) {
+        dao.deleteCustomSingleValueTypeOneWidget(data)
+    }
+
+    suspend fun updateCustomSingleValueTypeOneWidget(data: CustomWidgetSingleValueType1Model) {
+        dao.updateCustomSingleValueTypeOneWidget(data)
+    }
+
+    /**
+     * Custom Single Value Type Two Widget
+     */
+
+    suspend fun insertCustomSingleValueTypeTwoWidget(data: CustomWidgetSingleValueType2Model) {
+        dao.insertCustomSingleValueTypeTwoWidget(data)
+    }
+
+    suspend fun deleteCustomSingleValueTypeTwoWidget(data: CustomWidgetSingleValueType2Model) {
+        dao.deleteCustomSingleValueTypeTwoWidget(data)
+    }
+
+    suspend fun updateCustomSingleValueTypeTwoWidget(data: CustomWidgetSingleValueType2Model) {
+        dao.updateCustomSingleValueTypeTwoWidget(data)
+    }
+
+    /**
+     * Custom Two Rectangle Widget
+     */
+
+    suspend fun insertCustomTwoRectangleWidget(data: CustomWidgetTwoRectangleModel) {
+        dao.insertCustomTwoRectangleWidget(data)
+    }
+
+    suspend fun deleteCustomTwoRectangleWidget(data: CustomWidgetTwoRectangleModel) {
+        dao.deleteCustomTwoRectangleWidget(data)
+    }
+
+    suspend fun updateCustomTwoRectangleWidget(data: CustomWidgetTwoRectangleModel) {
+        dao.updateCustomTwoRectangleWidget(data)
     }
 }

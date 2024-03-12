@@ -23,6 +23,10 @@ object Constants {
     const val FOCUSTRONIC_GRID_WIDGET_TABLE = "focustronic_grid_widget_table"
     const val FOCUSTRONIC_ONE_ELEMENT_WIDGET_TABLE = "focustronic_one_element_widget_table"
 
+    const val CUSTOM_WIDGET_SINGLE_VALUE_TYPE_1_TABLE = "custom_widget_single_value_type_1_table"
+    const val CUSTOM_WIDGET_SINGLE_VALUE_TYPE_2_TABLE = "custom_widget_single_value_type_2_table"
+    const val CUSTOM_WIDGET_TWO_RECTANGLE_TABLE = "custom_widget_two_rectangle_table"
+
     const val APEX_FLASK_BACKGROUND_WIDGET = "AFBW"
     const val APEX_POWER_VALUE_WIDGET = "APVW"
     const val APEX_CIRCLE_WIDGET = "ACW"
@@ -36,4 +40,8 @@ object Constants {
     const val FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET = "FSVT1W"
     const val FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET = "FSVT2W"
     const val FOCUSTRONIC_GRID_WIDGET = "FGW"
+
+    const val CUSTOM_WIDGET_SINGLE_VALUE_TYPE_1 = "CW1"
+    const val CUSTOM_WIDGET_SINGLE_VALUE_TYPE_2 = "CW2"
+    const val CUSTOM_WIDGET_TWO_RECTANGLE = "CWTR"
 }

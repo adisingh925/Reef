@@ -13,6 +13,9 @@ import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
 import app.android.damien.reef.database_model.ApexWaterQualityWidget
 import app.android.damien.reef.database_model.CustomWidgetModel
+import app.android.damien.reef.database_model.CustomWidgetSingleValueType1Model
+import app.android.damien.reef.database_model.CustomWidgetSingleValueType2Model
+import app.android.damien.reef.database_model.CustomWidgetTwoRectangleModel
 import app.android.damien.reef.database_model.FocustronicOneElementWidgetModel
 import app.android.damien.reef.database_model.FocustronicGridWidgetModel
 import app.android.damien.reef.database_model.FocustronicSingleValueType1WidgetModel
@@ -39,6 +42,10 @@ class WidgetsViewModel(application: Application) : AndroidViewModel(application)
     val focustronicSingleValueTypeTwoWidgets: LiveData<List<FocustronicSingleValueType2WidgetModel>>
     val focustronicTwoRectangleWidgets: LiveData<List<FocustronicTwoRectangleWidgetModel>>
 
+    val customWidgetSingleValueType1Data : LiveData<List<CustomWidgetSingleValueType1Model>>
+    val customWidgetSingleValueType2Data : LiveData<List<CustomWidgetSingleValueType2Model>>
+    val customWidgetTwoRectangleData : LiveData<List<CustomWidgetTwoRectangleModel>>
+
 
     val repository: Repository
 
@@ -59,6 +66,10 @@ class WidgetsViewModel(application: Application) : AndroidViewModel(application)
         focustronicSingleValueTypeOneWidgets = repository.focustronicSingleValueType1Data
         focustronicSingleValueTypeTwoWidgets = repository.focustronicSingleValueType2Data
         focustronicTwoRectangleWidgets = repository.focustronicTwoRectangleData
+
+        customWidgetSingleValueType1Data = repository.customWidgetSingleValueType1Data
+        customWidgetSingleValueType2Data = repository.customWidgetSingleValueType2Data
+        customWidgetTwoRectangleData = repository.customWidgetTwoRectangleData
     }
 
     fun insert(data: CustomWidgetModel) {
@@ -337,6 +348,72 @@ class WidgetsViewModel(application: Application) : AndroidViewModel(application)
     fun updateFocustronicOneElementWidget(data: FocustronicOneElementWidgetModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.updateFocustronicOneElementWidget(data)
+        }
+    }
+
+    /**
+     * Custom Widget Single Value Type 1
+     */
+
+    fun insertCustomWidgetSingleValueType1(data: CustomWidgetSingleValueType1Model) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertCustomSingleValueTypeOneWidget(data)
+        }
+    }
+
+    fun deleteCustomWidgetSingleValueType1(data: CustomWidgetSingleValueType1Model) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteCustomSingleValueTypeOneWidget(data)
+        }
+    }
+
+    fun updateCustomWidgetSingleValueType1(data: CustomWidgetSingleValueType1Model) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateCustomSingleValueTypeOneWidget(data)
+        }
+    }
+
+    /**
+     * Custom Widget Single Value Type 2
+     */
+
+    fun insertCustomWidgetSingleValueType2(data: CustomWidgetSingleValueType2Model) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertCustomSingleValueTypeTwoWidget(data)
+        }
+    }
+
+    fun deleteCustomWidgetSingleValueType2(data: CustomWidgetSingleValueType2Model) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteCustomSingleValueTypeTwoWidget(data)
+        }
+    }
+
+    fun updateCustomWidgetSingleValueType2(data: CustomWidgetSingleValueType2Model) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateCustomSingleValueTypeTwoWidget(data)
+        }
+    }
+
+    /**
+     * Custom Widget Two Rectangle
+     */
+
+    fun insertCustomWidgetTwoRectangle(data: CustomWidgetTwoRectangleModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertCustomTwoRectangleWidget(data)
+        }
+    }
+
+    fun deleteCustomWidgetTwoRectangle(data: CustomWidgetTwoRectangleModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteCustomTwoRectangleWidget(data)
+        }
+    }
+
+    fun updateCustomWidgetTwoRectangle(data: CustomWidgetTwoRectangleModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateCustomTwoRectangleWidget(data)
         }
     }
 }
