@@ -109,7 +109,7 @@ class MainActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         val data = response.body()
                         if (data != null) {
-                            Log.d("TAG", "onResponse: " + data.toString())
+                            Log.d("TAG", "onResponse: $data")
                             val gson = Gson()
                             val jsonData = gson.toJson(data)
                             SharedPreferences.write("focustronicMastertronicData", jsonData)
@@ -129,7 +129,7 @@ class MainActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             val response = ApiClient.apiService.getApexData(
                 SharedPreferences.read(
-                    Constants.APEX.toString() + "nickname",
+                    "nickname",
                     ""
                 ).toString()
             )

@@ -265,7 +265,7 @@ class ApexSelectWidgetScreen : Fragment() {
         CoroutineScope(Dispatchers.IO).launch {
             val response = ApiClient.apiService.getApexData(
                 SharedPreferences.read(
-                    Constants.APEX.toString() + "nickname",
+                    "nickname",
                     ""
                 ).toString()
             )

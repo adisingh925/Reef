@@ -1,6 +1,7 @@
 package app.android.damien.reef.fragments
 
 import android.content.res.ColorStateList
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -50,6 +51,19 @@ class SingleValueType2ViewPagerFragment : Fragment() {
             binding.unitInputField.setText(customWidgetSingleValueType2.unit)
             textColor = customWidgetSingleValueType2.textColor
             ringColor = customWidgetSingleValueType2.ringColor
+
+            binding.previewCard.value.setTextColor(textColor)
+            binding.previewCard.heading.setTextColor(textColor)
+            binding.previewCard.unit.setTextColor(textColor)
+            binding.previewCard.timestamp.setTextColor(textColor)
+
+            val innerLayoutDrawable = context?.resources?.getDrawable(R.drawable.linear_layout_corner_radius_black_circular)
+            val innerLayoutMutatedDrawable = innerLayoutDrawable?.mutate()
+            if (innerLayoutMutatedDrawable is GradientDrawable) {
+                innerLayoutMutatedDrawable.setStroke(3, ringColor) // Assuming 3dp width for the stroke
+            }
+
+            binding.previewCard.innerLayout.background = innerLayoutMutatedDrawable
         }
 
         binding.valueInputField.addTextChangedListener {
@@ -88,6 +102,10 @@ class SingleValueType2ViewPagerFragment : Fragment() {
                     override fun onOk(dialog: AmbilWarnaDialog, color: Int) {
                         textColor = color
                         binding.colorPicker.iconTint = ColorStateList.valueOf(textColor)
+                        binding.previewCard.value.setTextColor(textColor)
+                        binding.previewCard.heading.setTextColor(textColor)
+                        binding.previewCard.unit.setTextColor(textColor)
+                        binding.previewCard.timestamp.setTextColor(textColor)
                     }
                 })
             colorPickerDialogue.show()
@@ -103,6 +121,14 @@ class SingleValueType2ViewPagerFragment : Fragment() {
                     override fun onOk(dialog: AmbilWarnaDialog, color: Int) {
                         ringColor = color
                         binding.colorPickerRing.iconTint = ColorStateList.valueOf(ringColor)
+
+                        val innerLayoutDrawable = context?.resources?.getDrawable(R.drawable.linear_layout_corner_radius_black_circular)
+                        val innerLayoutMutatedDrawable = innerLayoutDrawable?.mutate()
+                        if (innerLayoutMutatedDrawable is GradientDrawable) {
+                            innerLayoutMutatedDrawable.setStroke(3, ringColor) // Assuming 3dp width for the stroke
+                        }
+
+                        binding.previewCard.innerLayout.background = innerLayoutMutatedDrawable
                     }
                 })
             colorPickerDialogue.show()

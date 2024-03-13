@@ -1,5 +1,8 @@
 package app.android.damien.reef.apis
 
+import app.android.damien.reef.model.AddApexUserRequest
+import app.android.damien.reef.model.AddFocustronicUserRequest
+import app.android.damien.reef.model.AddFocustronicUserResponse
 import app.android.damien.reef.model.ApexApiResponse
 import app.android.damien.reef.model.FocustronicAlkatronicResponse
 import app.android.damien.reef.model.FocustronicMastertronicResponse
@@ -16,12 +19,18 @@ interface ApiService {
     @POST("users/add")
     fun addUser(@Body addUserRequestBody: addUserRequestBody): Call<addUserResponseBody>
 
+    @POST("fusion/{nickname}")
+    fun addApexAccount(@Path("nickname") nickname: String, @Body addApexUserRequest: AddApexUserRequest): Call<addUserResponseBody>
+
     @GET("fusion/{nickname}")
     fun getApexData(@Path("nickname") nickname: String): Call<ApexApiResponse>
 
-    @GET("focustronic/impromptu-reef/mastertronic/{nickname}")
+    @POST("focustronic/{nickname}")
+    fun addFocustronicAccount(@Path("nickname") nickname: String, @Body addFocustronicUserRequest: AddFocustronicUserRequest): Call<AddFocustronicUserResponse>
+
+    @GET("focustronic/{nickname}/mastertronic/{deviceId}")
     fun getFocustronicMastertronicData(@Path("nickname") nickname: String): Call<FocustronicMastertronicResponse>
 
-    @GET("focustronic/impromptu-reef/alkatronic/{nickname}")
+    @GET("focustronic/{nickname}/alkatronic/{deviceId}")
     fun getFocustronicAlkatronicData(@Path("nickname") nickname: String): Call<FocustronicAlkatronicResponse>
 }
