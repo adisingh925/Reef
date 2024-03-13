@@ -29,8 +29,8 @@ interface ApiService {
     fun addFocustronicAccount(@Path("nickname") nickname: String, @Body addFocustronicUserRequest: AddFocustronicUserRequest): Call<AddFocustronicUserResponse>
 
     @GET("focustronic/{nickname}/mastertronic/{deviceId}")
-    fun getFocustronicMastertronicData(@Path("nickname") nickname: String): Call<FocustronicMastertronicResponse>
+    fun getFocustronicMastertronicData(@Path("nickname") nickname: String, @Path("deviceId") deviceId : String): Call<FocustronicMastertronicResponse>
 
     @GET("focustronic/{nickname}/alkatronic/{deviceId}")
-    fun getFocustronicAlkatronicData(@Path("nickname") nickname: String): Call<FocustronicAlkatronicResponse>
+    fun getFocustronicAlkatronicData(@Path("nickname") nickname: String,  @Path("deviceId") deviceId : String): Call<FocustronicAlkatronicResponse>
 }

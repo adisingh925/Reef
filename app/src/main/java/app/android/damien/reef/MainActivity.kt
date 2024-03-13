@@ -53,15 +53,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun getFocustronicAlkatronicApiResponse() {
         CoroutineScope(Dispatchers.IO).launch {
-//            val response = ApiClient.apiService.getFocustronicAlkatronicData(
-//                SharedPreferences.read(
-//                    Constants.FOCUSTRONIC_ALKATRONIC.toString() + "nickname",
-//                    ""
-//                ).toString()
-//            )
-
             val response = ApiClient.apiService.getFocustronicAlkatronicData(
-               "697"
+                SharedPreferences.read(
+                    "nickname",
+                    ""
+                ).toString(),
+                "697"
             )
 
             response.enqueue(object : Callback<FocustronicAlkatronicResponse> {
@@ -72,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         val data = response.body()
                         if (data != null) {
-                            Log.d("TAG", "onResponse: " + data.toString())
+                            Log.d("TAG", "onResponse: $data")
                             val gson = Gson()
                             val jsonData = gson.toJson(data)
                             SharedPreferences.write("focustronicAlkatronicData", jsonData)
@@ -90,14 +87,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun getFocustronicMastertronicApiResponse() {
         CoroutineScope(Dispatchers.IO).launch {
-//            val response = ApiClient.apiService.getFocustronicMastertronicData(
-//                SharedPreferences.read(
-//                    Constants.FOCUSTRONIC_MASTERTRONIC.toString() + "nickname",
-//                    ""
-//                ).toString()
-//            )
-
             val response = ApiClient.apiService.getFocustronicMastertronicData(
+                SharedPreferences.read(
+                    "nickname",
+                    ""
+                ).toString(),
                 "106"
             )
 
