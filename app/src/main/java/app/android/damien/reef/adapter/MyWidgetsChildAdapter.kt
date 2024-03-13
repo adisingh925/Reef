@@ -95,8 +95,8 @@ class MyWidgetsChildAdapter(
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder2: ")
 
-            topRectangleTime.text = setApexTwoRectangleWidgetData[position].topRectangleUpdateTimeStamp
-            bottomRectangleTime.text = setApexTwoRectangleWidgetData[position].bottomRectangleUpdateTimeStamp
+            topRectangleTime.text = SharedPreferences.read("lastUpdatedApex", "")
+            bottomRectangleTime.text = SharedPreferences.read("lastUpdatedApex", "")
 
             val topRectangleDrawable = context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
             val topRectangleMutatedDrawable = topRectangleDrawable.mutate()

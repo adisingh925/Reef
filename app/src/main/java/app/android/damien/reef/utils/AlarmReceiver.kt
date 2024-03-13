@@ -41,7 +41,7 @@ class AlarmReceiver : BroadcastReceiver() {
 
         val response = ApiClient.apiService.getApexData(
             SharedPreferences.read(
-                Constants.APEX.toString() + "nickname",
+                "nickname",
                 ""
             ).toString()
         )
@@ -74,7 +74,76 @@ class AlarmReceiver : BroadcastReceiver() {
     }
 
     private fun updateFocustronicWidgetData(context: Context?, jsonArray: JSONArray) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val focustronicSingleValueType1 = Database.getDatabase(context!!).customWidgetsDao().readFocustronicSingleValueTypeOneWidgetBackground()
 
+            for(i in focustronicSingleValueType1){
+                if(i.actualName != "NaN"){
+                    i.value = jsonArray.getJSONObject(0).get(i.actualName).toString().toFloat()
+                }
+                Database.getDatabase(context).customWidgetsDao().updateFocustronicSingleValueTypeOneWidget(i)
+            }
+
+            val focustronicSingleValueType2 = Database.getDatabase(context).customWidgetsDao().readFocustronicSingleValueTypeTwoWidgetBackground()
+
+            for(i in focustronicSingleValueType2){
+                if(i.actualName != "NaN"){
+                    i.value = jsonArray.getJSONObject(0).get(i.actualName).toString().toFloat()
+                }
+                Database.getDatabase(context).customWidgetsDao().updateFocustronicSingleValueTypeTwoWidget(i)
+            }
+
+            val focustronicTwoRectangleWidget = Database.getDatabase(context).customWidgetsDao().readFocustronicDoubleRectangleWidgetBackground()
+
+            for(i in focustronicTwoRectangleWidget){
+                if(i.topRectangleActualName != "NaN"){
+                    i.topRectangleValue = jsonArray.getJSONObject(0).get(i.topRectangleActualName).toString().toFloat()
+                }
+                if(i.bottomRectangleActualName != "NaN"){
+                    i.bottomRectangleValue = jsonArray.getJSONObject(0).get(i.bottomRectangleActualName).toString().toFloat()
+                }
+                Database.getDatabase(context).customWidgetsDao().updateFocustronicDoubleRectangleWidget(i)
+            }
+
+            val focustronic1ElementWidget = Database.getDatabase(context).customWidgetsDao().readFocustronicOneElementWidgetBackground()
+
+            for(i in focustronic1ElementWidget){
+                if(i.actualName != "NaN"){
+                    i.value = jsonArray.getJSONObject(0).get(i.actualName).toString().toFloat()
+                }
+                Database.getDatabase(context).customWidgetsDao().updateFocustronicOneElementWidget(i)
+            }
+
+            val focustronicGridWidget = Database.getDatabase(context).customWidgetsDao().readFocustronicGridWidgetBackground()
+
+            for(i in focustronicGridWidget){
+                if(i.slot1ActualName != "NaN"){
+                    i.slot1Value = jsonArray.getJSONObject(0).get(i.slot1ActualName).toString().toFloat()
+                }
+                if(i.slot2ActualName != "NaN"){
+                    i.slot2Value = jsonArray.getJSONObject(0).get(i.slot2ActualName).toString().toFloat()
+                }
+                if(i.slot3ActualName != "NaN"){
+                    i.slot3Value = jsonArray.getJSONObject(0).get(i.slot3ActualName).toString().toFloat()
+                }
+                if(i.slot4ActualName != "NaN"){
+                    i.slot4Value = jsonArray.getJSONObject(0).get(i.slot4ActualName).toString().toFloat()
+                }
+                if(i.slot5ActualName != "NaN"){
+                    i.slot5Value = jsonArray.getJSONObject(0).get(i.slot5ActualName).toString().toFloat()
+                }
+                if(i.slot6ActualName != "NaN"){
+                    i.slot6Value = jsonArray.getJSONObject(0).get(i.slot6ActualName).toString().toFloat()
+                }
+                if(i.slot7ActualName != "NaN"){
+                    i.slot7Value = jsonArray.getJSONObject(0).get(i.slot7ActualName).toString().toFloat()
+                }
+                if(i.slot8ActualName != "NaN"){
+                    i.slot8Value = jsonArray.getJSONObject(0).get(i.slot8ActualName).toString().toFloat()
+                }
+                Database.getDatabase(context).customWidgetsDao().updateFocustronicGridWidget(i)
+            }
+        }
     }
 
     private fun updateApexWidgetsData(context: Context?, apiData : JSONArray) {

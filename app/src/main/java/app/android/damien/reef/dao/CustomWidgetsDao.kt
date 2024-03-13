@@ -182,6 +182,9 @@ interface CustomWidgetsDao {
     @Query("SELECT * from focustronic_two_rectangle_widgets_table order by id asc")
     fun readFocustronicDoubleRectangleWidget(): LiveData<List<FocustronicTwoRectangleWidgetModel>>
 
+    @Query("SELECT * from focustronic_two_rectangle_widgets_table order by id asc")
+    fun readFocustronicDoubleRectangleWidgetBackground(): List<FocustronicTwoRectangleWidgetModel>
+
     @Update
     fun updateFocustronicDoubleRectangleWidget(data: FocustronicTwoRectangleWidgetModel)
 
@@ -197,6 +200,9 @@ interface CustomWidgetsDao {
 
     @Query("SELECT * from focustronic_single_value_type_1_widget_table order by id asc")
     fun readFocustronicSingleValueTypeOneWidget(): LiveData<List<FocustronicSingleValueType1WidgetModel>>
+
+    @Query("SELECT * from focustronic_single_value_type_1_widget_table order by id asc")
+    fun readFocustronicSingleValueTypeOneWidgetBackground(): List<FocustronicSingleValueType1WidgetModel>
 
     @Update
     fun updateFocustronicSingleValueTypeOneWidget(data: FocustronicSingleValueType1WidgetModel)
@@ -214,6 +220,9 @@ interface CustomWidgetsDao {
     @Query("SELECT * from focustronic_single_value_type_2_widget_table order by id asc")
     fun readFocustronicSingleValueTypeTwoWidget(): LiveData<List<FocustronicSingleValueType2WidgetModel>>
 
+    @Query("SELECT * from focustronic_single_value_type_2_widget_table order by id asc")
+    fun readFocustronicSingleValueTypeTwoWidgetBackground(): List<FocustronicSingleValueType2WidgetModel>
+
     @Update
     fun updateFocustronicSingleValueTypeTwoWidget(data: FocustronicSingleValueType2WidgetModel)
 
@@ -230,6 +239,9 @@ interface CustomWidgetsDao {
     @Query("SELECT * from focustronic_grid_widget_table order by id asc")
     fun readFocustronicGridWidget(): LiveData<List<FocustronicGridWidgetModel>>
 
+    @Query("SELECT * from focustronic_grid_widget_table order by id asc")
+    fun readFocustronicGridWidgetBackground(): List<FocustronicGridWidgetModel>
+
     @Update
     fun updateFocustronicGridWidget(data: FocustronicGridWidgetModel)
 
@@ -245,6 +257,9 @@ interface CustomWidgetsDao {
 
     @Query("SELECT * from focustronic_one_element_widget_table order by id asc")
     fun readFocustronicOneElementWidget(): LiveData<List<FocustronicOneElementWidgetModel>>
+
+    @Query("SELECT * from focustronic_one_element_widget_table order by id asc")
+    fun readFocustronicOneElementWidgetBackground(): List<FocustronicOneElementWidgetModel>
 
     @Update
     fun updateFocustronicOneElementWidget(data: FocustronicOneElementWidgetModel)

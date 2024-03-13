@@ -71,7 +71,7 @@ class WidgetTypeSelectionScreen : Fragment() {
     }
 
     private fun isCredentialsExist(widgetType : Int) : Boolean{
-        return !(app.android.damien.reef.storage.SharedPreferences.read(widgetType.toString() + "email", "") == "" &&
-                app.android.damien.reef.storage.SharedPreferences.read(widgetType.toString() + "nickname", "") == "")
+        return !(app.android.damien.reef.storage.SharedPreferences.read(widgetType.toString() + "username", "") == "" &&
+                app.android.damien.reef.storage.SharedPreferences.read(widgetType.toString() + "password", "") == "")
     }
 }
