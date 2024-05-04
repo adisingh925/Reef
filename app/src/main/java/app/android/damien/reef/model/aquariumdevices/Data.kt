@@ -1,6 +1,6 @@
 package app.android.damien.reef.model.aquariumdevices
 
-data class DataXXX(
+data class Data(
     val alkalinity_device_type: String,
     val alkatronics: List<Alkatronic>,
     val dosetronics: List<Dosetronic>,

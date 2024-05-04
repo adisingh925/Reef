@@ -1,11 +1,11 @@
 package app.android.damien.reef.apis
 
 import app.android.damien.reef.model.alkatronic.AlkatronicData
-import app.android.damien.reef.model.aquariumdevices.AquariumDevices
-import app.android.damien.reef.model.aquariumdevices.AquariumTanks
 import app.android.damien.reef.model.login.LoginRequest
 import app.android.damien.reef.model.login.LoginResponse
 import app.android.damien.reef.model.apex.ApexData
+import app.android.damien.reef.model.aquariumdevices.AquariumDevices
+import app.android.damien.reef.model.aquariumtanks.AquariumTanks
 import app.android.damien.reef.model.mastertronic.MastertronicData
 import retrofit2.Call
 import retrofit2.http.Body

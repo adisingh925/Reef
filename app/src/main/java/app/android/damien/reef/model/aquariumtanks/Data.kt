@@ -1,6 +1,6 @@
-package app.android.damien.reef.model.aquariumdevices
+package app.android.damien.reef.model.aquariumtanks
 
-data class DataXX(
+data class Data(
     val alkatronic_count: Int,
     val dosetronic_count: Int,
     val filtertronic_count: Int,
