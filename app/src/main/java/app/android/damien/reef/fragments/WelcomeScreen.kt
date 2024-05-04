@@ -24,11 +24,7 @@ class WelcomeScreen : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         try {
-            if (SharedPreferences.read("email", "") != "" && SharedPreferences.read(
-                    "nickname",
-                    ""
-                ) != ""
-            ) {
+            if (SharedPreferences.read("disclaimer", "") != "") {
                 findNavController().navigate(R.id.myWidgetsFragment)
             }
 

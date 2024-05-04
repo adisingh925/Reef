@@ -1,21 +1,15 @@
 package app.android.damien.reef.fragments
 
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresExtension
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import app.android.damien.reef.R
 import app.android.damien.reef.databinding.FragmentLoginScreenBinding
-import app.android.damien.reef.model.AddApexUserRequest
-import app.android.damien.reef.model.AddFocustronicUserRequest
-import app.android.damien.reef.model.AddFocustronicUserResponse
-import app.android.damien.reef.model.addUserRequestBody
+import app.android.damien.reef.model.LoginRequest
 import app.android.damien.reef.model.addUserResponseBody
 import app.android.damien.reef.retrofit.ApiClient
 import app.android.damien.reef.storage.SharedPreferences
@@ -24,8 +18,6 @@ import app.android.damien.reef.utils.Toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.regex.Pattern
-import kotlin.properties.Delegates
 
 
 class LoginScreen : Fragment() {
@@ -72,7 +64,7 @@ class LoginScreen : Fragment() {
                 if (widgetType == Constants.APEX) {
                     val apiClient = ApiClient.apiService.addApexAccount(
                         SharedPreferences.read("nickname", "").toString(),
-                        AddApexUserRequest(
+                        LoginRequest(
                             binding.usernameInputField.text.toString(),
                             binding.passwordInputField.text.toString()
                         )

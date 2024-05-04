@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import app.android.damien.reef.R
 import app.android.damien.reef.databinding.FragmentDisclaimerBinding
+import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Toast
 
 class DisclaimerFragment : Fragment() {
@@ -23,7 +24,8 @@ class DisclaimerFragment : Fragment() {
         // Inflate the layout for this fragment
         try {
             binding.getStartedButton.setOnClickListener {
-                findNavController().navigate(R.id.action_disclaimerFragment_to_mainLoginScreen)
+                SharedPreferences.write("disclaimer", "accepted")
+                findNavController().navigate(R.id.action_disclaimerFragment_to_myWidgetsFragment)
             }
         } catch (e: Exception) {
             e.printStackTrace()

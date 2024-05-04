@@ -97,9 +97,9 @@ class MainLoginScreen : Fragment() {
                             val post = response.body()
                             if (post != null) {
                                 if (post.success) {
-                                    findNavController().navigate(
-                                        R.id.action_mainLoginScreen_to_myWidgetsFragment,
-                                    )
+//                                    findNavController().navigate(
+//                                        R.id.action_mainLoginScreen_to_myWidgetsFragment,
+//                                    )
                                     saveCredentials(
                                         binding.emailInputField.text.toString(),
                                         binding.nicknameInputField.text.toString()

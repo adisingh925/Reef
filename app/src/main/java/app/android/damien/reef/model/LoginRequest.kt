@@ -1,6 +1,6 @@
 package app.android.damien.reef.model
 
-data class AddFocustronicUserRequest(
-    val email : String,
+data class LoginRequest(
+    val username : String,
     val password : String
 )

@@ -44,4 +44,6 @@ object Constants {
     const val CUSTOM_WIDGET_SINGLE_VALUE_TYPE_1 = "CW1"
     const val CUSTOM_WIDGET_SINGLE_VALUE_TYPE_2 = "CW2"
     const val CUSTOM_WIDGET_TWO_RECTANGLE = "CWTR"
+
+    const val CONTENT_TYPE = "application/json"
 }

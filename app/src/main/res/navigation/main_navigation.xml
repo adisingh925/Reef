@@ -71,16 +71,7 @@
         android:label="fragment_disclaimer"
         tools:layout="@layout/fragment_disclaimer" >
         <action
-            android:id="@+id/action_disclaimerFragment_to_mainLoginScreen"
-            app:destination="@id/mainLoginScreen" />
-    </fragment>
-    <fragment
-        android:id="@+id/mainLoginScreen"
-        android:name="app.android.damien.reef.fragments.MainLoginScreen"
-        android:label="fragment_main_login_screen"
-        tools:layout="@layout/fragment_main_login_screen" >
-        <action
-            android:id="@+id/action_mainLoginScreen_to_myWidgetsFragment"
+            android:id="@+id/action_disclaimerFragment_to_myWidgetsFragment"
             app:destination="@id/myWidgetsFragment" />
     </fragment>
     <fragment
