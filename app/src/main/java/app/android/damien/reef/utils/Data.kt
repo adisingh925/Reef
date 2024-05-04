@@ -25,6 +25,9 @@ import java.util.Locale
 
 class Data {
 
+    val jsonArray = JSONArray()
+    val focustronicJsonObject = JSONObject()
+
     fun getApexData() {
         CoroutineScope(Dispatchers.IO).launch {
             val response = ApiClient.apexApiService.getApexData(
@@ -75,7 +78,6 @@ class Data {
     fun getFocustronicResponse() {
         val cookie = SharedPreferences.read("${Constants.FOCUSTRONIC}cookie", "").toString()
         getAquariumTanks(cookie)
-        Log.d("TAG", "hello")
     }
 
     private fun getAquariumTanks(cookie: String) {
@@ -115,12 +117,10 @@ class Data {
                     val data = response.body()
                     if (data != null) {
                         for (i in data.data.mastertronics) {
-                            Log.d("TAG", "Mastertronic")
                             getMastertronicData(i.id, cookie)
                         }
 
                         for (i in data.data.alkatronics) {
-                            Log.d("TAG", "Alkatronic")
                             getAlkatronicData(i.id, cookie)
                         }
                     }
@@ -148,6 +148,11 @@ class Data {
                     val data = response.body()
                     if (data != null) {
                         Log.d("TAG", "onResponse: $data")
+                        for (i in data.data.parameters) {
+                            focustronicJsonObject.put(i.parameter, i.value)
+                        }
+                        jsonArray.put(0, focustronicJsonObject)
+                        SharedPreferences.write("focustronicData", jsonArray.toString())
                     }
                 }
             }
@@ -172,6 +177,13 @@ class Data {
                     val data = response.body()
                     if (data != null) {
                         Log.d("TAG", "onResponse: $data")
+                        for (i in data.data) {
+                            focustronicJsonObject.put("kh_value", i.kh_value)
+                            focustronicJsonObject.put("ph_value", i.ph_value)
+                            focustronicJsonObject.put("acid_used", i.acid_used)
+                        }
+                        jsonArray.put(0, focustronicJsonObject)
+                        SharedPreferences.write("focustronicData", jsonArray.toString())
                     }
                 }
             }

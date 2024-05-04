@@ -727,20 +727,7 @@ class EditFocustronicGridWidget : Fragment() {
     }
 
     private fun initApiData() {
-        apexData = JSONObject(
-            SharedPreferences.read("focustronicAlkatronicData", "").toString()
-        ).getJSONArray("data")
-        apexData.getJSONObject(0).remove("record_time")
-        val tempData = JSONObject(
-            SharedPreferences.read("focustronicMastertronicData", "").toString()
-        ).getJSONArray("data")
-        tempData.getJSONObject(0).remove("record_time")
-        val keys = tempData.getJSONObject(0).keys()
-        while (keys.hasNext()) {
-            val key = keys.next() as String
-            val value = tempData.getJSONObject(0).getString(key)
-            apexData.getJSONObject(0).put(key, value)
-        }
+        apexData = JSONArray(SharedPreferences.read("focustronicData", "").toString())
     }
 
     private fun initValuesRecyclerView() {

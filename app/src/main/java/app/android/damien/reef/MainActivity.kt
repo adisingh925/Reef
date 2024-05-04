@@ -31,42 +31,7 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
 
         Data().getApexData()
-//        getFocustronicMastertronicApiResponse()
-//        getFocustronicAlkatronicApiResponse()
-        AlarmHelper(this).setExactAndAllowWhileIdleAlarm()
+        Data().getFocustronicResponse()
+//        AlarmHelper(this).setExactAndAllowWhileIdleAlarm()
     }
-
-//    private fun getFocustronicAlkatronicApiResponse() {
-//        CoroutineScope(Dispatchers.IO).launch {
-//            val response = ApiClient.apiService.getFocustronicAlkatronicData(
-//                SharedPreferences.read(
-//                    "nickname",
-//                    ""
-//                ).toString(),
-//                "697"
-//            )
-//
-//            response.enqueue(object : Callback<FocustronicAlkatronicResponse> {
-//                override fun onResponse(
-//                    call: Call<FocustronicAlkatronicResponse>,
-//                    response: Response<FocustronicAlkatronicResponse>
-//                ) {
-//                    if (response.isSuccessful) {
-//                        val data = response.body()
-//                        if (data != null) {
-//                            Log.d("TAG", "onResponse: $data")
-//                            val gson = Gson()
-//                            val jsonData = gson.toJson(data)
-//                            SharedPreferences.write("focustronicAlkatronicData", jsonData)
-//                            SharedPreferences.write("lastUpdatedFocustronicAlkatronic", millisToDateTime(System.currentTimeMillis()))
-//                        }
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<FocustronicAlkatronicResponse>, t: Throwable) {
-//                    t.printStackTrace()
-//                }
-//            })
-//        }
-//    }
 }
