@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import app.android.damien.reef.R
 import app.android.damien.reef.databinding.FragmentLoginScreenBinding
 import app.android.damien.reef.model.login.LoginRequest
-import app.android.damien.reef.model.addUserResponseBody
 import app.android.damien.reef.retrofit.ApiClient
 import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
