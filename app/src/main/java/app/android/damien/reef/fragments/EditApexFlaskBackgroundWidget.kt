@@ -2,30 +2,25 @@ package app.android.damien.reef.fragments
 
 import android.content.ClipDescription
 import android.os.Bundle
-import android.util.Log
 import android.view.DragEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import app.android.damien.reef.R
 import app.android.damien.reef.adapter.ValuesAdapter
 import app.android.damien.reef.database_model.ApexFlaskBackgroundWidgetModel
 import app.android.damien.reef.databinding.ApexFlaskBackgroundWidgetEditDialogBinding
 import app.android.damien.reef.databinding.FragmentEditApexFlaskBackgroundWidgetBinding
-import app.android.damien.reef.model.ApexApiResponse
 import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
 import app.android.damien.reef.utils.Toast
 import app.android.damien.reef.viewmodel.WidgetsViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.gson.Gson
 import org.json.JSONArray
 import org.json.JSONObject
 

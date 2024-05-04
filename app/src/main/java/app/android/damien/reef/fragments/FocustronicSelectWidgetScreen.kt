@@ -20,6 +20,7 @@ import app.android.damien.reef.database_model.FocustronicTwoRectangleWidgetModel
 import app.android.damien.reef.databinding.FocustronicSelectWidgetScreenBinding
 import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
+import app.android.damien.reef.utils.Data
 import app.android.damien.reef.utils.Toast
 import app.android.damien.reef.viewmodel.WidgetsViewModel
 
@@ -39,6 +40,8 @@ class FocustronicSelectWidgetScreen : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        Data().getFocustronicResponse()
 
         binding.focustronic1ElementWidget.itemSubheading.text = SharedPreferences.read(Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET, 0).toString() + "/5 widgets added"
         binding.focustronicSingleValueType1.itemSubheading.text = SharedPreferences.read(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET, 0).toString() + "/5 widgets added"

@@ -20,23 +20,11 @@ import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
 import app.android.damien.reef.database_model.ApexWaterQualityWidget
 import app.android.damien.reef.databinding.FragmentApexSelectWidgetScreenBinding
-import app.android.damien.reef.model.ApexApiResponse
-import app.android.damien.reef.retrofit.ApiClient
 import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
+import app.android.damien.reef.utils.Data
 import app.android.damien.reef.utils.Toast
 import app.android.damien.reef.viewmodel.WidgetsViewModel
-import com.google.gson.Gson
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.time.Instant
-import java.time.LocalDateTime
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
 
 
 class ApexSelectWidgetScreen : Fragment() {
@@ -55,7 +43,7 @@ class ApexSelectWidgetScreen : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-//        getApexApiResponse()
+        Data().getApexData()
 
         binding.addWidgetBackButton.setOnClickListener {
             findNavController().popBackStack()
@@ -259,47 +247,6 @@ class ApexSelectWidgetScreen : Fragment() {
         }
 
         return binding.root
-    }
-
-//    private fun getApexApiResponse() {
-//        CoroutineScope(Dispatchers.IO).launch {
-//            val response = ApiClient.apiService.getApexData(
-//                SharedPreferences.read(
-//                    "nickname",
-//                    ""
-//                ).toString()
-//            )
-//
-//            response.enqueue(object : Callback<ApexApiResponse> {
-//                override fun onResponse(
-//                    call: Call<ApexApiResponse>,
-//                    response: Response<ApexApiResponse>
-//                ) {
-//                    if (response.isSuccessful) {
-//                        val data = response.body()
-//                        if (data != null) {
-//                            val gson = Gson()
-//                            val jsonData = gson.toJson(data)
-//                            SharedPreferences.write("apexData", jsonData)
-//                            SharedPreferences.write(
-//                                "lastUpdatedApex",
-//                                millisToDateTime(System.currentTimeMillis())
-//                            )
-//                        }
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<ApexApiResponse>, t: Throwable) {
-//                    t.printStackTrace()
-//                }
-//            })
-//        }
-//    }
-
-    fun millisToDateTime(millis: Long): String {
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
-        val dateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(millis), ZoneId.systemDefault())
-        return dateTime.format(formatter)
     }
 
     override fun onAttach(context: Context) {
