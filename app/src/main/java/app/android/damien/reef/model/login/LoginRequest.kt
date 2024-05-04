@@ -1,4 +1,4 @@
-package app.android.damien.reef.model
+package app.android.damien.reef.model.login
 
 data class LoginRequest(
     val username : String,
