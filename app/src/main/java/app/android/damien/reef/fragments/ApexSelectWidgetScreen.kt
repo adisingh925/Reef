@@ -55,7 +55,7 @@ class ApexSelectWidgetScreen : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        getApexApiResponse()
+//        getApexApiResponse()
 
         binding.addWidgetBackButton.setOnClickListener {
             findNavController().popBackStack()
@@ -261,40 +261,40 @@ class ApexSelectWidgetScreen : Fragment() {
         return binding.root
     }
 
-    private fun getApexApiResponse() {
-        CoroutineScope(Dispatchers.IO).launch {
-            val response = ApiClient.apiService.getApexData(
-                SharedPreferences.read(
-                    "nickname",
-                    ""
-                ).toString()
-            )
-
-            response.enqueue(object : Callback<ApexApiResponse> {
-                override fun onResponse(
-                    call: Call<ApexApiResponse>,
-                    response: Response<ApexApiResponse>
-                ) {
-                    if (response.isSuccessful) {
-                        val data = response.body()
-                        if (data != null) {
-                            val gson = Gson()
-                            val jsonData = gson.toJson(data)
-                            SharedPreferences.write("apexData", jsonData)
-                            SharedPreferences.write(
-                                "lastUpdatedApex",
-                                millisToDateTime(System.currentTimeMillis())
-                            )
-                        }
-                    }
-                }
-
-                override fun onFailure(call: Call<ApexApiResponse>, t: Throwable) {
-                    t.printStackTrace()
-                }
-            })
-        }
-    }
+//    private fun getApexApiResponse() {
+//        CoroutineScope(Dispatchers.IO).launch {
+//            val response = ApiClient.apiService.getApexData(
+//                SharedPreferences.read(
+//                    "nickname",
+//                    ""
+//                ).toString()
+//            )
+//
+//            response.enqueue(object : Callback<ApexApiResponse> {
+//                override fun onResponse(
+//                    call: Call<ApexApiResponse>,
+//                    response: Response<ApexApiResponse>
+//                ) {
+//                    if (response.isSuccessful) {
+//                        val data = response.body()
+//                        if (data != null) {
+//                            val gson = Gson()
+//                            val jsonData = gson.toJson(data)
+//                            SharedPreferences.write("apexData", jsonData)
+//                            SharedPreferences.write(
+//                                "lastUpdatedApex",
+//                                millisToDateTime(System.currentTimeMillis())
+//                            )
+//                        }
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<ApexApiResponse>, t: Throwable) {
+//                    t.printStackTrace()
+//                }
+//            })
+//        }
+//    }
 
     fun millisToDateTime(millis: Long): String {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
