@@ -53,23 +53,23 @@ interface ApiService {
     @GET("/api/v2/aquarium-tanks")
     fun getAquariumTanks(
         @Header("x-session-token") token: String,
-    ): Call<AquariumTanks>
+    ): Call<ResponseBody>
 
     @GET("/api/v2/aquarium-tanks/{id}")
     fun getAquariumDevices(
         @Header("x-session-token") token: String,
         @Path("id") tankId: Int
-    ): Call<AquariumDevices>
+    ): Call<ResponseBody>
 
     @GET("/api/v2/devices/mastertronic/{id}/parameter-information")
     fun getMastertronicData(
         @Header("x-session-token") token: String,
         @Path("id") tankId: Int
-    ): Call<MastertronicData>
+    ): Call<ResponseBody>
 
     @GET("/api/v2/devices/alkatronic/{id}/data/test-records?day=1")
     fun getAlkatronicData(
         @Header("x-session-token") token: String,
         @Path("id") tankId: Int
-    ): Call<AlkatronicData>
+    ): Call<ResponseBody>
 }

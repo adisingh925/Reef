@@ -25,6 +25,9 @@ import app.android.damien.reef.utils.Constants
 import app.android.damien.reef.utils.Data
 import app.android.damien.reef.utils.Toast
 import app.android.damien.reef.viewmodel.WidgetsViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class ApexSelectWidgetScreen : Fragment() {
@@ -43,7 +46,9 @@ class ApexSelectWidgetScreen : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        Data().getApexData()
+        CoroutineScope(Dispatchers.IO).launch {
+            Data().getApexData(this)
+        }
 
         binding.addWidgetBackButton.setOnClickListener {
             findNavController().popBackStack()
