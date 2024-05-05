@@ -32,21 +32,12 @@ class AlarmHelper(private val context: Context) {
 
         SharedPreferences.write("requestCode", SharedPreferences.read("requestCode", 0) + 1)
 
-        if (alarmManager.canScheduleExactAlarms()) {
-            Log.d("AlarmHelper", "Can schedule exact alarms")
-            alarmManager.setExactAndAllowWhileIdle(
-                AlarmManager.RTC_WAKEUP,
-                calendar.timeInMillis,
-                pendingIntent
-            )
-        } else {
-            Log.d("AlarmHelper", "Can't schedule exact alarms")
-            alarmManager.setExact(
-                AlarmManager.RTC_WAKEUP,
-                calendar.timeInMillis,
-                pendingIntent
-            )
-        }
+        alarmManager.setInexactRepeating(
+            AlarmManager.RTC_WAKEUP,
+            System.currentTimeMillis(),
+            calendar.timeInMillis,
+            pendingIntent
+        )
     }
 
     private fun isAlarmScheduled(): Boolean {

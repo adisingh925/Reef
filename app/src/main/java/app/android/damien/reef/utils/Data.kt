@@ -31,8 +31,8 @@ import java.util.Locale
 
 class Data {
 
-    val jsonArray = JSONArray()
-    val focustronicJsonObject = JSONObject()
+    private val jsonArray = JSONArray()
+    private val focustronicJsonObject = JSONObject()
 
     suspend fun getApexData(coroutineScope: CoroutineScope): String {
         val resultDeferred = CompletableDeferred<String>()
@@ -102,6 +102,10 @@ class Data {
                 }.await()
                 // Signal completion with the result
                 deferredResult.complete("Focustronic response received")
+                SharedPreferences.write(
+                    "lastUpdatedFocustronic",
+                    millisToDateTime(System.currentTimeMillis())
+                )
             } catch (e: Exception) {
                 // Signal completion with an error
                 deferredResult.completeExceptionally(e)

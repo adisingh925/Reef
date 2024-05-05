@@ -31,10 +31,6 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
 
-        CoroutineScope(Dispatchers.IO).launch {
-            Data().getApexData(this)
-            Data().getFocustronicResponse(this)
-        }
-//        AlarmHelper(this).setExactAndAllowWhileIdleAlarm()
+        AlarmHelper(this).setExactAndAllowWhileIdleAlarm()
     }
 }
