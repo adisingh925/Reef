@@ -1,20 +1,19 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Reef" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.Reef" parent="Theme.Material3.Dark.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/darkBackgroundColor</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="appBackgroundColor">@color/darkBackgroundColor</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:navigationBarColor">#343434</item>
-        <!--        <item name="android:tint">@color/white</item>-->
         <item name="resourcesTint">@color/white</item>
     </style>
 </resources>
