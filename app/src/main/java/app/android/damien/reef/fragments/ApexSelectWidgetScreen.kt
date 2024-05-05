@@ -51,7 +51,7 @@ class ApexSelectWidgetScreen : Fragment() {
         }
 
         binding.addWidgetBackButton.setOnClickListener {
-            findNavController().popBackStack()
+            findNavController().popBackStack(R.id.widgetTypeSelectionScreen, false)
         }
 
         binding.apexFlaskBackgroundWidgets.itemSubheading.text = SharedPreferences.read(Constants.APEX_FLASK_BACKGROUND_WIDGET, 0).toString() + "/5 widgets added"

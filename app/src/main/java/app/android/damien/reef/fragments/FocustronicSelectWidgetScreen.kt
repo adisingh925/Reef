@@ -52,7 +52,7 @@ class FocustronicSelectWidgetScreen : Fragment() {
         binding.focustronicSingleValueType1.itemSubheading.text = SharedPreferences.read(Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET, 0).toString() + "/5 widgets added"
 
         binding.addWidgetBackButton.setOnClickListener {
-            findNavController().popBackStack()
+            findNavController().popBackStack(R.id.widgetTypeSelectionScreen, false)
         }
 
         binding.focustronicSingleValueType2.itemSubheading.text = SharedPreferences.read(
