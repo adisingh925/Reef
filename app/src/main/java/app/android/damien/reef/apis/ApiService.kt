@@ -7,6 +7,7 @@ import app.android.damien.reef.model.apex.ApexData
 import app.android.damien.reef.model.aquariumdevices.AquariumDevices
 import app.android.damien.reef.model.aquariumtanks.AquariumTanks
 import app.android.damien.reef.model.mastertronic.MastertronicData
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -33,7 +34,7 @@ interface ApiService {
     @GET("apex?page=1&per_page=20&total_pages=1&total_entries=1")
     fun getApexData(
         @Header("Cookie") cookie: String,
-    ): Call<ApexData>
+    ): Call<ResponseBody>
 
     /**
      * Focustronic APIs

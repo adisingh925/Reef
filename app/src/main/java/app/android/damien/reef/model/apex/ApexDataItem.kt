@@ -3,7 +3,7 @@ package app.android.damien.reef.model.apex
 data class ApexDataItem(
     val __v: Int,
     val _id: String,
-    val auth: Int,
+    val auth: Long,
     val config: Config,
     val extra: ExtraXXX,
     val hardware: String,

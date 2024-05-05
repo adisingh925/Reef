@@ -12,6 +12,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import okhttp3.ResponseBody
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -39,21 +41,26 @@ class Data {
                 }"
             )
 
-            response.enqueue(object : Callback<ApexData> {
+            response.enqueue(object : Callback<ResponseBody> {
                 override fun onResponse(
-                    call: Call<ApexData>,
-                    response: Response<ApexData>
+                    call: Call<ResponseBody>,
+                    response: Response<ResponseBody>
                 ) {
                     if (response.isSuccessful) {
                         val data = response.body()
                         if (data != null) {
-                            val inputs = data[0].status.inputs
+                            val inputs = JSONArray(data.string())
+                                .getJSONObject(0)
+                                .getJSONObject("status")
+                                .getJSONArray("inputs")
+
                             val jsonArray = JSONArray()
                             val jsonObject = JSONObject()
-                            for (input in inputs) {
+                            for (i in 0 until inputs.length()) {
+                                val input = inputs.getJSONObject(i)
                                 jsonObject.put(
-                                    input.name.toLowerCase(Locale.ROOT),
-                                    input.value.toString()
+                                    input.getString("name").toLowerCase(Locale.ROOT),
+                                    input.getString("value")
                                 )
                             }
                             jsonArray.put(jsonObject)
@@ -68,7 +75,7 @@ class Data {
                     }
                 }
 
-                override fun onFailure(call: Call<ApexData>, t: Throwable) {
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     t.printStackTrace()
                 }
             })
@@ -81,28 +88,43 @@ class Data {
     }
 
     private fun getAquariumTanks(cookie: String) {
-        val aquariumTanks = ApiClient.alkatronicApiService.getAquariumTanks(cookie)
-
-        aquariumTanks.enqueue(object : Callback<AquariumTanks> {
-            override fun onResponse(
-                call: Call<AquariumTanks>,
-                response: Response<AquariumTanks>
-            ) {
-                if (response.isSuccessful) {
-                    val data = response.body()
-                    if (data != null) {
-                        val tanks = data.data
-                        for (tank in tanks) {
-                            getAquariumDevices(tank.id, cookie)
-                        }
+        CoroutineScope(Dispatchers.IO).launch {
+            val aquariumTanks =
+                async { ApiClient.alkatronicApiService.getAquariumTanks(cookie).execute() }
+            val data = aquariumTanks.await()
+            Log.d("TAG", "getAquariumTanks: $data")
+            if (data.isSuccessful) {
+                val tanks = data.body()?.data
+                if (tanks != null) {
+                    for (tank in tanks) {
+                        Log.d("TAG", "getAquariumTanks: $tank")
+                        getAquariumDevices(tank.id, cookie)
                     }
                 }
             }
+        }
+//        val aquariumTanks = ApiClient.alkatronicApiService.getAquariumTanks(cookie).execute()
 
-            override fun onFailure(call: Call<AquariumTanks>, t: Throwable) {
-                t.printStackTrace()
-            }
-        })
+//        aquariumTanks.enqueue(object : Callback<AquariumTanks> {
+//            override fun onResponse(
+//                call: Call<AquariumTanks>,
+//                response: Response<AquariumTanks>
+//            ) {
+//                if (response.isSuccessful) {
+//                    val data = response.body()
+//                    if (data != null) {
+//                        val tanks = data.data
+//                        for (tank in tanks) {
+//                            getAquariumDevices(tank.id, cookie)
+//                        }
+//                    }
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<AquariumTanks>, t: Throwable) {
+//                t.printStackTrace()
+//            }
+//        })
     }
 
     private fun getAquariumDevices(id: Int, cookie: String) {

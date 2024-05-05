@@ -1,7 +1,7 @@
 package app.android.damien.reef.model.apex
 
 data class ExtraX(
-    val auth: Int,
+    val auth: Long,
     val auto: List<Boolean>,
     val flowMode: String,
     val levelMode: String,
