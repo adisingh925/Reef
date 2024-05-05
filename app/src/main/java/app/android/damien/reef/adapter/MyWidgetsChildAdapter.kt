@@ -398,8 +398,8 @@ class MyWidgetsChildAdapter(
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder9: ")
 
-            topRectangleTime.text = SharedPreferences.read("lastUpdatedFocustronicAlkatronic", "")
-            bottomRectangleTime.text = SharedPreferences.read("lastUpdatedFocustronicAlkatronic", "")
+            topRectangleTime.text = SharedPreferences.read("lastUpdatedFocustronic", "")
+            bottomRectangleTime.text = SharedPreferences.read("lastUpdatedFocustronic", "")
 
             val topRectangleDrawable = context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
             val topRectangleMutatedDrawable = topRectangleDrawable.mutate()
@@ -482,7 +482,7 @@ class MyWidgetsChildAdapter(
             Log.d("MyWidgetsChildAdapter", "ViewHolder11: ")
 
             unit.text = setFocustronicSingleValueType2WidgetData[position].unit
-            timestamp.text = SharedPreferences.read("lastUpdatedFocustronicAlkatronic", "")
+            timestamp.text = SharedPreferences.read("lastUpdatedFocustronic", "")
 
             if(!setFocustronicSingleValueType2WidgetData[position].actualName.isNullOrEmpty()) {
                 if(setFocustronicSingleValueType2WidgetData[position].givenName.isNullOrEmpty()) {
