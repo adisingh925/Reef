@@ -105,6 +105,9 @@ class EditFocustronicDoubleRectangleWidget : Fragment() {
         bottomRectangleActualName = focustronicTwoRectangleWidget.bottomRectangleActualName.toString()
         topRectangleActualName = focustronicTwoRectangleWidget.topRectangleActualName.toString()
 
+        binding.flaskTwoRectangleWidgetEditLayout.timestamp.text = SharedPreferences.read("lastUpdatedFocustronic", "")
+        binding.flaskTwoRectangleWidgetEditLayout.timestamp2.text = SharedPreferences.read("lastUpdatedFocustronic", "")
+
         if (focustronicTwoRectangleWidget.topRectangleColor == 0) {
             binding.flaskTwoRectangleWidgetEditLayout.card1.setBackgroundColor(Color.parseColor("#cc7700"))
         } else {
@@ -155,22 +158,6 @@ class EditFocustronicDoubleRectangleWidget : Fragment() {
                 apexData.getJSONObject(0).toString()
             ).get(focustronicTwoRectangleWidget.bottomRectangleActualName).toString().toFloat()
                 .toString()
-        }
-
-        if (focustronicTwoRectangleWidget.topRectangleUpdateTimeStamp.isNullOrBlank()) {
-            binding.flaskTwoRectangleWidgetEditLayout.timestamp.text =
-                millisToDateTime(System.currentTimeMillis())
-        } else {
-            binding.flaskTwoRectangleWidgetEditLayout.timestamp.text =
-                focustronicTwoRectangleWidget.topRectangleUpdateTimeStamp
-        }
-
-        if (focustronicTwoRectangleWidget.bottomRectangleUpdateTimeStamp.isNullOrBlank()) {
-            binding.flaskTwoRectangleWidgetEditLayout.timestamp2.text =
-                millisToDateTime(System.currentTimeMillis())
-        } else {
-            binding.flaskTwoRectangleWidgetEditLayout.timestamp2.text =
-                focustronicTwoRectangleWidget.bottomRectangleUpdateTimeStamp
         }
 
         binding.flaskTwoRectangleWidgetEditLayout.card1.setOnClickListener {

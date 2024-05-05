@@ -156,8 +156,8 @@ class EditApexTwoRectangleWidget : Fragment() {
                 .toString()
         }
 
-        binding.flaskTwoRectangleWidgetEditLayout.timestamp.text = apexTwoRectangleWidget.topRectangleUpdateTimeStamp
-        binding.flaskTwoRectangleWidgetEditLayout.timestamp2.text = apexTwoRectangleWidget.bottomRectangleUpdateTimeStamp
+        binding.flaskTwoRectangleWidgetEditLayout.timestamp.text = SharedPreferences.read("lastUpdatedApex", "")
+        binding.flaskTwoRectangleWidgetEditLayout.timestamp2.text = SharedPreferences.read("lastUpdatedApex", "")
 
         binding.flaskTwoRectangleWidgetEditLayout.card1.setOnClickListener {
             if (!topRectangleActualName.contains("NaN")) {

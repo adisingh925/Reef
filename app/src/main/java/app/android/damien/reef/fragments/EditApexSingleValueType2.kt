@@ -92,6 +92,7 @@ class EditApexSingleValueType2 : Fragment() {
         binding.flaskBackgroundWidgetEditLayout.heading.setTextColor(textColor)
         binding.flaskBackgroundWidgetEditLayout.unit.setTextColor(textColor)
         binding.flaskBackgroundWidgetEditLayout.timestamp.setTextColor(textColor)
+        binding.flaskBackgroundWidgetEditLayout.timestamp.text = SharedPreferences.read("lastUpdatedApex", "")
 
         val innerLayoutDrawable = context?.resources?.getDrawable(R.drawable.linear_layout_corner_radius_black_circular)
         val innerLayoutMutatedDrawable = innerLayoutDrawable?.mutate()
