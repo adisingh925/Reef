@@ -13,6 +13,7 @@ import app.android.damien.reef.utils.Data
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.json.JSONArray
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -30,6 +31,18 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
+
+        CoroutineScope(Dispatchers.IO).launch {
+            Data().getApexData(this)
+            Data().getFocustronicResponse(this)
+        }.invokeOnCompletion {
+            try {
+                Data().updateFocustronicWidgetData(this, JSONArray(SharedPreferences.read("focustronicData", "").toString()))
+                Data().updateApexWidgetsData(this, JSONArray(SharedPreferences.read("apexData", "").toString()))
+            } catch (e: Exception) {
+                Log.e("MainActivity", e.toString())
+            }
+        }
 
         AlarmHelper(this).setExactAndAllowWhileIdleAlarm()
     }
