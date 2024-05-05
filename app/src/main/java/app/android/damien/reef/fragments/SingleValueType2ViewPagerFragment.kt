@@ -78,7 +78,6 @@ class SingleValueType2ViewPagerFragment : Fragment() {
             binding.previewCard.unit.text = it.toString()
         }
 
-
         binding.submit.setOnClickListener {
             widgetsViewModel.insertCustomWidgetSingleValueType2(
                 CustomWidgetSingleValueType2Model(
