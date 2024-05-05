@@ -1,25 +1,16 @@
 package app.android.damien.reef.utils
 
-import android.appwidget.AppWidgetManager
 import android.content.BroadcastReceiver
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
-import app.android.damien.reef.database.Database
 import app.android.damien.reef.storage.SharedPreferences
-import app.android.damien.reef.widgetprovider.ApexTwoRectangleWidgetProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONArray
-import org.json.JSONObject
-import java.time.Instant
-import java.time.LocalDateTime
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
 
 
 class AlarmReceiver : BroadcastReceiver() {
@@ -47,11 +38,5 @@ class AlarmReceiver : BroadcastReceiver() {
             }
             AlarmHelper(context).setExactAndAllowWhileIdleAlarm()
         }
-    }
-
-    fun millisToDateTime(millis: Long): String {
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
-        val dateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(millis), ZoneId.systemDefault())
-        return dateTime.format(formatter)
     }
 }
