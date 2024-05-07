@@ -407,19 +407,30 @@ class Data {
                     if(i.slot1SelectedValues != ""){
                         val itemList1 = i.slot1SelectedValues?.split(",")
                         if (itemList1 != null) {
-                            i.slot1 = itemList1.map { it.toFloat() }.sum()
+                            for(item in itemList1){
+                                i.slot1 += jsonObject.get(item).toString().toFloat()
+                            }
                         }
                     }
                     if(i.slot2SelectedValues != ""){
                         val itemList2 = i.slot2SelectedValues?.split(",")
                         if (itemList2 != null) {
-                            i.slot2 = itemList2.map { it.toFloat() }.sum()
+                            for(item in itemList2){
+                                try {
+                                    i.slot2 += jsonObject.get(item).toString().toFloat()
+                                }catch (e: Exception){
+                                    Log.d("TAG", "updateApexWidgetsData: " + e.message)
+                                    i.slot1 += 0.0f
+                                }
+                            }
                         }
                     }
                     if(i.slot3SelectedValues != ""){
                         val itemList3 = i.slot3SelectedValues?.split(",")
                         if (itemList3 != null) {
-                            i.slot3 = itemList3.map { it.toFloat() }.sum()
+                            for(item in itemList3){
+                                i.slot3 += jsonObject.get(item).toString().toFloat()
+                            }
                         }
                     }
                     Database.getDatabase(context).customWidgetsDao().updateApexPowerValuesWidget(i)
