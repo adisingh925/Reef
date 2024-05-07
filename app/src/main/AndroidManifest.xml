@@ -179,18 +179,18 @@
                 android:resource="@xml/apex_single_value_type2_widget_info" />
         </receiver>
 
-        <receiver
-            android:name=".widgetprovider.ApexGraphWidgetProvider"
-            android:label="Apex Graph Widget"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
+<!--        <receiver-->
+<!--            android:name=".widgetprovider.ApexGraphWidgetProvider"-->
+<!--            android:label="Apex Graph Widget"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+<!--            </intent-filter>-->
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/apex_graph_widget_info" />
-        </receiver>
+<!--            <meta-data-->
+<!--                android:name="android.appwidget.provider"-->
+<!--                android:resource="@xml/apex_graph_widget_info" />-->
+<!--        </receiver>-->
 
         <receiver
             android:name=".utils.AlarmReceiver"
