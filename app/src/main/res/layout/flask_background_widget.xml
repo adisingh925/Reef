@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="300dp"
     android:layout_margin="@dimen/medium_margin"
+    android:id="@+id/apex_flask_background_widgets_layout"
     android:background="@drawable/linear_layout_corner_radius"
     android:layout_height="150dp">
 

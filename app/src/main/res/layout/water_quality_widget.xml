@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:background="@drawable/linear_layout_corner_radius_black"
     android:layout_margin="@dimen/medium_margin"
+    android:id="@+id/apex_water_quality_widget_relative_layout"
     android:orientation="vertical"
     android:layout_height="150dp">
 

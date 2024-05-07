@@ -1,19 +1,26 @@
 package app.android.damien.reef.widgetprovider
 
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
+import android.content.ComponentName
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
+import android.util.Log
 import android.widget.RemoteViews
 import app.android.damien.reef.R
 import app.android.damien.reef.database.Database
 import app.android.damien.reef.database_model.ApexSingleValueTypeOneModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.storage.SharedPreferences
+import app.android.damien.reef.utils.Constants
+import app.android.damien.reef.utils.Data
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.json.JSONArray
 
 class ApexSingleValueType2Provider : AppWidgetProvider() {
 
@@ -48,8 +55,49 @@ class ApexSingleValueType2Provider : AppWidgetProvider() {
                 views.setTextColor(R.id.unit, data[0].textColor)
                 views.setTextColor(R.id.timestamp, data[0].textColor)
 
+                val intent = Intent(context, ApexSingleValueType2Provider::class.java)
+                intent.action = Constants.UPDATE_WIDGET_ACTION
+                val pendingIntent = PendingIntent.getBroadcast(
+                    context,
+                    0,
+                    intent,
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                )
+
+                views.setOnClickPendingIntent(
+                    R.id.layout,
+                    pendingIntent
+                )
+
                 appWidgetManager?.updateAppWidget(appWidgetId, views)
             }
         }
+    }
+
+    override fun onReceive(context: Context?, intent: Intent?) {
+        super.onReceive(context, intent)
+
+        if (intent?.action == Constants.UPDATE_WIDGET_ACTION) {
+            // Handle widget tap here
+            Log.d("ApexSingleValueType2Provider", "Widget tapped")
+
+            CoroutineScope(Dispatchers.IO).launch {
+                Data().getApexData(this)
+            }.invokeOnCompletion {
+                Data().updateApexWidgetsData(
+                    context,
+                    JSONArray(SharedPreferences.read("apexData", "").toString())
+                )
+                updateWidget(context)
+            }
+        }
+    }
+
+    private fun updateWidget(context: Context?) {
+        val appWidgetManager = AppWidgetManager.getInstance(context)
+        val appWidgetIds = appWidgetManager.getAppWidgetIds(
+            ComponentName(context!!, ApexSingleValueType2Provider::class.java)
+        )
+        onUpdate(context, appWidgetManager, appWidgetIds)
     }
 }

@@ -46,4 +46,6 @@ object Constants {
     const val CUSTOM_WIDGET_TWO_RECTANGLE = "CWTR"
 
     const val CONTENT_TYPE = "application/json"
+
+    const val UPDATE_WIDGET_ACTION = "UPDATE_WIDGET_ACTION"
 }

@@ -13,6 +13,7 @@ import app.android.damien.reef.R
 import app.android.damien.reef.database.Database
 import app.android.damien.reef.database_model.ApexCircleWidgetModel
 import app.android.damien.reef.storage.SharedPreferences
+import app.android.damien.reef.utils.Constants.UPDATE_WIDGET_ACTION
 import app.android.damien.reef.utils.Data
 import app.android.damien.reef.utils.Toast
 import kotlinx.coroutines.CoroutineScope
@@ -88,10 +89,6 @@ class ApexCircleWidgetProvider : AppWidgetProvider() {
 
     override fun onDeleted(context: Context?, appWidgetIds: IntArray?) {
         super.onDeleted(context, appWidgetIds)
-    }
-
-    companion object {
-        const val UPDATE_WIDGET_ACTION = "UPDATE_WIDGET_ACTION"
     }
 
     override fun onReceive(context: Context?, intent: Intent?) {
