@@ -19,6 +19,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONArray
+import java.util.Locale
 
 class ApexPowerValueWidgetProvider : AppWidgetProvider() {
 
@@ -33,9 +34,14 @@ class ApexPowerValueWidgetProvider : AppWidgetProvider() {
                 data = Database.getDatabase(context!!).customWidgetsDao().readApexPowerValuesWidgetBackground()
             }.invokeOnCompletion {
                 val views = RemoteViews(context?.packageName, R.layout.power_value_widget)
-                views.setTextViewText(R.id.value1, data[0].slot1.toString())
-                views.setTextViewText(R.id.value2, data[0].slot2.toString())
-                views.setTextViewText(R.id.value3, data[0].slot3.toString())
+
+                val slot1Value = String.format(Locale.getDefault(), "%.2f", data[0].slot1)
+                val slot2Value = String.format(Locale.getDefault(), "%.2f", data[0].slot2)
+                val slot3Value = String.format(Locale.getDefault(), "%.2f", data[0].slot3)
+
+                views.setTextViewText(R.id.value1, slot1Value)
+                views.setTextViewText(R.id.value2, slot2Value)
+                views.setTextViewText(R.id.value3, slot3Value)
 
                 val intent = Intent(context, ApexPowerValueWidgetProvider::class.java)
                 intent.action = UPDATE_WIDGET_ACTION
