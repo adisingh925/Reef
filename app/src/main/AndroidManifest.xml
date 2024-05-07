@@ -29,7 +29,8 @@
         </activity>
 
         <receiver
-            android:name=".widgetprovider.CustomWidgetProvider"
+            android:name=".widgetprovider.Focustronic1ElementWidget"
+            android:label="Focustronic One Element Widget"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
