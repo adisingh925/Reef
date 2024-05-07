@@ -28,6 +28,7 @@ class ApexTwoRectangleWidgetProvider : AppWidgetProvider() {
         appWidgetIds: IntArray?
     ) {
         appWidgetIds?.forEach { appWidgetId ->
+            Log.d("ApexTwoRectangleWidgetProvider", "onUpdate$appWidgetId")
             SharedPreferences.init(context!!)
             var data : List<ApexTwoRectangleWidgets>
             CoroutineScope(Dispatchers.IO).launch {

@@ -354,16 +354,16 @@ class Data {
                     Database.getDatabase(context).customWidgetsDao().updateApexTwoRectangleWidget(i)
                 }
 
-                val intent = Intent(
-                    context,
-                    ApexTwoRectangleWidgetProvider::class.java
-                )
-                intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
-                val ids: IntArray = AppWidgetManager.getInstance(context).getAppWidgetIds(
-                    ComponentName(context, ApexTwoRectangleWidgetProvider::class.java)
-                )
-                intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
-                context.sendBroadcast(intent)
+//                val intent = Intent(
+//                    context,
+//                    ApexTwoRectangleWidgetProvider::class.java
+//                )
+//                intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+//                val ids: IntArray = AppWidgetManager.getInstance(context).getAppWidgetIds(
+//                    ComponentName(context, ApexTwoRectangleWidgetProvider::class.java)
+//                )
+//                intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+//                context.sendBroadcast(intent)
 
                 val apexSingleValueType1 = Database.getDatabase(context).customWidgetsDao().readApexSingleValueTypeOneWidgetBackground()
                 for(i in apexSingleValueType1){

@@ -73,7 +73,7 @@ class ApexPowerValueWidgetProvider : AppWidgetProvider() {
 
         if (intent?.action == UPDATE_WIDGET_ACTION) {
             // Handle widget tap here
-            Log.d("ApexFlaskBackgroundWidgetProvider", "Widget tapped")
+            Log.d("ApexFlaskBackgroundWidgetProvider", "ApexFlaskBackgroundWidgetProvider tapped")
 
             SharedPreferences.init(context!!)
             updateWidget(context)
