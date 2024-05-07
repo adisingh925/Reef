@@ -28,11 +28,18 @@ class ApexTwoRectangleWidgetProvider : AppWidgetProvider() {
         appWidgetIds: IntArray?
     ) {
         appWidgetIds?.forEach { appWidgetId ->
-            var data : List<ApexTwoRectangleWidgets> = emptyList()
+            SharedPreferences.init(context!!)
+            var data : List<ApexTwoRectangleWidgets>
             CoroutineScope(Dispatchers.IO).launch {
-                data = Database.getDatabase(context!!).customWidgetsDao().readApexTwoRectangleWidgetBackground()
+                Data().getApexData(this)
             }.invokeOnCompletion {
-                val views = RemoteViews(context?.packageName, R.layout.two_rectangle_widget)
+                Data().updateApexWidgetsData(
+                    context,
+                    JSONArray(SharedPreferences.read("apexData", "").toString())
+                )
+                data = Database.getDatabase(context).customWidgetsDao().readApexTwoRectangleWidgetBackground()
+
+                val views = RemoteViews(context.packageName, R.layout.two_rectangle_widget)
 
                 views.setTextViewText(R.id.timestamp, SharedPreferences.read("lastUpdatedApex", ""))
                 views.setTextViewText(R.id.timestamp2, SharedPreferences.read("lastUpdatedApex", ""))
@@ -70,17 +77,10 @@ class ApexTwoRectangleWidgetProvider : AppWidgetProvider() {
 
         if (intent?.action == Constants.UPDATE_WIDGET_ACTION) {
             // Handle widget tap here
-            Log.d("ApexTwoRectangleWidgetProvider", "Widget tapped")
+            Log.d("ApexTwoRectangleWidgetProvider", "ApexTwoRectangleWidgetProvider tapped")
 
-            CoroutineScope(Dispatchers.IO).launch {
-                Data().getApexData(this)
-            }.invokeOnCompletion {
-                Data().updateApexWidgetsData(
-                    context,
-                    JSONArray(SharedPreferences.read("apexData", "").toString())
-                )
-                updateWidget(context)
-            }
+            SharedPreferences.init(context!!)
+            updateWidget(context)
         }
     }
 

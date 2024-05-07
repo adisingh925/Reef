@@ -28,11 +28,18 @@ class ApexSingleValueType1Provider : AppWidgetProvider() {
         appWidgetIds: IntArray?
     ) {
         appWidgetIds?.forEach { appWidgetId ->
-            var data : List<ApexSingleValueTypeOneModel> = emptyList()
+            SharedPreferences.init(context!!)
+            var data : List<ApexSingleValueTypeOneModel>
             CoroutineScope(Dispatchers.IO).launch {
-                data = Database.getDatabase(context!!).customWidgetsDao().readApexSingleValueTypeOneWidgetBackground()
+                Data().getApexData(this)
             }.invokeOnCompletion {
-                val views = RemoteViews(context?.packageName, R.layout.single_value_type_1_apex)
+                Data().updateApexWidgetsData(
+                    context,
+                    JSONArray(SharedPreferences.read("apexData", "").toString())
+                )
+                data = Database.getDatabase(context).customWidgetsDao().readApexSingleValueTypeOneWidgetBackground()
+
+                val views = RemoteViews(context.packageName, R.layout.single_value_type_1_apex)
 
                 if(data[0].givenName.isNullOrBlank()){
                     if(data[0].actualName.equals("NaN")){
@@ -75,17 +82,10 @@ class ApexSingleValueType1Provider : AppWidgetProvider() {
 
         if (intent?.action == Constants.UPDATE_WIDGET_ACTION) {
             // Handle widget tap here
-            Log.d("ApexSingleValueType1Provider", "Widget tapped")
+            Log.d("ApexSingleValueType1Provider", "ApexSingleValueType1Provider tapped")
 
-            CoroutineScope(Dispatchers.IO).launch {
-                Data().getApexData(this)
-            }.invokeOnCompletion {
-                Data().updateApexWidgetsData(
-                    context,
-                    JSONArray(SharedPreferences.read("apexData", "").toString())
-                )
-                updateWidget(context)
-            }
+            SharedPreferences.init(context!!)
+            updateWidget(context)
         }
     }
 

@@ -26,11 +26,17 @@ class ApexFlaskBackgroundWidgetProvider : AppWidgetProvider() {
         appWidgetIds: IntArray?
     ) {
         appWidgetIds?.forEach { appWidgetId ->
-            var data : List<ApexFlaskBackgroundWidgetModel> = emptyList()
+            SharedPreferences.init(context!!)
+            var data : List<ApexFlaskBackgroundWidgetModel>
             CoroutineScope(Dispatchers.IO).launch {
-                data = Database.getDatabase(context!!).customWidgetsDao().readApexFlaskBackgroundWidgetBackground()
+                Data().getApexData(this)
             }.invokeOnCompletion {
-                val views = RemoteViews(context?.packageName, R.layout.flask_background_widget)
+                Data().updateApexWidgetsData(
+                    context,
+                    JSONArray(SharedPreferences.read("apexData", "").toString())
+                )
+                data = Database.getDatabase(context).customWidgetsDao().readApexFlaskBackgroundWidgetBackground()
+                val views = RemoteViews(context.packageName, R.layout.flask_background_widget)
                 views.setTextViewText(R.id.slot1value, data[0].slot1Value.toString())
                 views.setTextViewText(R.id.slot2value, data[0].slot2Value.toString())
                 views.setTextViewText(R.id.slot3value, data[0].slot3Value.toString())
@@ -93,17 +99,10 @@ class ApexFlaskBackgroundWidgetProvider : AppWidgetProvider() {
 
         if (intent?.action == UPDATE_WIDGET_ACTION) {
             // Handle widget tap here
-            Log.d("ApexFlaskBackgroundWidgetProvider", "Widget tapped")
+            Log.d("ApexFlaskBackgroundWidgetProvider", "ApexFlaskBackgroundWidgetProvider tapped")
 
-            CoroutineScope(Dispatchers.IO).launch {
-                Data().getApexData(this)
-            }.invokeOnCompletion {
-                Data().updateApexWidgetsData(
-                    context,
-                    JSONArray(SharedPreferences.read("apexData", "").toString())
-                )
-                updateWidget(context)
-            }
+            SharedPreferences.init(context!!)
+            updateWidget(context)
         }
     }
 

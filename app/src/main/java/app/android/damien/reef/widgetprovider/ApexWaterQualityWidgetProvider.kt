@@ -28,11 +28,17 @@ class ApexWaterQualityWidgetProvider : AppWidgetProvider() {
         appWidgetIds: IntArray?
     ) {
         appWidgetIds?.forEach { appWidgetId ->
-            var data : List<ApexWaterQualityWidget> = emptyList()
+            SharedPreferences.init(context!!)
+            var data : List<ApexWaterQualityWidget>
             CoroutineScope(Dispatchers.IO).launch {
-                data = Database.getDatabase(context!!).customWidgetsDao().readApexWaterQualityWidgetBackground()
+                Data().getApexData(this)
             }.invokeOnCompletion {
-                val views = RemoteViews(context?.packageName, R.layout.water_quality_widget)
+                Data().updateApexWidgetsData(
+                    context,
+                    JSONArray(SharedPreferences.read("apexData", "").toString())
+                )
+                data = Database.getDatabase(context).customWidgetsDao().readApexWaterQualityWidgetBackground()
+                val views = RemoteViews(context.packageName, R.layout.water_quality_widget)
                 views.setTextViewText(R.id.slot1value, data[0].slot1Value.toString())
                 views.setTextViewText(R.id.slot2value, data[0].slot2Value.toString())
                 views.setTextViewText(R.id.slot3value, data[0].slot3Value.toString())
@@ -121,17 +127,10 @@ class ApexWaterQualityWidgetProvider : AppWidgetProvider() {
 
         if (intent?.action == Constants.UPDATE_WIDGET_ACTION) {
             // Handle widget tap here
-            Log.d("ApexWaterQualityWidgetProvider", "Widget tapped")
+            Log.d("ApexWaterQualityWidgetProvider", "ApexWaterQualityWidgetProvider tapped")
 
-            CoroutineScope(Dispatchers.IO).launch {
-                Data().getApexData(this)
-            }.invokeOnCompletion {
-                Data().updateApexWidgetsData(
-                    context,
-                    JSONArray(SharedPreferences.read("apexData", "").toString())
-                )
-                updateWidget(context)
-            }
+            SharedPreferences.init(context!!)
+            updateWidget(context)
         }
     }
 

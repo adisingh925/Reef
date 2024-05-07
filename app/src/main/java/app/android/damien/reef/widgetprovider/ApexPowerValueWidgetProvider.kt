@@ -29,11 +29,17 @@ class ApexPowerValueWidgetProvider : AppWidgetProvider() {
         appWidgetIds: IntArray?
     ) {
         appWidgetIds?.forEach { appWidgetId ->
-            var data : List<ApexPowerValuesWidgetModel> = emptyList()
+            SharedPreferences.init(context!!)
+            var data : List<ApexPowerValuesWidgetModel>
             CoroutineScope(Dispatchers.IO).launch {
-                data = Database.getDatabase(context!!).customWidgetsDao().readApexPowerValuesWidgetBackground()
+                Data().getApexData(this)
             }.invokeOnCompletion {
-                val views = RemoteViews(context?.packageName, R.layout.power_value_widget)
+                Data().updateApexWidgetsData(
+                    context,
+                    JSONArray(SharedPreferences.read("apexData", "").toString())
+                )
+                data = Database.getDatabase(context).customWidgetsDao().readApexPowerValuesWidgetBackground()
+                val views = RemoteViews(context.packageName, R.layout.power_value_widget)
 
                 val slot1Value = String.format(Locale.getDefault(), "%.2f", data[0].slot1)
                 val slot2Value = String.format(Locale.getDefault(), "%.2f", data[0].slot2)
@@ -69,15 +75,8 @@ class ApexPowerValueWidgetProvider : AppWidgetProvider() {
             // Handle widget tap here
             Log.d("ApexFlaskBackgroundWidgetProvider", "Widget tapped")
 
-            CoroutineScope(Dispatchers.IO).launch {
-                Data().getApexData(this)
-            }.invokeOnCompletion {
-                Data().updateApexWidgetsData(
-                    context,
-                    JSONArray(SharedPreferences.read("apexData", "").toString())
-                )
-                updateWidget(context)
-            }
+            SharedPreferences.init(context!!)
+            updateWidget(context)
         }
     }
 

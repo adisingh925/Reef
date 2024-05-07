@@ -28,12 +28,17 @@ class ApexCircleWidgetProvider : AppWidgetProvider() {
         appWidgetIds: IntArray?
     ) {
         appWidgetIds?.forEach { appWidgetId ->
-            var data: List<ApexCircleWidgetModel> = emptyList()
+            SharedPreferences.init(context!!)
+            var data: List<ApexCircleWidgetModel>
             CoroutineScope(Dispatchers.IO).launch {
-                data = Database.getDatabase(context!!).customWidgetsDao()
-                    .readApexCircleWidgetBackground()
+                Data().getApexData(this)
             }.invokeOnCompletion {
-                val views = RemoteViews(context?.packageName, R.layout.circle_widgets)
+                Data().updateApexWidgetsData(
+                    context,
+                    JSONArray(SharedPreferences.read("apexData", "").toString())
+                )
+                data = Database.getDatabase(context).customWidgetsDao().readApexCircleWidgetBackground()
+                val views = RemoteViews(context.packageName, R.layout.circle_widgets)
                 views.setTextViewText(R.id.slot1value, data[0].slot1Value.toString())
                 views.setTextViewText(R.id.slot2value, data[0].slot2Value.toString())
                 views.setTextViewText(R.id.slot3value, data[0].slot3Value.toString())
@@ -96,17 +101,10 @@ class ApexCircleWidgetProvider : AppWidgetProvider() {
 
         if (intent?.action == UPDATE_WIDGET_ACTION) {
             // Handle widget tap here
-            Log.d("ApexCircleWidgetProvider", "Widget tapped")
+            Log.d("ApexCircleWidgetProvider", "ApexCircleWidgetProvider tapped")
 
-            CoroutineScope(Dispatchers.IO).launch {
-                Data().getApexData(this)
-            }.invokeOnCompletion {
-                Data().updateApexWidgetsData(
-                    context,
-                    JSONArray(SharedPreferences.read("apexData", "").toString())
-                )
-                updateWidget(context)
-            }
+            SharedPreferences.init(context!!)
+            updateWidget(context)
         }
     }
 
