@@ -63,8 +63,9 @@ class Authenticator : Authenticator {
                     .header("x-session-token", newCookie.toString())
                     .build()
             }
-        } else
+        } else {
             Log.d("Authenticator", "Unknown URL: $baseUrl")
+        }
 
 
         return null
