@@ -9,5 +9,5 @@
     android:targetCellHeight="1"
     android:maxResizeWidth="250dp"
     android:maxResizeHeight="120dp"
-    android:previewLayout="@layout/two_rectangle_widget"
+    android:previewLayout="@layout/water_quality_widget"
     android:widgetCategory="home_screen" />
