@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:foreground="?android:attr/selectableItemBackground"
     android:background="@drawable/linear_layout_corner_radius_black"
     android:layout_margin="@dimen/medium_margin"
     android:id="@+id/apex_water_quality_widget_relative_layout"

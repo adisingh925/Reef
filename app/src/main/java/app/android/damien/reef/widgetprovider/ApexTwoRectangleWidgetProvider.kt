@@ -51,8 +51,8 @@ class ApexTwoRectangleWidgetProvider : AppWidgetProvider() {
                 views.setTextViewText(R.id.unit, data[0].topRectangleUnit)
                 views.setTextViewText(R.id.unit2, data[0].bottomRectangleUnit)
 
-                views.setInt(R.id.card1, "setBackgroundColor", data[0].topRectangleColor);
-                views.setInt(R.id.card2, "setBackgroundColor", data[0].bottomRectangleColor);
+                views.setInt(R.id.card1, "setBackgroundColor", data[0].topRectangleColor)
+                views.setInt(R.id.card2, "setBackgroundColor", data[0].bottomRectangleColor)
 
                 val intent = Intent(context, ApexTwoRectangleWidgetProvider::class.java)
                 intent.action = Constants.UPDATE_WIDGET_ACTION

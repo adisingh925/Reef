@@ -4,6 +4,7 @@
     android:layout_width="150dp"
     android:layout_height="150dp"
     android:id="@+id/layout"
+    android:foreground="?android:attr/selectableItemBackground"
     android:layout_margin="@dimen/medium_margin"
     android:background="@drawable/linear_layout_corner_radius_black"
     android:orientation="vertical"
