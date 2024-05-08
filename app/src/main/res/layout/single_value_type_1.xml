@@ -5,6 +5,7 @@
     android:layout_height="150dp"
     android:id="@+id/layout"
     android:layout_margin="@dimen/medium_margin"
+    android:foreground="?android:attr/selectableItemBackground"
     android:background="@drawable/linear_layout_corner_radius_black"
     android:orientation="vertical"
     app:cardCornerRadius="15dp"

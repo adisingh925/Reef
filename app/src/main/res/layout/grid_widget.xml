@@ -3,6 +3,8 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_margin="@dimen/medium_margin"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:id="@+id/grid_widget_linear_layout"
     android:background="@drawable/linear_layout_corner_radius_black"
     android:layout_height="wrap_content">
 
