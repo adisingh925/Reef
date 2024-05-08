@@ -55,7 +55,7 @@ class Focustronic1ElementWidget_5 : AppWidgetProvider(){
 
                 views.setInt(R.id.custom_widget_layout_card, "setBackgroundColor", data[4].backgroundColor)
 
-                val intent = Intent(context, Focustronic1ElementWidget_1::class.java)
+                val intent = Intent(context, Focustronic1ElementWidget_5::class.java)
                 intent.action = Constants.UPDATE_WIDGET_ACTION
                 val pendingIntent = PendingIntent.getBroadcast(
                     context,
@@ -89,7 +89,7 @@ class Focustronic1ElementWidget_5 : AppWidgetProvider(){
     private fun updateWidget(context: Context?) {
         val appWidgetManager = AppWidgetManager.getInstance(context)
         val appWidgetIds = appWidgetManager.getAppWidgetIds(
-            ComponentName(context!!, Focustronic1ElementWidget_1::class.java)
+            ComponentName(context!!, Focustronic1ElementWidget_5::class.java)
         )
         onUpdate(context, appWidgetManager, appWidgetIds)
     }

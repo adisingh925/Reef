@@ -172,8 +172,60 @@
         </receiver>
 
         <receiver
-            android:name=".widgetprovider.ApexCircleWidgetProvider"
-            android:label="Apex Circle Widget"
+            android:name=".widgetprovider.apexcirclewidgetprovider.ApexCircleWidgetProvider_1"
+            android:label="Apex Circle Widget - 1"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_circle_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apexcirclewidgetprovider.ApexCircleWidgetProvider_2"
+            android:label="Apex Circle Widget - 2"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_circle_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apexcirclewidgetprovider.ApexCircleWidgetProvider_3"
+            android:label="Apex Circle Widget - 3"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_circle_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apexcirclewidgetprovider.ApexCircleWidgetProvider_4"
+            android:label="Apex Circle Widget - 4"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_circle_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apexcirclewidgetprovider.ApexCircleWidgetProvider_5"
+            android:label="Apex Circle Widget - 5"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
