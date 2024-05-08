@@ -29,8 +29,60 @@
         </activity>
 
         <receiver
-            android:name=".widgetprovider.Focustronic1ElementWidget"
-            android:label="Focustronic One Element Widget"
+            android:name=".widgetprovider.focustronic1elementwidget.Focustronic1ElementWidget_1"
+            android:label="Focustronic One Element Widget - 1"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/custom_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.focustronic1elementwidget.Focustronic1ElementWidget_2"
+            android:label="Focustronic One Element Widget - 2"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/custom_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.focustronic1elementwidget.Focustronic1ElementWidget_3"
+            android:label="Focustronic One Element Widget - 3"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/custom_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.focustronic1elementwidget.Focustronic1ElementWidget_4"
+            android:label="Focustronic One Element Widget - 4"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/custom_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.focustronic1elementwidget.Focustronic1ElementWidget_5"
+            android:label="Focustronic One Element Widget - 5"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

@@ -1,4 +1,4 @@
-package app.android.damien.reef.widgetprovider
+package app.android.damien.reef.widgetprovider.focustronic1elementwidget
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -11,7 +11,6 @@ import android.widget.RemoteViews
 import app.android.damien.reef.R
 import app.android.damien.reef.database.Database
 import app.android.damien.reef.database_model.FocustronicOneElementWidgetModel
-import app.android.damien.reef.database_model.FocustronicSingleValueType1WidgetModel
 import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
 import app.android.damien.reef.utils.Data
@@ -20,7 +19,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 
-class Focustronic1ElementWidget : AppWidgetProvider() {
+class Focustronic1ElementWidget_4 : AppWidgetProvider() {
 
     override fun onUpdate(
         context: Context?,
@@ -41,22 +40,22 @@ class Focustronic1ElementWidget : AppWidgetProvider() {
 
                 val views = RemoteViews(context.packageName, R.layout.custom_widget_layout)
 
-                if(data[0].givenName.isNullOrBlank()){
-                    if(data[0].actualName.equals("NaN")){
+                if(data[3].givenName.isNullOrBlank()){
+                    if(data[3].actualName.equals("NaN")){
                         views.setTextViewText(R.id.heading, "NaN")
                     } else {
-                        views.setTextViewText(R.id.heading, data[0].actualName)
+                        views.setTextViewText(R.id.heading, data[3].actualName)
                     }
                 } else {
-                    views.setTextViewText(R.id.heading, data[0].givenName)
+                    views.setTextViewText(R.id.heading, data[3].givenName)
                 }
 
-                views.setTextViewText(R.id.value, data[0].value.toString())
-                views.setTextViewText(R.id.unit, data[0].unit.toString())
+                views.setTextViewText(R.id.value, data[3].value.toString())
+                views.setTextViewText(R.id.unit, data[3].unit.toString())
 
-                views.setInt(R.id.custom_widget_layout_card, "setBackgroundColor", data[0].backgroundColor)
+                views.setInt(R.id.custom_widget_layout_card, "setBackgroundColor", data[3].backgroundColor)
 
-                val intent = Intent(context, Focustronic1ElementWidget::class.java)
+                val intent = Intent(context, Focustronic1ElementWidget_1::class.java)
                 intent.action = Constants.UPDATE_WIDGET_ACTION
                 val pendingIntent = PendingIntent.getBroadcast(
                     context,
@@ -90,7 +89,7 @@ class Focustronic1ElementWidget : AppWidgetProvider() {
     private fun updateWidget(context: Context?) {
         val appWidgetManager = AppWidgetManager.getInstance(context)
         val appWidgetIds = appWidgetManager.getAppWidgetIds(
-            ComponentName(context!!, Focustronic1ElementWidget::class.java)
+            ComponentName(context!!, Focustronic1ElementWidget_1::class.java)
         )
         onUpdate(context, appWidgetManager, appWidgetIds)
     }
