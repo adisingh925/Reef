@@ -40,6 +40,7 @@ class TwoRectangleViewPagerFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         if(arguments != null){
+            binding.delete.visibility = View.VISIBLE
             Log.d("SingleValueType2ViewPagerFragment", arguments.toString())
             customWidgetTwoRectangleModel = requireArguments().getParcelable(Constants.CUSTOM_WIDGET_TWO_RECTANGLE)!!
 

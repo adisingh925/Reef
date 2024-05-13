@@ -41,6 +41,7 @@ class SingleValueType1ViewPagerFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         if(arguments != null){
+            binding.delete.visibility = View.VISIBLE
             Log.d("SingleValueType2ViewPagerFragment", arguments.toString())
             customWidgetSingleValueType1 = requireArguments().getParcelable(Constants.CUSTOM_WIDGET_SINGLE_VALUE_TYPE_1)!!
 
