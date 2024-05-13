@@ -647,6 +647,7 @@ class MyWidgetsChildAdapter(
 
             heading.text = setCustomSingleValueType2WidgetData[position].givenName
             value.text = String.format(Locale.getDefault(), "%.2f", setCustomSingleValueType2WidgetData[position].value)
+            unit.text = setCustomSingleValueType2WidgetData[position].unit
             value.setTextColor(setCustomSingleValueType2WidgetData[position].textColor)
             heading.setTextColor(setCustomSingleValueType2WidgetData[position].textColor)
             unit.setTextColor(setCustomSingleValueType2WidgetData[position].textColor)

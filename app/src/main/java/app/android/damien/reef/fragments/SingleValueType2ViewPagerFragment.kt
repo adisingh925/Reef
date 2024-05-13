@@ -88,16 +88,29 @@ class SingleValueType2ViewPagerFragment : Fragment() {
         }
 
         binding.submit.setOnClickListener {
-            widgetsViewModel.insertCustomWidgetSingleValueType2(
-                CustomWidgetSingleValueType2Model(
-                    0,
-                    binding.parameterInputField.text.toString(),
-                    binding.valueInputField.text.toString().toFloat(),
-                    binding.unitInputField.text.toString(),
-                    textColor,
-                    ringColor
+            if(arguments != null){
+                widgetsViewModel.updateCustomWidgetSingleValueType2(
+                    CustomWidgetSingleValueType2Model(
+                        customWidgetSingleValueType2.id,
+                        binding.parameterInputField.text.toString(),
+                        binding.valueInputField.text.toString().toFloat(),
+                        binding.unitInputField.text.toString(),
+                        textColor,
+                        ringColor
+                    )
                 )
-            )
+            }else{
+                widgetsViewModel.insertCustomWidgetSingleValueType2(
+                    CustomWidgetSingleValueType2Model(
+                        0,
+                        binding.parameterInputField.text.toString(),
+                        binding.valueInputField.text.toString().toFloat(),
+                        binding.unitInputField.text.toString(),
+                        textColor,
+                        ringColor
+                    )
+                )
+            }
 
             Toast.showSnackbar(binding.root,"Single Value Type 2 Custom Widget Added Successfully")
             findNavController().popBackStack()
