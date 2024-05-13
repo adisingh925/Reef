@@ -1,10 +1,10 @@
-package app.android.damien.reef.widgetprovider
+package app.android.damien.reef.widgetprovider.apexgraphwidget
 
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 
-class ApexGraphWidgetProvider : AppWidgetProvider() {
+class ApexGraphWidgetProvider_1 : AppWidgetProvider() {
 
     override fun onUpdate(
         context: Context?,

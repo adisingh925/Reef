@@ -1,4 +1,4 @@
-package app.android.damien.reef.widgetprovider
+package app.android.damien.reef.widgetprovider.apexwaterquality
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -10,7 +10,6 @@ import android.util.Log
 import android.widget.RemoteViews
 import app.android.damien.reef.R
 import app.android.damien.reef.database.Database
-import app.android.damien.reef.database_model.ApexFlaskBackgroundWidgetModel
 import app.android.damien.reef.database_model.ApexWaterQualityWidget
 import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
@@ -20,7 +19,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 
-class ApexWaterQualityWidgetProvider : AppWidgetProvider() {
+class ApexWaterQualityWidgetProvider_1 : AppWidgetProvider() {
 
     override fun onUpdate(
         context: Context?,
@@ -103,7 +102,7 @@ class ApexWaterQualityWidgetProvider : AppWidgetProvider() {
                     views.setTextViewText(R.id.slot5name, data[0].slot5GivenName)
                 }
 
-                val intent = Intent(context, ApexWaterQualityWidgetProvider::class.java)
+                val intent = Intent(context, ApexWaterQualityWidgetProvider_1::class.java)
                 intent.action = Constants.UPDATE_WIDGET_ACTION
                 val pendingIntent = PendingIntent.getBroadcast(
                     context,
@@ -137,7 +136,7 @@ class ApexWaterQualityWidgetProvider : AppWidgetProvider() {
     private fun updateWidget(context: Context?) {
         val appWidgetManager = AppWidgetManager.getInstance(context)
         val appWidgetIds = appWidgetManager.getAppWidgetIds(
-            ComponentName(context!!, ApexWaterQualityWidgetProvider::class.java)
+            ComponentName(context!!, ApexWaterQualityWidgetProvider_1::class.java)
         )
         onUpdate(context, appWidgetManager, appWidgetIds)
     }

@@ -40,20 +40,26 @@ class Focustronic1ElementWidget_2 : AppWidgetProvider() {
 
                 val views = RemoteViews(context.packageName, R.layout.custom_widget_layout)
 
-                if(data[1].givenName.isNullOrBlank()){
-                    if(data[1].actualName.equals("NaN")){
-                        views.setTextViewText(R.id.heading, "NaN")
+                if(data.lastIndex != 1){
+                    views.setTextViewText(R.id.heading, "NaN")
+                    views.setTextViewText(R.id.value, "0.0")
+                    views.setTextViewText(R.id.unit, "Unit")
+                }else{
+                    if(data[1].givenName.isNullOrBlank()){
+                        if(data[1].actualName.equals("NaN")){
+                            views.setTextViewText(R.id.heading, "NaN")
+                        } else {
+                            views.setTextViewText(R.id.heading, data[1].actualName)
+                        }
                     } else {
-                        views.setTextViewText(R.id.heading, data[1].actualName)
+                        views.setTextViewText(R.id.heading, data[1].givenName)
                     }
-                } else {
-                    views.setTextViewText(R.id.heading, data[1].givenName)
+
+                    views.setTextViewText(R.id.value, data[1].value.toString())
+                    views.setTextViewText(R.id.unit, data[1].unit.toString())
+                    views.setInt(R.id.custom_widget_layout_card, "setBackgroundColor", data[1].backgroundColor)
                 }
 
-                views.setTextViewText(R.id.value, data[1].value.toString())
-                views.setTextViewText(R.id.unit, data[1].unit.toString())
-
-                views.setInt(R.id.custom_widget_layout_card, "setBackgroundColor", data[1].backgroundColor)
 
                 val intent = Intent(context, Focustronic1ElementWidget_2::class.java)
                 intent.action = Constants.UPDATE_WIDGET_ACTION

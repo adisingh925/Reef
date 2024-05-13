@@ -94,7 +94,7 @@
         </receiver>
 
         <receiver
-            android:name=".widgetprovider.Focustronic2RectangleWidget"
+            android:name=".widgetprovider.focustronictworectangle.Focustronic2RectangleWidget_1"
             android:label="Focustronic Two Rectangle Widget"
             android:exported="true">
             <intent-filter>
@@ -107,7 +107,7 @@
         </receiver>
 
         <receiver
-            android:name=".widgetprovider.FocustronicSingleValueType1"
+            android:name=".widgetprovider.focustronicsinglevaluetype1.FocustronicSingleValueType1_1"
             android:label="Focustronic Single Value Type 1 Widget"
             android:exported="true">
             <intent-filter>
@@ -120,7 +120,7 @@
         </receiver>
 
         <receiver
-            android:name=".widgetprovider.FocustronicSingleValueType2"
+            android:name=".widgetprovider.focustronicsinglevaluetype2.FocustronicSingleValueType2_1"
             android:label="Focustronic Single Value Type 2 Widget"
             android:exported="true">
             <intent-filter>
@@ -133,7 +133,7 @@
         </receiver>
 
         <receiver
-            android:name=".widgetprovider.FocustronicGridWidget"
+            android:name=".widgetprovider.focustronicgridwidget.FocustronicGridWidget_1"
             android:label="Focustronic Grid Widget"
             android:exported="true">
             <intent-filter>
@@ -146,7 +146,7 @@
         </receiver>
 
         <receiver
-            android:name=".widgetprovider.ApexTwoRectangleWidgetProvider"
+            android:name=".widgetprovider.apex2rectanglewidget.ApexTwoRectangleWidgetProvider_1"
             android:label="Apex Two Rectangle Widget"
             android:exported="true">
             <intent-filter>
@@ -159,7 +159,7 @@
         </receiver>
 
         <receiver
-            android:name=".widgetprovider.ApexWaterQualityWidgetProvider"
+            android:name=".widgetprovider.apexwaterquality.ApexWaterQualityWidgetProvider_1"
             android:label="Apex Water Quality Widget"
             android:exported="true">
             <intent-filter>
@@ -237,7 +237,7 @@
         </receiver>
 
         <receiver
-            android:name=".widgetprovider.ApexFlaskBackgroundWidgetProvider"
+            android:name=".widgetprovider.apexflaskbackgroundwidget.ApexFlaskBackgroundWidgetProvider_1"
             android:label="Apex flask Background Widget"
             android:exported="true">
             <intent-filter>
@@ -250,7 +250,7 @@
         </receiver>
 
         <receiver
-            android:name=".widgetprovider.ApexPowerValueWidgetProvider"
+            android:name=".widgetprovider.apexpowervaluewidget.ApexPowerValueWidgetProvider_1"
             android:label="Apex Power Value Widget"
             android:exported="true">
             <intent-filter>
@@ -263,7 +263,7 @@
         </receiver>
 
         <receiver
-            android:name=".widgetprovider.ApexSingleValueType1Provider"
+            android:name=".widgetprovider.apexsinglevaluetype1.ApexSingleValueType1Provider_1"
             android:label="Apex Single Value Type 1 Widget"
             android:exported="true">
             <intent-filter>
@@ -276,7 +276,7 @@
         </receiver>
 
         <receiver
-            android:name=".widgetprovider.ApexSingleValueType2Provider"
+            android:name=".widgetprovider.apexsinglevaluetype2.ApexSingleValueType2Provider_1"
             android:label="Apex Single Value Type 2 Widget"
             android:exported="true">
             <intent-filter>

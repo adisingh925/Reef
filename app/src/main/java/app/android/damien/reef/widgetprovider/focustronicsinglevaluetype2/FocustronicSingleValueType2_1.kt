@@ -1,4 +1,4 @@
-package app.android.damien.reef.widgetprovider
+package app.android.damien.reef.widgetprovider.focustronicsinglevaluetype2
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -10,7 +10,6 @@ import android.util.Log
 import android.widget.RemoteViews
 import app.android.damien.reef.R
 import app.android.damien.reef.database.Database
-import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.database_model.FocustronicSingleValueType2WidgetModel
 import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
@@ -21,7 +20,7 @@ import kotlinx.coroutines.launch
 import org.json.JSONArray
 import java.util.Locale
 
-class FocustronicSingleValueType2 : AppWidgetProvider() {
+class FocustronicSingleValueType2_1 : AppWidgetProvider() {
 
     override fun onUpdate(
         context: Context?,
@@ -61,7 +60,7 @@ class FocustronicSingleValueType2 : AppWidgetProvider() {
                 views.setTextColor(R.id.unit, data[0].textColor)
                 views.setTextColor(R.id.timestamp, data[0].textColor)
 
-                val intent = Intent(context, FocustronicSingleValueType2::class.java)
+                val intent = Intent(context, FocustronicSingleValueType2_1::class.java)
                 intent.action = Constants.UPDATE_WIDGET_ACTION
                 val pendingIntent = PendingIntent.getBroadcast(
                     context,
@@ -95,7 +94,7 @@ class FocustronicSingleValueType2 : AppWidgetProvider() {
     private fun updateWidget(context: Context?) {
         val appWidgetManager = AppWidgetManager.getInstance(context)
         val appWidgetIds = appWidgetManager.getAppWidgetIds(
-            ComponentName(context!!, FocustronicSingleValueType2::class.java)
+            ComponentName(context!!, FocustronicSingleValueType2_1::class.java)
         )
         onUpdate(context, appWidgetManager, appWidgetIds)
     }

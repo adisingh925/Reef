@@ -1,4 +1,4 @@
-package app.android.damien.reef.widgetprovider
+package app.android.damien.reef.widgetprovider.apex2rectanglewidget
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -11,7 +11,6 @@ import android.widget.RemoteViews
 import app.android.damien.reef.R
 import app.android.damien.reef.database.Database
 import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
-import app.android.damien.reef.database_model.FocustronicTwoRectangleWidgetModel
 import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
 import app.android.damien.reef.utils.Data
@@ -20,41 +19,52 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 
-class Focustronic2RectangleWidget : AppWidgetProvider() {
-
+class ApexTwoRectangleWidgetProvider_2 : AppWidgetProvider() {
     override fun onUpdate(
         context: Context?,
         appWidgetManager: AppWidgetManager?,
         appWidgetIds: IntArray?
     ) {
         appWidgetIds?.forEach { appWidgetId ->
-            Log.d("FocustronicTwoRectangleWidgetProvider", "onUpdate")
+            Log.d("ApexTwoRectangleWidgetProvider", "onUpdate$appWidgetId")
             SharedPreferences.init(context!!)
-            var data : List<FocustronicTwoRectangleWidgetModel>
+            var data: List<ApexTwoRectangleWidgets>
             CoroutineScope(Dispatchers.IO).launch {
-                Data().getFocustronicResponse(this)
+                Data().getApexData(this)
             }.invokeOnCompletion {
-                Data().updateFocustronicWidgetData(
+                Data().updateApexWidgetsData(
                     context,
-                    JSONArray(SharedPreferences.read("focustronicData", "").toString())
+                    JSONArray(SharedPreferences.read("apexData", "").toString())
                 )
-                data = Database.getDatabase(context).customWidgetsDao().readFocustronicDoubleRectangleWidgetBackground()
+                data = Database.getDatabase(context).customWidgetsDao()
+                    .readApexTwoRectangleWidgetBackground()
 
                 val views = RemoteViews(context.packageName, R.layout.two_rectangle_widget)
 
-                views.setTextViewText(R.id.timestamp, SharedPreferences.read("lastUpdatedFocustronic", ""))
-                views.setTextViewText(R.id.timestamp2, SharedPreferences.read("lastUpdatedFocustronic", ""))
+                if (data.lastIndex >= 1) {
+                    views.setTextViewText(R.id.value, data[1].topRectangleValue.toString())
+                    views.setTextViewText(R.id.value2, data[1].bottomRectangleValue.toString())
 
-                views.setTextViewText(R.id.value, data[0].topRectangleValue.toString())
-                views.setTextViewText(R.id.value2, data[0].bottomRectangleValue.toString())
+                    views.setTextViewText(R.id.unit, data[1].topRectangleUnit)
+                    views.setTextViewText(R.id.unit2, data[1].bottomRectangleUnit)
 
-                views.setTextViewText(R.id.unit, data[0].topRectangleUnit)
-                views.setTextViewText(R.id.unit2, data[0].bottomRectangleUnit)
+                    views.setInt(R.id.card1, "setBackgroundColor", data[1].topRectangleColor)
+                    views.setInt(R.id.card2, "setBackgroundColor", data[1].bottomRectangleColor)
+                } else {
+                    views.setTextViewText(R.id.value, "NaN")
+                    views.setTextViewText(R.id.value2, "NaN")
 
-                views.setInt(R.id.card1, "setBackgroundColor", data[0].topRectangleColor);
-                views.setInt(R.id.card2, "setBackgroundColor", data[0].bottomRectangleColor);
+                    views.setTextViewText(R.id.unit, "Unit 1")
+                    views.setTextViewText(R.id.unit2, "Unit 2")
+                }
 
-                val intent = Intent(context, Focustronic2RectangleWidget::class.java)
+                views.setTextViewText(R.id.timestamp, SharedPreferences.read("lastUpdatedApex", ""))
+                views.setTextViewText(
+                    R.id.timestamp2,
+                    SharedPreferences.read("lastUpdatedApex", "")
+                )
+
+                val intent = Intent(context, ApexTwoRectangleWidgetProvider_2::class.java)
                 intent.action = Constants.UPDATE_WIDGET_ACTION
                 val pendingIntent = PendingIntent.getBroadcast(
                     context,
@@ -78,7 +88,7 @@ class Focustronic2RectangleWidget : AppWidgetProvider() {
 
         if (intent?.action == Constants.UPDATE_WIDGET_ACTION) {
             // Handle widget tap here
-            Log.d("Focustronic2RectangleWidget", "Focustronic2RectangleWidget tapped")
+            Log.d("ApexTwoRectangleWidgetProvider", "ApexTwoRectangleWidgetProvider tapped")
 
             SharedPreferences.init(context!!)
             updateWidget(context)
@@ -88,7 +98,7 @@ class Focustronic2RectangleWidget : AppWidgetProvider() {
     private fun updateWidget(context: Context?) {
         val appWidgetManager = AppWidgetManager.getInstance(context)
         val appWidgetIds = appWidgetManager.getAppWidgetIds(
-            ComponentName(context!!, Focustronic2RectangleWidget::class.java)
+            ComponentName(context!!, ApexTwoRectangleWidgetProvider_2::class.java)
         )
         onUpdate(context, appWidgetManager, appWidgetIds)
     }

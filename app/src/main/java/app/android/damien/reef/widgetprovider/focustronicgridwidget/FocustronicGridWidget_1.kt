@@ -1,4 +1,4 @@
-package app.android.damien.reef.widgetprovider
+package app.android.damien.reef.widgetprovider.focustronicgridwidget
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -19,7 +19,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 
-class FocustronicGridWidget : AppWidgetProvider() {
+class FocustronicGridWidget_1 : AppWidgetProvider() {
 
     override fun onUpdate(
         context: Context?,
@@ -107,7 +107,7 @@ class FocustronicGridWidget : AppWidgetProvider() {
                     views.setTextViewText(R.id.name8, data[0].slot8GivenName)
                 }
 
-                val intent = Intent(context, FocustronicGridWidget::class.java)
+                val intent = Intent(context, FocustronicGridWidget_1::class.java)
                 intent.action = Constants.UPDATE_WIDGET_ACTION
                 val pendingIntent = PendingIntent.getBroadcast(
                     context,
@@ -141,7 +141,7 @@ class FocustronicGridWidget : AppWidgetProvider() {
     private fun updateWidget(context: Context?) {
         val appWidgetManager = AppWidgetManager.getInstance(context)
         val appWidgetIds = appWidgetManager.getAppWidgetIds(
-            ComponentName(context!!, FocustronicGridWidget::class.java)
+            ComponentName(context!!, FocustronicGridWidget_1::class.java)
         )
         onUpdate(context, appWidgetManager, appWidgetIds)
     }

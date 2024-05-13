@@ -1,4 +1,4 @@
-package app.android.damien.reef.widgetprovider
+package app.android.damien.reef.widgetprovider.apexflaskbackgroundwidget
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -10,7 +10,6 @@ import android.util.Log
 import android.widget.RemoteViews
 import app.android.damien.reef.R
 import app.android.damien.reef.database.Database
-import app.android.damien.reef.database_model.ApexCircleWidgetModel
 import app.android.damien.reef.database_model.ApexFlaskBackgroundWidgetModel
 import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Data
@@ -19,7 +18,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 
-class ApexFlaskBackgroundWidgetProvider : AppWidgetProvider() {
+class ApexFlaskBackgroundWidgetProvider_2 : AppWidgetProvider() {
+
     override fun onUpdate(
         context: Context?,
         appWidgetManager: AppWidgetManager?,
@@ -37,41 +37,52 @@ class ApexFlaskBackgroundWidgetProvider : AppWidgetProvider() {
                 )
                 data = Database.getDatabase(context).customWidgetsDao().readApexFlaskBackgroundWidgetBackground()
                 val views = RemoteViews(context.packageName, R.layout.flask_background_widget)
-                views.setTextViewText(R.id.slot1value, data[0].slot1Value.toString())
-                views.setTextViewText(R.id.slot2value, data[0].slot2Value.toString())
-                views.setTextViewText(R.id.slot3value, data[0].slot3Value.toString())
 
-                if(data[0].slot1GivenName.isNullOrBlank()){
-                    if(data[0].slot1ActualName.equals("NaN")){
-                        views.setTextViewText(R.id.slot1name, "NaN")
+                if(data.lastIndex < 1) {
+                    views.setTextViewText(R.id.slot1value, "0.0")
+                    views.setTextViewText(R.id.slot2value, "0.0")
+                    views.setTextViewText(R.id.slot3value, "0.0")
+
+                    views.setTextViewText(R.id.slot1name, "NaN")
+                    views.setTextViewText(R.id.slot2name, "NaN")
+                    views.setTextViewText(R.id.slot3name, "NaN")
+                }else{
+                    views.setTextViewText(R.id.slot1value, data[1].slot1Value.toString())
+                    views.setTextViewText(R.id.slot2value, data[1].slot2Value.toString())
+                    views.setTextViewText(R.id.slot3value, data[1].slot3Value.toString())
+
+                    if(data[1].slot1GivenName.isNullOrBlank()){
+                        if(data[1].slot1ActualName.equals("NaN")){
+                            views.setTextViewText(R.id.slot1name, "NaN")
+                        } else {
+                            views.setTextViewText(R.id.slot1name, data[1].slot1ActualName)
+                        }
                     } else {
-                        views.setTextViewText(R.id.slot1name, data[0].slot1ActualName)
+                        views.setTextViewText(R.id.slot1name, data[1].slot1GivenName)
                     }
-                } else {
-                    views.setTextViewText(R.id.slot1name, data[0].slot1GivenName)
+
+                    if(data[1].slot2GivenName.isNullOrBlank()){
+                        if(data[1].slot2ActualName.equals("NaN")){
+                            views.setTextViewText(R.id.slot2name, "NaN")
+                        } else {
+                            views.setTextViewText(R.id.slot2name, data[1].slot2ActualName)
+                        }
+                    } else {
+                        views.setTextViewText(R.id.slot2name, data[1].slot2GivenName)
+                    }
+
+                    if(data[1].slot3GivenName.isNullOrBlank()){
+                        if(data[1].slot3ActualName.equals("NaN")){
+                            views.setTextViewText(R.id.slot3name, "NaN")
+                        } else {
+                            views.setTextViewText(R.id.slot3name, data[1].slot3ActualName)
+                        }
+                    } else {
+                        views.setTextViewText(R.id.slot3name, data[1].slot3GivenName)
+                    }
                 }
 
-                if(data[0].slot2GivenName.isNullOrBlank()){
-                    if(data[0].slot2ActualName.equals("NaN")){
-                        views.setTextViewText(R.id.slot2name, "NaN")
-                    } else {
-                        views.setTextViewText(R.id.slot2name, data[0].slot2ActualName)
-                    }
-                } else {
-                    views.setTextViewText(R.id.slot2name, data[0].slot2GivenName)
-                }
-
-                if(data[0].slot3GivenName.isNullOrBlank()){
-                    if(data[0].slot3ActualName.equals("NaN")){
-                        views.setTextViewText(R.id.slot3name, "NaN")
-                    } else {
-                        views.setTextViewText(R.id.slot3name, data[0].slot3ActualName)
-                    }
-                } else {
-                    views.setTextViewText(R.id.slot3name, data[0].slot3GivenName)
-                }
-
-                val intent = Intent(context, ApexFlaskBackgroundWidgetProvider::class.java)
+                val intent = Intent(context, ApexFlaskBackgroundWidgetProvider_2::class.java)
                 intent.action = UPDATE_WIDGET_ACTION
                 val pendingIntent = PendingIntent.getBroadcast(
                     context,
@@ -109,7 +120,7 @@ class ApexFlaskBackgroundWidgetProvider : AppWidgetProvider() {
     private fun updateWidget(context: Context?) {
         val appWidgetManager = AppWidgetManager.getInstance(context)
         val appWidgetIds = appWidgetManager.getAppWidgetIds(
-            ComponentName(context!!, ApexFlaskBackgroundWidgetProvider::class.java)
+            ComponentName(context!!, ApexFlaskBackgroundWidgetProvider_2::class.java)
         )
         onUpdate(context, appWidgetManager, appWidgetIds)
     }

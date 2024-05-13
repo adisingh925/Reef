@@ -1,4 +1,4 @@
-package app.android.damien.reef.widgetprovider
+package app.android.damien.reef.widgetprovider.apexpowervaluewidget
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -10,8 +10,7 @@ import android.util.Log
 import android.widget.RemoteViews
 import app.android.damien.reef.R
 import app.android.damien.reef.database.Database
-import app.android.damien.reef.database_model.ApexSingleValueTypeOneModel
-import app.android.damien.reef.database_model.FocustronicSingleValueType1WidgetModel
+import app.android.damien.reef.database_model.ApexPowerValuesWidgetModel
 import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
 import app.android.damien.reef.utils.Data
@@ -19,8 +18,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONArray
+import java.util.Locale
 
-class FocustronicSingleValueType1 : AppWidgetProvider() {
+class ApexPowerValueWidgetProvider_5 : AppWidgetProvider() {
 
     override fun onUpdate(
         context: Context?,
@@ -29,36 +29,32 @@ class FocustronicSingleValueType1 : AppWidgetProvider() {
     ) {
         appWidgetIds?.forEach { appWidgetId ->
             SharedPreferences.init(context!!)
-            var data : List<FocustronicSingleValueType1WidgetModel>
+            var data : List<ApexPowerValuesWidgetModel>
             CoroutineScope(Dispatchers.IO).launch {
-                Data().getFocustronicResponse(this)
+                Data().getApexData(this)
             }.invokeOnCompletion {
-                Data().updateFocustronicWidgetData(
+                Data().updateApexWidgetsData(
                     context,
-                    JSONArray(SharedPreferences.read("focustronicData", "").toString())
+                    JSONArray(SharedPreferences.read("apexData", "").toString())
                 )
-                data = Database.getDatabase(context).customWidgetsDao().readFocustronicSingleValueTypeOneWidgetBackground()
+                data = Database.getDatabase(context).customWidgetsDao().readApexPowerValuesWidgetBackground()
+                val views = RemoteViews(context.packageName, R.layout.power_value_widget)
 
-                val views = RemoteViews(context.packageName, R.layout.single_value_type_1)
+                if(data.lastIndex >= 4){
+                    val slot1Value = String.format(Locale.getDefault(), "%.2f", data[4].slot1)
+                    val slot2Value = String.format(Locale.getDefault(), "%.2f", data[4].slot2)
+                    val slot3Value = String.format(Locale.getDefault(), "%.2f", data[4].slot3)
 
-                if(data[0].givenName.isNullOrBlank()){
-                    if(data[0].actualName.equals("NaN")){
-                        views.setTextViewText(R.id.heading, "NaN")
-                    } else {
-                        views.setTextViewText(R.id.heading, data[0].actualName)
-                    }
-                } else {
-                    views.setTextViewText(R.id.heading, data[0].givenName)
+                    views.setTextViewText(R.id.value1, slot1Value)
+                    views.setTextViewText(R.id.value2, slot2Value)
+                    views.setTextViewText(R.id.value3, slot3Value)
+                }else{
+                    views.setTextViewText(R.id.value1, "0.0")
+                    views.setTextViewText(R.id.value2, "0.0")
+                    views.setTextViewText(R.id.value3, "0.0")
                 }
 
-                views.setTextViewText(R.id.value, data[0].value.toString())
-                views.setTextViewText(R.id.unit, data[0].unit.toString())
-
-                views.setTextColor(R.id.value, data[0].textColor)
-                views.setTextColor(R.id.heading, data[0].textColor)
-                views.setTextColor(R.id.unit, data[0].textColor)
-
-                val intent = Intent(context, FocustronicSingleValueType1::class.java)
+                val intent = Intent(context, ApexPowerValueWidgetProvider_5::class.java)
                 intent.action = Constants.UPDATE_WIDGET_ACTION
                 val pendingIntent = PendingIntent.getBroadcast(
                     context,
@@ -68,7 +64,7 @@ class FocustronicSingleValueType1 : AppWidgetProvider() {
                 )
 
                 views.setOnClickPendingIntent(
-                    R.id.layout,
+                    R.id.apex_power_widget_relative_layout,
                     pendingIntent
                 )
 
@@ -82,7 +78,7 @@ class FocustronicSingleValueType1 : AppWidgetProvider() {
 
         if (intent?.action == Constants.UPDATE_WIDGET_ACTION) {
             // Handle widget tap here
-            Log.d("FocustronicSingleValueType1", "FocustronicSingleValueType1 tapped")
+            Log.d("ApexFlaskBackgroundWidgetProvider", "ApexFlaskBackgroundWidgetProvider tapped")
 
             SharedPreferences.init(context!!)
             updateWidget(context)
@@ -92,7 +88,7 @@ class FocustronicSingleValueType1 : AppWidgetProvider() {
     private fun updateWidget(context: Context?) {
         val appWidgetManager = AppWidgetManager.getInstance(context)
         val appWidgetIds = appWidgetManager.getAppWidgetIds(
-            ComponentName(context!!, FocustronicSingleValueType1::class.java)
+            ComponentName(context!!, ApexPowerValueWidgetProvider_5::class.java)
         )
         onUpdate(context, appWidgetManager, appWidgetIds)
     }

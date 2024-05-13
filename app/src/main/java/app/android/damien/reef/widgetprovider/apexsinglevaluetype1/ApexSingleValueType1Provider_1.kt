@@ -1,4 +1,4 @@
-package app.android.damien.reef.widgetprovider
+package app.android.damien.reef.widgetprovider.apexsinglevaluetype1
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -10,18 +10,16 @@ import android.util.Log
 import android.widget.RemoteViews
 import app.android.damien.reef.R
 import app.android.damien.reef.database.Database
-import app.android.damien.reef.database_model.ApexFlaskBackgroundWidgetModel
-import app.android.damien.reef.database_model.ApexPowerValuesWidgetModel
+import app.android.damien.reef.database_model.ApexSingleValueTypeOneModel
 import app.android.damien.reef.storage.SharedPreferences
-import app.android.damien.reef.utils.Constants.UPDATE_WIDGET_ACTION
+import app.android.damien.reef.utils.Constants
 import app.android.damien.reef.utils.Data
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONArray
-import java.util.Locale
 
-class ApexPowerValueWidgetProvider : AppWidgetProvider() {
+class ApexSingleValueType1Provider_1 : AppWidgetProvider() {
 
     override fun onUpdate(
         context: Context?,
@@ -30,7 +28,7 @@ class ApexPowerValueWidgetProvider : AppWidgetProvider() {
     ) {
         appWidgetIds?.forEach { appWidgetId ->
             SharedPreferences.init(context!!)
-            var data : List<ApexPowerValuesWidgetModel>
+            var data : List<ApexSingleValueTypeOneModel>
             CoroutineScope(Dispatchers.IO).launch {
                 Data().getApexData(this)
             }.invokeOnCompletion {
@@ -38,19 +36,31 @@ class ApexPowerValueWidgetProvider : AppWidgetProvider() {
                     context,
                     JSONArray(SharedPreferences.read("apexData", "").toString())
                 )
-                data = Database.getDatabase(context).customWidgetsDao().readApexPowerValuesWidgetBackground()
-                val views = RemoteViews(context.packageName, R.layout.power_value_widget)
+                data = Database.getDatabase(context).customWidgetsDao().readApexSingleValueTypeOneWidgetBackground()
 
-                val slot1Value = String.format(Locale.getDefault(), "%.2f", data[0].slot1)
-                val slot2Value = String.format(Locale.getDefault(), "%.2f", data[0].slot2)
-                val slot3Value = String.format(Locale.getDefault(), "%.2f", data[0].slot3)
+                val views = RemoteViews(context.packageName, R.layout.single_value_type_1_apex)
 
-                views.setTextViewText(R.id.value1, slot1Value)
-                views.setTextViewText(R.id.value2, slot2Value)
-                views.setTextViewText(R.id.value3, slot3Value)
+                if()
 
-                val intent = Intent(context, ApexPowerValueWidgetProvider::class.java)
-                intent.action = UPDATE_WIDGET_ACTION
+                if(data[0].givenName.isNullOrBlank()){
+                    if(data[0].actualName.equals("NaN")){
+                        views.setTextViewText(R.id.heading, "NaN")
+                    } else {
+                        views.setTextViewText(R.id.heading, data[0].actualName)
+                    }
+                } else {
+                    views.setTextViewText(R.id.heading, data[0].givenName)
+                }
+
+                views.setTextViewText(R.id.value, data[0].value.toString())
+                views.setTextViewText(R.id.unit, data[0].unit.toString())
+
+                views.setTextColor(R.id.value, data[0].textColor)
+                views.setTextColor(R.id.heading, data[0].textColor)
+                views.setTextColor(R.id.unit, data[0].textColor)
+
+                val intent = Intent(context, ApexSingleValueType1Provider_1::class.java)
+                intent.action = Constants.UPDATE_WIDGET_ACTION
                 val pendingIntent = PendingIntent.getBroadcast(
                     context,
                     0,
@@ -59,7 +69,7 @@ class ApexPowerValueWidgetProvider : AppWidgetProvider() {
                 )
 
                 views.setOnClickPendingIntent(
-                    R.id.apex_power_widget_relative_layout,
+                    R.id.layout,
                     pendingIntent
                 )
 
@@ -71,9 +81,9 @@ class ApexPowerValueWidgetProvider : AppWidgetProvider() {
     override fun onReceive(context: Context?, intent: Intent?) {
         super.onReceive(context, intent)
 
-        if (intent?.action == UPDATE_WIDGET_ACTION) {
+        if (intent?.action == Constants.UPDATE_WIDGET_ACTION) {
             // Handle widget tap here
-            Log.d("ApexFlaskBackgroundWidgetProvider", "ApexFlaskBackgroundWidgetProvider tapped")
+            Log.d("ApexSingleValueType1Provider", "ApexSingleValueType1Provider tapped")
 
             SharedPreferences.init(context!!)
             updateWidget(context)
@@ -83,7 +93,7 @@ class ApexPowerValueWidgetProvider : AppWidgetProvider() {
     private fun updateWidget(context: Context?) {
         val appWidgetManager = AppWidgetManager.getInstance(context)
         val appWidgetIds = appWidgetManager.getAppWidgetIds(
-            ComponentName(context!!, ApexPowerValueWidgetProvider::class.java)
+            ComponentName(context!!, ApexSingleValueType1Provider_1::class.java)
         )
         onUpdate(context, appWidgetManager, appWidgetIds)
     }

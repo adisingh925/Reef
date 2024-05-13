@@ -1,14 +1,10 @@
 package app.android.damien.reef.utils
 
-import android.appwidget.AppWidgetManager
-import android.content.ComponentName
 import android.content.Context
-import android.content.Intent
 import android.util.Log
 import app.android.damien.reef.database.Database
 import app.android.damien.reef.retrofit.ApiClient
 import app.android.damien.reef.storage.SharedPreferences
-import app.android.damien.reef.widgetprovider.ApexTwoRectangleWidgetProvider
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
