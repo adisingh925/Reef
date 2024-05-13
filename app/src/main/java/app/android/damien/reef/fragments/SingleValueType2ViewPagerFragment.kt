@@ -10,10 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import app.android.damien.reef.R
 import app.android.damien.reef.database_model.CustomWidgetSingleValueType2Model
 import app.android.damien.reef.databinding.FragmentSingleValueType2ViewPagerBinding
 import app.android.damien.reef.utils.Constants
+import app.android.damien.reef.utils.Toast
 import app.android.damien.reef.viewmodel.WidgetsViewModel
 import yuku.ambilwarna.AmbilWarnaDialog
 
@@ -89,6 +91,9 @@ class SingleValueType2ViewPagerFragment : Fragment() {
                     ringColor
                 )
             )
+
+            Toast.showSnackbar(binding.root,"Widget added successfully")
+            findNavController().popBackStack()
         }
 
         binding.colorPicker.setOnClickListener {

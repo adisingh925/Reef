@@ -17,6 +17,9 @@ import app.android.damien.reef.database_model.ApexSingleValueTypeOneModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
 import app.android.damien.reef.database_model.ApexWaterQualityWidget
+import app.android.damien.reef.database_model.CustomWidgetSingleValueType1Model
+import app.android.damien.reef.database_model.CustomWidgetSingleValueType2Model
+import app.android.damien.reef.database_model.CustomWidgetTwoRectangleModel
 import app.android.damien.reef.database_model.FocustronicOneElementWidgetModel
 import app.android.damien.reef.database_model.FocustronicGridWidgetModel
 import app.android.damien.reef.database_model.FocustronicSingleValueType1WidgetModel
@@ -46,6 +49,10 @@ class MyWidgetsChildAdapter(
     private var setFocustronicSingleValueType2WidgetData = emptyList<FocustronicSingleValueType2WidgetModel>()
     private var setFocustronicTwoRectangleWidgetData = emptyList<FocustronicTwoRectangleWidgetModel>()
 
+    private var setCustomSingleValueType2WidgetData = emptyList<CustomWidgetSingleValueType2Model>()
+    private var setCustomSingleValueType1WidgetData = emptyList<CustomWidgetSingleValueType1Model>()
+    private var setCustomTwoRectangleWidgetData = emptyList<CustomWidgetTwoRectangleModel>()
+
     interface OnItemClickListener {
         fun onApexFlaskBackgroundWidgetClick(data: ApexFlaskBackgroundWidgetModel)
         fun onApexPowerValuesWidgetClick(data: ApexPowerValuesWidgetModel)
@@ -61,6 +68,10 @@ class MyWidgetsChildAdapter(
         fun onFocustronicSingleValueType1WidgetClick(data: FocustronicSingleValueType1WidgetModel)
         fun onFocustronicSingleValueType2WidgetClick(data: FocustronicSingleValueType2WidgetModel)
         fun onFocustronicTwoRectangleWidgetClick(data: FocustronicTwoRectangleWidgetModel)
+
+        fun onCustomSingleValueType1WidgetClick(data: CustomWidgetSingleValueType1Model)
+        fun onCustomSingleValueType2WidgetClick(data: CustomWidgetSingleValueType2Model)
+        fun onCustomTwoRectangleWidgetClick(data: CustomWidgetTwoRectangleModel)
     }
 
     private inner class ViewHolder1(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -622,6 +633,101 @@ class MyWidgetsChildAdapter(
         }
     }
 
+    private inner class ViewHolder13(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val value = itemView.findViewById<TextView>(R.id.value)
+        val heading = itemView.findViewById<TextView>(R.id.heading)
+        val unit = itemView.findViewById<TextView>(R.id.unit)
+        val innerLayout = itemView.findViewById<LinearLayout>(R.id.innerLayout)
+        val timestamp = itemView.findViewById<TextView>(R.id.timestamp)
+
+        fun bind(position: Int) {
+
+            Log.d("MyWidgetsChildAdapter", "ViewHolder13: ")
+
+            heading.text = setCustomSingleValueType2WidgetData[position].givenName
+            value.text = String.format(Locale.getDefault(), "%.2f", setCustomSingleValueType2WidgetData[position].value)
+            value.setTextColor(setCustomSingleValueType2WidgetData[position].textColor)
+            heading.setTextColor(setCustomSingleValueType2WidgetData[position].textColor)
+            unit.setTextColor(setCustomSingleValueType2WidgetData[position].textColor)
+            timestamp.setTextColor(setCustomSingleValueType2WidgetData[position].textColor)
+
+            val innerLayoutDrawable = context?.resources?.getDrawable(R.drawable.linear_layout_corner_radius_black_circular)
+            val innerLayoutMutatedDrawable = innerLayoutDrawable?.mutate()
+            if (innerLayoutMutatedDrawable is GradientDrawable) {
+                innerLayoutMutatedDrawable.setStroke(3, setCustomSingleValueType2WidgetData[position].ringColor) // Assuming 3dp width for the stroke
+            }
+
+            innerLayout.background = innerLayoutMutatedDrawable
+
+            itemView.setOnClickListener {
+                onItemClickListener.onCustomSingleValueType2WidgetClick(setCustomSingleValueType2WidgetData[position])
+            }
+        }
+    }
+
+    private inner class ViewHolder14(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val value = itemView.findViewById<TextView>(R.id.value)
+        val heading = itemView.findViewById<TextView>(R.id.heading)
+        val unit = itemView.findViewById<TextView>(R.id.unit)
+
+        fun bind(position: Int) {
+
+            Log.d("MyWidgetsChildAdapter", "ViewHolder14: ")
+
+            heading.text = setCustomSingleValueType1WidgetData[position].givenName
+            value.text = setCustomSingleValueType1WidgetData[position].value.toString()
+            unit.text = setCustomSingleValueType1WidgetData[position].unit
+
+            value.setTextColor(setCustomSingleValueType1WidgetData[position].textColor)
+            heading.setTextColor(setCustomSingleValueType1WidgetData[position].textColor)
+            unit.setTextColor(setCustomSingleValueType1WidgetData[position].textColor)
+
+            itemView.setOnClickListener {
+                onItemClickListener.onCustomSingleValueType1WidgetClick(setCustomSingleValueType1WidgetData[position])
+            }
+
+        }
+    }
+
+    private inner class ViewHolder15(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val topRectangleTime = itemView.findViewById<TextView>(R.id.timestamp)
+        val bottomRectangleTime = itemView.findViewById<TextView>(R.id.timestamp2)
+        val topRectangleUnit = itemView.findViewById<TextView>(R.id.unit)
+        val bottomRectangleUnit = itemView.findViewById<TextView>(R.id.unit2)
+        val topRectangleValue = itemView.findViewById<TextView>(R.id.value)
+        val bottomRectangleValue = itemView.findViewById<TextView>(R.id.value2)
+        val topCard = itemView.findViewById<View>(R.id.card1)
+        val bottomCard = itemView.findViewById<View>(R.id.card2)
+        fun bind(position: Int) {
+
+            Log.d("MyWidgetsChildAdapter", "ViewHolder15: ")
+
+            val topRectangleDrawable = context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
+            val topRectangleMutatedDrawable = topRectangleDrawable.mutate()
+            topRectangleMutatedDrawable.setTint(setCustomTwoRectangleWidgetData[position].topRectangleColor)
+
+            topCard.background = topRectangleMutatedDrawable
+
+            val bottomRectangleDrawable = context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
+            val bottomRectangleMutatedDrawable = bottomRectangleDrawable.mutate()
+            bottomRectangleMutatedDrawable.setTint(setCustomTwoRectangleWidgetData[position].bottomRectangleColor)
+
+            bottomCard.background = bottomRectangleMutatedDrawable
+
+            topRectangleUnit.text = setCustomTwoRectangleWidgetData[position].topRectangleUnit
+            bottomRectangleUnit.text = setCustomTwoRectangleWidgetData[position].bottomRectangleUnit
+            topRectangleValue.text = setCustomTwoRectangleWidgetData[position].topRectangleValue.toString()
+            bottomRectangleValue.text = setCustomTwoRectangleWidgetData[position].bottomRectangleValue.toString()
+
+            itemView.setOnClickListener {
+                onItemClickListener.onCustomTwoRectangleWidgetClick(setCustomTwoRectangleWidgetData[position])
+            }
+        }
+    }
+
     override fun getItemViewType(position: Int): Int {
         when (widgetType) {
             Constants.APEX_POWER_VALUE_WIDGET -> return 1
@@ -636,6 +742,9 @@ class MyWidgetsChildAdapter(
             Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET -> return 10
             Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET -> return 11
             Constants.FOCUSTRONIC_GRID_WIDGET -> return 12
+            Constants.CUSTOM_WIDGET_SINGLE_VALUE_TYPE_2 -> return 13
+            Constants.CUSTOM_WIDGET_SINGLE_VALUE_TYPE_1 -> return 14
+            Constants.CUSTOM_WIDGET_TWO_RECTANGLE -> return 15
         }
 
         Log.d("MyWidgetsChildAdapter", "getItemViewType: ${widgetType}")
@@ -699,6 +808,18 @@ class MyWidgetsChildAdapter(
                 Constants.FOCUSTRONIC_GRID_WIDGET -> {
                     (holder as ViewHolder12).bind(position)
                 }
+
+                Constants.CUSTOM_WIDGET_SINGLE_VALUE_TYPE_2 -> {
+                    (holder as ViewHolder13).bind(position)
+                }
+
+                Constants.CUSTOM_WIDGET_SINGLE_VALUE_TYPE_1 -> {
+                    (holder as ViewHolder14).bind(position)
+                }
+
+                Constants.CUSTOM_WIDGET_TWO_RECTANGLE -> {
+                    (holder as ViewHolder15).bind(position)
+                }
             }
         }
     }
@@ -758,6 +879,18 @@ class MyWidgetsChildAdapter(
             12 -> return ViewHolder12(
                 LayoutInflater.from(context).inflate(R.layout.grid_widget, parent, false)
             )
+
+            13 -> return ViewHolder13(
+                LayoutInflater.from(context).inflate(R.layout.single_value_type_2, parent, false)
+            )
+
+            14 -> return ViewHolder14(
+                LayoutInflater.from(context).inflate(R.layout.single_value_type_1, parent, false)
+            )
+
+            15 -> return ViewHolder15(
+                LayoutInflater.from(context).inflate(R.layout.two_rectangle_widget, parent, false)
+            )
         }
 
         return ViewHolder1(
@@ -814,6 +947,18 @@ class MyWidgetsChildAdapter(
             Constants.FOCUSTRONIC_GRID_WIDGET -> {
                 (holder as ViewHolder12).bind(position)
             }
+
+            Constants.CUSTOM_WIDGET_SINGLE_VALUE_TYPE_2 -> {
+                (holder as ViewHolder13).bind(position)
+            }
+
+            Constants.CUSTOM_WIDGET_SINGLE_VALUE_TYPE_1 -> {
+                (holder as ViewHolder14).bind(position)
+            }
+
+            Constants.CUSTOM_WIDGET_TWO_RECTANGLE -> {
+                (holder as ViewHolder15).bind(position)
+            }
         }
     }
 
@@ -831,6 +976,9 @@ class MyWidgetsChildAdapter(
             Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET -> return setFocustronicSingleValueType1WidgetData.size
             Constants.FOCUSTRONIC_SINGLE_VALUE_TYPE_2_WIDGET -> return setFocustronicSingleValueType2WidgetData.size
             Constants.FOCUSTRONIC_GRID_WIDGET -> return setFocustronicGridWidgetData.size
+            Constants.CUSTOM_WIDGET_SINGLE_VALUE_TYPE_2 -> return setCustomSingleValueType2WidgetData.size
+            Constants.CUSTOM_WIDGET_SINGLE_VALUE_TYPE_1 -> return setCustomSingleValueType1WidgetData.size
+            Constants.CUSTOM_WIDGET_TWO_RECTANGLE -> return setCustomTwoRectangleWidgetData.size
         }
         return setApexFlaskBackgroundWidgetData.size
     }
@@ -892,6 +1040,21 @@ class MyWidgetsChildAdapter(
 
     fun setFocustronicTwoRectangleWidgetData(widgets: List<FocustronicTwoRectangleWidgetModel>) {
         setFocustronicTwoRectangleWidgetData = widgets
+        notifyDataSetChanged()
+    }
+
+    fun setCustomSingleValueType1WidgetData(widgets: List<CustomWidgetSingleValueType1Model>) {
+        setCustomSingleValueType1WidgetData = widgets
+        notifyDataSetChanged()
+    }
+
+    fun setCustomSingleValueType2WidgetData(widgets: List<CustomWidgetSingleValueType2Model>) {
+        setCustomSingleValueType2WidgetData = widgets
+        notifyDataSetChanged()
+    }
+
+    fun setCustomTwoRectangleWidgetData(widgets: List<CustomWidgetTwoRectangleModel>) {
+        setCustomTwoRectangleWidgetData = widgets
         notifyDataSetChanged()
     }
 }

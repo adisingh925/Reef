@@ -21,6 +21,9 @@ import app.android.damien.reef.database_model.ApexSingleValueTypeOneModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.database_model.ApexTwoRectangleWidgets
 import app.android.damien.reef.database_model.ApexWaterQualityWidget
+import app.android.damien.reef.database_model.CustomWidgetSingleValueType1Model
+import app.android.damien.reef.database_model.CustomWidgetSingleValueType2Model
+import app.android.damien.reef.database_model.CustomWidgetTwoRectangleModel
 import app.android.damien.reef.database_model.FocustronicOneElementWidgetModel
 import app.android.damien.reef.database_model.FocustronicGridWidgetModel
 import app.android.damien.reef.database_model.FocustronicSingleValueType1WidgetModel
@@ -138,6 +141,42 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
         )
     }
 
+    private val customWidgetSingleValueType2 by lazy {
+        MyWidgetsChildAdapter(
+            requireContext(),
+            Constants.CUSTOM_WIDGET_SINGLE_VALUE_TYPE_2,
+            this
+        )
+    }
+
+    private val customWidgetSingleValueType1 by lazy {
+        MyWidgetsChildAdapter(
+            requireContext(),
+            Constants.CUSTOM_WIDGET_SINGLE_VALUE_TYPE_1,
+            this
+        )
+    }
+
+    private val customWidgetTwoRectangle by lazy {
+        MyWidgetsChildAdapter(
+            requireContext(),
+            Constants.CUSTOM_WIDGET_TWO_RECTANGLE,
+            this
+        )
+    }
+
+    private val customWidgetSingleValueType2RecyclerView by lazy{
+        binding.customWidgetSingleValueType2LayoutRecyclerView
+    }
+
+    private val customWidgetSingleValueType1RecyclerView by lazy{
+        binding.customWidgetSingleValueType1LayoutRecyclerView
+    }
+
+    private val customWidgetTwoRectangleRecyclerView by lazy{
+        binding.customWidget2RectangleLayoutRecyclerView
+    }
+
     private val apexCircleWidgetRecyclerView by lazy {
         binding.apexCircleWidgetRecyclerView
     }
@@ -194,6 +233,10 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
         binding.addWidgets.setOnClickListener {
             findNavController().navigate(R.id.action_myWidgetsFragment_to_widgetTypeSelectionScreen)
         }
+
+        initCustomWidgetTwoRectangleAdapter()
+        initCustomWidgetSingleValueType1Adapter()
+        initCustomWidgetSingleValueType2Adapter()
 
         if (SharedPreferences.read(Constants.APEX_CIRCLE_WIDGET, 0) == 0) {
             binding.apexCircleWidgetLayout.visibility = View.GONE
@@ -337,6 +380,21 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
         widgetsViewModel.focustronicGridWidgets.observe(viewLifecycleOwner) {
             Log.d("MyWidgetsFragment", "Focustronic Grid Widgets: $it")
             focustronicGridWidgetAdapter.setFocustronicGridWidgetData(it)
+        }
+
+        widgetsViewModel.customWidgetSingleValueType2Data.observe(viewLifecycleOwner){
+            Log.d("MyWidgetsFragment", "Custom Widget Single Value Type 2: $it")
+            customWidgetSingleValueType2.setCustomSingleValueType2WidgetData(it)
+        }
+
+        widgetsViewModel.customWidgetSingleValueType1Data.observe(viewLifecycleOwner){
+            Log.d("MyWidgetsFragment", "Custom Widget Single Value Type 1: $it")
+            customWidgetSingleValueType1.setCustomSingleValueType1WidgetData(it)
+        }
+
+        widgetsViewModel.customWidgetTwoRectangleData.observe(viewLifecycleOwner){
+            Log.d("MyWidgetsFragment", "Custom Widget Two Rectangle: $it")
+            customWidgetTwoRectangle.setCustomTwoRectangleWidgetData(it)
         }
 
         return binding.root
@@ -486,6 +544,18 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
         )
     }
 
+    override fun onCustomSingleValueType1WidgetClick(data: CustomWidgetSingleValueType1Model) {
+        Log.d("MyWidgetsFragment", "Custom Single Value Type 1 Widget Clicked")
+    }
+
+    override fun onCustomSingleValueType2WidgetClick(data: CustomWidgetSingleValueType2Model) {
+        Log.d("MyWidgetsFragment", "Custom Single Value Type 2 Widget Clicked")
+    }
+
+    override fun onCustomTwoRectangleWidgetClick(data: CustomWidgetTwoRectangleModel) {
+        Log.d("MyWidgetsFragment", "Custom Two Rectangle Widget Clicked")
+    }
+
     private fun initFocustronicGridWidgetAdapter() {
         focustronicGridWidgetRecyclerView.adapter = focustronicGridWidgetAdapter
         focustronicGridWidgetRecyclerView.layoutManager =
@@ -515,6 +585,24 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
     private fun initFocustronicOneElementWidgetAdapter() {
         focustronicOneElementWidgetRecyclerView.adapter = focustronicOneElementWidgetAdapter
         focustronicOneElementWidgetRecyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+    }
+
+    private fun initCustomWidgetSingleValueType2Adapter() {
+        customWidgetSingleValueType2RecyclerView.adapter = customWidgetSingleValueType2
+        customWidgetSingleValueType2RecyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+    }
+
+    private fun initCustomWidgetSingleValueType1Adapter() {
+        customWidgetSingleValueType2RecyclerView.adapter = customWidgetSingleValueType1
+        customWidgetSingleValueType2RecyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+    }
+
+    private fun initCustomWidgetTwoRectangleAdapter() {
+        customWidgetSingleValueType2RecyclerView.adapter = customWidgetTwoRectangle
+        customWidgetSingleValueType2RecyclerView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 

@@ -7,9 +7,14 @@ import app.android.damien.reef.utils.Constants
 @Entity(tableName = Constants.CUSTOM_WIDGET_TWO_RECTANGLE_TABLE)
 data class CustomWidgetTwoRectangleModel(
     @PrimaryKey(autoGenerate = true) val id: Int,
-    var actualName: String?,
-    var givenName: String?,
-    var value: Float,
-    var unit: String?,
-    var textColor: Int
+    var topRectangleActualName: String?,
+    var bottomRectangleActualName: String?,
+    var topRectangleUpdateTimeStamp: String?,
+    var bottomRectangleUpdateTimeStamp: String?,
+    var topRectangleUnit: String?,
+    var bottomRectangleUnit: String?,
+    var topRectangleValue : Float,
+    var bottomRectangleValue : Float,
+    var topRectangleColor: Int,
+    var bottomRectangleColor: Int
 )
