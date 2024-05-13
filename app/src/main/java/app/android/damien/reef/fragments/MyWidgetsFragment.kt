@@ -546,14 +546,32 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
 
     override fun onCustomSingleValueType1WidgetClick(data: CustomWidgetSingleValueType1Model) {
         Log.d("MyWidgetsFragment", "Custom Single Value Type 1 Widget Clicked")
+        val bundle = Bundle()
+        bundle.putParcelable(Constants.CUSTOM_WIDGET_SINGLE_VALUE_TYPE_1, data)
+        findNavController().navigate(
+            R.id.action_myWidgetsFragment_to_singleValueType1ViewPagerFragment,
+            bundle
+        )
     }
 
     override fun onCustomSingleValueType2WidgetClick(data: CustomWidgetSingleValueType2Model) {
         Log.d("MyWidgetsFragment", "Custom Single Value Type 2 Widget Clicked")
+        val bundle = Bundle()
+        bundle.putParcelable(Constants.CUSTOM_WIDGET_SINGLE_VALUE_TYPE_2, data)
+        findNavController().navigate(
+            R.id.action_myWidgetsFragment_to_singleValueType2ViewPagerFragment,
+            bundle
+        )
     }
 
     override fun onCustomTwoRectangleWidgetClick(data: CustomWidgetTwoRectangleModel) {
         Log.d("MyWidgetsFragment", "Custom Two Rectangle Widget Clicked")
+        val bundle = Bundle()
+        bundle.putParcelable(Constants.CUSTOM_WIDGET_TWO_RECTANGLE, data)
+        findNavController().navigate(
+            R.id.action_myWidgetsFragment_to_twoRectangleViewPagerFragment,
+            bundle
+        )
     }
 
     private fun initFocustronicGridWidgetAdapter() {

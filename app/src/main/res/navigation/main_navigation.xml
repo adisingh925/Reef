@@ -118,6 +118,15 @@
         <action
             android:id="@+id/action_myWidgetsFragment_to_editFocustronicSingleValuetype1Widget"
             app:destination="@id/editFocustronicSingleValuetype1Widget" />
+        <action
+            android:id="@+id/action_myWidgetsFragment_to_singleValueType1ViewPagerFragment"
+            app:destination="@id/singleValueType1ViewPagerFragment" />
+        <action
+            android:id="@+id/action_myWidgetsFragment_to_singleValueType2ViewPagerFragment"
+            app:destination="@id/singleValueType2ViewPagerFragment" />
+        <action
+            android:id="@+id/action_myWidgetsFragment_to_twoRectangleViewPagerFragment"
+            app:destination="@id/twoRectangleViewPagerFragment" />
     </fragment>
     <fragment
         android:id="@+id/editApexFlaskBackgroundWidget"
@@ -178,4 +187,19 @@
         android:name="app.android.damien.reef.fragments.EditFocustronicSingleValuetype1Widget"
         android:label="fragment_edit_focustronic_single_valuetype1_widget"
         tools:layout="@layout/fragment_edit_focustronic_single_valuetype1_widget" />
+    <fragment
+        android:id="@+id/singleValueType1ViewPagerFragment"
+        android:name="app.android.damien.reef.fragments.SingleValueType1ViewPagerFragment"
+        android:label="fragment_single_value_type1_view_pager"
+        tools:layout="@layout/fragment_single_value_type1_view_pager" />
+    <fragment
+        android:id="@+id/singleValueType2ViewPagerFragment"
+        android:name="app.android.damien.reef.fragments.SingleValueType2ViewPagerFragment"
+        android:label="fragment_single_value_type2_view_pager"
+        tools:layout="@layout/fragment_single_value_type2_view_pager" />
+    <fragment
+        android:id="@+id/twoRectangleViewPagerFragment"
+        android:name="app.android.damien.reef.fragments.TwoRectangleViewPagerFragment"
+        android:label="fragment_two_rectangle_view_pager"
+        tools:layout="@layout/fragment_two_rectangle_view_pager" />
 </navigation>

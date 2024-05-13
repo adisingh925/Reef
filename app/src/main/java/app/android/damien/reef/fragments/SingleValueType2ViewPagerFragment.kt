@@ -51,18 +51,25 @@ class SingleValueType2ViewPagerFragment : Fragment() {
             binding.parameterInputField.setText(customWidgetSingleValueType2.givenName)
             binding.valueInputField.setText(customWidgetSingleValueType2.value.toString())
             binding.unitInputField.setText(customWidgetSingleValueType2.unit)
+
             textColor = customWidgetSingleValueType2.textColor
             ringColor = customWidgetSingleValueType2.ringColor
+
+            binding.colorPickerRing.iconTint = ColorStateList.valueOf(ringColor)
+            binding.colorPicker.iconTint = ColorStateList.valueOf(textColor)
 
             binding.previewCard.value.setTextColor(textColor)
             binding.previewCard.heading.setTextColor(textColor)
             binding.previewCard.unit.setTextColor(textColor)
             binding.previewCard.timestamp.setTextColor(textColor)
+            binding.previewCard.value.text = customWidgetSingleValueType2.value.toString()
+            binding.previewCard.heading.text = customWidgetSingleValueType2.givenName
+            binding.previewCard.unit.text = customWidgetSingleValueType2.unit
 
             val innerLayoutDrawable = context?.resources?.getDrawable(R.drawable.linear_layout_corner_radius_black_circular)
             val innerLayoutMutatedDrawable = innerLayoutDrawable?.mutate()
             if (innerLayoutMutatedDrawable is GradientDrawable) {
-                innerLayoutMutatedDrawable.setStroke(3, ringColor) // Assuming 3dp width for the stroke
+                innerLayoutMutatedDrawable.setStroke(7, ringColor) // Assuming 3dp width for the stroke
             }
 
             binding.previewCard.innerLayout.background = innerLayoutMutatedDrawable
