@@ -384,17 +384,29 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
 
         widgetsViewModel.customWidgetSingleValueType2Data.observe(viewLifecycleOwner){
             Log.d("MyWidgetsFragment", "Custom Widget Single Value Type 2: $it")
-            customWidgetSingleValueType2.setCustomSingleValueType2WidgetData(it)
+            if(it.isNotEmpty()){
+                customWidgetSingleValueType2.setCustomSingleValueType2WidgetData(it)
+            }else{
+                binding.customWidgetSingleValueType2Layout.visibility = View.GONE
+            }
         }
 
         widgetsViewModel.customWidgetSingleValueType1Data.observe(viewLifecycleOwner){
             Log.d("MyWidgetsFragment", "Custom Widget Single Value Type 1: $it")
-            customWidgetSingleValueType1.setCustomSingleValueType1WidgetData(it)
+            if(it.isNotEmpty()) {
+                customWidgetSingleValueType1.setCustomSingleValueType1WidgetData(it)
+            }else{
+                binding.customWidgetSingleValueType1Layout.visibility = View.GONE
+            }
         }
 
         widgetsViewModel.customWidgetTwoRectangleData.observe(viewLifecycleOwner){
             Log.d("MyWidgetsFragment", "Custom Widget Two Rectangle: $it")
-            customWidgetTwoRectangle.setCustomTwoRectangleWidgetData(it)
+            if(it.isNotEmpty()) {
+                customWidgetTwoRectangle.setCustomTwoRectangleWidgetData(it)
+            }else{
+                binding.customWidget2RectangleLayout.visibility = View.GONE
+            }
         }
 
         return binding.root
