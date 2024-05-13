@@ -336,6 +336,7 @@ class EditApexFlaskBackgroundWidget : Fragment() {
 
             widgetsViewModel.updateApexFlaskBackgroundWidget(apexFlaskBackgroundWidget)
             Toast.showSnackbar(binding.root, "Apex Flask Background Widget Updated")
+            findNavController().popBackStack()
         }
 
         return binding.root

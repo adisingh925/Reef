@@ -506,6 +506,7 @@ class EditApexWaterQualityWidget : Fragment() {
 
             widgetsViewModel.updateApexWaterQualityWidget(apexWaterQualityWidget)
             Toast.showSnackbar(binding.root, "Apex Water Quality Widget Updated")
+            findNavController().popBackStack()
         }
         return binding.root
     }

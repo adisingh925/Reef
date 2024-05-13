@@ -101,6 +101,7 @@ class EditFocustronicSingleValuetype1Widget : Fragment() {
             widgetsViewModel.updateFocustronicSingleValueTypeOneWidget(focustronicSingleValueType1Widget)
 
             Toast.showSnackbar(requireView(), "Apex Single Value Type 1 Widget Updated")
+            findNavController().popBackStack()
         }
 
         binding.deleteButton.setOnClickListener {

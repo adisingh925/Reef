@@ -281,6 +281,7 @@ class EditFocustronicDoubleRectangleWidget : Fragment() {
             focustronicTwoRectangleWidget.bottomRectangleUpdateTimeStamp = SharedPreferences.read("lastUpdatedApex", "")
             widgetsViewModel.updateFocustronicDoubleRectangleWidget(focustronicTwoRectangleWidget)
             Toast.showSnackbar(binding.root, "Focustronic Two Rectangle Background Widget Updated")
+            findNavController().popBackStack()
         }
 
         initValuesRecyclerView()

@@ -279,6 +279,7 @@ class EditApexTwoRectangleWidget : Fragment() {
             apexTwoRectangleWidget.bottomRectangleUpdateTimeStamp = SharedPreferences.read("lastUpdatedApex", "")
             widgetsViewModel.updateApexTwoRectangleWidget(apexTwoRectangleWidget)
             Toast.showSnackbar(binding.root, "Apex Two Rectangle Background Widget Updated")
+            findNavController().popBackStack()
         }
 
         initValuesRecyclerView()

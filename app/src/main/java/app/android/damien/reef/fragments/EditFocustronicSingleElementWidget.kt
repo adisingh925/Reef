@@ -100,6 +100,7 @@ class EditFocustronicSingleElementWidget : Fragment() {
             focustronicSingleValueWidget.backgroundColor = backgroundColor
             widgetsViewModel.updateFocustronicOneElementWidget(focustronicSingleValueWidget)
             Toast.showSnackbar(binding.root, "Focustronic Single Element Widget updated")
+            findNavController().popBackStack()
         }
 
         binding.deleteButton.setOnClickListener {

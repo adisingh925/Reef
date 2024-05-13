@@ -331,6 +331,7 @@ class EditApexCircleWidget : Fragment() {
             apexCircleWidget.slot3Value = value3
             widgetsViewModel.updateApexCircleWidget(apexCircleWidget)
             Toast.showSnackbar(binding.root, "Apex Flask Background Widget Updated")
+            findNavController().popBackStack()
         }
 
         return binding.root

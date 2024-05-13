@@ -17,6 +17,7 @@ import app.android.damien.reef.database_model.FocustronicSingleValueType1WidgetM
 import app.android.damien.reef.databinding.FragmentEditApexPowerWidgetBinding
 import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
+import app.android.damien.reef.utils.Toast
 import app.android.damien.reef.viewmodel.WidgetsViewModel
 import com.google.android.material.tabs.TabLayout
 import org.json.JSONArray
@@ -112,6 +113,8 @@ class EditApexPowerWidget : Fragment(), SimpleListAdapter2.OnItemClickListener {
             apexPowerValueWidget.slot3SelectedValues = voltsActualNamesList.filter { it.second == 1 }.joinToString(", ") { it.first }
 
             widgetsViewModel.updateApexPowerValuesWidget(apexPowerValueWidget)
+            Toast.showSnackbar(binding.root, "Apex Power Widget Updated")
+            findNavController().popBackStack()
         }
 
         binding.deleteButton.setOnClickListener {

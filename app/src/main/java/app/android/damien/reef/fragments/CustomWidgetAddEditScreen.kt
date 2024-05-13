@@ -52,6 +52,10 @@ class CustomWidgetAddEditScreen : Fragment() {
             binding.viewPager.currentItem = 2
         }
 
+        binding.widgetSelectionBackButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
         return binding.root
     }
 }

@@ -721,6 +721,7 @@ class EditFocustronicGridWidget : Fragment() {
 
             widgetsViewModel.updateFocustronicGridWidget(focustronicGridWidgetModel)
             Toast.showSnackbar(binding.root, "Apex Water Quality Widget Updated")
+            findNavController().popBackStack()
         }
 
         return binding.root
