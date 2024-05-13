@@ -41,70 +41,99 @@ class FocustronicGridWidget_1 : AppWidgetProvider() {
 
                 val views = RemoteViews(context.packageName, R.layout.grid_widget)
 
-                views.setTextViewText(R.id.value1, data[0].slot1Value.toString())
-                views.setTextViewText(R.id.value2, data[0].slot2Value.toString())
-                views.setTextViewText(R.id.value3, data[0].slot3Value.toString())
-                views.setTextViewText(R.id.value4, data[0].slot4Value.toString())
-                views.setTextViewText(R.id.value5, data[0].slot5Value.toString())
-                views.setTextViewText(R.id.value6, data[0].slot6Value.toString())
-                views.setTextViewText(R.id.value7, data[0].slot7Value.toString())
-                views.setTextViewText(R.id.value8, data[0].slot8Value.toString())
+                if(data.lastIndex < 0){
+                    views.setTextViewText(R.id.value1, "0.0")
+                    views.setTextViewText(R.id.value2, "0.0")
+                    views.setTextViewText(R.id.value3, "0.0")
+                    views.setTextViewText(R.id.value4, "0.0")
+                    views.setTextViewText(R.id.value5, "0.0")
+                    views.setTextViewText(R.id.value6, "0.0")
+                    views.setTextViewText(R.id.value7, "0.0")
+                    views.setTextViewText(R.id.value8, "0.0")
 
-                views.setTextViewText(R.id.unit1, data[0].slot1Unit)
-                views.setTextViewText(R.id.unit2, data[0].slot2Unit)
-                views.setTextViewText(R.id.unit3, data[0].slot3Unit)
-                views.setTextViewText(R.id.unit4, data[0].slot4Unit)
-                views.setTextViewText(R.id.unit5, data[0].slot5Unit)
-                views.setTextViewText(R.id.unit6, data[0].slot6Unit)
-                views.setTextViewText(R.id.unit7, data[0].slot7Unit)
-                views.setTextViewText(R.id.unit8, data[0].slot8Unit)
+                    views.setTextViewText(R.id.unit1, "Unit")
+                    views.setTextViewText(R.id.unit2, "Unit")
+                    views.setTextViewText(R.id.unit3, "Unit")
+                    views.setTextViewText(R.id.unit4, "Unit")
+                    views.setTextViewText(R.id.unit5, "Unit")
+                    views.setTextViewText(R.id.unit6, "Unit")
+                    views.setTextViewText(R.id.unit7, "Unit")
+                    views.setTextViewText(R.id.unit8, "Unit")
 
-                if(data[0].slot1GivenName.isNullOrEmpty()) {
-                    views.setTextViewText(R.id.name1, data[0].slot1ActualName)
-                } else {
-                    views.setTextViewText(R.id.name1, data[0].slot1GivenName)
-                }
+                    views.setTextViewText(R.id.name1, "NaN")
+                    views.setTextViewText(R.id.name2, "NaN")
+                    views.setTextViewText(R.id.name3, "NaN")
+                    views.setTextViewText(R.id.name4, "NaN")
+                    views.setTextViewText(R.id.name5, "NaN")
+                    views.setTextViewText(R.id.name6, "NaN")
+                    views.setTextViewText(R.id.name7, "NaN")
+                    views.setTextViewText(R.id.name8, "NaN")
+                }else{
+                    views.setTextViewText(R.id.value1, data[0].slot1Value.toString())
+                    views.setTextViewText(R.id.value2, data[0].slot2Value.toString())
+                    views.setTextViewText(R.id.value3, data[0].slot3Value.toString())
+                    views.setTextViewText(R.id.value4, data[0].slot4Value.toString())
+                    views.setTextViewText(R.id.value5, data[0].slot5Value.toString())
+                    views.setTextViewText(R.id.value6, data[0].slot6Value.toString())
+                    views.setTextViewText(R.id.value7, data[0].slot7Value.toString())
+                    views.setTextViewText(R.id.value8, data[0].slot8Value.toString())
 
-                if(data[0].slot2GivenName.isNullOrEmpty()) {
-                    views.setTextViewText(R.id.name2, data[0].slot2ActualName)
-                } else {
-                    views.setTextViewText(R.id.name2, data[0].slot2GivenName)
-                }
+                    views.setTextViewText(R.id.unit1, data[0].slot1Unit)
+                    views.setTextViewText(R.id.unit2, data[0].slot2Unit)
+                    views.setTextViewText(R.id.unit3, data[0].slot3Unit)
+                    views.setTextViewText(R.id.unit4, data[0].slot4Unit)
+                    views.setTextViewText(R.id.unit5, data[0].slot5Unit)
+                    views.setTextViewText(R.id.unit6, data[0].slot6Unit)
+                    views.setTextViewText(R.id.unit7, data[0].slot7Unit)
+                    views.setTextViewText(R.id.unit8, data[0].slot8Unit)
 
-                if(data[0].slot3GivenName.isNullOrEmpty()) {
-                    views.setTextViewText(R.id.name3, data[0].slot3ActualName)
-                } else {
-                    views.setTextViewText(R.id.name3, data[0].slot3GivenName)
-                }
+                    if(data[0].slot1GivenName.isNullOrEmpty()) {
+                        views.setTextViewText(R.id.name1, data[0].slot1ActualName)
+                    } else {
+                        views.setTextViewText(R.id.name1, data[0].slot1GivenName)
+                    }
 
-                if(data[0].slot4GivenName.isNullOrEmpty()) {
-                    views.setTextViewText(R.id.name4, data[0].slot4ActualName)
-                } else {
-                    views.setTextViewText(R.id.name4, data[0].slot4GivenName)
-                }
+                    if(data[0].slot2GivenName.isNullOrEmpty()) {
+                        views.setTextViewText(R.id.name2, data[0].slot2ActualName)
+                    } else {
+                        views.setTextViewText(R.id.name2, data[0].slot2GivenName)
+                    }
 
-                if(data[0].slot5GivenName.isNullOrEmpty()) {
-                    views.setTextViewText(R.id.name5, data[0].slot5ActualName)
-                } else {
-                    views.setTextViewText(R.id.name5, data[0].slot5GivenName)
-                }
+                    if(data[0].slot3GivenName.isNullOrEmpty()) {
+                        views.setTextViewText(R.id.name3, data[0].slot3ActualName)
+                    } else {
+                        views.setTextViewText(R.id.name3, data[0].slot3GivenName)
+                    }
 
-                if(data[0].slot6GivenName.isNullOrEmpty()) {
-                    views.setTextViewText(R.id.name6, data[0].slot6ActualName)
-                } else {
-                    views.setTextViewText(R.id.name6, data[0].slot6GivenName)
-                }
+                    if(data[0].slot4GivenName.isNullOrEmpty()) {
+                        views.setTextViewText(R.id.name4, data[0].slot4ActualName)
+                    } else {
+                        views.setTextViewText(R.id.name4, data[0].slot4GivenName)
+                    }
 
-                if(data[0].slot7GivenName.isNullOrEmpty()) {
-                    views.setTextViewText(R.id.name7, data[0].slot7ActualName)
-                } else {
-                    views.setTextViewText(R.id.name7, data[0].slot7GivenName)
-                }
+                    if(data[0].slot5GivenName.isNullOrEmpty()) {
+                        views.setTextViewText(R.id.name5, data[0].slot5ActualName)
+                    } else {
+                        views.setTextViewText(R.id.name5, data[0].slot5GivenName)
+                    }
 
-                if(data[0].slot8GivenName.isNullOrEmpty()) {
-                    views.setTextViewText(R.id.name8, data[0].slot8ActualName)
-                } else {
-                    views.setTextViewText(R.id.name8, data[0].slot8GivenName)
+                    if(data[0].slot6GivenName.isNullOrEmpty()) {
+                        views.setTextViewText(R.id.name6, data[0].slot6ActualName)
+                    } else {
+                        views.setTextViewText(R.id.name6, data[0].slot6GivenName)
+                    }
+
+                    if(data[0].slot7GivenName.isNullOrEmpty()) {
+                        views.setTextViewText(R.id.name7, data[0].slot7ActualName)
+                    } else {
+                        views.setTextViewText(R.id.name7, data[0].slot7GivenName)
+                    }
+
+                    if(data[0].slot8GivenName.isNullOrEmpty()) {
+                        views.setTextViewText(R.id.name8, data[0].slot8ActualName)
+                    } else {
+                        views.setTextViewText(R.id.name8, data[0].slot8GivenName)
+                    }
                 }
 
                 val intent = Intent(context, FocustronicGridWidget_1::class.java)
