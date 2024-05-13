@@ -491,7 +491,7 @@ class MyWidgetsChildAdapter(
                 } else {
                     heading.text = setFocustronicSingleValueType2WidgetData[position].givenName
                 }
-                value.text = setFocustronicSingleValueType2WidgetData[position].value.toString()
+                value.text = String.format(Locale.getDefault(), "%.2f", setFocustronicSingleValueType2WidgetData[position].value)
             } else {
                 value.text = "NaN"
                 heading.text = "NaN"

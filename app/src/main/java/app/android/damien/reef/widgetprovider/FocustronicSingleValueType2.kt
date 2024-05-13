@@ -19,6 +19,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONArray
+import java.util.Locale
 
 class FocustronicSingleValueType2 : AppWidgetProvider() {
 
@@ -50,8 +51,8 @@ class FocustronicSingleValueType2 : AppWidgetProvider() {
                 } else {
                     views.setTextViewText(R.id.heading, data[0].givenName)
                 }
-
-                views.setTextViewText(R.id.value, data[0].value.toString())
+                String.format(Locale.getDefault(), "%.2f", data[0].value)
+                views.setTextViewText(R.id.value, String.format(Locale.getDefault(), "%.2f", data[0].value))
                 views.setTextViewText(R.id.unit, data[0].unit.toString())
                 views.setTextViewText(R.id.timestamp, SharedPreferences.read("lastUpdatedFocustronic", ""))
 

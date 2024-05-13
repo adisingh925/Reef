@@ -24,6 +24,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.json.JSONArray
 import org.json.JSONObject
 import yuku.ambilwarna.AmbilWarnaDialog
+import java.util.Locale
 
 
 class EditFocustronicSingleValueType2Widget : Fragment() {
@@ -45,9 +46,9 @@ class EditFocustronicSingleValueType2Widget : Fragment() {
             override fun onItemClick(data: String) {
                 actualName = data
                 binding.flaskBackgroundWidgetEditLayout.heading.text = data
-                value = JSONObject(apexData.getJSONObject(0).toString()).get(actualName).toString()
-                    .toFloat()
-                binding.flaskBackgroundWidgetEditLayout.value.text = value.toString()
+                value = JSONObject(apexData.getJSONObject(0).toString()).get(actualName).toString().toFloat()
+                binding.flaskBackgroundWidgetEditLayout.value.text = String.format(
+                    Locale.getDefault(), "%.2f", value)
             }
         })
     }
@@ -100,7 +101,6 @@ class EditFocustronicSingleValueType2Widget : Fragment() {
         }
 
         binding.flaskBackgroundWidgetEditLayout.innerLayout.background = innerLayoutMutatedDrawable
-
 
         binding.saveButton.setOnClickListener {
             focustronicType2Widget.actualName = actualName
