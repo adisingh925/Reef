@@ -40,24 +40,28 @@ class ApexSingleValueType1Provider_1 : AppWidgetProvider() {
 
                 val views = RemoteViews(context.packageName, R.layout.single_value_type_1_apex)
 
-                if()
-
-                if(data[0].givenName.isNullOrBlank()){
-                    if(data[0].actualName.equals("NaN")){
-                        views.setTextViewText(R.id.heading, "NaN")
+                if(data.lastIndex < 0){
+                    views.setTextViewText(R.id.heading, "NaN")
+                    views.setTextViewText(R.id.value, "0.0")
+                    views.setTextViewText(R.id.unit, "Unit")
+                }else{
+                    if(data[0].givenName.isNullOrBlank()){
+                        if(data[0].actualName.equals("NaN")){
+                            views.setTextViewText(R.id.heading, "NaN")
+                        } else {
+                            views.setTextViewText(R.id.heading, data[0].actualName)
+                        }
                     } else {
-                        views.setTextViewText(R.id.heading, data[0].actualName)
+                        views.setTextViewText(R.id.heading, data[0].givenName)
                     }
-                } else {
-                    views.setTextViewText(R.id.heading, data[0].givenName)
+
+                    views.setTextViewText(R.id.value, data[0].value.toString())
+                    views.setTextViewText(R.id.unit, data[0].unit.toString())
+
+                    views.setTextColor(R.id.value, data[0].textColor)
+                    views.setTextColor(R.id.heading, data[0].textColor)
+                    views.setTextColor(R.id.unit, data[0].textColor)
                 }
-
-                views.setTextViewText(R.id.value, data[0].value.toString())
-                views.setTextViewText(R.id.unit, data[0].unit.toString())
-
-                views.setTextColor(R.id.value, data[0].textColor)
-                views.setTextColor(R.id.heading, data[0].textColor)
-                views.setTextColor(R.id.unit, data[0].textColor)
 
                 val intent = Intent(context, ApexSingleValueType1Provider_1::class.java)
                 intent.action = Constants.UPDATE_WIDGET_ACTION

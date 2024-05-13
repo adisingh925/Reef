@@ -38,68 +38,91 @@ class ApexWaterQualityWidgetProvider_1 : AppWidgetProvider() {
                 )
                 data = Database.getDatabase(context).customWidgetsDao().readApexWaterQualityWidgetBackground()
                 val views = RemoteViews(context.packageName, R.layout.water_quality_widget)
-                views.setTextViewText(R.id.slot1value, data[0].slot1Value.toString())
-                views.setTextViewText(R.id.slot2value, data[0].slot2Value.toString())
-                views.setTextViewText(R.id.slot3value, data[0].slot3Value.toString())
-                views.setTextViewText(R.id.slot4value, data[0].slot4Value.toString())
-                views.setTextViewText(R.id.slot5value, data[0].slot5Value.toString())
 
-                views.setTextViewText(R.id.slot1unit, data[0].slot1Unit)
-                views.setTextViewText(R.id.slot2unit, data[0].slot2Unit)
-                views.setTextViewText(R.id.slot3unit, data[0].slot3Unit)
-                views.setTextViewText(R.id.slot4unit, data[0].slot4Unit)
-                views.setTextViewText(R.id.slot5unit, data[0].slot5Unit)
+                if(data.lastIndex < 0){
+                    views.setTextViewText(R.id.slot1value, "0.0")
+                    views.setTextViewText(R.id.slot2value, "0.0")
+                    views.setTextViewText(R.id.slot3value, "0.0")
+                    views.setTextViewText(R.id.slot4value, "0.0")
+                    views.setTextViewText(R.id.slot5value, "0.0")
 
-                views.setTextViewText(R.id.timestamp, SharedPreferences.read("lastUpdatedApex", ""))
+                    views.setTextViewText(R.id.slot1unit, "Unit")
+                    views.setTextViewText(R.id.slot2unit, "Unit")
+                    views.setTextViewText(R.id.slot3unit, "Unit")
+                    views.setTextViewText(R.id.slot4unit, "Unit")
+                    views.setTextViewText(R.id.slot5unit, "Unit")
 
-                if(data[0].slot1GivenName.isNullOrBlank()){
-                    if(data[0].slot1ActualName.equals("NaN")){
-                        views.setTextViewText(R.id.slot1name, "NaN")
+                    views.setTextViewText(R.id.timestamp, SharedPreferences.read("lastUpdatedApex", ""))
+
+                    views.setTextViewText(R.id.slot1name, "NaN")
+                    views.setTextViewText(R.id.slot2name, "NaN")
+                    views.setTextViewText(R.id.slot3name, "NaN")
+                    views.setTextViewText(R.id.slot4name, "NaN")
+                    views.setTextViewText(R.id.slot5name, "NaN")
+                }else{
+                    views.setTextViewText(R.id.slot1value, data[0].slot1Value.toString())
+                    views.setTextViewText(R.id.slot2value, data[0].slot2Value.toString())
+                    views.setTextViewText(R.id.slot3value, data[0].slot3Value.toString())
+                    views.setTextViewText(R.id.slot4value, data[0].slot4Value.toString())
+                    views.setTextViewText(R.id.slot5value, data[0].slot5Value.toString())
+
+                    views.setTextViewText(R.id.slot1unit, data[0].slot1Unit)
+                    views.setTextViewText(R.id.slot2unit, data[0].slot2Unit)
+                    views.setTextViewText(R.id.slot3unit, data[0].slot3Unit)
+                    views.setTextViewText(R.id.slot4unit, data[0].slot4Unit)
+                    views.setTextViewText(R.id.slot5unit, data[0].slot5Unit)
+
+                    views.setTextViewText(R.id.timestamp, SharedPreferences.read("lastUpdatedApex", ""))
+
+                    if(data[0].slot1GivenName.isNullOrBlank()){
+                        if(data[0].slot1ActualName.equals("NaN")){
+                            views.setTextViewText(R.id.slot1name, "NaN")
+                        } else {
+                            views.setTextViewText(R.id.slot1name, data[0].slot1ActualName)
+                        }
                     } else {
-                        views.setTextViewText(R.id.slot1name, data[0].slot1ActualName)
+                        views.setTextViewText(R.id.slot1name, data[0].slot1GivenName)
                     }
-                } else {
-                    views.setTextViewText(R.id.slot1name, data[0].slot1GivenName)
-                }
 
-                if(data[0].slot2GivenName.isNullOrBlank()){
-                    if(data[0].slot2ActualName.equals("NaN")){
-                        views.setTextViewText(R.id.slot2name, "NaN")
+                    if(data[0].slot2GivenName.isNullOrBlank()){
+                        if(data[0].slot2ActualName.equals("NaN")){
+                            views.setTextViewText(R.id.slot2name, "NaN")
+                        } else {
+                            views.setTextViewText(R.id.slot2name, data[0].slot2ActualName)
+                        }
                     } else {
-                        views.setTextViewText(R.id.slot2name, data[0].slot2ActualName)
+                        views.setTextViewText(R.id.slot2name, data[0].slot2GivenName)
                     }
-                } else {
-                    views.setTextViewText(R.id.slot2name, data[0].slot2GivenName)
-                }
 
-                if(data[0].slot3GivenName.isNullOrBlank()){
-                    if(data[0].slot3ActualName.equals("NaN")){
-                        views.setTextViewText(R.id.slot3name, "NaN")
+                    if(data[0].slot3GivenName.isNullOrBlank()){
+                        if(data[0].slot3ActualName.equals("NaN")){
+                            views.setTextViewText(R.id.slot3name, "NaN")
+                        } else {
+                            views.setTextViewText(R.id.slot3name, data[0].slot3ActualName)
+                        }
                     } else {
-                        views.setTextViewText(R.id.slot3name, data[0].slot3ActualName)
+                        views.setTextViewText(R.id.slot3name, data[0].slot3GivenName)
                     }
-                } else {
-                    views.setTextViewText(R.id.slot3name, data[0].slot3GivenName)
-                }
 
-                if(data[0].slot4GivenName.isNullOrBlank()){
-                    if(data[0].slot4ActualName.equals("NaN")){
-                        views.setTextViewText(R.id.slot4name, "NaN")
+                    if(data[0].slot4GivenName.isNullOrBlank()){
+                        if(data[0].slot4ActualName.equals("NaN")){
+                            views.setTextViewText(R.id.slot4name, "NaN")
+                        } else {
+                            views.setTextViewText(R.id.slot4name, data[0].slot4ActualName)
+                        }
                     } else {
-                        views.setTextViewText(R.id.slot4name, data[0].slot4ActualName)
+                        views.setTextViewText(R.id.slot4name, data[0].slot4GivenName)
                     }
-                } else {
-                    views.setTextViewText(R.id.slot4name, data[0].slot4GivenName)
-                }
 
-                if(data[0].slot5GivenName.isNullOrBlank()){
-                    if(data[0].slot5ActualName.equals("NaN")){
-                        views.setTextViewText(R.id.slot5name, "NaN")
+                    if(data[0].slot5GivenName.isNullOrBlank()){
+                        if(data[0].slot5ActualName.equals("NaN")){
+                            views.setTextViewText(R.id.slot5name, "NaN")
+                        } else {
+                            views.setTextViewText(R.id.slot5name, data[0].slot5ActualName)
+                        }
                     } else {
-                        views.setTextViewText(R.id.slot5name, data[0].slot5ActualName)
+                        views.setTextViewText(R.id.slot5name, data[0].slot5GivenName)
                     }
-                } else {
-                    views.setTextViewText(R.id.slot5name, data[0].slot5GivenName)
                 }
 
                 val intent = Intent(context, ApexWaterQualityWidgetProvider_1::class.java)
@@ -140,5 +163,4 @@ class ApexWaterQualityWidgetProvider_1 : AppWidgetProvider() {
         )
         onUpdate(context, appWidgetManager, appWidgetIds)
     }
-
 }
