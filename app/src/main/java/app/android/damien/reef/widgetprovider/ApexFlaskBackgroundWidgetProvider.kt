@@ -43,7 +43,7 @@ class ApexFlaskBackgroundWidgetProvider : AppWidgetProvider() {
 
                 if(data[0].slot1GivenName.isNullOrBlank()){
                     if(data[0].slot1ActualName.equals("NaN")){
-                        views.setTextViewText(R.id.slot1name, "Slot 1")
+                        views.setTextViewText(R.id.slot1name, "NaN")
                     } else {
                         views.setTextViewText(R.id.slot1name, data[0].slot1ActualName)
                     }
@@ -53,7 +53,7 @@ class ApexFlaskBackgroundWidgetProvider : AppWidgetProvider() {
 
                 if(data[0].slot2GivenName.isNullOrBlank()){
                     if(data[0].slot2ActualName.equals("NaN")){
-                        views.setTextViewText(R.id.slot2name, "Slot 2")
+                        views.setTextViewText(R.id.slot2name, "NaN")
                     } else {
                         views.setTextViewText(R.id.slot2name, data[0].slot2ActualName)
                     }
@@ -63,7 +63,7 @@ class ApexFlaskBackgroundWidgetProvider : AppWidgetProvider() {
 
                 if(data[0].slot3GivenName.isNullOrBlank()){
                     if(data[0].slot3ActualName.equals("NaN")){
-                        views.setTextViewText(R.id.slot3name, "Slot 3")
+                        views.setTextViewText(R.id.slot3name, "NaN")
                     } else {
                         views.setTextViewText(R.id.slot3name, data[0].slot3ActualName)
                     }

@@ -55,7 +55,7 @@ class ApexWaterQualityWidgetProvider : AppWidgetProvider() {
 
                 if(data[0].slot1GivenName.isNullOrBlank()){
                     if(data[0].slot1ActualName.equals("NaN")){
-                        views.setTextViewText(R.id.slot1name, "Slot 1")
+                        views.setTextViewText(R.id.slot1name, "NaN")
                     } else {
                         views.setTextViewText(R.id.slot1name, data[0].slot1ActualName)
                     }
@@ -65,7 +65,7 @@ class ApexWaterQualityWidgetProvider : AppWidgetProvider() {
 
                 if(data[0].slot2GivenName.isNullOrBlank()){
                     if(data[0].slot2ActualName.equals("NaN")){
-                        views.setTextViewText(R.id.slot2name, "Slot 2")
+                        views.setTextViewText(R.id.slot2name, "NaN")
                     } else {
                         views.setTextViewText(R.id.slot2name, data[0].slot2ActualName)
                     }
@@ -75,7 +75,7 @@ class ApexWaterQualityWidgetProvider : AppWidgetProvider() {
 
                 if(data[0].slot3GivenName.isNullOrBlank()){
                     if(data[0].slot3ActualName.equals("NaN")){
-                        views.setTextViewText(R.id.slot3name, "Slot 3")
+                        views.setTextViewText(R.id.slot3name, "NaN")
                     } else {
                         views.setTextViewText(R.id.slot3name, data[0].slot3ActualName)
                     }
@@ -85,7 +85,7 @@ class ApexWaterQualityWidgetProvider : AppWidgetProvider() {
 
                 if(data[0].slot4GivenName.isNullOrBlank()){
                     if(data[0].slot4ActualName.equals("NaN")){
-                        views.setTextViewText(R.id.slot4name, "Slot 4")
+                        views.setTextViewText(R.id.slot4name, "NaN")
                     } else {
                         views.setTextViewText(R.id.slot4name, data[0].slot4ActualName)
                     }
@@ -95,7 +95,7 @@ class ApexWaterQualityWidgetProvider : AppWidgetProvider() {
 
                 if(data[0].slot5GivenName.isNullOrBlank()){
                     if(data[0].slot5ActualName.equals("NaN")){
-                        views.setTextViewText(R.id.slot5name, "Slot 5")
+                        views.setTextViewText(R.id.slot5name, "NaN")
                     } else {
                         views.setTextViewText(R.id.slot5name, data[0].slot5ActualName)
                     }
