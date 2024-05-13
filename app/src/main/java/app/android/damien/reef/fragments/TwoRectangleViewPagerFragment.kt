@@ -109,6 +109,11 @@ class TwoRectangleViewPagerFragment : Fragment() {
             findNavController().popBackStack()
         }
 
+        binding.delete.setOnClickListener {
+            widgetsViewModel.deleteCustomWidgetTwoRectangle(customWidgetTwoRectangleModel)
+            findNavController().popBackStack()
+        }
+
         return binding.root
     }
 }

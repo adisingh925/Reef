@@ -116,6 +116,11 @@ class SingleValueType2ViewPagerFragment : Fragment() {
             findNavController().popBackStack()
         }
 
+        binding.delete.setOnClickListener {
+            widgetsViewModel.deleteCustomWidgetSingleValueType2(customWidgetSingleValueType2)
+            findNavController().popBackStack()
+        }
+
         binding.colorPicker.setOnClickListener {
             val colorPickerDialogue = AmbilWarnaDialog(context, textColor,
                 object : AmbilWarnaDialog.OnAmbilWarnaListener {

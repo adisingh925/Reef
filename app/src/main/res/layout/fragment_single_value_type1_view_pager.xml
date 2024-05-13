@@ -128,6 +128,23 @@
         app:layout_constraintTop_toBottomOf="@id/colorPicker"
         android:text="Save Widget"
         android:textSize="@dimen/default_button_text_size"
+        app:layout_constraintBottom_toTopOf="@id/delete"
+        app:cornerRadius="@dimen/default_button_radius"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/default_button_height"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/delete"
+        android:layout_marginLeft="@dimen/medium_margin"
+        android:layout_marginRight="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginBottom="@dimen/small_margin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/submit"
+        android:backgroundTint="@color/red"
+        android:text="Delete Widget"
+        android:textSize="@dimen/default_button_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:cornerRadius="@dimen/default_button_radius"
         android:layout_width="0dp"
