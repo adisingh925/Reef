@@ -42,16 +42,22 @@ class SingleValueType1ViewPagerFragment : Fragment() {
         // Inflate the layout for this fragment
         if(arguments != null){
             Log.d("SingleValueType2ViewPagerFragment", arguments.toString())
-            customWidgetSingleValueType1 = requireArguments().getParcelable(Constants.CUSTOM_WIDGET_SINGLE_VALUE_TYPE_2)!!
+            customWidgetSingleValueType1 = requireArguments().getParcelable(Constants.CUSTOM_WIDGET_SINGLE_VALUE_TYPE_1)!!
 
             binding.parameterInputField.setText(customWidgetSingleValueType1.givenName)
             binding.valueInputField.setText(customWidgetSingleValueType1.value.toString())
             binding.unitInputField.setText(customWidgetSingleValueType1.unit)
+
             textColor = customWidgetSingleValueType1.textColor
+            binding.colorPicker.iconTint = ColorStateList.valueOf(textColor)
 
             binding.previewCard.value.setTextColor(textColor)
             binding.previewCard.heading.setTextColor(textColor)
             binding.previewCard.unit.setTextColor(textColor)
+
+            binding.previewCard.value.text = binding.valueInputField.text.toString()
+            binding.previewCard.heading.text = binding.parameterInputField.text.toString()
+            binding.previewCard.unit.text = binding.unitInputField.text.toString()
         }
 
         binding.valueInputField.addTextChangedListener {
@@ -67,6 +73,21 @@ class SingleValueType1ViewPagerFragment : Fragment() {
         }
 
         binding.submit.setOnClickListener {
+            if(arguments != null){
+                widgetsViewModel.updateCustomWidgetSingleValueType1(
+                    CustomWidgetSingleValueType1Model(
+                        customWidgetSingleValueType1.id,
+                        binding.parameterInputField.text.toString(),
+                        binding.valueInputField.text.toString().toFloat(),
+                        binding.unitInputField.text.toString(),
+                        textColor,
+                    )
+                )
+                Toast.showSnackbar(binding.root,"Single Value Type 1 Custom Widget Updated Successfully")
+                findNavController().popBackStack()
+                return@setOnClickListener
+            }
+
             widgetsViewModel.insertCustomWidgetSingleValueType1(
                 CustomWidgetSingleValueType1Model(
                     0,
