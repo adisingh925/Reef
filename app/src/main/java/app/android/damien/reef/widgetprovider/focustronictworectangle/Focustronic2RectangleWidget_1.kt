@@ -44,14 +44,22 @@ class Focustronic2RectangleWidget_1 : AppWidgetProvider() {
                 views.setTextViewText(R.id.timestamp, SharedPreferences.read("lastUpdatedFocustronic", ""))
                 views.setTextViewText(R.id.timestamp2, SharedPreferences.read("lastUpdatedFocustronic", ""))
 
-                views.setTextViewText(R.id.value, data[0].topRectangleValue.toString())
-                views.setTextViewText(R.id.value2, data[0].bottomRectangleValue.toString())
 
-                views.setTextViewText(R.id.unit, data[0].topRectangleUnit)
-                views.setTextViewText(R.id.unit2, data[0].bottomRectangleUnit)
+                if(data.lastIndex < 0){
+                    views.setTextViewText(R.id.value, "0.0")
+                    views.setTextViewText(R.id.value2, "0.0")
+                    views.setTextViewText(R.id.unit, "Unit")
+                    views.setTextViewText(R.id.unit2, "Unit")
+                }else{
+                    views.setTextViewText(R.id.value, data[0].topRectangleValue.toString())
+                    views.setTextViewText(R.id.value2, data[0].bottomRectangleValue.toString())
 
-                views.setInt(R.id.card1, "setBackgroundColor", data[0].topRectangleColor);
-                views.setInt(R.id.card2, "setBackgroundColor", data[0].bottomRectangleColor);
+                    views.setTextViewText(R.id.unit, data[0].topRectangleUnit)
+                    views.setTextViewText(R.id.unit2, data[0].bottomRectangleUnit)
+
+                    views.setInt(R.id.card1, "setBackgroundColor", data[0].topRectangleColor);
+                    views.setInt(R.id.card2, "setBackgroundColor", data[0].bottomRectangleColor);
+                }
 
                 val intent = Intent(context, Focustronic2RectangleWidget_1::class.java)
                 intent.action = Constants.UPDATE_WIDGET_ACTION
