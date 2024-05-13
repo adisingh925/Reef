@@ -95,7 +95,59 @@
 
         <receiver
             android:name=".widgetprovider.focustronictworectangle.Focustronic2RectangleWidget_1"
-            android:label="Focustronic Two Rectangle Widget"
+            android:label="Focustronic Two Rectangle Widget - 1"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/focustronic_2_rectangle_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.focustronictworectangle.Focustronic2RectangleWidget_2"
+            android:label="Focustronic Two Rectangle Widget - 2"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/focustronic_2_rectangle_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.focustronictworectangle.Focustronic2RectangleWidget_3"
+            android:label="Focustronic Two Rectangle Widget - 3"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/focustronic_2_rectangle_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.focustronictworectangle.Focustronic2RectangleWidget_4"
+            android:label="Focustronic Two Rectangle Widget - 4"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/focustronic_2_rectangle_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.focustronictworectangle.Focustronic2RectangleWidget_5"
+            android:label="Focustronic Two Rectangle Widget - 5"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -108,7 +160,59 @@
 
         <receiver
             android:name=".widgetprovider.focustronicsinglevaluetype1.FocustronicSingleValueType1_1"
-            android:label="Focustronic Single Value Type 1 Widget"
+            android:label="Focustronic Single Value Type 1 Widget - 1"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/focustronic_single_value_type_1_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.focustronicsinglevaluetype1.FocustronicSingleValueType1_2"
+            android:label="Focustronic Single Value Type 1 Widget - 2"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/focustronic_single_value_type_1_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.focustronicsinglevaluetype1.FocustronicSingleValueType1_3"
+            android:label="Focustronic Single Value Type 1 Widget - 3"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/focustronic_single_value_type_1_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.focustronicsinglevaluetype1.FocustronicSingleValueType1_4"
+            android:label="Focustronic Single Value Type 1 Widget - 4"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/focustronic_single_value_type_1_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.focustronicsinglevaluetype1.FocustronicSingleValueType1_5"
+            android:label="Focustronic Single Value Type 1 Widget - 5"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -121,7 +225,59 @@
 
         <receiver
             android:name=".widgetprovider.focustronicsinglevaluetype2.FocustronicSingleValueType2_1"
-            android:label="Focustronic Single Value Type 2 Widget"
+            android:label="Focustronic Single Value Type 2 Widget - 1"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/focustronic_single_value_type_2_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.focustronicsinglevaluetype2.FocustronicSingleValueType2_2"
+            android:label="Focustronic Single Value Type 2 Widget - 2"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/focustronic_single_value_type_2_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.focustronicsinglevaluetype2.FocustronicSingleValueType2_3"
+            android:label="Focustronic Single Value Type 2 Widget - 3"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/focustronic_single_value_type_2_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.focustronicsinglevaluetype2.FocustronicSingleValueType2_4"
+            android:label="Focustronic Single Value Type 2 Widget - 4"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/focustronic_single_value_type_2_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.focustronicsinglevaluetype2.FocustronicSingleValueType2_5"
+            android:label="Focustronic Single Value Type 2 Widget - 5"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -134,7 +290,59 @@
 
         <receiver
             android:name=".widgetprovider.focustronicgridwidget.FocustronicGridWidget_1"
-            android:label="Focustronic Grid Widget"
+            android:label="Focustronic Grid Widget - 1"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/focustronic_grid_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.focustronicgridwidget.FocustronicGridWidget_2"
+            android:label="Focustronic Grid Widget - 2"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/focustronic_grid_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.focustronicgridwidget.FocustronicGridWidget_3"
+            android:label="Focustronic Grid Widget - 3"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/focustronic_grid_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.focustronicgridwidget.FocustronicGridWidget_4"
+            android:label="Focustronic Grid Widget - 4"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/focustronic_grid_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.focustronicgridwidget.FocustronicGridWidget_5"
+            android:label="Focustronic Grid Widget - 5"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -147,7 +355,59 @@
 
         <receiver
             android:name=".widgetprovider.apex2rectanglewidget.ApexTwoRectangleWidgetProvider_1"
-            android:label="Apex Two Rectangle Widget"
+            android:label="Apex Two Rectangle Widget - 1"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_two_rectangle_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apex2rectanglewidget.ApexTwoRectangleWidgetProvider_2"
+            android:label="Apex Two Rectangle Widget - 2"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_two_rectangle_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apex2rectanglewidget.ApexTwoRectangleWidgetProvider_3"
+            android:label="Apex Two Rectangle Widget - 3"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_two_rectangle_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apex2rectanglewidget.ApexTwoRectangleWidgetProvider_4"
+            android:label="Apex Two Rectangle Widget - 4"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_two_rectangle_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apex2rectanglewidget.ApexTwoRectangleWidgetProvider_5"
+            android:label="Apex Two Rectangle Widget - 5"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -161,6 +421,58 @@
         <receiver
             android:name=".widgetprovider.apexwaterquality.ApexWaterQualityWidgetProvider_1"
             android:label="Apex Water Quality Widget"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_water_quality_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apexwaterquality.ApexWaterQualityWidgetProvider_2"
+            android:label="Apex Water Quality Widget - 2"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_water_quality_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apexwaterquality.ApexWaterQualityWidgetProvider_3"
+            android:label="Apex Water Quality Widget - 3"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_water_quality_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apexwaterquality.ApexWaterQualityWidgetProvider_4"
+            android:label="Apex Water Quality Widget - 4"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_water_quality_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apexwaterquality.ApexWaterQualityWidgetProvider_5"
+            android:label="Apex Water Quality Widget - 5"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -250,8 +562,112 @@
         </receiver>
 
         <receiver
+            android:name=".widgetprovider.apexflaskbackgroundwidget.ApexFlaskBackgroundWidgetProvider_2"
+            android:label="Apex flask Background Widget - 2"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_flask_background_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apexflaskbackgroundwidget.ApexFlaskBackgroundWidgetProvider_3"
+            android:label="Apex flask Background Widget - 3"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_flask_background_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apexflaskbackgroundwidget.ApexFlaskBackgroundWidgetProvider_4"
+            android:label="Apex flask Background Widget - 4"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_flask_background_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apexflaskbackgroundwidget.ApexFlaskBackgroundWidgetProvider_5"
+            android:label="Apex flask Background Widget - 5"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_flask_background_widget_info" />
+        </receiver>
+
+        <receiver
             android:name=".widgetprovider.apexpowervaluewidget.ApexPowerValueWidgetProvider_1"
-            android:label="Apex Power Value Widget"
+            android:label="Apex Power Value Widget - 1"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_power_value_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apexpowervaluewidget.ApexPowerValueWidgetProvider_2"
+            android:label="Apex Power Value Widget - 2"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_power_value_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apexpowervaluewidget.ApexPowerValueWidgetProvider_3"
+            android:label="Apex Power Value Widget - 3"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_power_value_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apexpowervaluewidget.ApexPowerValueWidgetProvider_4"
+            android:label="Apex Power Value Widget - 4"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_power_value_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apexpowervaluewidget.ApexPowerValueWidgetProvider_5"
+            android:label="Apex Power Value Widget - 5"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -264,7 +680,59 @@
 
         <receiver
             android:name=".widgetprovider.apexsinglevaluetype1.ApexSingleValueType1Provider_1"
-            android:label="Apex Single Value Type 1 Widget"
+            android:label="Apex Single Value Type 1 Widget - 1"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_single_value_type1_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apexsinglevaluetype1.ApexSingleValueType1Provider_2"
+            android:label="Apex Single Value Type 1 Widget - 2"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_single_value_type1_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apexsinglevaluetype1.ApexSingleValueType1Provider_3"
+            android:label="Apex Single Value Type 1 Widget - 3"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_single_value_type1_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apexsinglevaluetype1.ApexSingleValueType1Provider_4"
+            android:label="Apex Single Value Type 1 Widget - 4"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_single_value_type1_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apexsinglevaluetype1.ApexSingleValueType1Provider_5"
+            android:label="Apex Single Value Type 1 Widget - 5"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -277,7 +745,7 @@
 
         <receiver
             android:name=".widgetprovider.apexsinglevaluetype2.ApexSingleValueType2Provider_1"
-            android:label="Apex Single Value Type 2 Widget"
+            android:label="Apex Single Value Type 2 Widget - 1"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -288,18 +756,97 @@
                 android:resource="@xml/apex_single_value_type2_widget_info" />
         </receiver>
 
-<!--        <receiver-->
-<!--            android:name=".widgetprovider.ApexGraphWidgetProvider"-->
-<!--            android:label="Apex Graph Widget"-->
-<!--            android:exported="true">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
-<!--            </intent-filter>-->
+        <receiver
+            android:name=".widgetprovider.apexsinglevaluetype2.ApexSingleValueType2Provider_2"
+            android:label="Apex Single Value Type 2 Widget - 2"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
 
-<!--            <meta-data-->
-<!--                android:name="android.appwidget.provider"-->
-<!--                android:resource="@xml/apex_graph_widget_info" />-->
-<!--        </receiver>-->
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_single_value_type2_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apexsinglevaluetype2.ApexSingleValueType2Provider_3"
+            android:label="Apex Single Value Type 2 Widget - 3"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_single_value_type2_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apexsinglevaluetype2.ApexSingleValueType2Provider_4"
+            android:label="Apex Single Value Type 2 Widget - 4"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_single_value_type2_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.apexsinglevaluetype2.ApexSingleValueType2Provider_5"
+            android:label="Apex Single Value Type 2 Widget - 5"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_single_value_type2_widget_info" />
+        </receiver>
+
+
+        <receiver
+            android:name=".widgetprovider.tworectanglecustom.TwoRectangleCustom_1"
+            android:label="Two Rectangle Custom Widget - 1"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_two_rectangle_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.singlevaluetype1custom.SingleValueType1Custom_1"
+            android:label="Single Value Type 1 Custom Widget - 1"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_single_value_type1_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widgetprovider.singlevaluetype2custom.SingleValueType2Custom_1"
+            android:label="Single Value Type 2 Custom Widget - 1"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apex_single_value_type2_widget_info" />
+        </receiver>
 
         <receiver
             android:name=".utils.AlarmReceiver"

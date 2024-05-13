@@ -277,6 +277,9 @@ interface CustomWidgetsDao {
     @Query("SELECT * from custom_widget_single_value_type_1_table order by id asc")
     fun readCustomSingleValueTypeOneWidget(): LiveData<List<CustomWidgetSingleValueType1Model>>
 
+    @Query("SELECT * from custom_widget_single_value_type_1_table order by id asc")
+    fun readCustomSingleValueTypeOneWidgetBackground(): List<CustomWidgetSingleValueType1Model>
+
     @Update
     fun updateCustomSingleValueTypeOneWidget(data: CustomWidgetSingleValueType1Model)
 
@@ -293,6 +296,9 @@ interface CustomWidgetsDao {
     @Query("SELECT * from custom_widget_single_value_type_2_table order by id asc")
     fun readCustomSingleValueTypeTwoWidget(): LiveData<List<CustomWidgetSingleValueType2Model>>
 
+    @Query("SELECT * from custom_widget_single_value_type_2_table order by id asc")
+    fun readCustomSingleValueTypeTwoWidgetBackground(): List<CustomWidgetSingleValueType2Model>
+
     @Update
     fun updateCustomSingleValueTypeTwoWidget(data: CustomWidgetSingleValueType2Model)
 
@@ -308,6 +314,9 @@ interface CustomWidgetsDao {
 
     @Query("SELECT * from custom_widget_two_rectangle_table order by id asc")
     fun readCustomTwoRectangleWidget(): LiveData<List<CustomWidgetTwoRectangleModel>>
+
+    @Query("SELECT * from custom_widget_two_rectangle_table order by id asc")
+    fun readCustomTwoRectangleWidgetBackground(): List<CustomWidgetTwoRectangleModel>
 
     @Update
     fun updateCustomTwoRectangleWidget(data: CustomWidgetTwoRectangleModel)
