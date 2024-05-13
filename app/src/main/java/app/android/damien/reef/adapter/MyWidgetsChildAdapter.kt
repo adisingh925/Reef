@@ -652,10 +652,10 @@ class MyWidgetsChildAdapter(
             unit.setTextColor(setCustomSingleValueType2WidgetData[position].textColor)
             timestamp.setTextColor(setCustomSingleValueType2WidgetData[position].textColor)
 
-            val innerLayoutDrawable = context?.resources?.getDrawable(R.drawable.linear_layout_corner_radius_black_circular)
+            val innerLayoutDrawable = context.resources?.getDrawable(R.drawable.linear_layout_corner_radius_black_circular)
             val innerLayoutMutatedDrawable = innerLayoutDrawable?.mutate()
             if (innerLayoutMutatedDrawable is GradientDrawable) {
-                innerLayoutMutatedDrawable.setStroke(3, setCustomSingleValueType2WidgetData[position].ringColor) // Assuming 3dp width for the stroke
+                innerLayoutMutatedDrawable.setStroke(7, setCustomSingleValueType2WidgetData[position].ringColor) // Assuming 3dp width for the stroke
             }
 
             innerLayout.background = innerLayoutMutatedDrawable
@@ -705,18 +705,20 @@ class MyWidgetsChildAdapter(
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder15: ")
 
-            val topRectangleDrawable = context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
-            val topRectangleMutatedDrawable = topRectangleDrawable.mutate()
-            topRectangleMutatedDrawable.setTint(setCustomTwoRectangleWidgetData[position].topRectangleColor)
+//            val topRectangleDrawable = context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
+//            val topRectangleMutatedDrawable = topRectangleDrawable.mutate()
+//            topRectangleMutatedDrawable.setTint(setCustomTwoRectangleWidgetData[position].topRectangleColor)
+//
+//            topCard.background = topRectangleMutatedDrawable
+//
+//            val bottomRectangleDrawable = context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
+//            val bottomRectangleMutatedDrawable = bottomRectangleDrawable.mutate()
+//            bottomRectangleMutatedDrawable.setTint(setCustomTwoRectangleWidgetData[position].bottomRectangleColor)
+//
+//            bottomCard.background = bottomRectangleMutatedDrawable
 
-            topCard.background = topRectangleMutatedDrawable
-
-            val bottomRectangleDrawable = context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
-            val bottomRectangleMutatedDrawable = bottomRectangleDrawable.mutate()
-            bottomRectangleMutatedDrawable.setTint(setCustomTwoRectangleWidgetData[position].bottomRectangleColor)
-
-            bottomCard.background = bottomRectangleMutatedDrawable
-
+            topRectangleTime.text = setCustomTwoRectangleWidgetData[position].topRectangleUpdateTimeStamp
+            bottomRectangleTime.text = setCustomTwoRectangleWidgetData[position].bottomRectangleUpdateTimeStamp
             topRectangleUnit.text = setCustomTwoRectangleWidgetData[position].topRectangleUnit
             bottomRectangleUnit.text = setCustomTwoRectangleWidgetData[position].bottomRectangleUnit
             topRectangleValue.text = setCustomTwoRectangleWidgetData[position].topRectangleValue.toString()
