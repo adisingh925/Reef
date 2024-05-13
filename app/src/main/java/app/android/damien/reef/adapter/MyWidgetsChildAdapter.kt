@@ -24,6 +24,7 @@ import app.android.damien.reef.database_model.FocustronicSingleValueType2WidgetM
 import app.android.damien.reef.database_model.FocustronicTwoRectangleWidgetModel
 import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
+import java.util.Locale
 
 class MyWidgetsChildAdapter(
     private val context: Context,
@@ -64,16 +65,16 @@ class MyWidgetsChildAdapter(
 
     private inner class ViewHolder1(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val value1 = itemView.findViewById<TextView>(R.id.value1)
-        val value2 = itemView.findViewById<TextView>(R.id.value2)
-        val value3 = itemView.findViewById<TextView>(R.id.value3)
+        val value1: TextView = itemView.findViewById(R.id.value1)
+        val value2: TextView = itemView.findViewById(R.id.value2)
+        val value3: TextView = itemView.findViewById(R.id.value3)
 
         fun bind(position: Int) {
             Log.d("MyWidgetsChildAdapter", "ViewHolder1: ")
 
-            value1.text = setApexPowerValuesWidgetData[position].slot1.toString()
-            value2.text = setApexPowerValuesWidgetData[position].slot2.toString()
-            value3.text = setApexPowerValuesWidgetData[position].slot3.toString()
+            value1.text = String.format(Locale.getDefault(), "%.2f", setApexPowerValuesWidgetData[position].slot1)
+            value2.text = String.format(Locale.getDefault(), "%.2f", setApexPowerValuesWidgetData[position].slot2)
+            value3.text = String.format(Locale.getDefault(), "%.2f", setApexPowerValuesWidgetData[position].slot3)
 
             itemView.setOnClickListener {
                 onItemClickListener.onApexPowerValuesWidgetClick(setApexPowerValuesWidgetData[position])

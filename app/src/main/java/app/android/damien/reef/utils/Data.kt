@@ -408,7 +408,12 @@ class Data {
                         val itemList1 = i.slot1SelectedValues?.split(",")
                         if (itemList1 != null) {
                             for(item in itemList1){
-                                i.slot1 += jsonObject.get(item).toString().toFloat()
+                                try {
+                                    i.slot1 += jsonObject.get(item).toString().toFloat()
+                                }catch (e: Exception){
+                                    Log.d("TAG", "updateApexWidgetsData: " + e.message)
+                                    i.slot1 += 0.0f
+                                }
                             }
                         }
                     }
@@ -420,7 +425,7 @@ class Data {
                                     i.slot2 += jsonObject.get(item).toString().toFloat()
                                 }catch (e: Exception){
                                     Log.d("TAG", "updateApexWidgetsData: " + e.message)
-                                    i.slot1 += 0.0f
+                                    i.slot2 += 0.0f
                                 }
                             }
                         }
@@ -429,7 +434,12 @@ class Data {
                         val itemList3 = i.slot3SelectedValues?.split(",")
                         if (itemList3 != null) {
                             for(item in itemList3){
-                                i.slot3 += jsonObject.get(item).toString().toFloat()
+                                try {
+                                    i.slot3 += jsonObject.get(item).toString().toFloat()
+                                }catch (e: Exception){
+                                    Log.d("TAG", "updateApexWidgetsData: " + e.message)
+                                    i.slot3 += 0.0f
+                                }
                             }
                         }
                     }

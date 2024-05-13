@@ -22,6 +22,7 @@ import app.android.damien.reef.viewmodel.WidgetsViewModel
 import com.google.android.material.tabs.TabLayout
 import org.json.JSONArray
 import org.json.JSONObject
+import java.util.Locale
 
 class EditApexPowerWidget : Fragment(), SimpleListAdapter2.OnItemClickListener {
 
@@ -63,9 +64,9 @@ class EditApexPowerWidget : Fragment(), SimpleListAdapter2.OnItemClickListener {
         ampsValue = apexPowerValueWidget.slot2
         voltsValue = apexPowerValueWidget.slot3
 
-        binding.flaskBackgroundWidgetEditLayout.value1.text = wattsValue.toString()
-        binding.flaskBackgroundWidgetEditLayout.value2.text = ampsValue.toString()
-        binding.flaskBackgroundWidgetEditLayout.value3.text = voltsValue.toString()
+        binding.flaskBackgroundWidgetEditLayout.value1.text = String.format(Locale.getDefault(), "%.2f", wattsValue)
+        binding.flaskBackgroundWidgetEditLayout.value2.text = String.format(Locale.getDefault(), "%.2f", ampsValue)
+        binding.flaskBackgroundWidgetEditLayout.value3.text = String.format(Locale.getDefault(), "%.2f", voltsValue)
 
         initApiData()
 
@@ -78,19 +79,19 @@ class EditApexPowerWidget : Fragment(), SimpleListAdapter2.OnItemClickListener {
                     0 -> {
                         adapter.setData(wattsActualNamesList)
                         adapter.notifyDataSetChanged()
-                        binding.total.text = "Total : ${wattsValue.toString()}"
+                        binding.total.text = "Total : ${String.format(Locale.getDefault(), "%.2f", wattsValue)}"
                     }
 
                     1 -> {
                         adapter.setData(ampsActualNamesList)
                         adapter.notifyDataSetChanged()
-                        binding.total.text = "Total : ${ampsValue.toString()}"
+                        binding.total.text = "Total : ${String.format(Locale.getDefault(), "%.2f", ampsValue)}"
                     }
 
                     2 -> {
                         adapter.setData(voltsActualNamesList)
                         adapter.notifyDataSetChanged()
-                        binding.total.text = "Total : ${voltsValue.toString()}"
+                        binding.total.text = "Total : ${String.format(Locale.getDefault(), "%.2f", voltsValue)}"
                     }
                 }
             }
@@ -173,21 +174,25 @@ class EditApexPowerWidget : Fragment(), SimpleListAdapter2.OnItemClickListener {
                     wattsActualNamesList[position] = Pair(data.first, 1)
                     wattsValue += JSONObject(apexData.getJSONObject(0).toString()).get(data.first)
                         .toString().toFloat()
-                    binding.total.text = "Total : ${wattsValue.toString()}"
+                    val wattsValueSorted = String.format(Locale.getDefault(), "%.2f", wattsValue)
+
+                    binding.total.text = "Total : ${wattsValueSorted.toString()}"
                 }
 
                 data.first.endsWith("v") -> {
                     voltsActualNamesList[position] = Pair(data.first, 1)
                     voltsValue += JSONObject(apexData.getJSONObject(0).toString()).get(data.first)
                         .toString().toFloat()
-                    binding.total.text = "Total : ${voltsValue.toString()}"
+                    val voltsValueSorted = String.format(Locale.getDefault(), "%.2f", voltsValue)
+                    binding.total.text = "Total : ${voltsValueSorted.toString()}"
                 }
 
                 data.first.endsWith("a") -> {
                     ampsActualNamesList[position] = Pair(data.first, 1)
                     ampsValue += JSONObject(apexData.getJSONObject(0).toString()).get(data.first)
                         .toString().toFloat()
-                    binding.total.text = "Total : ${ampsValue.toString()}"
+                    val ampsValueSorted = String.format(Locale.getDefault(), "%.2f", ampsValue)
+                    binding.total.text = "Total : ${ampsValueSorted.toString()}"
                 }
             }
         } else {
@@ -197,27 +202,30 @@ class EditApexPowerWidget : Fragment(), SimpleListAdapter2.OnItemClickListener {
                     wattsActualNamesList[position] = Pair(data.first, 0)
                     wattsValue -= JSONObject(apexData.getJSONObject(0).toString()).get(data.first)
                         .toString().toFloat()
-                    binding.total.text = "Total : ${wattsValue.toString()}"
+                    val wattsValueSorted = String.format(Locale.getDefault(), "%.2f", wattsValue)
+                    binding.total.text = "Total : ${wattsValueSorted.toString()}"
                 }
 
                 data.first.endsWith("v") -> {
                     voltsActualNamesList[position] = Pair(data.first, 0)
                     voltsValue -= JSONObject(apexData.getJSONObject(0).toString()).get(data.first)
                         .toString().toFloat()
-                    binding.total.text = "Total : ${voltsValue.toString()}"
+                    val voltsValueSorted = String.format(Locale.getDefault(), "%.2f", voltsValue)
+                    binding.total.text = "Total : ${voltsValueSorted.toString()}"
                 }
 
                 data.first.endsWith("a") -> {
                     ampsActualNamesList[position] = Pair(data.first, 0)
                     ampsValue -= JSONObject(apexData.getJSONObject(0).toString()).get(data.first)
                         .toString().toFloat()
-                    binding.total.text = "Total : ${ampsValue.toString()}"
+                    val ampsValueSorted = String.format(Locale.getDefault(), "%.2f", ampsValue)
+                    binding.total.text = "Total : ${ampsValueSorted.toString()}"
                 }
             }
         }
 
-        binding.flaskBackgroundWidgetEditLayout.value1.text = wattsValue.toString()
-        binding.flaskBackgroundWidgetEditLayout.value2.text = ampsValue.toString()
-        binding.flaskBackgroundWidgetEditLayout.value3.text = voltsValue.toString()
+        binding.flaskBackgroundWidgetEditLayout.value1.text = String.format(Locale.getDefault(), "%.2f", wattsValue)
+        binding.flaskBackgroundWidgetEditLayout.value2.text = String.format(Locale.getDefault(), "%.2f", ampsValue)
+        binding.flaskBackgroundWidgetEditLayout.value3.text = String.format(Locale.getDefault(), "%.2f", voltsValue)
     }
 }
