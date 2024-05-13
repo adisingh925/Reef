@@ -92,7 +92,7 @@ class SingleValueType2ViewPagerFragment : Fragment() {
                 )
             )
 
-            Toast.showSnackbar(binding.root,"Widget added successfully")
+            Toast.showSnackbar(binding.root,"Single Value Type 2 Custom Widget Added Successfully")
             findNavController().popBackStack()
         }
 

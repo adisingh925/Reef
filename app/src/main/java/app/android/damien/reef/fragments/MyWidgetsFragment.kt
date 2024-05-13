@@ -595,14 +595,14 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
     }
 
     private fun initCustomWidgetSingleValueType1Adapter() {
-        customWidgetSingleValueType2RecyclerView.adapter = customWidgetSingleValueType1
-        customWidgetSingleValueType2RecyclerView.layoutManager =
+        customWidgetSingleValueType1RecyclerView.adapter = customWidgetSingleValueType1
+        customWidgetSingleValueType1RecyclerView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun initCustomWidgetTwoRectangleAdapter() {
-        customWidgetSingleValueType2RecyclerView.adapter = customWidgetTwoRectangle
-        customWidgetSingleValueType2RecyclerView.layoutManager =
+        customWidgetTwoRectangleRecyclerView.adapter = customWidgetTwoRectangle
+        customWidgetTwoRectangleRecyclerView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 

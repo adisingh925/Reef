@@ -99,7 +99,7 @@
         app:layout_constraintTop_toBottomOf="@id/unit_layout"
         app:layout_constraintBottom_toTopOf="@id/submit"
         android:layout_width="0dp"
-        android:text="Choose Background Color"
+        android:text="Choose Text Color"
         android:textSize="@dimen/default_button_text_size"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

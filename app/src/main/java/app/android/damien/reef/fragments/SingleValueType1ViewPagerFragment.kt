@@ -1,12 +1,21 @@
 package app.android.damien.reef.fragments
 
+import android.content.res.ColorStateList
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import app.android.damien.reef.R
+import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import app.android.damien.reef.database_model.CustomWidgetSingleValueType1Model
 import app.android.damien.reef.databinding.FragmentSingleValueType1ViewPagerBinding
+import app.android.damien.reef.utils.Constants
+import app.android.damien.reef.utils.Toast
+import app.android.damien.reef.viewmodel.WidgetsViewModel
+import yuku.ambilwarna.AmbilWarnaDialog
 
 
 class SingleValueType1ViewPagerFragment : Fragment() {
@@ -15,11 +24,81 @@ class SingleValueType1ViewPagerFragment : Fragment() {
         FragmentSingleValueType1ViewPagerBinding.inflate(layoutInflater)
     }
 
+    private val widgetsViewModel by lazy {
+        ViewModelProvider(this)[WidgetsViewModel::class.java]
+    }
+
+    var unit = ""
+    var givenName = ""
+    var value = 0.0f
+    var textColor = 0
+
+    private lateinit var customWidgetSingleValueType1: CustomWidgetSingleValueType1Model
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
+        if(arguments != null){
+            Log.d("SingleValueType2ViewPagerFragment", arguments.toString())
+            customWidgetSingleValueType1 = requireArguments().getParcelable(Constants.CUSTOM_WIDGET_SINGLE_VALUE_TYPE_2)!!
+
+            binding.parameterInputField.setText(customWidgetSingleValueType1.givenName)
+            binding.valueInputField.setText(customWidgetSingleValueType1.value.toString())
+            binding.unitInputField.setText(customWidgetSingleValueType1.unit)
+            textColor = customWidgetSingleValueType1.textColor
+
+            binding.previewCard.value.setTextColor(textColor)
+            binding.previewCard.heading.setTextColor(textColor)
+            binding.previewCard.unit.setTextColor(textColor)
+        }
+
+        binding.valueInputField.addTextChangedListener {
+            binding.previewCard.value.text = it.toString()
+        }
+
+        binding.parameterInputField.addTextChangedListener {
+            binding.previewCard.heading.text = it.toString()
+        }
+
+        binding.unitInputField.addTextChangedListener {
+            binding.previewCard.unit.text = it.toString()
+        }
+
+        binding.submit.setOnClickListener {
+            widgetsViewModel.insertCustomWidgetSingleValueType1(
+                CustomWidgetSingleValueType1Model(
+                    0,
+                    binding.parameterInputField.text.toString(),
+                    binding.valueInputField.text.toString().toFloat(),
+                    binding.unitInputField.text.toString(),
+                    textColor,
+                )
+            )
+
+            Toast.showSnackbar(binding.root,"Single Value Type 1 Custom Widget Added Successfully")
+            findNavController().popBackStack()
+        }
+
+        binding.colorPicker.setOnClickListener {
+            val colorPickerDialogue = AmbilWarnaDialog(context, textColor,
+                object : AmbilWarnaDialog.OnAmbilWarnaListener {
+                    override fun onCancel(dialog: AmbilWarnaDialog) {
+
+                    }
+
+                    override fun onOk(dialog: AmbilWarnaDialog, color: Int) {
+                        textColor = color
+                        binding.colorPicker.iconTint = ColorStateList.valueOf(textColor)
+                        binding.previewCard.value.setTextColor(textColor)
+                        binding.previewCard.heading.setTextColor(textColor)
+                        binding.previewCard.unit.setTextColor(textColor)
+                    }
+                })
+            colorPickerDialogue.show()
+        }
+
         return binding.root
     }
 }
