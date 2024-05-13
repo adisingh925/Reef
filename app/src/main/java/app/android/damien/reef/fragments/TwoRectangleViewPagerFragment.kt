@@ -47,6 +47,11 @@ class TwoRectangleViewPagerFragment : Fragment() {
             binding.previewCard.value.setText(customWidgetTwoRectangleModel.topRectangleValue.toString())
             binding.previewCard.unit2.setText(customWidgetTwoRectangleModel.bottomRectangleUnit)
             binding.previewCard.value2.setText(customWidgetTwoRectangleModel.bottomRectangleValue.toString())
+
+            binding.topRectangleValueInput.setText(customWidgetTwoRectangleModel.topRectangleValue.toString())
+            binding.bottomRectangleValueInput.setText(customWidgetTwoRectangleModel.bottomRectangleValue.toString())
+            binding.topRectangleUnitInput.setText(customWidgetTwoRectangleModel.topRectangleUnit)
+            binding.bottomRectangleUnitInput.setText(customWidgetTwoRectangleModel.bottomRectangleUnit)
         }
 
         binding.topRectangleUnitInput.addTextChangedListener {
@@ -66,21 +71,39 @@ class TwoRectangleViewPagerFragment : Fragment() {
         }
 
         binding.submit.setOnClickListener {
-            widgetsViewModel.insertCustomWidgetTwoRectangle(
-                CustomWidgetTwoRectangleModel(
-                    0,
-                    null,
-                    null,
-                    Data().millisToDateTime(System.currentTimeMillis()),
-                    Data().millisToDateTime(System.currentTimeMillis()),
-                    binding.topRectangleUnitInput.text.toString(),
-                    binding.bottomRectangleUnitInput.text.toString(),
-                    binding.topRectangleValueInput.text.toString().toFloat(),
-                    binding.bottomRectangleValueInput.text.toString().toFloat(),
-                    -1,
-                    -1
+            if(arguments != null){
+                widgetsViewModel.updateCustomWidgetTwoRectangle(
+                    CustomWidgetTwoRectangleModel(
+                        customWidgetTwoRectangleModel.id,
+                        null,
+                        null,
+                        Data().millisToDateTime(System.currentTimeMillis()),
+                        Data().millisToDateTime(System.currentTimeMillis()),
+                        binding.topRectangleUnitInput.text.toString(),
+                        binding.bottomRectangleUnitInput.text.toString(),
+                        binding.topRectangleValueInput.text.toString().toFloat(),
+                        binding.bottomRectangleValueInput.text.toString().toFloat(),
+                        -1,
+                        -1
+                    )
                 )
-            )
+            }else{
+                widgetsViewModel.insertCustomWidgetTwoRectangle(
+                    CustomWidgetTwoRectangleModel(
+                        0,
+                        null,
+                        null,
+                        Data().millisToDateTime(System.currentTimeMillis()),
+                        Data().millisToDateTime(System.currentTimeMillis()),
+                        binding.topRectangleUnitInput.text.toString(),
+                        binding.bottomRectangleUnitInput.text.toString(),
+                        binding.topRectangleValueInput.text.toString().toFloat(),
+                        binding.bottomRectangleValueInput.text.toString().toFloat(),
+                        -1,
+                        -1
+                    )
+                )
+            }
 
             Toast.showSnackbar(binding.root,"Two Rectangle Custom Widget Added Successfully")
             findNavController().popBackStack()
