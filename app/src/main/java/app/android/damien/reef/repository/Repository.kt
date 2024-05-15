@@ -3,6 +3,7 @@ package app.android.damien.reef.repository
 import app.android.damien.reef.dao.CustomWidgetsDao
 import app.android.damien.reef.database_model.ApexCircleWidgetModel
 import app.android.damien.reef.database_model.ApexFlaskBackgroundWidgetModel
+import app.android.damien.reef.database_model.ApexGraphWidgetModel
 import app.android.damien.reef.database_model.ApexPowerValuesWidgetModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeOneModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
@@ -28,6 +29,7 @@ class Repository(private val dao: CustomWidgetsDao) {
     val readApexSingleValueTypeOneWidgetData = dao.readApexSingleValueTypeOneWidget()
     val readApexSingleValueTypeTwoWidgetData = dao.readApexSingleValueTypeTwoWidget()
     val readApexWaterQualityWidgetData = dao.readApexWaterQualityWidget()
+    val readApexGraphWidgetData = dao.readApexGraphWidget()
 
     val focustronicOneElementData = dao.readFocustronicOneElementWidget()
     val focustronicGridData = dao.readFocustronicGridWidget()
@@ -65,6 +67,21 @@ class Repository(private val dao: CustomWidgetsDao) {
 
     suspend fun updateApexFlaskBackgroundWidget(data: ApexFlaskBackgroundWidgetModel) {
         dao.updateApexFlaskBackgroundWidget(data)
+    }
+
+    /**
+     * Apex Graph Widget
+     */
+    suspend fun insertApexGraphWidget(data: ApexGraphWidgetModel) {
+        dao.insertApexGraphWidget(data)
+    }
+
+    suspend fun deleteApexGraphWidget(data: ApexGraphWidgetModel) {
+        dao.deleteApexGraphWidget(data)
+    }
+
+    suspend fun updateApexGraphWidget(data: ApexGraphWidgetModel) {
+        dao.updateApexGraphWidget(data)
     }
 
     /**

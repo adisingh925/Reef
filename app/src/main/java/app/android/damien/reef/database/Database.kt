@@ -7,6 +7,7 @@ import androidx.room.RoomDatabase
 import app.android.damien.reef.dao.CustomWidgetsDao
 import app.android.damien.reef.database_model.ApexCircleWidgetModel
 import app.android.damien.reef.database_model.ApexFlaskBackgroundWidgetModel
+import app.android.damien.reef.database_model.ApexGraphWidgetModel
 import app.android.damien.reef.database_model.ApexPowerValuesWidgetModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeOneModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
@@ -23,7 +24,7 @@ import app.android.damien.reef.database_model.FocustronicSingleValueType2WidgetM
 import app.android.damien.reef.database_model.FocustronicTwoRectangleWidgetModel
 
 @Database(
-    entities = [CustomWidgetModel::class, ApexFlaskBackgroundWidgetModel::class, ApexPowerValuesWidgetModel::class, ApexCircleWidgetModel::class, ApexTwoRectangleWidgets::class, ApexSingleValueTypeOneModel::class, ApexSingleValueTypeTwoModel::class, ApexWaterQualityWidget::class, FocustronicTwoRectangleWidgetModel::class, FocustronicGridWidgetModel::class, FocustronicOneElementWidgetModel::class, FocustronicSingleValueType1WidgetModel::class, FocustronicSingleValueType2WidgetModel::class, CustomWidgetTwoRectangleModel::class, CustomWidgetSingleValueType2Model::class, CustomWidgetSingleValueType1Model::class],
+    entities = [CustomWidgetModel::class, ApexFlaskBackgroundWidgetModel::class, ApexPowerValuesWidgetModel::class, ApexCircleWidgetModel::class, ApexTwoRectangleWidgets::class, ApexSingleValueTypeOneModel::class, ApexSingleValueTypeTwoModel::class, ApexWaterQualityWidget::class, FocustronicTwoRectangleWidgetModel::class, FocustronicGridWidgetModel::class, FocustronicOneElementWidgetModel::class, FocustronicSingleValueType1WidgetModel::class, FocustronicSingleValueType2WidgetModel::class, CustomWidgetTwoRectangleModel::class, CustomWidgetSingleValueType2Model::class, CustomWidgetSingleValueType1Model::class, ApexGraphWidgetModel::class],
     version = 1,
     exportSchema = false
 )

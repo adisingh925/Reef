@@ -9,6 +9,7 @@ import androidx.room.Query
 import androidx.room.Update
 import app.android.damien.reef.database_model.ApexCircleWidgetModel
 import app.android.damien.reef.database_model.ApexFlaskBackgroundWidgetModel
+import app.android.damien.reef.database_model.ApexGraphWidgetModel
 import app.android.damien.reef.database_model.ApexPowerValuesWidgetModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeOneModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
@@ -60,6 +61,24 @@ interface CustomWidgetsDao {
 
     @Update
     fun updateApexFlaskBackgroundWidget(data: ApexFlaskBackgroundWidgetModel)
+
+    /**
+     * apex graph widgets
+     */
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertApexGraphWidget(data: ApexGraphWidgetModel)
+
+    @Query("SELECT * from apex_graph_widget_table order by id asc")
+    fun readApexGraphWidget(): LiveData<List<ApexGraphWidgetModel>>
+
+    @Query("SELECT * from apex_graph_widget_table order by id asc")
+    fun readApexGraphBackground(): List<ApexGraphWidgetModel>
+
+    @Delete
+    fun deleteApexGraphWidget(data: ApexGraphWidgetModel)
+
+    @Update
+    fun updateApexGraphWidget(data: ApexGraphWidgetModel)
 
     /**
      * Apex Power Values Widget

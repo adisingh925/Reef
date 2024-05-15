@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import app.android.damien.reef.R
 import app.android.damien.reef.database_model.ApexCircleWidgetModel
 import app.android.damien.reef.database_model.ApexFlaskBackgroundWidgetModel
+import app.android.damien.reef.database_model.ApexGraphWidgetModel
 import app.android.damien.reef.database_model.ApexPowerValuesWidgetModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeOneModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
@@ -61,6 +62,7 @@ class ApexSelectWidgetScreen : Fragment() {
         binding.apexSingleValueType2.itemSubheading.text = SharedPreferences.read(Constants.APEX_SINGLE_VALUE_TYPE_2_WIDGET, 0).toString() + "/5 widgets added"
         binding.apexPowerValuesWidgets.itemSubheading.text = SharedPreferences.read(Constants.APEX_POWER_VALUE_WIDGET, 0).toString() + "/5 widgets added"
         binding.apexWaterQualityWidget.itemSubheading.text = SharedPreferences.read(Constants.APEX_WATER_QUALITY_WIDGET, 0).toString() + "/5 widgets added"
+        binding.apexGraphWidgets.itemSubheading.text = SharedPreferences.read(Constants.APEX_GRAPH_WIDGET, 0).toString() + "/5 widgets added"
 
         binding.apexFlaskBackgroundWidgets.flaskConstraintLayout.setOnClickListener {
             val widgetCount = SharedPreferences.read(Constants.APEX_FLASK_BACKGROUND_WIDGET, 0)
@@ -248,6 +250,29 @@ class ApexSelectWidgetScreen : Fragment() {
 
             binding.apexWaterQualityWidget.itemSubheading.text =
                 SharedPreferences.read(Constants.APEX_WATER_QUALITY_WIDGET, 0)
+                    .toString() + "/5 widgets added"
+        }
+
+        binding.apexGraphWidgets.flaskConstraintLayout.setOnClickListener {
+            val widgetCount = SharedPreferences.read(Constants.APEX_GRAPH_WIDGET, 0)
+            if (widgetCount in 0..4) {
+                widgetsViewModel.insertApexGraphWidget(
+                    ApexGraphWidgetModel(
+                        0,
+                        "NaN",
+                        "",
+                        0.0f,
+                        "Unit",
+                        Color.parseColor("#ffffff")
+                    )
+                )
+                SharedPreferences.write(Constants.APEX_GRAPH_WIDGET, widgetCount + 1)
+            } else {
+                Toast.showSnackbar(binding.root, "You can only add 5 widgets")
+            }
+
+            binding.apexGraphWidgets.itemSubheading.text =
+                SharedPreferences.read(Constants.APEX_GRAPH_WIDGET, 0)
                     .toString() + "/5 widgets added"
         }
 

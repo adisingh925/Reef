@@ -63,9 +63,16 @@
                 android:layout_height="wrap_content"
                 layout="@layout/apex_power_value_widget"/>
 
-            <include android:id="@+id/apex_circle_widgets"
+            <include android:id="@+id/apex_graph_widgets"
                 android:layout_width="match_parent"
                 app:layout_constraintTop_toBottomOf="@id/apex_power_values_widgets"
+                android:layout_margin="@dimen/small_margin"
+                android:layout_height="wrap_content"
+                layout="@layout/apex_graph_widget"/>
+
+            <include android:id="@+id/apex_circle_widgets"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@id/apex_graph_widgets"
                 android:layout_margin="@dimen/small_margin"
                 android:layout_height="wrap_content"
                 layout="@layout/apex_circle_widgets"/>

@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import app.android.damien.reef.database.Database
 import app.android.damien.reef.database_model.ApexCircleWidgetModel
 import app.android.damien.reef.database_model.ApexFlaskBackgroundWidgetModel
+import app.android.damien.reef.database_model.ApexGraphWidgetModel
 import app.android.damien.reef.database_model.ApexPowerValuesWidgetModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeOneModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
@@ -35,6 +36,7 @@ class WidgetsViewModel(application: Application) : AndroidViewModel(application)
     val apexSingleValueTypeOneWidgets: LiveData<List<ApexSingleValueTypeOneModel>>
     val apexSingleValueTypeTwoWidgets: LiveData<List<ApexSingleValueTypeTwoModel>>
     val apexWaterQualityWidgets: LiveData<List<ApexWaterQualityWidget>>
+    val apexGraphWidgets : LiveData<List<ApexGraphWidgetModel>>
 
     val focustronicOneElementWidgets: LiveData<List<FocustronicOneElementWidgetModel>>
     val focustronicGridWidgets: LiveData<List<FocustronicGridWidgetModel>>
@@ -60,6 +62,7 @@ class WidgetsViewModel(application: Application) : AndroidViewModel(application)
         apexSingleValueTypeOneWidgets = repository.readApexSingleValueTypeOneWidgetData
         apexSingleValueTypeTwoWidgets = repository.readApexSingleValueTypeTwoWidgetData
         apexWaterQualityWidgets = repository.readApexWaterQualityWidgetData
+        apexGraphWidgets = repository.readApexGraphWidgetData
 
         focustronicOneElementWidgets = repository.focustronicOneElementData
         focustronicGridWidgets = repository.focustronicGridData
@@ -108,6 +111,27 @@ class WidgetsViewModel(application: Application) : AndroidViewModel(application)
     fun updateApexFlaskBackgroundWidget(data: ApexFlaskBackgroundWidgetModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.updateApexFlaskBackgroundWidget(data)
+        }
+    }
+
+    /**
+     * Apex Flask Background Widget
+     */
+    fun insertApexGraphWidget(data: ApexGraphWidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertApexGraphWidget(data)
+        }
+    }
+
+    fun deleteApexGraphWidget(data: ApexGraphWidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteApexGraphWidget(data)
+        }
+    }
+
+    fun updateApexGraphWidget(data: ApexGraphWidgetModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateApexGraphWidget(data)
         }
     }
 

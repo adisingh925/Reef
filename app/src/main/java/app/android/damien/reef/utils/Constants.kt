@@ -16,6 +16,7 @@ object Constants {
     const val APEX_SINGLE_VALUE_TYPE_1_WIDGET_TABLE = "apex_single_value_type_1_widget_table"
     const val APEX_SINGLE_VALUE_TYPE_2_WIDGET_TABLE = "apex_single_value_type_2_widget_table"
     const val APEX_WATER_QUALITY_WIDGET_TABLE = "apex_water_quality_widget_table"
+    const val APEX_GRAPH_WIDGET_TABLE = "apex_graph_widget_table"
 
     const val FOCUSTRONIC_TWO_RECTANGLE_WIDGETS_TABLE = "focustronic_two_rectangle_widgets_table"
     const val FOCUSTRONIC_SINGLE_VALUE_TYPE_1_WIDGET_TABLE = "focustronic_single_value_type_1_widget_table"
@@ -34,6 +35,7 @@ object Constants {
     const val APEX_SINGLE_VALUE_TYPE_1_WIDGET = "ASVT1W"
     const val APEX_SINGLE_VALUE_TYPE_2_WIDGET = "ASVT2W"
     const val APEX_WATER_QUALITY_WIDGET = "AWQW"
+    const val APEX_GRAPH_WIDGET = "AGW"
 
     const val FOCUSTRONIC_ONE_ELEMENT_WIDGET = "FOEW"
     const val FOCUSTRONIC_TWO_RECTANGLE_WIDGET = "FTRW"
