@@ -9,14 +9,16 @@ import app.android.damien.reef.utils.Constants
 @Entity(tableName = Constants.APEX_GRAPH_WIDGET_TABLE)
 data class ApexGraphWidgetModel (
     @PrimaryKey(autoGenerate = true) val id: Int,
-    val actualName: String?,
-    val value: String,
-    val unit: String?,
+    var actualName: String?,
+    var value: Float,
+    var records : String?,
+    var unit: String?,
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString(),
-        parcel.readString().toString(),
+        parcel.readFloat(),
+        parcel.readString(),
         parcel.readString()
     ) {
     }
@@ -24,7 +26,8 @@ data class ApexGraphWidgetModel (
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(id)
         parcel.writeString(actualName)
-        parcel.writeString(value)
+        parcel.writeFloat(value)
+        parcel.writeString(records)
         parcel.writeString(unit)
     }
 

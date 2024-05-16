@@ -319,8 +319,9 @@ class ApexSelectWidgetScreen : Fragment() {
                     ApexGraphWidgetModel(
                         0,
                         "NaN",
+                        0.0f,
                         "",
-                        ""
+                        "Unit"
                     )
                 )
                 SharedPreferences.write(Constants.APEX_GRAPH_WIDGET, widgetCount + 1)
