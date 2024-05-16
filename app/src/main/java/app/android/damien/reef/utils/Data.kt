@@ -115,24 +115,28 @@ class Data {
 
     private fun getAquariumTanks(cookie: String, coroutineScope: CoroutineScope) {
         coroutineScope.launch {
-            val aquariumTanks = async { ApiClient.alkatronicApiService.getAquariumTanks(cookie).execute() }
-            val data = aquariumTanks.await()
-            if (data.isSuccessful) {
-                val tanks = data.body()
-                if (tanks != null) {
-                    val jsonArray = JSONObject(tanks.string()).getJSONArray("data")
-                    val deviceJobs = ArrayList<Deferred<Unit>>()
+            try {
+                val aquariumTanks = async { ApiClient.alkatronicApiService.getAquariumTanks(cookie).execute() }
+                val data = aquariumTanks.await()
+                if (data.isSuccessful) {
+                    val tanks = data.body()
+                    if (tanks != null) {
+                        val jsonArray = JSONObject(tanks.string()).getJSONArray("data")
+                        val deviceJobs = ArrayList<Deferred<Unit>>()
 
-                    for (i in 0 until jsonArray.length()) {
-                        val tank = jsonArray.getJSONObject(i)
-                        val job = async {
-                            getAquariumDevices(tank.getInt("id"), cookie, this)
+                        for (i in 0 until jsonArray.length()) {
+                            val tank = jsonArray.getJSONObject(i)
+                            val job = async {
+                                getAquariumDevices(tank.getInt("id"), cookie, this)
+                            }
+                            deviceJobs.add(job)
                         }
-                        deviceJobs.add(job)
-                    }
 
-                    deviceJobs.awaitAll()
+                        deviceJobs.awaitAll()
+                    }
                 }
+            }catch (e: Exception) {
+                Log.e("Data", e.toString())
             }
         }
     }
@@ -142,91 +146,103 @@ class Data {
         cookie: String,
         coroutineScope: CoroutineScope
     ) {
-        coroutineScope.launch {
-            val aquariumDevices = async { ApiClient.alkatronicApiService.getAquariumDevices(cookie, id).execute() }
-            val data = aquariumDevices.await()
-            if (data.isSuccessful) {
-                val devices = data.body()
-                if (devices != null) {
-                    val jsonObject = JSONObject(devices.string()).getJSONObject("data")
-                    val alkatronicsArray = jsonObject.getJSONArray("alkatronics")
-                    val mastertronicsArray = jsonObject.getJSONArray("mastertronics")
+        try {
+            coroutineScope.launch {
+                val aquariumDevices = async { ApiClient.alkatronicApiService.getAquariumDevices(cookie, id).execute() }
+                val data = aquariumDevices.await()
+                if (data.isSuccessful) {
+                    val devices = data.body()
+                    if (devices != null) {
+                        val jsonObject = JSONObject(devices.string()).getJSONObject("data")
+                        val alkatronicsArray = jsonObject.getJSONArray("alkatronics")
+                        val mastertronicsArray = jsonObject.getJSONArray("mastertronics")
 
-                    val alkatronicJobs = mutableListOf<Deferred<Unit>>()
+                        val alkatronicJobs = mutableListOf<Deferred<Unit>>()
 
-                    for (i in 0 until alkatronicsArray.length()) {
-                        val alkatronic = alkatronicsArray.getJSONObject(i)
-                        val job = async {
-                            getAlkatronicData(alkatronic.getInt("id"), cookie, coroutineScope)
+                        for (i in 0 until alkatronicsArray.length()) {
+                            val alkatronic = alkatronicsArray.getJSONObject(i)
+                            val job = async {
+                                getAlkatronicData(alkatronic.getInt("id"), cookie, coroutineScope)
+                            }
+                            alkatronicJobs.add(job)
                         }
-                        alkatronicJobs.add(job)
-                    }
 
-                    alkatronicJobs.awaitAll()
+                        alkatronicJobs.awaitAll()
 
-                    val mastertronicJobs = mutableListOf<Deferred<Unit>>()
+                        val mastertronicJobs = mutableListOf<Deferred<Unit>>()
 
-                    for (i in 0 until mastertronicsArray.length()) {
-                        val mastertronic = mastertronicsArray.getJSONObject(i)
-                        val job = async {
-                            getMastertronicData(mastertronic.getInt("id"), cookie, coroutineScope)
+                        for (i in 0 until mastertronicsArray.length()) {
+                            val mastertronic = mastertronicsArray.getJSONObject(i)
+                            val job = async {
+                                getMastertronicData(mastertronic.getInt("id"), cookie, coroutineScope)
+                            }
+                            mastertronicJobs.add(job)
                         }
-                        mastertronicJobs.add(job)
-                    }
 
-                    mastertronicJobs.awaitAll()
+                        mastertronicJobs.awaitAll()
+                    }
                 }
             }
+        }catch (e: Exception) {
+            Log.e("Data", e.toString())
         }
     }
 
     private fun getMastertronicData(id: Int, cookie: String, coroutineScope: CoroutineScope) {
-        coroutineScope.launch {
-            val mastertronicData = async { ApiClient.alkatronicApiService.getMastertronicData(cookie, id).execute() }
-            val data = mastertronicData.await()
-            if (data.isSuccessful) {
-                val mastertronic = data.body()
-                if (mastertronic != null) {
-                    val mastertronicJsonArray = JSONObject(mastertronic.string())
-                        .getJSONObject("data")
-                        .getJSONArray("parameters")
+        try {
+            coroutineScope.launch {
+                val mastertronicData = async { ApiClient.alkatronicApiService.getMastertronicData(cookie, id).execute() }
+                val data = mastertronicData.await()
+                if (data.isSuccessful) {
+                    val mastertronic = data.body()
+                    if (mastertronic != null) {
+                        val mastertronicJsonArray = JSONObject(mastertronic.string())
+                            .getJSONObject("data")
+                            .getJSONArray("parameters")
 
-                    for (i in 0 until mastertronicJsonArray.length()) {
-                        val parameter = mastertronicJsonArray.getJSONObject(i)
-                        focustronicJsonObject.put(
-                            parameter.getString("parameter"),
-                            parameter.getString("value")
-                        )
+                        for (i in 0 until mastertronicJsonArray.length()) {
+                            val parameter = mastertronicJsonArray.getJSONObject(i)
+                            focustronicJsonObject.put(
+                                parameter.getString("parameter"),
+                                parameter.getString("value")
+                            )
+                        }
+
+                        jsonArray.put(0, focustronicJsonObject)
+                        SharedPreferences.write("focustronicData", jsonArray.toString())
                     }
-
-                    jsonArray.put(0, focustronicJsonObject)
-                    SharedPreferences.write("focustronicData", jsonArray.toString())
                 }
             }
+        }catch (e: Exception) {
+            Log.e("Data", e.toString())
         }
     }
 
     private fun getAlkatronicData(id: Int, cookie: String, coroutineScope: CoroutineScope) {
-        coroutineScope.launch {
-            val alkatronicData = async { ApiClient.alkatronicApiService.getAlkatronicData(cookie, id).execute() }
-            val data = alkatronicData.await()
-            if (data.isSuccessful) {
-                val alkatronic = data.body()
-                if (alkatronic != null) {
-                    val alkatronicJsonArray = JSONObject(alkatronic.string()).getJSONArray("data")
-                    for (i in 0 until alkatronicJsonArray.length()) {
-                        val alkatronicData = alkatronicJsonArray.getJSONObject(i)
-                        focustronicJsonObject.put("kh_value", alkatronicData.getString("kh_value"))
-                        focustronicJsonObject.put("ph_value", alkatronicData.getString("ph_value"))
-                        focustronicJsonObject.put(
-                            "acid_used",
-                            alkatronicData.getString("acid_used")
-                        )
+        try {
+            coroutineScope.launch {
+                val alkatronicData = async { ApiClient.alkatronicApiService.getAlkatronicData(cookie, id).execute() }
+                val data = alkatronicData.await()
+                if (data.isSuccessful) {
+                    val alkatronic = data.body()
+                    if (alkatronic != null) {
+                        val alkatronicJsonArray = JSONObject(alkatronic.string()).getJSONArray("data")
+                        for (i in 0 until alkatronicJsonArray.length()) {
+                            val alkatronicData = alkatronicJsonArray.getJSONObject(i)
+                            focustronicJsonObject.put("kh_value", alkatronicData.getString("kh_value"))
+                            focustronicJsonObject.put("ph_value", alkatronicData.getString("ph_value"))
+                            focustronicJsonObject.put(
+                                "acid_used",
+                                alkatronicData.getString("acid_used")
+                            )
+                        }
+                        jsonArray.put(0, focustronicJsonObject)
+                        SharedPreferences.write("focustronicData", jsonArray.toString())
                     }
-                    jsonArray.put(0, focustronicJsonObject)
-                    SharedPreferences.write("focustronicData", jsonArray.toString())
                 }
             }
+        }catch (e: Exception) {
+            Log.e("Data", e.toString())
         }
     }
 

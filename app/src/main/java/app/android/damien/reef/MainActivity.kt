@@ -33,8 +33,12 @@ class MainActivity : AppCompatActivity() {
         )
 
         CoroutineScope(Dispatchers.IO).launch {
-            Data().getApexData(this)
-            Data().getFocustronicResponse(this)
+            try {
+                Data().getApexData(this)
+                Data().getFocustronicResponse(this)
+            }catch (e: Exception) {
+                Log.e("MainActivity", e.toString())
+            }
         }.invokeOnCompletion {
             try {
                 Data().updateFocustronicWidgetData(this, JSONArray(SharedPreferences.read("focustronicData", "").toString()))
