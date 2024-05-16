@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import app.android.damien.reef.R
 import app.android.damien.reef.database_model.ApexCircleWidgetModel
 import app.android.damien.reef.database_model.ApexFlaskBackgroundWidgetModel
+import app.android.damien.reef.database_model.ApexGraphWidgetModel
 import app.android.damien.reef.database_model.ApexPowerValuesWidgetModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeOneModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
@@ -42,6 +43,7 @@ class MyWidgetsChildAdapter(
     private var setApexSingleValueTypeOneWidgetData = emptyList<ApexSingleValueTypeOneModel>()
     private var setApexSingleValueTypeTwoWidgetData = emptyList<ApexSingleValueTypeTwoModel>()
     private var setApexWaterQualityWidgetData = emptyList<ApexWaterQualityWidget>()
+    private var setApexGraphWidgetData = emptyList<ApexGraphWidgetModel>()
 
     private var setFocustronic1ElementWidgetData = emptyList<FocustronicOneElementWidgetModel>()
     private var setFocustronicGridWidgetData = emptyList<FocustronicGridWidgetModel>()
@@ -61,6 +63,7 @@ class MyWidgetsChildAdapter(
         fun onApexSingleValueTypeOneWidgetClick(data: ApexSingleValueTypeOneModel)
         fun onApexSingleValueTypeTwoWidgetClick(data: ApexSingleValueTypeTwoModel)
         fun onApexWaterQualityWidgetClick(data: ApexWaterQualityWidget)
+        fun onApexGraphWidgetClick(data: ApexGraphWidgetModel)
 
 
         fun onFocustronic1ElementWidgetClick(data: FocustronicOneElementWidgetModel)
@@ -731,6 +734,45 @@ class MyWidgetsChildAdapter(
         }
     }
 
+    private inner class ViewHolder16(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val topRectangleTime = itemView.findViewById<TextView>(R.id.timestamp)
+        val bottomRectangleTime = itemView.findViewById<TextView>(R.id.timestamp2)
+        val topRectangleUnit = itemView.findViewById<TextView>(R.id.unit)
+        val bottomRectangleUnit = itemView.findViewById<TextView>(R.id.unit2)
+        val topRectangleValue = itemView.findViewById<TextView>(R.id.value)
+        val bottomRectangleValue = itemView.findViewById<TextView>(R.id.value2)
+        val topCard = itemView.findViewById<View>(R.id.card1)
+        val bottomCard = itemView.findViewById<View>(R.id.card2)
+        fun bind(position: Int) {
+
+            Log.d("MyWidgetsChildAdapter", "ViewHolder15: ")
+
+//            val topRectangleDrawable = context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
+//            val topRectangleMutatedDrawable = topRectangleDrawable.mutate()
+//            topRectangleMutatedDrawable.setTint(setCustomTwoRectangleWidgetData[position].topRectangleColor)
+//
+//            topCard.background = topRectangleMutatedDrawable
+//
+//            val bottomRectangleDrawable = context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
+//            val bottomRectangleMutatedDrawable = bottomRectangleDrawable.mutate()
+//            bottomRectangleMutatedDrawable.setTint(setCustomTwoRectangleWidgetData[position].bottomRectangleColor)
+//
+//            bottomCard.background = bottomRectangleMutatedDrawable
+
+//            topRectangleTime.text = setCustomTwoRectangleWidgetData[position].topRectangleUpdateTimeStamp
+//            bottomRectangleTime.text = setCustomTwoRectangleWidgetData[position].bottomRectangleUpdateTimeStamp
+//            topRectangleUnit.text = setCustomTwoRectangleWidgetData[position].topRectangleUnit
+//            bottomRectangleUnit.text = setCustomTwoRectangleWidgetData[position].bottomRectangleUnit
+//            topRectangleValue.text = setCustomTwoRectangleWidgetData[position].topRectangleValue.toString()
+//            bottomRectangleValue.text = setCustomTwoRectangleWidgetData[position].bottomRectangleValue.toString()
+
+            itemView.setOnClickListener {
+                onItemClickListener.onApexGraphWidgetClick(setApexGraphWidgetData[position])
+            }
+        }
+    }
+
     override fun getItemViewType(position: Int): Int {
         when (widgetType) {
             Constants.APEX_POWER_VALUE_WIDGET -> return 1
@@ -748,6 +790,7 @@ class MyWidgetsChildAdapter(
             Constants.CUSTOM_WIDGET_SINGLE_VALUE_TYPE_2 -> return 13
             Constants.CUSTOM_WIDGET_SINGLE_VALUE_TYPE_1 -> return 14
             Constants.CUSTOM_WIDGET_TWO_RECTANGLE -> return 15
+            Constants.APEX_GRAPH_WIDGET -> return 16
         }
 
         Log.d("MyWidgetsChildAdapter", "getItemViewType: ${widgetType}")
@@ -823,6 +866,10 @@ class MyWidgetsChildAdapter(
                 Constants.CUSTOM_WIDGET_TWO_RECTANGLE -> {
                     (holder as ViewHolder15).bind(position)
                 }
+
+                Constants.APEX_GRAPH_WIDGET -> {
+                    (holder as ViewHolder16).bind(position)
+                }
             }
         }
     }
@@ -894,6 +941,10 @@ class MyWidgetsChildAdapter(
             15 -> return ViewHolder15(
                 LayoutInflater.from(context).inflate(R.layout.two_rectangle_widget, parent, false)
             )
+
+            16 -> return ViewHolder16(
+                LayoutInflater.from(context).inflate(R.layout.graph_widget, parent, false)
+            )
         }
 
         return ViewHolder1(
@@ -962,6 +1013,10 @@ class MyWidgetsChildAdapter(
             Constants.CUSTOM_WIDGET_TWO_RECTANGLE -> {
                 (holder as ViewHolder15).bind(position)
             }
+
+            Constants.APEX_GRAPH_WIDGET -> {
+                (holder as ViewHolder16).bind(position)
+            }
         }
     }
 
@@ -982,6 +1037,7 @@ class MyWidgetsChildAdapter(
             Constants.CUSTOM_WIDGET_SINGLE_VALUE_TYPE_2 -> return setCustomSingleValueType2WidgetData.size
             Constants.CUSTOM_WIDGET_SINGLE_VALUE_TYPE_1 -> return setCustomSingleValueType1WidgetData.size
             Constants.CUSTOM_WIDGET_TWO_RECTANGLE -> return setCustomTwoRectangleWidgetData.size
+            Constants.APEX_GRAPH_WIDGET -> return setApexGraphWidgetData.size
         }
         return setApexFlaskBackgroundWidgetData.size
     }
@@ -1058,6 +1114,11 @@ class MyWidgetsChildAdapter(
 
     fun setCustomTwoRectangleWidgetData(widgets: List<CustomWidgetTwoRectangleModel>) {
         setCustomTwoRectangleWidgetData = widgets
+        notifyDataSetChanged()
+    }
+
+    fun setApexGraphWidgetData(widgets: List<ApexGraphWidgetModel>) {
+        setApexGraphWidgetData = widgets
         notifyDataSetChanged()
     }
 }

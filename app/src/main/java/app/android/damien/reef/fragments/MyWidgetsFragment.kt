@@ -16,6 +16,7 @@ import app.android.damien.reef.R
 import app.android.damien.reef.adapter.MyWidgetsChildAdapter
 import app.android.damien.reef.database_model.ApexCircleWidgetModel
 import app.android.damien.reef.database_model.ApexFlaskBackgroundWidgetModel
+import app.android.damien.reef.database_model.ApexGraphWidgetModel
 import app.android.damien.reef.database_model.ApexPowerValuesWidgetModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeOneModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
@@ -49,6 +50,14 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
         MyWidgetsChildAdapter(
             requireContext(),
             Constants.APEX_CIRCLE_WIDGET,
+            this
+        )
+    }
+
+    private val apexGraphWidgetAdapter by lazy {
+        MyWidgetsChildAdapter(
+            requireContext(),
+            Constants.APEX_GRAPH_WIDGET,
             this
         )
     }
@@ -165,15 +174,19 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
         )
     }
 
-    private val customWidgetSingleValueType2RecyclerView by lazy{
+    private val apexGraphWidgetRecyclerView by lazy {
+        binding.apexGraphWidgetRecyclerView
+    }
+
+    private val customWidgetSingleValueType2RecyclerView by lazy {
         binding.customWidgetSingleValueType2LayoutRecyclerView
     }
 
-    private val customWidgetSingleValueType1RecyclerView by lazy{
+    private val customWidgetSingleValueType1RecyclerView by lazy {
         binding.customWidgetSingleValueType1LayoutRecyclerView
     }
 
-    private val customWidgetTwoRectangleRecyclerView by lazy{
+    private val customWidgetTwoRectangleRecyclerView by lazy {
         binding.customWidget2RectangleLayoutRecyclerView
     }
 
@@ -287,6 +300,13 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
             initApexWaterQualityWidgetAdapter()
         }
 
+        if(SharedPreferences.read(Constants.APEX_GRAPH_WIDGET, 0) == 0) {
+            binding.apexGraphWidgetLayout.visibility = View.GONE
+        } else {
+            binding.apexGraphWidgetLayout.visibility = View.VISIBLE
+            initApexGraphWidgetAdapter()
+        }
+
         if (SharedPreferences.read(Constants.FOCUSTRONIC_ONE_ELEMENT_WIDGET, 0) == 0) {
             binding.focustronic1ElementWidgetLayout.visibility = View.GONE
         } else {
@@ -357,6 +377,11 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
             apexWaterQualityWidgetAdapter.setApexWaterQualityWidgetData(it)
         }
 
+        widgetsViewModel.apexGraphWidgets.observe(viewLifecycleOwner) {
+            Log.d("MyWidgetsFragment", "Apex Graph Widgets: $it")
+            apexGraphWidgetAdapter.setApexGraphWidgetData(it)
+        }
+
         widgetsViewModel.focustronicOneElementWidgets.observe(viewLifecycleOwner) {
             Log.d("MyWidgetsFragment", "Focustronic One Element Widgets: $it")
             focustronicOneElementWidgetAdapter.setFocustronic1ElementWidgetData(it)
@@ -382,37 +407,43 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
             focustronicGridWidgetAdapter.setFocustronicGridWidgetData(it)
         }
 
-        widgetsViewModel.customWidgetSingleValueType2Data.observe(viewLifecycleOwner){
+        widgetsViewModel.customWidgetSingleValueType2Data.observe(viewLifecycleOwner) {
             Log.d("MyWidgetsFragment", "Custom Widget Single Value Type 2: $it")
-            if(it.isNotEmpty()){
+            if (it.isNotEmpty()) {
                 binding.customWidgetSingleValueType2Layout.visibility = View.VISIBLE
                 customWidgetSingleValueType2.setCustomSingleValueType2WidgetData(it)
-            }else{
+            } else {
                 binding.customWidgetSingleValueType2Layout.visibility = View.GONE
             }
         }
 
-        widgetsViewModel.customWidgetSingleValueType1Data.observe(viewLifecycleOwner){
+        widgetsViewModel.customWidgetSingleValueType1Data.observe(viewLifecycleOwner) {
             Log.d("MyWidgetsFragment", "Custom Widget Single Value Type 1: $it")
-            if(it.isNotEmpty()) {
+            if (it.isNotEmpty()) {
                 binding.customWidgetSingleValueType1Layout.visibility = View.VISIBLE
                 customWidgetSingleValueType1.setCustomSingleValueType1WidgetData(it)
-            }else{
+            } else {
                 binding.customWidgetSingleValueType1Layout.visibility = View.GONE
             }
         }
 
-        widgetsViewModel.customWidgetTwoRectangleData.observe(viewLifecycleOwner){
+        widgetsViewModel.customWidgetTwoRectangleData.observe(viewLifecycleOwner) {
             Log.d("MyWidgetsFragment", "Custom Widget Two Rectangle: $it")
-            if(it.isNotEmpty()) {
+            if (it.isNotEmpty()) {
                 binding.customWidget2RectangleLayout.visibility = View.VISIBLE
                 customWidgetTwoRectangle.setCustomTwoRectangleWidgetData(it)
-            }else{
+            } else {
                 binding.customWidget2RectangleLayout.visibility = View.GONE
             }
         }
 
         return binding.root
+    }
+
+    private fun initApexGraphWidgetAdapter() {
+        apexGraphWidgetRecyclerView.adapter = apexGraphWidgetAdapter
+        apexGraphWidgetRecyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun initApexCircleRecyclerview() {
@@ -510,6 +541,15 @@ class MyWidgetsFragment : Fragment(), MyWidgetsChildAdapter.OnItemClickListener 
         bundle.putParcelable(Constants.APEX_WATER_QUALITY_WIDGET, data)
         findNavController().navigate(
             R.id.action_myWidgetsFragment_to_editApexWaterQualityWidget,
+            bundle
+        )
+    }
+
+    override fun onApexGraphWidgetClick(data: ApexGraphWidgetModel) {
+        val bundle = Bundle()
+        bundle.putParcelable(Constants.APEX_GRAPH_WIDGET, data)
+        findNavController().navigate(
+            R.id.action_myWidgetsFragment_to_editGraphWidgetFragment,
             bundle
         )
     }

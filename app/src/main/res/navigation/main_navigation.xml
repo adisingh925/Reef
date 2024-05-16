@@ -127,6 +127,9 @@
         <action
             android:id="@+id/action_myWidgetsFragment_to_twoRectangleViewPagerFragment"
             app:destination="@id/twoRectangleViewPagerFragment" />
+        <action
+            android:id="@+id/action_myWidgetsFragment_to_editGraphWidgetFragment"
+            app:destination="@id/editGraphWidgetFragment" />
     </fragment>
     <fragment
         android:id="@+id/editApexFlaskBackgroundWidget"
@@ -202,4 +205,9 @@
         android:name="app.android.damien.reef.fragments.TwoRectangleViewPagerFragment"
         android:label="fragment_two_rectangle_view_pager"
         tools:layout="@layout/fragment_two_rectangle_view_pager" />
+    <fragment
+        android:id="@+id/editGraphWidgetFragment"
+        android:name="app.android.damien.reef.fragments.EditGraphWidgetFragment"
+        android:label="fragment_edit_graph_widget"
+        tools:layout="@layout/fragment_edit_graph_widget" />
 </navigation>

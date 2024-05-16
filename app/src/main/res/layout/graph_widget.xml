@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="150dp"
+    android:layout_margin="@dimen/medium_margin"
     android:background="@drawable/linear_layout_corner_radius_black"
     android:orientation="horizontal">
 
     <RelativeLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="0.8"
         android:layout_margin="5dp"
         android:background="@drawable/linear_layout_corner_radius"
         app:chart_labelsSize="10sp" >
@@ -19,6 +20,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:text="25.7"
+            android:textColor="@color/white"
             android:id="@+id/uppervalue"
             android:layout_margin="2dp"
             android:layout_height="wrap_content"/>
@@ -28,6 +30,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:text="25.0"
+            android:textColor="@color/white"
             android:id="@+id/lowervalue"
             android:layout_margin="2dp"
             android:layout_height="wrap_content"/>
@@ -44,6 +47,7 @@
         android:layout_width="170dp"
         android:layout_height="150dp"
         android:id="@+id/layout"
+        android:layout_weight="0.2"
         android:foreground="?android:attr/selectableItemBackground"
         android:orientation="vertical"
         app:cardCornerRadius="15dp"
@@ -53,7 +57,7 @@
             android:id="@+id/heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Solubility"
+            android:text="Alkalinity"
             android:layout_weight="1"
             android:gravity="center"
             android:layout_gravity="center"
@@ -80,7 +84,7 @@
                 android:id="@+id/value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="23"
+                android:text="8.20"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="37sp" />
@@ -89,7 +93,7 @@
                 android:id="@+id/unit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="watts"
+                android:text="dKh"
                 android:layout_marginBottom="13dp"
                 android:layout_marginLeft="@dimen/medium_margin"
                 android:layout_gravity="center_vertical"
