@@ -1,11 +1,13 @@
 package app.android.damien.reef.adapter
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +30,10 @@ import app.android.damien.reef.database_model.FocustronicSingleValueType2WidgetM
 import app.android.damien.reef.database_model.FocustronicTwoRectangleWidgetModel
 import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
+import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
 import java.util.Locale
 
 class MyWidgetsChildAdapter(
@@ -736,36 +742,74 @@ class MyWidgetsChildAdapter(
 
     private inner class ViewHolder16(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val topRectangleTime = itemView.findViewById<TextView>(R.id.timestamp)
-        val bottomRectangleTime = itemView.findViewById<TextView>(R.id.timestamp2)
-        val topRectangleUnit = itemView.findViewById<TextView>(R.id.unit)
-        val bottomRectangleUnit = itemView.findViewById<TextView>(R.id.unit2)
-        val topRectangleValue = itemView.findViewById<TextView>(R.id.value)
-        val bottomRectangleValue = itemView.findViewById<TextView>(R.id.value2)
-        val topCard = itemView.findViewById<View>(R.id.card1)
-        val bottomCard = itemView.findViewById<View>(R.id.card2)
+        val value = itemView.findViewById<TextView>(R.id.value)
+        val unit = itemView.findViewById<TextView>(R.id.unit)
+        val heading = itemView.findViewById<TextView>(R.id.heading)
+        val lowervalue = itemView.findViewById<TextView>(R.id.lowervalue)
+        val uppervalue = itemView.findViewById<TextView>(R.id.uppervalue)
+        val image = itemView.findViewById<ImageView>(R.id.graph)
+
         fun bind(position: Int) {
 
-            Log.d("MyWidgetsChildAdapter", "ViewHolder15: ")
+            Log.d("MyWidgetsChildAdapter", "ViewHolder16: ")
 
-//            val topRectangleDrawable = context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
-//            val topRectangleMutatedDrawable = topRectangleDrawable.mutate()
-//            topRectangleMutatedDrawable.setTint(setCustomTwoRectangleWidgetData[position].topRectangleColor)
-//
-//            topCard.background = topRectangleMutatedDrawable
-//
-//            val bottomRectangleDrawable = context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
-//            val bottomRectangleMutatedDrawable = bottomRectangleDrawable.mutate()
-//            bottomRectangleMutatedDrawable.setTint(setCustomTwoRectangleWidgetData[position].bottomRectangleColor)
-//
-//            bottomCard.background = bottomRectangleMutatedDrawable
+            unit.text = setApexGraphWidgetData[position].unit
+            value.text = setApexGraphWidgetData[position].value.toString()
+            val record = setApexGraphWidgetData[position].records
+            heading.text = setApexGraphWidgetData[position].actualName
 
-//            topRectangleTime.text = setCustomTwoRectangleWidgetData[position].topRectangleUpdateTimeStamp
-//            bottomRectangleTime.text = setCustomTwoRectangleWidgetData[position].bottomRectangleUpdateTimeStamp
-//            topRectangleUnit.text = setCustomTwoRectangleWidgetData[position].topRectangleUnit
-//            bottomRectangleUnit.text = setCustomTwoRectangleWidgetData[position].bottomRectangleUnit
-//            topRectangleValue.text = setCustomTwoRectangleWidgetData[position].topRectangleValue.toString()
-//            bottomRectangleValue.text = setCustomTwoRectangleWidgetData[position].bottomRectangleValue.toString()
+            if (record != null) {
+                if(record.isNotBlank()){
+                    val graph = record.split(",").map { it.toFloat() }
+
+                    val maxValue = graph.maxOrNull()
+                    val minValue = graph.minOrNull()
+
+                    lowervalue.text = minValue.toString()
+                    uppervalue.text = maxValue.toString()
+
+                    val entries = ArrayList<Entry>()
+                    graph.forEachIndexed { index, value ->
+                        entries.add(Entry((index + 1).toFloat(), value))
+                    }
+
+                    val dataSet = LineDataSet(entries, "Data Set")
+                    dataSet.color = Color.WHITE // Set color of the line to white
+                    dataSet.lineWidth = 5f // Increase the line width to 5 pixels
+                    dataSet.setDrawValues(false) // Hide values on points
+
+                    val lineData = LineData(dataSet)
+
+                    val chart = LineChart(context)
+                    chart.setBackgroundColor(Color.parseColor("#cc7700"))
+                    chart.data = lineData
+
+                    // Hide the description
+                    chart.description.isEnabled = false
+
+                    // Hide X and Y axis
+                    chart.axisLeft.isEnabled = false
+                    chart.axisRight.isEnabled = false
+                    chart.xAxis.isEnabled = false
+
+                    // Hide legend
+                    chart.legend.isEnabled = false
+
+                    chart.measure(
+                        View.MeasureSpec.makeMeasureSpec(500, View.MeasureSpec.EXACTLY),
+                        View.MeasureSpec.makeMeasureSpec(500, View.MeasureSpec.EXACTLY)
+                    )
+                    chart.layout(0, 0, chart.measuredWidth, chart.measuredHeight)
+
+                    val chartBitmap = chart.getChartBitmap()
+
+                    image.setImageBitmap(chartBitmap)
+                }else{
+                    lowervalue.text = "0.0"
+                    uppervalue.text = "0.0"
+                }
+            }
+
 
             itemView.setOnClickListener {
                 onItemClickListener.onApexGraphWidgetClick(setApexGraphWidgetData[position])

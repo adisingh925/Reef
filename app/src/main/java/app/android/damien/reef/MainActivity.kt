@@ -38,9 +38,14 @@ class MainActivity : AppCompatActivity() {
         }.invokeOnCompletion {
             try {
                 Data().updateFocustronicWidgetData(this, JSONArray(SharedPreferences.read("focustronicData", "").toString()))
+            } catch (e: Exception) {
+                Log.e("MainActivity Focustronic Data Update", e.toString())
+            }
+
+            try {
                 Data().updateApexWidgetsData(this, JSONArray(SharedPreferences.read("apexData", "").toString()))
             } catch (e: Exception) {
-                Log.e("MainActivity", e.toString())
+                Log.e("MainActivity Apex Data Update", e.toString())
             }
         }
 

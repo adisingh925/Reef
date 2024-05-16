@@ -350,17 +350,6 @@ class Data {
                     Database.getDatabase(context).customWidgetsDao().updateApexTwoRectangleWidget(i)
                 }
 
-//                val intent = Intent(
-//                    context,
-//                    ApexTwoRectangleWidgetProvider::class.java
-//                )
-//                intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
-//                val ids: IntArray = AppWidgetManager.getInstance(context).getAppWidgetIds(
-//                    ComponentName(context, ApexTwoRectangleWidgetProvider::class.java)
-//                )
-//                intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
-//                context.sendBroadcast(intent)
-
                 val apexSingleValueType1 = Database.getDatabase(context).customWidgetsDao().readApexSingleValueTypeOneWidgetBackground()
                 for(i in apexSingleValueType1){
                     if(i.actualName != "NaN"){
@@ -395,6 +384,33 @@ class Data {
                         i.slot5Value = jsonObject.get(i.slot5ActualName).toString().toFloat()
                     }
                     Database.getDatabase(context).customWidgetsDao().updateApexWaterQualityWidget(i)
+                }
+
+                val apexGraphWidget = Database.getDatabase(context).customWidgetsDao().readApexGraphBackground()
+                for(i in apexGraphWidget){
+                    if(i.actualName != "NaN"){
+                        i.value = i.actualName?.let { jsonObject.get(it).toString().toFloat() }!!
+
+                        if(!i.records.isNullOrEmpty()){
+                            val records = i.records?.split(",")?.map { it.toFloat() }?.toMutableList()
+                            records?.add(i.value)
+
+                            if (records != null) {
+                                if (records.isNotEmpty() && records.size == 30) {
+                                    records.removeAt(0)
+                                } else {
+                                    println("The records list is empty.")
+                                }
+                            }
+
+                            Log.d("TAG", "updateApexWidgetsData: " + records?.joinToString(","))
+
+                            i.records = records?.joinToString(",")
+                        }else{
+                            i.records = i.value.toString()
+                        }
+                    }
+                    Database.getDatabase(context).customWidgetsDao().updateApexGraphWidget(i)
                 }
 
                 val apexPowerWidgets = Database.getDatabase(context).customWidgetsDao().readApexPowerValuesWidgetBackground()
