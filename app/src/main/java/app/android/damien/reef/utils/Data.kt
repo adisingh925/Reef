@@ -162,7 +162,7 @@ class Data {
                         for (i in 0 until alkatronicsArray.length()) {
                             val alkatronic = alkatronicsArray.getJSONObject(i)
                             val job = async {
-                                getAlkatronicData(alkatronic.getInt("id"), cookie, coroutineScope)
+                                getAlkatronicData(alkatronic.getInt("id"), cookie, coroutineScope, i)
                             }
                             alkatronicJobs.add(job)
                         }
@@ -174,7 +174,7 @@ class Data {
                         for (i in 0 until mastertronicsArray.length()) {
                             val mastertronic = mastertronicsArray.getJSONObject(i)
                             val job = async {
-                                getMastertronicData(mastertronic.getInt("id"), cookie, coroutineScope)
+                                getMastertronicData(mastertronic.getInt("id"), cookie, coroutineScope, i)
                             }
                             mastertronicJobs.add(job)
                         }
@@ -188,7 +188,7 @@ class Data {
         }
     }
 
-    private fun getMastertronicData(id: Int, cookie: String, coroutineScope: CoroutineScope) {
+    private fun getMastertronicData(id: Int, cookie: String, coroutineScope: CoroutineScope, index : Int) {
         try {
             coroutineScope.launch {
                 val mastertronicData = async { ApiClient.alkatronicApiService.getMastertronicData(cookie, id).execute() }
@@ -203,7 +203,7 @@ class Data {
                         for (i in 0 until mastertronicJsonArray.length()) {
                             val parameter = mastertronicJsonArray.getJSONObject(i)
                             focustronicJsonObject.put(
-                                parameter.getString("parameter"),
+                                "${index + 1}_${parameter.getString("parameter")}",
                                 parameter.getString("value")
                             )
                         }
@@ -218,7 +218,7 @@ class Data {
         }
     }
 
-    private fun getAlkatronicData(id: Int, cookie: String, coroutineScope: CoroutineScope) {
+    private fun getAlkatronicData(id: Int, cookie: String, coroutineScope: CoroutineScope, index : Int) {
         try {
             coroutineScope.launch {
                 val alkatronicData = async { ApiClient.alkatronicApiService.getAlkatronicData(cookie, id).execute() }
@@ -229,10 +229,10 @@ class Data {
                         val alkatronicJsonArray = JSONObject(alkatronic.string()).getJSONArray("data")
                         for (i in 0 until alkatronicJsonArray.length()) {
                             val alkatronicData = alkatronicJsonArray.getJSONObject(i)
-                            focustronicJsonObject.put("kh_value", alkatronicData.getString("kh_value"))
-                            focustronicJsonObject.put("ph_value", alkatronicData.getString("ph_value"))
+                            focustronicJsonObject.put("${index + 1}_kh_value", alkatronicData.getString("kh_value"))
+                            focustronicJsonObject.put("${index + 1}_ph_value", alkatronicData.getString("ph_value"))
                             focustronicJsonObject.put(
-                                "acid_used",
+                                "${index + 1}_acid_used",
                                 alkatronicData.getString("acid_used")
                             )
                         }

@@ -24,7 +24,7 @@
             android:layout_height="0dp"
             android:layout_weight="0.5"
             android:textColor="#cc7700"
-            android:text="Solubility"
+            android:text="Alkalinity"
             android:textSize="14sp"
             android:layout_gravity="center"/>
 

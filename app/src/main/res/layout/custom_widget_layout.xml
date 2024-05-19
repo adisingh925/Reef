@@ -20,7 +20,7 @@
         android:layout_weight="0.5"
         android:layout_gravity="center"
         android:textColor="@color/white"
-        android:text="Solubility" />
+        android:text="Alkalinity" />
 
     <LinearLayout
         android:layout_width="match_parent"
