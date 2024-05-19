@@ -16,7 +16,9 @@ import app.android.damien.reef.adapter.SimpleListAdapter
 import app.android.damien.reef.database_model.ApexGraphWidgetModel
 import app.android.damien.reef.database_model.ApexSingleValueTypeTwoModel
 import app.android.damien.reef.databinding.ApexSingleValueType2BottomSheetBinding
+import app.android.damien.reef.databinding.ApexTwoRectangleWidgetBottomSheetBinding
 import app.android.damien.reef.databinding.FragmentEditGraphWidgetBinding
+import app.android.damien.reef.databinding.GraphWidgetBottomSheetBinding
 import app.android.damien.reef.storage.SharedPreferences
 import app.android.damien.reef.utils.Constants
 import app.android.damien.reef.utils.Toast
@@ -51,7 +53,7 @@ class EditGraphWidgetFragment : Fragment() {
                 actualName = data
                 binding.flaskBackgroundWidgetEditLayout.heading.text = data
                 value = JSONObject(apexData.getJSONObject(0).toString()).get(actualName).toString()
-                        .toFloat()
+                    .toFloat()
                 binding.flaskBackgroundWidgetEditLayout.value.text = value.toString()
             }
         })
@@ -84,7 +86,7 @@ class EditGraphWidgetFragment : Fragment() {
         binding.flaskBackgroundWidgetEditLayout.unit.text = unit
         binding.flaskBackgroundWidgetEditLayout.value.text = value.toString()
 
-        if(record.isNotBlank()){
+        if (record.isNotBlank()) {
             val graph = record.split(",").map { it.toFloat() }
 
             val maxValue = graph.maxOrNull()
@@ -129,7 +131,7 @@ class EditGraphWidgetFragment : Fragment() {
             val chartBitmap = chart.getChartBitmap()
 
             binding.flaskBackgroundWidgetEditLayout.graph.setImageBitmap(chartBitmap)
-        }else{
+        } else {
             binding.flaskBackgroundWidgetEditLayout.lowervalue.text = "0.0"
             binding.flaskBackgroundWidgetEditLayout.uppervalue.text = "0.0"
         }
@@ -155,6 +157,30 @@ class EditGraphWidgetFragment : Fragment() {
             )
             widgetsViewModel.deleteApexGraphWidget(apexGraphWidgetModel)
             findNavController().popBackStack()
+        }
+
+
+        binding.flaskBackgroundWidgetEditLayout.layout.setOnClickListener {
+            val dialog = BottomSheetDialog(requireContext())
+            val view = GraphWidgetBottomSheetBinding.inflate(layoutInflater)
+
+            view.textInput.setText(binding.flaskBackgroundWidgetEditLayout.unit.text.toString())
+
+            view.saveButton.setOnClickListener {
+                if (view.textInput.text.toString().isEmpty()) {
+                    view.textInput.error = "Field is required"
+                    return@setOnClickListener
+                }
+
+                binding.flaskBackgroundWidgetEditLayout.unit.text = view.textInput.text.toString()
+                unit = view.textInput.text.toString()
+
+                dialog.dismiss()
+            }
+
+            dialog.setCancelable(true)
+            dialog.setContentView(view.root)
+            dialog.show()
         }
 
         return binding.root
