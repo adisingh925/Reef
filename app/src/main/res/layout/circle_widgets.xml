@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:id="@+id/apex_circle_widget_relative_layout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:foreground="?android:attr/selectableItemBackground"
@@ -10,19 +11,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="horizontal"
+        android:layout_weight="1"
         android:layout_height="match_parent">
 
         <RelativeLayout
             android:layout_width="0dp"
             android:orientation="vertical"
             android:layout_weight="1"
+            android:gravity="center"
             android:layout_height="match_parent">
 
             <ImageView
                 android:layout_width="70dp"
                 android:src="@drawable/outlined_circle"
                 android:layout_gravity="start"
-                android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/large_margin"
                 app:tint="@color/white"
@@ -34,33 +36,22 @@
                 android:layout_marginTop="@dimen/extra_large_margin"
                 android:textColor="@color/white"
                 android:text="Slot1"
-                android:layout_centerVertical="true"
                 android:id="@+id/slot1value"
                 android:layout_height="wrap_content"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:text="Slot1"
-                android:id="@+id/slot1name"
-                android:textColor="@color/white"
-                android:layout_marginBottom="@dimen/medium_margin"
-                android:layout_height="wrap_content"/>
-
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="0dp"
             android:orientation="vertical"
             android:layout_weight="1"
+            android:gravity="center"
             android:layout_height="match_parent">
 
             <ImageView
                 android:layout_width="70dp"
                 android:src="@drawable/outlined_circle"
                 android:layout_gravity="start"
-                android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/large_margin"
                 app:tint="@color/white"
@@ -72,26 +63,15 @@
                 android:layout_marginTop="@dimen/extra_large_margin"
                 android:textColor="@color/white"
                 android:text="Slot2"
-                android:layout_centerVertical="true"
                 android:id="@+id/slot2value"
                 android:layout_height="wrap_content"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:text="Slot2"
-                android:id="@+id/slot2name"
-                android:textColor="@color/white"
-                android:layout_marginBottom="@dimen/medium_margin"
-                android:layout_height="wrap_content"/>
-
         </RelativeLayout>
-
 
         <RelativeLayout
             android:layout_width="0dp"
             android:orientation="vertical"
+            android:gravity="center"
             android:layout_weight="1"
             android:layout_height="match_parent">
 
@@ -99,7 +79,6 @@
                 android:layout_width="70dp"
                 android:src="@drawable/outlined_circle"
                 android:layout_gravity="start"
-                android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/large_margin"
                 app:tint="@color/white"
@@ -111,22 +90,56 @@
                 android:layout_marginTop="@dimen/extra_large_margin"
                 android:textColor="@color/white"
                 android:text="Slot3"
-                android:layout_centerVertical="true"
                 android:id="@+id/slot3value"
                 android:layout_height="wrap_content"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:text="Slot3"
-                android:id="@+id/slot3name"
-                android:textColor="@color/white"
-                android:layout_marginBottom="@dimen/medium_margin"
-                android:layout_height="wrap_content"/>
-
         </RelativeLayout>
+
+
 
     </LinearLayout>
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="Slot1"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:id="@+id/slot1name"
+            android:textColor="@color/white"
+            android:layout_marginBottom="@dimen/medium_margin"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="Slot2"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:id="@+id/slot2name"
+            android:textColor="@color/white"
+            android:layout_marginBottom="@dimen/medium_margin"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="Slot3"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/slot3name"
+            android:textColor="@color/white"
+            android:layout_marginBottom="@dimen/medium_margin"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+</LinearLayout>
