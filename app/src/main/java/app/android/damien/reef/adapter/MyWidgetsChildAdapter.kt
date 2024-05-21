@@ -92,6 +92,13 @@ class MyWidgetsChildAdapter(
         fun bind(position: Int) {
             Log.d("MyWidgetsChildAdapter", "ViewHolder1: ")
 
+            val layoutParams = itemView.layoutParams as ViewGroup.MarginLayoutParams
+            layoutParams.width = dpToPx(300, context) // Set the desired width in pixels
+            layoutParams.height = dpToPx(150, context) // Set the desired height in pixels
+            val margin = dpToPx(10, context)
+            layoutParams.setMargins(margin, margin, margin, margin)
+            itemView.layoutParams = layoutParams
+
             value1.text = String.format(Locale.getDefault(), "%.2f", setApexPowerValuesWidgetData[position].slot1)
             value2.text = String.format(Locale.getDefault(), "%.2f", setApexPowerValuesWidgetData[position].slot2)
             value3.text = String.format(Locale.getDefault(), "%.2f", setApexPowerValuesWidgetData[position].slot3)
@@ -115,6 +122,13 @@ class MyWidgetsChildAdapter(
         fun bind(position: Int) {
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder2: ")
+
+            val layoutParams = itemView.layoutParams as ViewGroup.MarginLayoutParams
+            layoutParams.width = dpToPx(300, context) // Set the desired width in pixels
+            layoutParams.height = dpToPx(150, context) // Set the desired height in pixels
+            val margin = dpToPx(10, context)
+            layoutParams.setMargins(margin, margin, margin, margin)
+            itemView.layoutParams = layoutParams
 
             topRectangleTime.text = SharedPreferences.read("lastUpdatedApex", "")
             bottomRectangleTime.text = SharedPreferences.read("lastUpdatedApex", "")
@@ -153,6 +167,14 @@ class MyWidgetsChildAdapter(
 
         fun bind(position: Int) {
             Log.d("MyWidgetsChildAdapter", "ViewHolder3: ")
+
+            val layoutParams = itemView.layoutParams as ViewGroup.MarginLayoutParams
+            layoutParams.width = dpToPx(300, context) // Set the desired width in pixels
+            layoutParams.height = dpToPx(150, context) // Set the desired height in pixels
+            val margin = dpToPx(10, context)
+            layoutParams.setMargins(margin, margin, margin, margin)
+            itemView.layoutParams = layoutParams
+
             if (setApexCircleWidgetData[position].slot1GivenName.isNullOrEmpty()) {
                 slot1name.text = setApexCircleWidgetData[position].slot1ActualName
             } else {
@@ -194,6 +216,13 @@ class MyWidgetsChildAdapter(
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder4: ")
 
+            val layoutParams = itemView.layoutParams as ViewGroup.MarginLayoutParams
+            layoutParams.width = dpToPx(300, context) // Set the desired width in pixels
+            layoutParams.height = dpToPx(150, context) // Set the desired height in pixels
+            val margin = dpToPx(10, context)
+            layoutParams.setMargins(margin, margin, margin, margin)
+            itemView.layoutParams = layoutParams
+
             if (setApexFlaskBackgroundWidgetData[position].slot1GivenName.isNullOrEmpty()) {
                 slot1name.text = setApexFlaskBackgroundWidgetData[position].slot1ActualName
             } else {
@@ -234,6 +263,13 @@ class MyWidgetsChildAdapter(
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder5:")
 
+            val layoutParams = itemView.layoutParams as ViewGroup.MarginLayoutParams
+            layoutParams.width = dpToPx(150, context) // Set the desired width in pixels
+            layoutParams.height = dpToPx(150, context) // Set the desired height in pixels
+            val margin = dpToPx(10, context)
+            layoutParams.setMargins(margin, margin, margin, margin)
+            itemView.layoutParams = layoutParams
+
             value.text = setApexSingleValueTypeOneWidgetData[position].value.toString()
             if(setApexSingleValueTypeOneWidgetData[position].givenName.isNullOrEmpty()) {
                 heading.text = setApexSingleValueTypeOneWidgetData[position].actualName
@@ -264,6 +300,13 @@ class MyWidgetsChildAdapter(
         fun bind(position: Int) {
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder6: ")
+
+            val layoutParams = itemView.layoutParams as ViewGroup.MarginLayoutParams
+            layoutParams.width = dpToPx(150, context) // Set the desired width in pixels
+            layoutParams.height = dpToPx(150, context) // Set the desired height in pixels
+            val margin = dpToPx(10, context)
+            layoutParams.setMargins(margin, margin, margin, margin)
+            itemView.layoutParams = layoutParams
 
             value.text = setApexSingleValueTypeTwoWidgetData[position].value.toString()
             if(setApexSingleValueTypeTwoWidgetData[position].givenName.isNullOrEmpty()) {
@@ -320,6 +363,13 @@ class MyWidgetsChildAdapter(
         fun bind(position: Int) {
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder7: ")
+
+            val layoutParams = itemView.layoutParams as ViewGroup.MarginLayoutParams
+            layoutParams.width = dpToPx(350, context) // Set the desired width in pixels
+            layoutParams.height = dpToPx(150, context) // Set the desired height in pixels
+            val margin = dpToPx(10, context)
+            layoutParams.setMargins(margin, margin, margin, margin)
+            itemView.layoutParams = layoutParams
 
             timestamp.text = "as of - ${SharedPreferences.read("lastUpdatedApex", "")}"
 
@@ -382,6 +432,13 @@ class MyWidgetsChildAdapter(
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder8: ")
 
+            val layoutParams = itemView.layoutParams as ViewGroup.MarginLayoutParams
+            layoutParams.width = dpToPx(150, context) // Set the desired width in pixels
+            layoutParams.height = dpToPx(150, context) // Set the desired height in pixels
+            val margin = dpToPx(10, context)
+            layoutParams.setMargins(margin, margin, margin, margin)
+            itemView.layoutParams = layoutParams
+
             unit.text = setFocustronic1ElementWidgetData[position].unit
             value.text = setFocustronic1ElementWidgetData[position].value.toString()
 
@@ -418,6 +475,13 @@ class MyWidgetsChildAdapter(
         fun bind(position: Int) {
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder9: ")
+
+            val layoutParams = itemView.layoutParams as ViewGroup.MarginLayoutParams
+            layoutParams.width = dpToPx(300, context) // Set the desired width in pixels
+            layoutParams.height = dpToPx(150, context) // Set the desired height in pixels
+            val margin = dpToPx(10, context)
+            layoutParams.setMargins(margin, margin, margin, margin)
+            itemView.layoutParams = layoutParams
 
             topRectangleTime.text = SharedPreferences.read("lastUpdatedFocustronic", "")
             bottomRectangleTime.text = SharedPreferences.read("lastUpdatedFocustronic", "")
@@ -465,6 +529,13 @@ class MyWidgetsChildAdapter(
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder10: ")
 
+            val layoutParams = itemView.layoutParams as ViewGroup.MarginLayoutParams
+            layoutParams.width = dpToPx(150, context) // Set the desired width in pixels
+            layoutParams.height = dpToPx(150, context) // Set the desired height in pixels
+            val margin = dpToPx(10, context)
+            layoutParams.setMargins(margin, margin, margin, margin)
+            itemView.layoutParams = layoutParams
+
             if(!setFocustronicSingleValueType1WidgetData[position].actualName.isNullOrEmpty()) {
                 if(setFocustronicSingleValueType1WidgetData[position].givenName.isNullOrEmpty()) {
                     heading.text = setFocustronicSingleValueType1WidgetData[position].actualName
@@ -501,6 +572,13 @@ class MyWidgetsChildAdapter(
         fun bind(position: Int) {
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder11: ")
+
+            val layoutParams = itemView.layoutParams as ViewGroup.MarginLayoutParams
+            layoutParams.width = dpToPx(150, context) // Set the desired width in pixels
+            layoutParams.height = dpToPx(150, context) // Set the desired height in pixels
+            val margin = dpToPx(10, context)
+            layoutParams.setMargins(margin, margin, margin, margin)
+            itemView.layoutParams = layoutParams
 
             unit.text = setFocustronicSingleValueType2WidgetData[position].unit
             timestamp.text = SharedPreferences.read("lastUpdatedFocustronic", "")
@@ -568,6 +646,13 @@ class MyWidgetsChildAdapter(
         fun bind(position: Int) {
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder12:")
+
+            val layoutParams = itemView.layoutParams as ViewGroup.MarginLayoutParams
+            layoutParams.width = dpToPx(300, context) // Set the desired width in pixels
+            layoutParams.height = dpToPx(220, context) // Set the desired height in pixels
+            val margin = dpToPx(10, context)
+            layoutParams.setMargins(margin, margin, margin, margin)
+            itemView.layoutParams = layoutParams
 
             value1.text = setFocustronicGridWidgetData[position].slot1Value.toString()
             value2.text = setFocustronicGridWidgetData[position].slot2Value.toString()
@@ -654,6 +739,13 @@ class MyWidgetsChildAdapter(
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder13: ")
 
+            val layoutParams = itemView.layoutParams as ViewGroup.MarginLayoutParams
+            layoutParams.width = dpToPx(300, context) // Set the desired width in pixels
+            layoutParams.height = dpToPx(150, context) // Set the desired height in pixels
+            val margin = dpToPx(10, context)
+            layoutParams.setMargins(margin, margin, margin, margin)
+            itemView.layoutParams = layoutParams
+
             heading.text = setCustomSingleValueType2WidgetData[position].givenName
             value.text = String.format(Locale.getDefault(), "%.2f", setCustomSingleValueType2WidgetData[position].value)
             unit.text = setCustomSingleValueType2WidgetData[position].unit
@@ -686,6 +778,13 @@ class MyWidgetsChildAdapter(
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder14: ")
 
+            val layoutParams = itemView.layoutParams as ViewGroup.MarginLayoutParams
+            layoutParams.width = dpToPx(300, context) // Set the desired width in pixels
+            layoutParams.height = dpToPx(150, context) // Set the desired height in pixels
+            val margin = dpToPx(10, context)
+            layoutParams.setMargins(margin, margin, margin, margin)
+            itemView.layoutParams = layoutParams
+
             heading.text = setCustomSingleValueType1WidgetData[position].givenName
             value.text = setCustomSingleValueType1WidgetData[position].value.toString()
             unit.text = setCustomSingleValueType1WidgetData[position].unit
@@ -714,6 +813,13 @@ class MyWidgetsChildAdapter(
         fun bind(position: Int) {
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder15: ")
+
+            val layoutParams = itemView.layoutParams as ViewGroup.MarginLayoutParams
+            layoutParams.width = dpToPx(300, context) // Set the desired width in pixels
+            layoutParams.height = dpToPx(150, context) // Set the desired height in pixels
+            val margin = dpToPx(10, context)
+            layoutParams.setMargins(margin, margin, margin, margin)
+            itemView.layoutParams = layoutParams
 
 //            val topRectangleDrawable = context.resources.getDrawable(R.drawable.linear_layout_corner_radius)
 //            val topRectangleMutatedDrawable = topRectangleDrawable.mutate()
@@ -752,6 +858,13 @@ class MyWidgetsChildAdapter(
         fun bind(position: Int) {
 
             Log.d("MyWidgetsChildAdapter", "ViewHolder16: ")
+
+            val layoutParams = itemView.layoutParams as ViewGroup.MarginLayoutParams
+            layoutParams.width = dpToPx(350, context) // Set the desired width in pixels
+            layoutParams.height = dpToPx(150, context) // Set the desired height in pixels
+            val margin = dpToPx(10, context)
+            layoutParams.setMargins(margin, margin, margin, margin)
+            itemView.layoutParams = layoutParams
 
             unit.text = setApexGraphWidgetData[position].unit
             value.text = setApexGraphWidgetData[position].value.toString()
@@ -1164,5 +1277,9 @@ class MyWidgetsChildAdapter(
     fun setApexGraphWidgetData(widgets: List<ApexGraphWidgetModel>) {
         setApexGraphWidgetData = widgets
         notifyDataSetChanged()
+    }
+
+    private fun dpToPx(dp: Int, context: Context): Int {
+        return (dp * context.resources.displayMetrics.density).toInt()
     }
 }
