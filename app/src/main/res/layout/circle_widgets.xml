@@ -11,33 +11,30 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:layout_weight="1"
+        android:layout_weight="0.3"
         android:layout_height="match_parent">
 
         <RelativeLayout
             android:layout_width="0dp"
             android:orientation="vertical"
             android:layout_weight="1"
+            android:layout_margin="10dp"
             android:gravity="center"
             android:layout_height="match_parent">
 
             <ImageView
-                android:layout_width="70dp"
+                android:layout_width="match_parent"
                 android:src="@drawable/outlined_circle"
-                android:layout_gravity="start"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/large_margin"
                 app:tint="@color/white"
-                android:layout_height="70dp"/>
+                android:layout_height="match_parent"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/extra_large_margin"
+                android:layout_width="match_parent"
                 android:textColor="@color/white"
                 android:text="Slot1"
+                android:gravity="center"
                 android:id="@+id/slot1value"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent"/>
 
         </RelativeLayout>
 
@@ -45,26 +42,23 @@
             android:layout_width="0dp"
             android:orientation="vertical"
             android:layout_weight="1"
+            android:layout_margin="10dp"
             android:gravity="center"
             android:layout_height="match_parent">
 
             <ImageView
-                android:layout_width="70dp"
+                android:layout_width="match_parent"
                 android:src="@drawable/outlined_circle"
-                android:layout_gravity="start"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/large_margin"
                 app:tint="@color/white"
-                android:layout_height="70dp"/>
+                android:layout_height="match_parent"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/extra_large_margin"
+                android:layout_width="match_parent"
                 android:textColor="@color/white"
                 android:text="Slot2"
+                android:gravity="center"
                 android:id="@+id/slot2value"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent"/>
 
         </RelativeLayout>
 
@@ -72,26 +66,23 @@
             android:layout_width="0dp"
             android:orientation="vertical"
             android:gravity="center"
+            android:layout_margin="10dp"
             android:layout_weight="1"
             android:layout_height="match_parent">
 
             <ImageView
-                android:layout_width="70dp"
+                android:layout_width="match_parent"
                 android:src="@drawable/outlined_circle"
-                android:layout_gravity="start"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/large_margin"
                 app:tint="@color/white"
-                android:layout_height="70dp"/>
+                android:layout_height="match_parent"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/extra_large_margin"
+                android:layout_width="match_parent"
                 android:textColor="@color/white"
                 android:text="Slot3"
+                android:gravity="center"
                 android:id="@+id/slot3value"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent"/>
         </RelativeLayout>
 
 
@@ -113,7 +104,6 @@
             android:layout_weight="1"
             android:id="@+id/slot1name"
             android:textColor="@color/white"
-            android:layout_marginBottom="@dimen/medium_margin"
             android:layout_height="match_parent"/>
 
         <TextView
@@ -125,7 +115,6 @@
             android:layout_weight="1"
             android:id="@+id/slot2name"
             android:textColor="@color/white"
-            android:layout_marginBottom="@dimen/medium_margin"
             android:layout_height="match_parent"/>
 
         <TextView
@@ -137,7 +126,6 @@
             android:gravity="center"
             android:id="@+id/slot3name"
             android:textColor="@color/white"
-            android:layout_marginBottom="@dimen/medium_margin"
             android:layout_height="match_parent"/>
 
     </LinearLayout>
