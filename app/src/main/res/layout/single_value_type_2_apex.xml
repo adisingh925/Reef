@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="150dp"
-    android:layout_height="150dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:foreground="?android:attr/selectableItemBackground"
-    android:layout_margin="@dimen/medium_margin"
     android:id="@+id/layout"
     android:orientation="vertical"
     android:background="@drawable/linear_layout_corner_radius_black"
@@ -25,6 +24,7 @@
             android:layout_height="0dp"
             android:layout_weight="0.5"
             android:text="Alkalinity"
+            android:gravity="center"
             android:textColor="@color/white"
             android:textSize="14sp"
             android:layout_gravity="center"/>
@@ -36,6 +36,7 @@
             android:textStyle="bold"
             android:layout_weight="1"
             android:text="23"
+            android:gravity="center"
             android:textColor="@color/white"
             android:textSize="35sp"
             android:layout_gravity="center"/>
@@ -46,6 +47,7 @@
             android:layout_height="0dp"
             android:layout_weight="0.5"
             android:text="ppm"
+            android:gravity="center"
             android:textColor="@color/white"
             android:textSize="14sp"
             android:layout_gravity="center"/>

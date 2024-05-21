@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="300dp"
+    android:layout_width="match_parent"
     android:id="@+id/apex_circle_widget_relative_layout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="@dimen/medium_margin"
     android:foreground="?android:attr/selectableItemBackground"
     android:background="@drawable/linear_layout_corner_radius"
-    android:layout_height="150dp">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,6 +22,7 @@
                 android:layout_width="70dp"
                 android:src="@drawable/outlined_circle"
                 android:layout_gravity="start"
+                android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/large_margin"
                 app:tint="@color/white"
@@ -34,6 +34,7 @@
                 android:layout_marginTop="@dimen/extra_large_margin"
                 android:textColor="@color/white"
                 android:text="Slot1"
+                android:layout_centerVertical="true"
                 android:id="@+id/slot1value"
                 android:layout_height="wrap_content"/>
 
@@ -59,7 +60,7 @@
                 android:layout_width="70dp"
                 android:src="@drawable/outlined_circle"
                 android:layout_gravity="start"
-
+                android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/large_margin"
                 app:tint="@color/white"
@@ -71,6 +72,7 @@
                 android:layout_marginTop="@dimen/extra_large_margin"
                 android:textColor="@color/white"
                 android:text="Slot2"
+                android:layout_centerVertical="true"
                 android:id="@+id/slot2value"
                 android:layout_height="wrap_content"/>
 
@@ -97,6 +99,7 @@
                 android:layout_width="70dp"
                 android:src="@drawable/outlined_circle"
                 android:layout_gravity="start"
+                android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/large_margin"
                 app:tint="@color/white"
@@ -108,6 +111,7 @@
                 android:layout_marginTop="@dimen/extra_large_margin"
                 android:textColor="@color/white"
                 android:text="Slot3"
+                android:layout_centerVertical="true"
                 android:id="@+id/slot3value"
                 android:layout_height="wrap_content"/>
 
