@@ -43,12 +43,13 @@
 
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/layout"
         android:layout_weight="1"
         android:foreground="?android:attr/selectableItemBackground"
+        android:background="@drawable/linear_layout_corner_radius_black"
         android:orientation="vertical"
         app:cardCornerRadius="15dp"
         app:cardElevation="@dimen/default_card_elevation">
@@ -57,9 +58,11 @@
             android:id="@+id/heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="Alkalinity"
             android:layout_weight="1"
             android:gravity="center"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:textColor="@color/white"
             android:textSize="20sp" />
@@ -69,43 +72,43 @@
             android:layout_width="match_parent"
             android:layout_height="5dp"
             android:layout_weight="1"
+            android:layout_centerInParent="true"
             android:layerType="software"
-            android:src="@drawable/dotted_line"
-            app:layout_constraintTop_toBottomOf="@id/heading" />
+            android:src="@drawable/dotted_line" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
             android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="8.20"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="23"
+                android:layout_weight="1"
+                android:gravity="center|end"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="37sp" />
 
             <TextView
                 android:id="@+id/unit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="dKh"
-                android:layout_marginBottom="13dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="ppm"
+                android:layout_weight="1"
                 android:layout_marginLeft="@dimen/medium_margin"
-                android:layout_gravity="center_vertical"
+                android:gravity="center|start"
                 android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintLeft_toRightOf="@id/value"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/value" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>
