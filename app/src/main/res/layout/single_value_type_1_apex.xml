@@ -49,7 +49,7 @@
             android:gravity="center|end"
             android:textStyle="bold"
             android:textColor="@color/white"
-            android:textSize="37sp" />
+            android:textSize="27sp" />
 
         <TextView
             android:id="@+id/unit"

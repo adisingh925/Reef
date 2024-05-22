@@ -36,7 +36,7 @@
             android:textColor="@color/white"
             android:text="16.5"
             android:gravity="end"
-            android:textSize="@dimen/medium_heading_font_size"
+            android:textSize="27sp"
             android:textStyle="bold" />
 
         <TextView
