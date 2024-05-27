@@ -420,7 +420,7 @@
 
         <receiver
             android:name=".widgetprovider.apexwaterquality.ApexWaterQualityWidgetProvider_1"
-            android:label="Apex Water Quality Widget"
+            android:label="Apex Water Quality Widget - 1"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -550,7 +550,7 @@
 
         <receiver
             android:name=".widgetprovider.apexflaskbackgroundwidget.ApexFlaskBackgroundWidgetProvider_1"
-            android:label="Apex flask Background Widget"
+            android:label="Apex flask Background Widget - 1"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
