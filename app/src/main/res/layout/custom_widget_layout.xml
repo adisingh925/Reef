@@ -15,8 +15,8 @@
         android:id="@+id/heading"
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/small_margin"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.5"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
         android:gravity="center_horizontal"
         android:autoSizeStepGranularity="10sp"
         android:autoSizeMaxTextSize="50dp"
@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:layout_weight="1"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/value"
@@ -40,24 +40,25 @@
             android:layout_weight="1"
             android:textColor="@color/white"
             android:text="16.5"
+            android:layout_marginEnd="4dp"
             android:gravity="end|center_vertical"
             android:autoSizeStepGranularity="10sp"
             android:autoSizeMaxTextSize="50dp"
             android:autoSizeTextType="uniform"
-            android:autoSizeMinTextSize="27sp"
+            android:autoSizeMinTextSize="10sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/unit"
             android:layout_weight="1"
-            android:layout_marginStart="@dimen/medium_margin"
             android:layout_gravity="center"
             android:gravity="center_vertical"
             android:textColor="@color/white"
             android:autoSizeStepGranularity="10sp"
             android:autoSizeMaxTextSize="50dp"
+            android:layout_marginStart="4dp"
             android:autoSizeTextType="uniform"
-            android:autoSizeMinTextSize="5sp"
+            android:autoSizeMinTextSize="10sp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="ppm" />
@@ -69,7 +70,7 @@
         android:orientation="horizontal"
         android:gravity="bottom"
         android:layout_weight="1"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/time"
