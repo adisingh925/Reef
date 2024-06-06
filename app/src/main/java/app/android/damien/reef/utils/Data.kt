@@ -55,7 +55,7 @@ class Data {
                         for (i in 0 until inputs.length()) {
                             val input = inputs.getJSONObject(i)
                             jsonObject.put(
-                                input.getString("name").toLowerCase(Locale.ROOT),
+                                "1_" + input.getString("name").toLowerCase(Locale.ROOT),
                                 input.getString("value")
                             )
                         }
