@@ -366,7 +366,7 @@ class MyWidgetsChildAdapter(
 
             val layoutParams = itemView.layoutParams as ViewGroup.MarginLayoutParams
             layoutParams.width = dpToPx(350, context) // Set the desired width in pixels
-            layoutParams.height = dpToPx(150, context) // Set the desired height in pixels
+            layoutParams.height = dpToPx(200, context) // Set the desired height in pixels
             val margin = dpToPx(10, context)
             layoutParams.setMargins(margin, margin, margin, margin)
             itemView.layoutParams = layoutParams
