@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:updatePeriodMillis="1800000"
-    android:minWidth="100dp"
-    android:minHeight="50dp"
     android:targetCellWidth="5"
     android:targetCellHeight="1"
     android:initialLayout="@layout/two_rectangle_widget"

@@ -18,12 +18,8 @@
         android:text="Alkalinity"
         android:layout_weight="1"
         android:gravity="center"
-        android:autoSizeTextType="uniform"
-        android:autoSizeStepGranularity="1sp"
-        android:autoSizeMaxTextSize="50dp"
         android:textColor="#cc7700"
         android:layout_centerHorizontal="true"
-        android:autoSizeMinTextSize="5sp"
         android:layout_gravity="center" />
 
     <ImageView
@@ -38,7 +34,6 @@
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:layout_weight="1"
-        android:layout_marginBottom="10dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_height="match_parent">
@@ -49,13 +44,10 @@
             android:layout_height="match_parent"
             android:text="23"
             android:layout_weight="1"
-            android:autoSizeStepGranularity="1sp"
-            android:autoSizeMaxTextSize="50dp"
-            android:autoSizeTextType="uniform"
-            android:autoSizeMinTextSize="10sp"
             android:gravity="center|end"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="4dp"
             android:textStyle="bold"
+            android:textSize="18sp"
             android:textColor="#cc7700" />
 
         <TextView
@@ -66,13 +58,9 @@
             android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:textColor="#cc7700"
-            android:gravity="center|start"
-            android:autoSizeStepGranularity="1sp"
-            android:autoSizeMaxTextSize="50dp"
-            android:autoSizeTextType="uniform"
-            android:autoSizeMinTextSize="10sp" />
+            android:textSize="16sp"
+            android:gravity="center|start" />
 
     </LinearLayout>
-
 
 </LinearLayout>
