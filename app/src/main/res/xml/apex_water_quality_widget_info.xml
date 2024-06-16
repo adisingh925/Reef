@@ -4,7 +4,7 @@
     android:initialLayout="@layout/water_quality_widget"
     android:minWidth="300dp"
     android:minHeight="100dp"
-    android:targetCellWidth="5"
-    android:targetCellHeight="3"
+    android:targetCellWidth="4"
+    android:targetCellHeight="2"
     android:previewLayout="@layout/water_quality_widget"
     android:widgetCategory="home_screen" />
