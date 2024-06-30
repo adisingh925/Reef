@@ -19,7 +19,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 
-class ApexCircleWidgetProvider_3 : AppWidgetProvider(){
+class ApexCircleWidgetProvider_3 : AppWidgetProvider() {
 
     override fun onUpdate(
         context: Context?,
@@ -27,77 +27,85 @@ class ApexCircleWidgetProvider_3 : AppWidgetProvider(){
         appWidgetIds: IntArray?
     ) {
         appWidgetIds?.forEach { appWidgetId ->
-            SharedPreferences.init(context!!)
-            var data: List<ApexCircleWidgetModel>
-            CoroutineScope(Dispatchers.IO).launch {
-                Data().getApexData(this)
-            }.invokeOnCompletion {
-                Data().updateApexWidgetsData(
-                    context,
-                    JSONArray(SharedPreferences.read("apexData", "").toString())
-                )
-                data = Database.getDatabase(context).customWidgetsDao().readApexCircleWidgetBackground()
-                val views = RemoteViews(context.packageName, R.layout.circle_widgets)
+            try {
+                SharedPreferences.init(context!!)
+                var data: List<ApexCircleWidgetModel>
+                CoroutineScope(Dispatchers.IO).launch {
+                    Data().getApexData(this)
+                }.invokeOnCompletion {
+                    Data().updateApexWidgetsData(
+                        context,
+                        JSONArray(SharedPreferences.read("apexData", "").toString())
+                    )
+                    data = Database.getDatabase(context).customWidgetsDao()
+                        .readApexCircleWidgetBackground()
+                    val views = RemoteViews(context.packageName, R.layout.circle_widgets)
 
-                if(data.lastIndex < 2) {
-                    views.setTextViewText(R.id.slot1value, "0.0")
-                    views.setTextViewText(R.id.slot2value, "0.0")
-                    views.setTextViewText(R.id.slot3value, "0.0")
+                    if (data.lastIndex < 2) {
+                        views.setTextViewText(R.id.slot1value, "0.0")
+                        views.setTextViewText(R.id.slot2value, "0.0")
+                        views.setTextViewText(R.id.slot3value, "0.0")
 
-                    views.setTextViewText(R.id.slot1name, "NaN")
-                    views.setTextViewText(R.id.slot2name, "NaN")
-                    views.setTextViewText(R.id.slot3name, "NaN")
-                }else{
-                    views.setTextViewText(R.id.slot1value, data[2].slot1Value.toString())
-                    views.setTextViewText(R.id.slot2value, data[2].slot2Value.toString())
-                    views.setTextViewText(R.id.slot3value, data[2].slot3Value.toString())
-
-                    if (data[2].slot1GivenName.isNullOrBlank()) {
-                        if (data[2].slot1ActualName.equals("NaN")) {
-                            views.setTextViewText(R.id.slot1name, "NaN")
-                        } else {
-                            views.setTextViewText(R.id.slot1name, data[2].slot1ActualName)
-                        }
+                        views.setTextViewText(R.id.slot1name, "NaN")
+                        views.setTextViewText(R.id.slot2name, "NaN")
+                        views.setTextViewText(R.id.slot3name, "NaN")
                     } else {
-                        views.setTextViewText(R.id.slot1name, data[2].slot1GivenName)
+                        views.setTextViewText(R.id.slot1value, data[2].slot1Value.toString())
+                        views.setTextViewText(R.id.slot2value, data[2].slot2Value.toString())
+                        views.setTextViewText(R.id.slot3value, data[2].slot3Value.toString())
+
+                        if (data[2].slot1GivenName.isNullOrBlank()) {
+                            if (data[2].slot1ActualName.equals("NaN")) {
+                                views.setTextViewText(R.id.slot1name, "NaN")
+                            } else {
+                                views.setTextViewText(R.id.slot1name, data[2].slot1ActualName)
+                            }
+                        } else {
+                            views.setTextViewText(R.id.slot1name, data[2].slot1GivenName)
+                        }
+
+                        if (data[2].slot2GivenName.isNullOrBlank()) {
+                            if (data[2].slot2ActualName.equals("NaN")) {
+                                views.setTextViewText(R.id.slot2name, "NaN")
+                            } else {
+                                views.setTextViewText(R.id.slot2name, data[2].slot2ActualName)
+                            }
+                        } else {
+                            views.setTextViewText(R.id.slot2name, data[2].slot2GivenName)
+                        }
+
+                        if (data[2].slot3GivenName.isNullOrBlank()) {
+                            if (data[2].slot3ActualName.equals("NaN")) {
+                                views.setTextViewText(R.id.slot3name, "NaN")
+                            } else {
+                                views.setTextViewText(R.id.slot3name, data[2].slot3ActualName)
+                            }
+                        } else {
+                            views.setTextViewText(R.id.slot3name, data[2].slot3GivenName)
+                        }
                     }
 
-                    if (data[2].slot2GivenName.isNullOrBlank()) {
-                        if (data[2].slot2ActualName.equals("NaN")) {
-                            views.setTextViewText(R.id.slot2name, "NaN")
-                        } else {
-                            views.setTextViewText(R.id.slot2name, data[2].slot2ActualName)
-                        }
-                    } else {
-                        views.setTextViewText(R.id.slot2name, data[2].slot2GivenName)
-                    }
+                    val intent = Intent(context, ApexCircleWidgetProvider_3::class.java)
+                    intent.action = UPDATE_WIDGET_ACTION
+                    val pendingIntent = PendingIntent.getBroadcast(
+                        context,
+                        0,
+                        intent,
+                        PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                    )
 
-                    if (data[2].slot3GivenName.isNullOrBlank()) {
-                        if (data[2].slot3ActualName.equals("NaN")) {
-                            views.setTextViewText(R.id.slot3name, "NaN")
-                        } else {
-                            views.setTextViewText(R.id.slot3name, data[2].slot3ActualName)
-                        }
-                    } else {
-                        views.setTextViewText(R.id.slot3name, data[2].slot3GivenName)
-                    }
+                    views.setOnClickPendingIntent(
+                        R.id.apex_circle_widget_relative_layout,
+                        pendingIntent
+                    )
+
+                    appWidgetManager?.updateAppWidget(appWidgetId, views)
                 }
-
-                val intent = Intent(context, ApexCircleWidgetProvider_3::class.java)
-                intent.action = UPDATE_WIDGET_ACTION
-                val pendingIntent = PendingIntent.getBroadcast(
-                    context,
-                    0,
-                    intent,
-                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            } catch (e: Exception) {
+                Log.d(
+                    "Exception in ApexCircleWidgetProvider_3.onUpdate() => ",
+                    e.message.toString()
                 )
-
-                views.setOnClickPendingIntent(
-                    R.id.apex_circle_widget_relative_layout,
-                    pendingIntent
-                )
-
-                appWidgetManager?.updateAppWidget(appWidgetId, views)
             }
         }
     }

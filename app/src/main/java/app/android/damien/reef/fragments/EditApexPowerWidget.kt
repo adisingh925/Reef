@@ -64,9 +64,12 @@ class EditApexPowerWidget : Fragment(), SimpleListAdapter2.OnItemClickListener {
         ampsValue = apexPowerValueWidget.slot2
         voltsValue = apexPowerValueWidget.slot3
 
-        binding.flaskBackgroundWidgetEditLayout.value1.text = String.format(Locale.getDefault(), "%.2f", wattsValue)
-        binding.flaskBackgroundWidgetEditLayout.value2.text = String.format(Locale.getDefault(), "%.2f", ampsValue)
-        binding.flaskBackgroundWidgetEditLayout.value3.text = String.format(Locale.getDefault(), "%.2f", voltsValue)
+        binding.flaskBackgroundWidgetEditLayout.value1.text =
+            String.format(Locale.getDefault(), "%.2f", wattsValue)
+        binding.flaskBackgroundWidgetEditLayout.value2.text =
+            String.format(Locale.getDefault(), "%.2f", ampsValue)
+        binding.flaskBackgroundWidgetEditLayout.value3.text =
+            String.format(Locale.getDefault(), "%.2f", voltsValue)
 
         initApiData()
 
@@ -79,19 +82,22 @@ class EditApexPowerWidget : Fragment(), SimpleListAdapter2.OnItemClickListener {
                     0 -> {
                         adapter.setData(wattsActualNamesList)
                         adapter.notifyDataSetChanged()
-                        binding.total.text = "Total : ${String.format(Locale.getDefault(), "%.2f", wattsValue)}"
+                        binding.total.text =
+                            "Total : ${String.format(Locale.getDefault(), "%.2f", wattsValue)}"
                     }
 
                     1 -> {
                         adapter.setData(ampsActualNamesList)
                         adapter.notifyDataSetChanged()
-                        binding.total.text = "Total : ${String.format(Locale.getDefault(), "%.2f", ampsValue)}"
+                        binding.total.text =
+                            "Total : ${String.format(Locale.getDefault(), "%.2f", ampsValue)}"
                     }
 
                     2 -> {
                         adapter.setData(voltsActualNamesList)
                         adapter.notifyDataSetChanged()
-                        binding.total.text = "Total : ${String.format(Locale.getDefault(), "%.2f", voltsValue)}"
+                        binding.total.text =
+                            "Total : ${String.format(Locale.getDefault(), "%.2f", voltsValue)}"
                     }
                 }
             }
@@ -109,9 +115,12 @@ class EditApexPowerWidget : Fragment(), SimpleListAdapter2.OnItemClickListener {
             apexPowerValueWidget.slot1 = wattsValue
             apexPowerValueWidget.slot2 = ampsValue
             apexPowerValueWidget.slot3 = voltsValue
-            apexPowerValueWidget.slot1SelectedValues = wattsActualNamesList.filter { it.second == 1 }.joinToString(", ") { it.first }
-            apexPowerValueWidget.slot2SelectedValues = ampsActualNamesList.filter { it.second == 1 }.joinToString(", ") { it.first }
-            apexPowerValueWidget.slot3SelectedValues = voltsActualNamesList.filter { it.second == 1 }.joinToString(", ") { it.first }
+            apexPowerValueWidget.slot1SelectedValues =
+                wattsActualNamesList.filter { it.second == 1 }.joinToString(", ") { it.first }
+            apexPowerValueWidget.slot2SelectedValues =
+                ampsActualNamesList.filter { it.second == 1 }.joinToString(", ") { it.first }
+            apexPowerValueWidget.slot3SelectedValues =
+                voltsActualNamesList.filter { it.second == 1 }.joinToString(", ") { it.first }
 
             widgetsViewModel.updateApexPowerValuesWidget(apexPowerValueWidget)
             Toast.showSnackbar(binding.root, "Apex Power Widget Updated")
@@ -136,23 +145,23 @@ class EditApexPowerWidget : Fragment(), SimpleListAdapter2.OnItemClickListener {
         val keys1 = apexData.getJSONObject(0).keys()
         while (keys1.hasNext()) {
             val key = keys1.next() as String
-            if (key.endsWith("a")) {
+            if (key.endsWith("A", true)) {
                 if (apexPowerValueWidget.slot2SelectedValues?.contains(key) == true) {
                     ampsActualNamesList.add(Pair(key, 1))
                 } else {
                     ampsActualNamesList.add(Pair(key, 0))
                 }
-            } else if (key.endsWith("v")) {
-                if (apexPowerValueWidget.slot3SelectedValues?.contains(key) == true) {
-                    voltsActualNamesList.add(Pair(key, 1))
-                } else {
-                    voltsActualNamesList.add(Pair(key, 0))
-                }
-            } else if (key.endsWith("w")) {
+            } else if (key.endsWith("W", true)) {
                 if (apexPowerValueWidget.slot1SelectedValues?.contains(key) == true) {
                     wattsActualNamesList.add(Pair(key, 1))
                 } else {
                     wattsActualNamesList.add(Pair(key, 0))
+                }
+            } else {
+                if (apexPowerValueWidget.slot3SelectedValues?.contains(key) == true) {
+                    voltsActualNamesList.add(Pair(key, 1))
+                } else {
+                    voltsActualNamesList.add(Pair(key, 0))
                 }
             }
         }
@@ -224,8 +233,11 @@ class EditApexPowerWidget : Fragment(), SimpleListAdapter2.OnItemClickListener {
             }
         }
 
-        binding.flaskBackgroundWidgetEditLayout.value1.text = String.format(Locale.getDefault(), "%.2f", wattsValue)
-        binding.flaskBackgroundWidgetEditLayout.value2.text = String.format(Locale.getDefault(), "%.2f", ampsValue)
-        binding.flaskBackgroundWidgetEditLayout.value3.text = String.format(Locale.getDefault(), "%.2f", voltsValue)
+        binding.flaskBackgroundWidgetEditLayout.value1.text =
+            String.format(Locale.getDefault(), "%.2f", wattsValue)
+        binding.flaskBackgroundWidgetEditLayout.value2.text =
+            String.format(Locale.getDefault(), "%.2f", ampsValue)
+        binding.flaskBackgroundWidgetEditLayout.value3.text =
+            String.format(Locale.getDefault(), "%.2f", voltsValue)
     }
 }
